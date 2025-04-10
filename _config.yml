@@ -6,7 +6,7 @@ description: "Hack The Box makinelerine ait çözüm notları."
 theme: minima
 
 # Permalink Yapısı
-permalink: /:title/
+permalink: /:title
 
 # Markdown Formatı
 markdown: kramdown
