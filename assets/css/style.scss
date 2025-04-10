@@ -1,17 +1,4 @@
 @import "{{ site.theme }}";
-h1 {
-  color: #007bff;
-}
-
-p {
-  text-decoration: none;
-  color: #ff5722;
-}
-
-p:hover {
-  color: #ff4081;
-}
-
 .wrapper {
   display: flex;
   flex-direction: column; /* header ve content'i dikeyde yerleştir */
