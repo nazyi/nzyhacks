@@ -85,7 +85,7 @@ section > * {
 footer {
   clear: both;
   float: none;
-  position: static;
+  position: static !important;
   display: block;
   width: 100%;
   text-align: center;
