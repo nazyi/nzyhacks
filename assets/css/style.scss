@@ -17,6 +17,7 @@ html, body {
 body {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 /* Sayfanın ortasında, sola yaslı içerik alanı */
