@@ -1,0 +1,12 @@
+# Site Başlık ve Açıklaması
+title: "HTB Çözümlerim"
+description: "Hack The Box makinelerine ait çözüm notları."
+
+# Tema Ayarları
+theme: minima
+
+# Permalink Yapısı
+permalink: /:title/
+
+# Markdown Formatı
+markdown: kramdown
