@@ -3,7 +3,7 @@ title: "HTB Çözümlerim"
 description: "Hack The Box makinelerine ait çözüm notları."
 
 # Tema Ayarları
-theme: minima
+theme: jekyll-theme-minimal
 
 # Permalink Yapısı
 permalink: /:title
