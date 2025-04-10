@@ -1,15 +1,13 @@
 @import "{{ site.theme }}";
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-}
-
 h1 {
-  color: #333;
+  color: #007bff;
 }
 
-a {
-  color: #007bff;
+p {
+  text-decoration: none;
+  color: #ff5722;
+}
+
+p:hover {
+  color: #ff4081;
 }
