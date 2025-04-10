@@ -11,3 +11,56 @@ p {
 p:hover {
   color: #ff4081;
 }
+
+.wrapper {
+  display: flex;
+  flex-direction: column; /* header ve content'i dikeyde yerleştir */
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 1200px; /* Maksimum genişlik */
+  margin: 0 auto; /* Ortala */
+  padding: 20px;
+}
+
+header {
+  width: 100%;
+  text-align: center;
+}
+
+.header-content {
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+section.content-section {
+  width: 100%;
+  max-width: 800px; /* İçeriğin genişliğini kısıtla */
+  margin: 20px 0;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+}
+
+footer small {
+  font-size: 0.8rem;
+}
+
+.view {
+  font-size: 1rem;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
