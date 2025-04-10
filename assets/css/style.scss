@@ -1,39 +1,92 @@
 @import "{{ site.theme }}";
-.wrapper {
-  display: flex;
-  flex-direction: column; /* header ve content'i dikeyde yerleştir */
-  justify-content: flex-start;
-  align-items: center;
-  max-width: 1200px; /* Maksimum genişlik */
-  margin: 0 auto; /* Ortala */
-  padding: 20px;
+/* style.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
-section.content-section {
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+header {
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+header img {
+  max-width: 150px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2em;
+  color: #555;
+}
+
+.downloads {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.downloads li a {
+  text-decoration: none;
+  color: #007acc;
+  border: 1px solid #007acc;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.downloads li a:hover {
+  background-color: #007acc;
+  color: white;
+}
+
+section {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+section > * {
   width: 100%;
-  max-width: 800px; /* İçeriğin genişliğini kısıtla */
-  margin: 20px 0;
+  max-width: 720px;
 }
 
 footer {
-  width: 100%;
   text-align: center;
-  margin-top: 40px;
+  font-size: 0.9em;
+  color: #999;
+  padding: 20px 0;
+  border-top: 1px solid #ddd;
 }
 
-footer small {
-  font-size: 0.8rem;
-}
-
-.view {
-  font-size: 1rem;
-}
-
-a {
-  color: #007bff;
+footer a {
+  color: #666;
   text-decoration: none;
 }
 
-a:hover {
+footer a:hover {
   text-decoration: underline;
 }
