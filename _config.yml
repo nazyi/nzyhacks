@@ -1,6 +1,6 @@
 
 # Tema Ayarları
-theme: jekyll-theme-minimal
+theme: jekyll-theme-hacker
 
 # Permalink Yapısı
 permalink: /:title
