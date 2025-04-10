@@ -1,4 +1,5 @@
 @import "{{ site.theme }}";
+/* Reset & Genel Ayarlar */
 * {
   margin: 0;
   padding: 0;
@@ -8,62 +9,60 @@
 html, body {
   height: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #f9f9f9;
   color: #333;
 }
 
-/* Body'yi tamamen ortalamak için Flexbox */
+/* Ana yapı */
 body {
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
-/* Wrapper içeriğini sınırlı genişlikte ve dikey düzenle */
+/* Sayfanın ortasında, sola yaslı içerik alanı */
 .wrapper {
   width: 100%;
-  max-width: 960px;
+  max-width: 1100px;
   background-color: #fff;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  padding: 20px;
+  padding: 40px 60px;
+  margin: 40px 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  min-height: 80vh;
-  border-radius: 8px;
 }
 
 /* Header */
 header {
-  text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 header img {
-  max-width: 150px;
+  max-width: 160px;
   height: auto;
   margin-bottom: 10px;
 }
 
 header p {
-  font-size: 1.1em;
+  font-size: 1.2em;
   color: #555;
 }
 
 .downloads {
   list-style: none;
   display: flex;
-  justify-content: center;
   gap: 15px;
   margin-top: 15px;
+  padding-left: 0;
 }
 
 .downloads li a {
   text-decoration: none;
   color: #007acc;
   border: 1px solid #007acc;
-  padding: 8px 12px;
-  border-radius: 5px;
-  transition: all 0.3s ease;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: 0.3s ease;
 }
 
 .downloads li a:hover {
@@ -71,36 +70,45 @@ header p {
   color: white;
 }
 
-/* Section içeriğini ortalamak için */
+/* Section */
 section {
   flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  text-align: center;
+  padding: 30px 0;
 }
 
 section > * {
-  max-width: 720px;
+  max-width: 800px;
   width: 100%;
 }
 
 /* Footer */
 footer {
-  text-align: center;
-  font-size: 0.9em;
-  color: #999;
   border-top: 1px solid #ddd;
-  padding-top: 15px;
-  margin-top: 20px;
+  padding-top: 20px;
+  margin-top: 40px;
+  font-size: 0.9em;
+  color: #777;
 }
 
 footer a {
-  color: #666;
+  color: #555;
   text-decoration: none;
 }
 
 footer a:hover {
   text-decoration: underline;
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 30px 20px;
+    margin: 20px 10px;
+  }
+
+  .downloads {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
