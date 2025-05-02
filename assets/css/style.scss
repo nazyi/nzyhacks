@@ -2,30 +2,26 @@
 ---
 @import 'jekyll-theme-hacker';
 h1, h2, h3, h4, h5, h6 {
-  color: #aa759f;
+  color: #aa759f; 
 }
-
-/* Header Flex düzeni */
 .header-flex {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Mobil uyum için */
+  flex-wrap: wrap; /* Mobil uyum için istersen */
 }
 
-/* Başlık öncesi boşluğu kaldırma */
 .header h1:before {
   content: none;
 }
-
-/* Site başlığı stili */
+/* site-title içindeki başlıklar */
 .site-title {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-/* Menü stilleri */
+/* navbar (menü) */
 .header-menu ul {
   display: flex;
   list-style: none;
@@ -37,6 +33,7 @@ h1, h2, h3, h4, h5, h6 {
 .header-menu li {
   position: relative;
   margin-left: 20px;
+  list-style: none;
 }
 
 .header-menu a {
@@ -51,24 +48,28 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 2px solid #FF69B4;
 }
 
-/* Dropdown Menü */
+/* Dropdown menü genel stil */
 .dropdown {
-  position: relative;
+  position: relative; /* İçerideki absolute dropdown için referans */
 }
 
+/* Başta gizli */
 .dropdown-content {
-  display: none;
+  display: none !important;
   position: absolute;
-  top: 100%;
+  top: 100%;  /* menü öğesinin hemen altına */
   left: 0;
   background-color: #444;
   min-width: 180px;
+  z-index: 1;
 }
 
+/* Hover yapıldığında görünür */
 .dropdown:hover .dropdown-content {
-  display: block;
+  display: block !important;
 }
 
+/* İçerik stilleri */
 .dropdown-content li {
   display: block;
 }
@@ -84,18 +85,19 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #111;
 }
 
-/* Post Wrapper */
+
+
+
 .post-wrapper {
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem 1rem;
-  background-color: #1a1a1a;
+  background-color: #1a1a1a; // karanlık tema için
   border-radius: 8px;
   color: #eaeaea;
   box-shadow: 0 0 10px rgba(255, 105, 180, 0.1);
 }
 
-/* Post Header */
 .post-header {
   margin-bottom: 2rem;
   border-bottom: 1px solid #FF69B4;
@@ -113,7 +115,6 @@ h1, h2, h3, h4, h5, h6 {
   color: #aaa;
 }
 
-/* Post Content */
 .post-content {
   line-height: 1.7;
   font-size: 1.1rem;
@@ -127,7 +128,6 @@ h1, h2, h3, h4, h5, h6 {
   color: #FF69B4;
 }
 
-/* Post Tags */
 .post-tags {
   margin-top: 2rem;
   border-top: 1px solid #333;
@@ -136,7 +136,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #ccc;
 }
 
-/* Code Window */
+
 .code-window {
   background: #1e1e1e;
   border-radius: 8px;
