@@ -1,11 +1,11 @@
 .makine-listesi {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   gap: 20px;
 }
 
 .machine-item {
-  display: flex;
+  display: flex !important;
   justify-content: space-between;
   align-items: center;
   background-color: #1c1c1c;
