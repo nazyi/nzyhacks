@@ -11,6 +11,9 @@ h1, h2, h3, h4, h5, h6 {
   flex-wrap: wrap; /* Mobil uyum için istersen */
 }
 
+.header h1:before {
+  content: none;
+}
 /* site-title içindeki başlıklar */
 .site-title {
   display: flex;
