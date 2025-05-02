@@ -2,3 +2,50 @@
 h1, h2, h3, h4, h5, h6 {
   color: #aa759f; 
 }
+/* Menü stili */
+.header-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #333;
+  overflow: hidden;
+}
+
+.header-menu li {
+  float: left;
+  position: relative;
+}
+
+.header-menu a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 12px 16px;
+  text-decoration: none;
+}
+
+.header-menu a:hover {
+  background-color: #111;
+}
+
+/* Dropdown stili */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #444;
+  min-width: 180px;
+  z-index: 1;
+}
+
+.dropdown-content li {
+  float: none;
+}
+
+.dropdown-content a {
+  padding: 10px 16px;
+}
+
+/* Dropdown'a hover yapıldığında içeriğin görünmesini sağlar */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
