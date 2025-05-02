@@ -81,3 +81,55 @@ h1, h2, h3, h4, h5, h6 {
 .dropdown-content a:hover {
   background-color: #111;
 }
+
+
+
+
+.post-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  background-color: #1a1a1a; // karanlık tema için
+  border-radius: 8px;
+  color: #eaeaea;
+  box-shadow: 0 0 10px rgba(255, 105, 180, 0.1);
+}
+
+.post-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #FF69B4;
+  padding-bottom: 1rem;
+}
+
+.post-title {
+  font-size: 2.2rem;
+  color: #FF69B4;
+  margin-bottom: 0.5rem;
+}
+
+.post-meta {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.post-content {
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+.post-content code {
+  background-color: #222;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-family: monospace;
+  color: #FF69B4;
+}
+
+.post-tags {
+  margin-top: 2rem;
+  border-top: 1px solid #333;
+  padding-top: 1rem;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
