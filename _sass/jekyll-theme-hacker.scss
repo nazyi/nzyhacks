@@ -24,8 +24,7 @@ body {
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
 }
 
-/* General & 'Reset' Stuff */
-
+/* Genel ayarlar */
 .container {
   width: 90%;
   max-width: $container-max-width;
@@ -41,69 +40,50 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 20px;
 }
 
-li {
-  line-height: 1.4 ;
-}
-
-/* Header, <header>
-   header   - container
-   h1       - project name
-   h2       - project description
-*/
-
+/* Header, <header> */
 header {
   background: rgba(0, 0, 0, 0.1);
   width: 100%;
-  border-bottom: 1px dashed $bouquet; //header;
+  border-bottom: 1px dashed $bouquet;
   padding: 20px 0;
   margin: 0 0 40px 0;
 }
 
+/* Header h1 - Başlık */
 header h1 {
-  font-size: 30px;
+  font-size: 26px; /* Font boyutunu küçülttük */
   line-height: 1.5;
   margin: 0 0 0 -40px;
   font-weight: bold;
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
-  color: $bouquet;//$header;
+  color: $bouquet;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
                0 0 5px rgba(181, 232, 83, 0.1),
                0 0 10px rgba(181, 232, 83, 0.1);
   letter-spacing: -1px;
   -webkit-font-smoothing: antialiased;
+  overflow: hidden;  /* Taşmayı engelledik */
+  white-space: nowrap;  /* Başlık tek satırda kalacak */
+  text-overflow: ellipsis; /* Taşan metni "..." ile gösterecek */
   @include media-max-width($container-max-width) {
     margin-left: 0;
   }
 }
 
-
-header h1:before {
-  font-size: 24px;
-}
-
+/* Header h2 - Açıklama */
 header h2 {
   font-size: 18px;
   font-weight: 300;
   color: #666;
 }
 
-#downloads .btn {
-  display: inline-block;
-  text-align: center;
-  margin: 0;
+/* İçeriğin (p etiketi) fontunu küçültme */
+p {
+  font-size: 14px; /* İçeriğin fontunu küçülttük */
+  line-height: 1.6;
 }
 
-/* Main Content
-*/
-
-#main_content {
-  width: 100%;
-  -webkit-font-smoothing: antialiased;
-}
-section img {
-  max-width: 100%
-}
-
+/* Genel başlık ayarları */
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
@@ -114,6 +94,7 @@ h1, h2, h3, h4, h5, h6 {
                0 0 10px rgba(181, 232, 83, 0.1);
 }
 
+/* Ana içerik başlıkları */
 #main_content h1 {
   font-size: 30px;
 }
@@ -143,21 +124,14 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 5px 0;
 }
 
-dt {
-  font-style: italic;
-  font-weight: bold;
-}
-
-ul li {
-  list-style-image:url('../images/bullet.png');
-}
-
+/* Diğer stil ayarları */
 blockquote {
   color: $blockquote-color;
   padding-left: 10px;
   border-left: 1px dotted $blockquote-border;
 }
 
+/* Preformatted text (kodlar için) */
 pre {
   background: rgba(0, 0, 0, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -170,40 +144,7 @@ pre {
   overflow-y: hidden;
 }
 
-code.highlighter-rouge {
-  background: rgba(0,0,0,0.9);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 0px 3px;
-  margin: 0px -3px;
-  color: #aa759f;
-  border-radius: 2px;
-}
-
-table {
-  width: 100%;
-  margin: 0 0 20px 0;
-}
-
-th {
-  text-align: left;
-  border-bottom: 1px dashed #b5e853;
-  padding: 5px 10px;
-}
-
-td {
-  padding: 5px 10px;
-}
-
-hr {
-  height: 0;
-  border: 0;
-  border-bottom: 1px dashed #b5e853;
-  color: #b5e853;
-}
-
-/* Buttons
-*/
-
+/* Butonlar */
 .btn {
   display: inline-block;
   background: -webkit-linear-gradient(top, rgba(40, 40, 40, 0.3), rgba(35, 35, 35, 0.3) 50%, rgba(10, 10, 10, 0.3) 50%, rgba(0, 0, 0, 0.3));
@@ -223,45 +164,4 @@ hr {
 
 .btn:hover {
   background: -webkit-linear-gradient(top, rgba(40, 40, 40, 0.6), rgba(35, 35, 35, 0.6) 50%, rgba(10, 10, 10, 0.8) 50%, rgba(0, 0, 0, 0.8));
-}
-
-.btn .icon {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  margin: 1px 8px 0 0;
-  float: left;
-}
-
-.btn-github .icon {
-  opacity: 0.6;
-  background: url("../images/blacktocat.png") 0 0 no-repeat;
-}
-
-/* Links
-   a, a:hover, a:visited
-*/
-
-a {
-  color: #63c0f5;
-  text-shadow: 0 0 5px rgba(104, 182, 255, 0.5);
-}
-
-/* Clearfix */
-
-.cf:before, .cf:after {
-  content:"";
-  display:table;
-}
-
-.cf:after {
-  clear:both;
-}
-
-.cf {
-  zoom:1;
-}
-
-#a-title {
-  text-decoration: none;
 }
