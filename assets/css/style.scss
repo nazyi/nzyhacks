@@ -51,7 +51,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Başta gizli */
 .dropdown-content {
-  display: none;
+  display: none !important;
   position: absolute;
   top: 100%;  /* menü öğesinin hemen altına */
   left: 0;
@@ -62,7 +62,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Hover yapıldığında görünür */
 .dropdown:hover .dropdown-content {
-  display: block;
+  display: block !important;
 }
 
 /* İçerik stilleri */
