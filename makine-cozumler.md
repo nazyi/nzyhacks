@@ -9,17 +9,13 @@ title: makine-cozumler
   {% for post in site.posts %}
     {% if post.categories contains "makine" %}
       <div class="machine-item">
-        <!-- Solda başlık ve açıklama -->
-        <div class="machine-description">
-          <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        <div class="machine-desc-with-logo">
           <p>{{ post.desc }}</p>
-        </div>
-
-        <!-- Sağda logo -->
-        <div class="machine-logo">
-          <img src="{{ post.logo | relative_url }}" alt="{{ post.title }} Logo">
+          <img src="{{ post.logo | relative_url }}" alt="{{ post.title }} logo">
         </div>
       </div>
     {% endif %}
   {% endfor %}
 </div>
+
