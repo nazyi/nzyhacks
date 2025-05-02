@@ -6,39 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     {% include head-custom.html %}
-
-{% seo %}
+    {% seo %}
   </head>
 
   <body>
 
     <header>
-  <div class="container header-flex">
-    
-    <!-- Sol: Site Başlığı -->
-    <div class="site-title">
-      <a id="a-title" href="{{ '/' | relative_url }}">
-        <h1>{{ site.title | default: site.github.repository_name }}</h1>
-      </a>
-      <h2>{{ site.description | default: site.github.project_tagline }}</h2>
-    </div>
+      <div class="container header-flex">
+        
+        <!-- Sol: Site Başlığı -->
+        <div class="site-title">
+          <a id="a-title" href="{{ '/' | relative_url }}">
+            <h1>{{ site.title | default: site.github.repository_name }}</h1>
+          </a>
+          <h2>{{ site.description | default: site.github.project_tagline }}</h2>
+        </div>
 
-    <!-- Sağ: Menü -->
-    <nav class="header-menu">
-      <ul>
-        <li><a href="/my-site/makine-cozumleri">Makine Çözümleri</a></li>
-        <li><a href="/modul-cozumleri">Modül Çözümleri</a></li>
-        <li><a href="/iletisim">İletişim</a></li>
-      </ul>
-    </nav>
+        <!-- Sağ: Menü -->
+        <nav class="header-menu">
+          <ul>
+            <!-- Ana Sayfa -->
+            <li><a href="{{ site.baseurl | relative_url }}/">Ana Sayfa</a></li>
 
-  </div>
-</header>
+            <!-- Çözümler Dropdown Menüsü -->
+            <li class="dropdown">
+              <a href="{{ site.baseurl | relative_url }}/cozumler">Çözümler</a>
+              <ul class="dropdown-content">
+                <li><a href="{{ site.baseurl | relative_url }}/makine-cozumleri">Makine Çözümleri</a></li>
+                <li><a href="{{ site.baseurl | relative_url }}/modul-cozumleri">Modül Çözümleri</a></li>
+              </ul>
+            </li>
+
+            <!-- İletişim -->
+            <li><a href="{{ site.baseurl | relative_url }}/iletisim">İletişim</a></li>
+
+            <!-- Hakkında (Opsiyonel) -->
+            <li><a href="{{ site.baseurl | relative_url }}/hakkinda">Hakkında</a></li>
+          </ul>
+        </nav>
+
+      </div>
+    </header>
 
     <div class="container">
       <section id="main_content">
         {{ content }}
       </section>
     </div>
+    
   </body>
 </html>
