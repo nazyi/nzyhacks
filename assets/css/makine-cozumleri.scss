@@ -1,57 +1,32 @@
-/* Makine Çözümleri Sayfası için Özel Stil */
-.machine-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 0;
-  padding: 0;
-}
-
+/* Makine başlığı ve açıklaması ile logo arasındaki düzenlemeleri yapalım */
 .machine-item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 20px;
-  width: 48%;
-  border: 2px solid #FF69B4; /* Pembe renkli sınır */
-  border-radius: 8px;
-  padding: 10px;
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex; /* Flexbox kullanarak başlık ve logo'yu aynı satıra yerleştiriyoruz */
+  justify-content: space-between; /* Başlık ile logo arasına boşluk bırakıyoruz */
+  align-items: center; /* Yatayda ortalamayı sağlıyoruz */
+  margin-bottom: 20px; /* Her bir makine öğesi arasında boşluk */
+  border-bottom: 1px solid #ddd; /* Ayırıcı çizgi ekliyoruz */
+  padding-bottom: 10px;
 }
 
-.machine-info {
-  flex: 1;
-  padding-right: 20px;
+.machine-item img {
+  max-width: 100px; /* Logonun genişliğini 100px ile sınırlıyoruz */
+  height: auto; /* Yüksekliği oranla ayarlıyoruz */
 }
 
-.machine-info h3 {
-  font-size: 22px;
-  color: #FF69B4;
-  margin-bottom: 10px;
+.machine-description {
+  flex-grow: 1; /* Başlık ve açıklama kısmının logoyu itmesini sağlıyoruz */
+  margin-right: 20px; /* Başlık ve açıklama ile logo arasında biraz boşluk bırakıyoruz */
 }
 
-.machine-info p {
-  font-size: 16px;
-  color: #555;
+/* Başlık kısmına özel stil */
+.machine-item h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #FF69B4; /* Başlık rengi */
 }
 
-.machine-logo img {
-  max-width: 150px;
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover;
-}
-
-.machine-item a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.machine-item:hover {
-  background-color: #f8f8f8;
-}
-
-.machine-item:hover .machine-info h3 {
-  color: #e91e63; /* Hover rengi */
+/* Açıklama kısmı */
+.machine-item p {
+  color: #aaa; /* Açıklama rengi */
 }
