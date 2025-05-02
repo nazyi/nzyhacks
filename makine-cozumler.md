@@ -10,7 +10,7 @@ title: makine-cozumler
     {% if post.categories contains "makine" %}
       <div class="machine-item">
         <div class="machine-description">
-          <h3><a href="{{ site.baseurl | post.url }}">{{ post.title }}</a></h3>
+          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
           <p>{{ post.desc }}</p>
         </div>
         <div class="machine-logo">
