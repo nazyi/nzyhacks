@@ -12,11 +12,12 @@
   padding: 15px;
   border: 1px solid #444;
   border-radius: 5px;
+  gap: 20px;
 }
 
 .machine-description {
-  flex-grow: 1;
-  margin-right: 20px;
+  flex: 1;
+  max-width: 70%;
 }
 
 .machine-description h3 {
@@ -30,8 +31,14 @@
   color: #ccc;
 }
 
-.machine-logo img {
+.machine-logo {
+  flex-shrink: 0;
   max-width: 120px;
+}
+
+.machine-logo img {
+  width: 100%;
   height: auto;
   display: block;
+  border-radius: 4px;
 }
