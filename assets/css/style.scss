@@ -84,9 +84,14 @@ h1, h2, h3, h4, h5, h6 {
 .dropdown-content a:hover {
   background-color: #111;
 }
-
-
-
+p {
+  font-size: 14px; /* İçeriğin fontunu küçülttük */
+  line-height: 1.6;
+}
+.p {
+  font-size: 14px; /* İçeriğin fontunu küçülttük */
+  line-height: 1.6;
+}
 
 /* Post Wrapper: Ana yazı kutusunun genel stil ayarları */
 .post-wrapper {
