@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Çözümler
+title: cozumler
 ---
 
 ## Modül Çözümleri
