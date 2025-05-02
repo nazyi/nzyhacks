@@ -4,38 +4,34 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
 .machine-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #1c1c1c;
   border: 1px solid #444;
   padding: 20px;
   border-radius: 8px;
-}
-
-.machine-item h3 {
-  color: #FF69B4;
-  margin-bottom: 10px;
-}
-
-.machine-desc-with-logo {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   gap: 20px;
 }
 
-.machine-desc-with-logo p {
-  color: #ccc;
-  margin: 0;
+.machine-description {
   flex: 1;
+  color: #ccc;
 }
 
-.machine-desc-with-logo img {
-  max-width: 120px;
-  max-height: 100px;
+.machine-description h3 {
+  margin: 0 0 10px;
+  color: #FF69B4;
+}
+
+.machine-logo img {
+  width: 120px;
+  height: auto;
   object-fit: contain;
   border-radius: 6px;
 }
