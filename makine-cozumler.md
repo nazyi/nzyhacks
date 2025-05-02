@@ -5,21 +5,21 @@ title: makine-cozumler
 
 # Makine Çözümleri
 
-<ul>
+<div class="makine-listesi">
   {% for post in site.posts %}
     {% if post.categories contains "makine" %}
-      <li class="machine-item">
+      <div class="machine-item">
         <!-- Solda başlık ve açıklama -->
         <div class="machine-description">
-          <h3>{{ post.title }}</h3>
+          <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
           <p>{{ post.desc }}</p>
         </div>
-        
+
         <!-- Sağda logo -->
         <div class="machine-logo">
-          <img src="{{ post.logo | relative_url }}" alt="{{ post.title }} Logo" />
+          <img src="{{ post.logo | relative_url }}" alt="{{ post.title }} Logo">
         </div>
-      </li>
+      </div>
     {% endif %}
   {% endfor %}
-</ul>
+</div>
