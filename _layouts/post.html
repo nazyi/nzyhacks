@@ -1,20 +1,5 @@
----
-layout: default
----
-
-<small>{{ page.date | date: "%-d %B %Y" }}</small>
-<h1>{{ page.title }}</h1>
-
-<p class="view">by {{ page.author | default: site.author }}</p>
-
-{{content}}
-
-{% if page.tags %}
-  <small>tags: <em>{{ page.tags | join: "</em> - <em>" }}</em></small>
-{% endif %}
-
-
-{% if page.layout == "post" %}
+<div class="icerik-ve-menu">
+  <!-- Sol Menü -->
   <nav class="icerik-menusu">
     <ul>
       {% assign headers = content | split: '<h1' %}
@@ -30,4 +15,16 @@ layout: default
       {% endfor %}
     </ul>
   </nav>
-{% endif %}
+
+  <!-- İçerik -->
+  <div class="icerik-alani">
+    <small>{{ page.date | date: "%-d %B %Y" }}</small>
+    <h1>{{ page.title }}</h1>
+    <p class="view">by {{ page.author | default: site.author }}</p>
+    {{ content }}
+
+    {% if page.tags %}
+      <small>tags: <em>{{ page.tags | join: "</em> - <em>" }}</em></small>
+    {% endif %}
+  </div>
+</div>
