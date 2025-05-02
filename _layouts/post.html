@@ -1,18 +1,14 @@
-<div class="icerik-ve-menu">
-  <!-- Sol Menü -->
-  <nav class="icerik-menusu">
-    <ul>
-      {% assign headers = content | split: '<h1' %}
-      {% for part in headers %}
-        {% if part contains 'id="' %}
-          {% assign id_index = part | split: 'id="' %}
-          {% assign id_part = id_index[1] | split: '"' %}
-          {% assign header_id = id_part[0] %}
-          {% assign title_part = part | split: '>' %}
-          {% assign header_title = title_part[1] | split: '<' %}
-          <li><a href="#{{ header_id }}">{{ header_title[0] }}</a></li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  </nav>
-</div>
+---
+layout: default
+---
+
+<small>{{ page.date | date: "%-d %B %Y" }}</small>
+<h1>{{ page.title }}</h1>
+
+<p class="view">by {{ page.author | default: site.author }}</p>
+
+{{content}}
+
+{% if page.tags %}
+  <small>tags: <em>{{ page.tags | join: "</em> - <em>" }}</em></small>
+{% endif %}
