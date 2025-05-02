@@ -5,15 +5,18 @@ title: makine-cozumler
 
 # Makine Çözümleri
 
-<ul>
+<div class="machine-list">
   {% for post in site.posts %}
     {% if post.categories contains "makine" %}
-      <li>
-        <a href="{{ post.url }}">
-          <img src="{{ post.logo }}" alt="{{ post.title }} Logo" width="50" />
-          <strong>{{ post.title }}</strong>: {{ post.desc }}
-        </a>
-      </li>
+      <div class="machine-item">
+        <div class="machine-info">
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.desc }}</p>
+        </div>
+        <div class="machine-logo">
+          <img src="{{ post.logo }}" alt="{{ post.title }} Logo" />
+        </div>
+      </div>
     {% endif %}
   {% endfor %}
-</ul>
+</div>
