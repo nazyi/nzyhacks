@@ -165,22 +165,6 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 16px 0 #ffbd2e, 32px 0 #27c93f;
 }
 
-.window-header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 30px; /* Sekme yüksekliği */
-  width: 120px;  /* Sadece noktaların arkasını kaplasın */
-  background-color: #2b2b2b; /* Sekme rengi */
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  z-index: 0;
-}
-.window-header {
-  position: relative; /* Pseudo-element düzgün konumlansın */
-  z-index: 1; /* Noktalar üstte kalsın */
-}
 
 p {
   font-size: 14px; /* İçeriğin fontunu küçülttük */
