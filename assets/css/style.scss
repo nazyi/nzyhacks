@@ -164,6 +164,12 @@ h1, h2, h3, h4, h5, h6 {
   background: #ff5f56;
   box-shadow: 16px 0 #ffbd2e, 32px 0 #27c93f;
 }
+.window-header {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #1e1e1e;
+}
 
 p {
   font-size: 14px; /* İçeriğin fontunu küçülttük */
