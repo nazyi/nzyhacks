@@ -9,13 +9,14 @@ title: makine-cozumler
   {% for post in site.posts %}
     {% if post.categories contains "makine" %}
       <div class="machine-item">
-        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-        <div class="machine-desc-with-logo">
+        <div class="machine-description">
+          <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
           <p>{{ post.desc }}</p>
+        </div>
+        <div class="machine-logo">
           <img src="{{ post.logo | relative_url }}" alt="{{ post.title }} logo">
         </div>
       </div>
     {% endif %}
   {% endfor %}
 </div>
-
