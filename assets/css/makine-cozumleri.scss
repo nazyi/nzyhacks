@@ -7,30 +7,33 @@
 }
 
 .machine-item {
-  display: grid;
-  grid-template-columns: 1fr 150px;
-  gap: 20px;
   background-color: #1c1c1c;
   border: 1px solid #444;
   padding: 20px;
   border-radius: 8px;
-  align-items: center;
 }
 
-.machine-description h3 {
-  margin: 0 0 10px;
+.machine-item h3 {
   color: #FF69B4;
+  margin-bottom: 10px;
 }
 
-.machine-description p {
-  margin: 0;
+.machine-desc-with-logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.machine-desc-with-logo p {
   color: #ccc;
+  margin: 0;
+  flex: 1;
 }
 
-.machine-logo img {
-  width: 100%;
+.machine-desc-with-logo img {
+  max-width: 120px;
   max-height: 100px;
   object-fit: contain;
-  display: block;
   border-radius: 6px;
 }
