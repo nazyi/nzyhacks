@@ -9,10 +9,11 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
   background-color: #333;
   overflow: hidden;
+  text-align: center;  /* Ortalamak için */
 }
 
 .header-menu li {
-  float: left;
+  display: inline-block; /* Menü öğelerini yatayda sıralamak için */
   position: relative;
 }
 
@@ -38,7 +39,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .dropdown-content li {
-  float: none;
+  display: block; /* Dropdown içeriği dikeyde görünsün */
 }
 
 .dropdown-content a {
