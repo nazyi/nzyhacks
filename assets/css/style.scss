@@ -136,9 +136,12 @@ h1, h2, h3, h4, h5, h6 {
   color: #ccc;
 }
 
-
+.highlight {
+  color: #89e033; /* Metnin rengini burada değiştirin */
+  font-weight: bold; /* Metni kalın yapmak için */
+}
 .code-window {
-  background: #1e1e1e;
+  background: #5E2750;
   border-radius: 8px;
   padding: 1em;
   margin: 2em 0;
