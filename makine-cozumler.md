@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Makine Çözümleri"
+title: makine-cozumler
 ---
 
 # Makine Çözümleri
