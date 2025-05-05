@@ -9,7 +9,7 @@ title: modul-cozumler
   {% for post in site.posts %}
     {% if post.categories contains "modul" %}
       <div class="modul-item">
-        <div class="machine-modul">
+        <div class="modul-desciption">
           <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
           <p>{{ post.desc }}</p>
         </div>
