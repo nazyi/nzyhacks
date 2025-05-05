@@ -5,6 +5,7 @@ desc: "Cisco Ethical Hacker kursunun ikinci bölümüdür. Sızma testi sürecin
 logo: "/assets/images/cisco.png"
 author: Buse Naz Yılmaz
 title: Cisco Modül 3 - Passive Recon 
+order: 3
 ---
 
 # Cisco Ethical Hacker
