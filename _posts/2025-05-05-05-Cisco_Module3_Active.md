@@ -499,3 +499,19 @@ Kali makinemiz üzerinde hazır halde yüklü olan DVWA sayfasına erişip login
 Burada görüldüğü gibi br-internal ara yüzümüzün ismidir. Wireshark’ı açtıktan sonra aşağıda yer alan ara yüz isimlerinden br-internal ara yüzünü seçiyoruz. Böylece Wireshark br-internal ara yüzünü dinlemeye başlıyor. 
 
 ![](./assets/images/Resim50.jpg)
+
+Dinlemeye başladıktan sonra tarayıcı üzerinden 10.6.6.13 adresine yani DVWA sayfasına erişiyoruz. Giriş yapmak için **admin** ve **password** değerlerini giriyoruz. Değerleri girdikten sonra tarayıcı kapatıp Wireshark’ta yukarıdaki kırmızı kareye basarak dinlemeyi durduruyoruz. Arama menüsüne String değerini, arama yerine ise POST yazıyoruz.
+
+![](./assets/images/Resim51.jpg)
+
+Çıkan pakette login.php üzerinden bilgi gönderildiği görülüyor. Paketin HTML Form URL Encoded kısmında login bilgilerini görebilirsiniz. 
+
+![](./assets/images/Resim52.jpg)
+
+Cookieler birçok farklı amaç için kullanılır. En yaygın olarak, bir kullanıcının oturum bilgilerini saklamak için kullanılırlar. Çerezler ele geçirilebilir ve kullanıcının oturumu çalınabilir. İlk çerez, Set-Cookie değeri ile HTTP yanıtı içinde gönderilir.
+
+Wireshark üzerinde 302 Found diye aratarak ilk çerezi bulabiliriz.
+
+![](./assets/images/Resim53.jpg)
+
+Çıktıda görüldüğü gibi PHPSESSID çerezi atanmıştır.
