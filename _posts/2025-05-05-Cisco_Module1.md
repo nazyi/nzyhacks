@@ -2,12 +2,11 @@
 categories: [modul]
 layout: post
 author: Buse Naz Yılmaz
-title: cisco-module1
 ---
 
 # Cisco Ethical Hacker
 
-# Module 1: Inroduction to Ethical Hacking and Penetration Testing
+<h2> Module 1: Inroduction to Ethical Hacking and Penetration Testing </h2>
 
 ## 1.1 Threat Actors
 
