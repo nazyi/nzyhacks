@@ -1,7 +1,7 @@
 ---
 categories: [modul]
 layout: post
-desc: "Cisco Ethical Hacker kursunun ikinci bölümüdür. Sızma testi sürecinde planlama ve kapsam belirleme aşamalarının neden kritik olduğunu vurgular. Aynı zamanda regülasyonlara uyum, yasal sorumluluklar ve etik ilkeler çerçevesinde nasıl hareket edilmesi gerektiğini detaylandırır."
+desc: "Cisco Ethical Hacker kursunun üçüncü bölümünün aktif bilgi toplama kısmıdır. aktif bilgi toplama teknikleri kapsamında Nmap tarama türleri ve numaralandırma (enumeration) yöntemleri detaylıca ele alınmıştır. Hedef sistemler hakkında daha derinlemesine bilgi edinmek amacıyla servisler, kullanıcılar, gruplar ve paylaşılan kaynaklar gibi bileşenlerin tespiti örnek araç ve komutlarla açıklanmıştır."
 logo: "/assets/images/cisco.png"
 author: Buse Naz Yılmaz
 title: Cisco Modül 3 - Active Recon 
@@ -173,7 +173,7 @@ Uzaktaki bir sistemde çalışan servislerin (hizmetlerin) belirlenmesi işlemid
 
 #### Exploring Enumeration via Packet Crafting
 
-Paket oluşturarak bilgi toplama yaparken, Scapy en çok tercih edilen toolllar arasındadır. Scapy, paket oluşturma için kullanılan Python tabanlı bir sistemdir. Scapy kullanmak için root izni gerekmektedir ve terminale direkt sudo scrapy yazıldığında kullanabilmektedir.
+Paket oluşturarak bilgi toplama yaparken, Scapy en çok tercih edilen toolllar arasındadır. Scapy, paket oluşturma için kullanılan Python tabanlı bir sistemdir. Scapy kullanmak için root izni gerekmektedir ve terminale direkt sudo scapy yazıldığında kullanabilmektedir.
 
 Örnek, malicious\_payload ile ICMP paketi oluşturmak için aşağıdaki komutu kullanabiliriz.
 <div class="code-window">
@@ -261,7 +261,7 @@ Daha önce de bahsettiğimiz gibi nmap içinde bazı scriptler sayesinde istenil
 
 <div class="code-window">
 <br>
-<span class="highlight">kali@kali</span> nmap –script smb-enum-users.se -p139,445 10.6.6.23
+<span class="highlight">kali@kali</span> nmap –script smb-enum-users.nse -p139,445 10.6.6.23
 </div> 
 
 ![](./assets/images/Resim35.jpg)
@@ -410,7 +410,7 @@ Bu çıktıyı kaydedip içeriğini inceleyelim.
 
 ·        sniff(iface=”br-internal”)
 
-Diğer Scrapy terminaline geçelim ve paketi oluşturmaya başlayalım.
+Diğer Scapy terminaline geçelim ve paketi oluşturmaya başlayalım.
 
 ·        send(IP(dst="10.6.6.23")/TCP(dport=445, flags="S"))
 
