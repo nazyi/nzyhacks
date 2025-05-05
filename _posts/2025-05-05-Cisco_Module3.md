@@ -4,7 +4,7 @@ layout: post
 desc: "Cisco Ethical Hacker kursunun ikinci bölümüdür. Sızma testi sürecinde planlama ve kapsam belirleme aşamalarının neden kritik olduğunu vurgular. Aynı zamanda regülasyonlara uyum, yasal sorumluluklar ve etik ilkeler çerçevesinde nasıl hareket edilmesi gerektiğini detaylandırır."
 logo: "/assets/images/cisco.png"
 author: Buse Naz Yılmaz
-title: Cisco Modül 3 
+title: Cisco Modül 3 - Passive Recon 
 ---
 
 # Cisco Ethical Hacker
@@ -49,7 +49,6 @@ Bazı pasif bilgi toplama toolları:
 #### Part 2 Use SpiderFoot
 
 Kali’de spiderfootu açtıktan sonra toolu kullanmak için
-
 <div class="code-window">
 <br>
 <span class="highlight">kali@kali</span> spiderfoot -l 127.0.0.1:5001
@@ -84,7 +83,6 @@ Workspace oluşturmak için “workspaces create”” komutunu kullanıyoruz.
 **Step 2: Investigate Modules**
 
 Recon-ng toollu modüler bir çerçevedir. Yani bir sürü modülden oluşmaktadır. Bu modülleri dışarı bir marketpace üzerinden indirip kullanabilirsiniz. “modules search” komutunu kullanarak modüllere bakabiliriz.
-
 <div class="code-window">
 <br>
 <span class="highlight">[recon-ng][default]</span> > marketplace search
@@ -101,7 +99,6 @@ Yeni modül indirmek için ilk öncelikle modüle search ile modülleri görünt
 ![](./assets/images/Resim6.jpg)
 
 Biz örnek olarak bing\_domain\_web modülünü indirelim. İndirmek için;
-
 <div class="code-window">
 <br>
 <span class="highlight">[recon-ng][default]</span> > marketplace install recon/domain-hosts/bing_domain_web
@@ -112,21 +109,18 @@ Aynı işlemi hackertarget modülü için de uygulayıp modülü indirin.
 **Step 5: Run the New Modules**
 
 Yeni bir workspace oluşturalım.  Modül ile çalışmak için aşağıdaki komutunu kullanalım.
-
 <div class="code-window">
 <br>
 <span class="highlight">[recon-ng][cisco]</span> > modules load hackertarget 
 </div>
 
 Modül hakkında daha fazla bilgi almak istersniz aşağıdaki komutu kullanabilirsiniz.
-
 <div class="code-window">
 <br>
 <span class="highlight">[recon-ng][cisco][hackertarget]</span> > info 
 </div>
 
 Info çıktısındaki gibi biz gereken tek ayar source yani kaynağın ayarlanmasıymış.
-
 <div class="code-window">
 <br>
 <span class="highlight">[recon-ng][cisco][hackertarget]</span> > options set source hackxor.net<br>SOURCE -> hackxor.net
@@ -135,7 +129,6 @@ Info çıktısındaki gibi biz gereken tek ayar source yani kaynağın ayarlanma
 
 Komutu ile hedefimizi ayarlayalım. Tekrardan info diyerek ayarlanıp ayarlanmadığına bakabiliriz.
 “run” komutu ile modülümüzü çalıştıralım.
-
 <div class="code-window">
 <br>
 <span class="highlight">[recon-ng][cisco][hackertarget]</span> > run
@@ -176,7 +169,6 @@ Site üzerinde değişik dosyalar bulmak için yeni bir modül indirelim.
 ![](./assets/images/Resim12.jpg)
 
 Modülü indirmek ve kullanmak için;
-
 <div class="code-window">
 <br>
 <span class="highlight">[recon-ng][default]</span> > marketplace install discovery/info/disclosure/interesting_files<br><span class="highlight">[recon-ng][default]</span> >	modules load interesting_files<br><span class="highlight">[recon-ng][cisco][interesting_files]</span> > info
@@ -185,7 +177,6 @@ Modülü indirmek ve kullanmak için;
 ![](./assets/images/Resim13.jpg)
 
 Gerekli ayarlara baktıktan sonra source yine hackxor.net olarak ayarlayalım.
-
 <div class="code-window">
 <br>
 <span class="highlight">[recon-ng][cisco][intersting_files]</span> > options set source hackxor.net<br><span class="highlight">[recon-ng][cisco][intersting_files]</span> > run
@@ -206,7 +197,6 @@ dnsrecon ve dig toolları kullanılabilir.
 ### 3.1.5 Identification of Technical and Administrative Contacts
 
 Bir domain hakkında teknik ve idari iletişim bilgilerine bakmak için whois komutunu kullanabiliriz. Örnek olarak h4cker.org sitesine bakalım.
-
 <div class="code-window">
 <br>
 <span class="highlight">kali@kali</span> whois h4cker.org
@@ -223,7 +213,6 @@ Nslookup hem Linux hem de Windows makinelerinde, temel olarak domain ismi ve IP 
 **Step 1: Using the nslookup command**
 
 Sadece nslookup yazarsak interaktif moda geçebiliriz. Moda geçtikten sonra örnek olarak cisco.com domain adresine bakalım.
-
 <div class="code-window">
 <br>
 <span class="highlight">kali@kali</span> nslookup<br>>cisco.com
@@ -231,10 +220,9 @@ Sadece nslookup yazarsak interaktif moda geçebiliriz. Moda geçtikten sonra ör
 
 Buradaki çıktıda hem IPv4 hem de IPv6 adreslerini görebilirsiniz. 
 Domain adresinin name server bilgilerini görmek içinse;
-
 <div class="code-window">
 <br>
-> set type=ns<br>>cisco.com
+> set type=ns<br>> cisco.com
 </div>
 
 **Step 2: Change the server used to perform lookups**
@@ -244,7 +232,6 @@ Bazen DNS sunucusunun bir adresi çözümleyememesi veya cevap bulunamamasına �
 ![](./assets/images/Resim16.jpg)
 
 Yukarıda verilen çıktıda skillsforall.com adresini Google’un DNS sunucu ile çözümlemeye çalışıyoruz. Google DNS sunucusunun IP adresi 8.8.8.8.
-
 <div class="code-window">
 <br>
 <span class="highlight">kali@kali</span> nslookup skillsforall.com 8.8.8.8
@@ -266,3 +253,215 @@ Whois, DNS sunucu kayıtları yerine alan adı nerede ve kim, fiziksel adres ve 
  **Step 1: Use whois to determine IP address registration information**
 
 Nslookup cisco.com çıktısından aldığımız bilgi ile cisco.com’un name server’ı olan ns1.cisco.com adresinin IP bilgisini bulduk. IP adresi 72.163.5.201 idi. Bu IP adresini whois ile taratalım. Böylece IP adresinin scope aralığını bulalım.
+
+![](./assets/images/Resim17.jpg)
+
+#### Part 3 Compare te Output of the Nslookup and Dig Functions
+
+Dig, Nslookup’a benzeyen bir araçtır. Hedefin hostname’ini ve IP adresini çözümler.
+<div class="code-window">
+<br>
+<span class="highlight">kali@kali</span> dig cisco.com
+</div>
+
+IPv6 IP adresini görmek için ise;
+<div class="code-window">
+<br>
+<span class="highlight">kali@kali</span> dig cisco.com AAAA
+</div>
+
+Dig kullanarak ekstra bilgi edinmek için;
+<div class="code-window">
+<br>
+<span class="highlight">kali@kali</span> dig cisco.com 8.8.8.8 ns
+</div>
+
+Veya aynı nslookup’ta kullandığımız set type=any komutunu dig ile kullanımı;
+<div class="code-window">
+<br>
+<span class="highlight">kali@kali</span> dig cisco.com any
+</div>
+
+#### Part 4 Perform Reverse DNS Lookups
+
+Ters DNS ya da diğer ismiyle rDNS, bir IP adresini kullanarak o adrese karşılık gelen sunucu adlarını bulmaya çalışır.
+
+**Step 1: Use Dig to perform rDNS lookups**
+
+Daha önceden bulduğumuz ns1.cisco.com adresinin IP adresini deneyelim.
+<div class="code-window">
+<br>
+<span class="highlight">kali@kali</span> dig -x 72.163.5.201
+</div>
+
+Aşağıdaki çıktıda görüldüğü üzere hostname bulduk.
+
+![](./assets/images/Resim18.jpg)
+
+**Step 2: Use the host utility to perform rDNS lookups**
+
+Farklı bir IP adresinde “host” komutunu deneyelim.
+<div class="code-window">
+<br>
+<span class="highlight">kali@kali</span> host 72.163.10.1
+</div>
+
+**Step 3: Use nslookup to perform rDNS lookups**
+
+Daha önceden de kullandığımız şekilde nslookup kullanabiliriz.
+<div class="code-window">
+<br>
+<span class="highlight">kali@kali</span> nslookup 72.163.10.1
+</div>
+
+### 3.1.7 Cryptographic Flaws
+
+Sitelerin SSL sertifikaları incelenerek zayıf sertifikalar veya kriptografik zayıflıklar gibi çeşitli bilgilere erişilebilir.
+
+Crt.sh gibi bir site üzerinden istediğiniz kurum veya sayfanın sertifikası sorgulanabilir. Örnek olarak h4cker.org adresini inceleyelim.
+
+![](./assets/images/Resim19.jpg)
+
+Daha önceden bilmediğimiz subdomain adreslerini burada da görebiliriz.
+
+### 3.1.8 Lab – Finding Information from SSL Certificates
+
+Bazı SSL sertifikaları, ağ üzerinde yerel olarak hostta saklanır. İstemci ve sunucu arasında güvenli iletişim kurulmasını sağlar. SSL sertifika doğrulma zinciri için host hem ara hem de kök SSL sertifikalarını tutar.
+
+#### Part 1 Access Detailed Certificate Information Online
+
+Certificate Transparency hem SSL hem de TLS sertifikalarının yayınlanmasını izlemek ve denetlemek için kullanılan açık bir çerçevedir.
+
+Her yeni bir sertifika veya bir sertifika hareketi log altına alınır böylece ortaya CT log dediğimiz terim ortaya çıkar. Hem saldırganlar hem de koruyanlar bu CT loglarını kullanarak kendi amacına uygun bilgi elde edebilir.
+
+#### Part 2 Use SSL Analysis Tools in Kali
+
+Kali üzerindeki bazı SSL toollarının isimlerini ve amaçlarını anlatalım.
+
+![](./assets/images/Resim20.jpg)
+
+#### Part 3 Use Kali Tools to Gather Certificate Information
+
+Sslscan, bilindiği üzere SSl sertifikaları hakkında bilgi verir. Bir başka kullanacağımız araç ise “aha” aracıdır. Outputu HTML dosyasına çevirmeye yarar.
+
+**Step 1: Run sslscan and save the output to a HTML file**
+
+Kali üzerinde hedefimiz için bir sslscan taraması yapıyoruz.
+<div class="code-window">
+<br>
+<span class="highlight">kali@kali</span> sslscan skillsforall.com | aha > sfa_cert.html
+</div>
+
+Dosyanın konumunu bulduktan sonra Mozilla üzerinde html dosyasını açabilirsiniz.
+
+![](./assets/images/Resim21.jpg)
+
+### 3.1.9 Company Reputation and Security Posture
+
+Eğer şirketin daha önceden veri sızdırılma geçmişi varsa saldırganlar eski saldırıdan kalan
+
+·        Şifre dökümleri
+
+·        Dosya meta verileri
+
+·        Web sitesi arşivleme
+
+·        Public kaynak kod depoları
+
+kullanabilirler.
+
+#### Password Dumps
+
+Saldırganların daha önceden çalınan şifre dökümlerine ulaşmak için birçok araçlara sahiptir. Bunlardan birisi h8mail aracıdır.
+
+Kali üzerinde pip ile kurulum yapmak için ilk öncelikle izole ortamımızı oluşturalım.
+
+·        python3 -m venv cisco
+
+·        source cisco/bin/activate
+
+·        pip install h8mail
+
+Böylelikle h8mail aracımızı kurabiliriz. Bu araca benzer olarak diğer araçlardan bazıları aşağıda linkleriyle birlikte verilmiştir.
+
+*   **WhatBreach:** [_https://github.com/Ekultek/WhatBreach_](https://github.com/Ekultek/WhatBreach)
+*   **LeakLooker:** [_https://github.com/woj-ciech/LeakLooker_](https://github.com/woj-ciech/LeakLooker)
+*   **Buster:** [_https://github.com/sham00n/buster_](https://github.com/sham00n/buster)
+*   **Scavenger:** [_https://github.com/rndinfosecguy/Scavenger_](https://github.com/rndinfosecguy/Scavenger)
+*   **PwnDB:** [_https://github.com/davidtavarez/pwndb_](https://github.com/davidtavarez/pwndb)
+
+#### File Metadata
+
+Fotoğraf, Word, Excel ve benzeri dosyaların metadata bilgilerinden birçok bilgi öğrenebiliriz. Bu bilgileri görebileceğimiz birçok araç vardır. Bunlardan biri de ExifTool aracıdır.
+
+#### Strategic Search Engine Analysis/Enumeration
+
+Günümüzde piyasada birçok farklı arama motoru bulunmaktadır. Kullanıcılar tercihlerine göre Yandex, Bing veya DuckDuckGo gibi arama motorlarını kullanabilirler. Ancak Google, sahip olduğu gelişmiş arama operatörleri sayesinde çok daha detaylı ve hedefli aramalar yapmaya olanak tanır. Bu yöntem, özellikle siber güvenlik dünyasında Google Dorking olarak bilinir ve hassas bilgilere erişmek amacıyla kötü niyetli kişiler tarafından da kullanılabilir.
+
+Bazı özel arama operatörlerinden örnek aşağıdadır.
+
+·        **Filetype:** Google üzerinde yalnızca belirli bir dosya türünde arama yapar.
+
+·        **Inurl:** Google üzerinde URL üzerinde olacak kelimeyi belirler.
+
+·        **Link**: Google üzerinde yalnızca belirli bir terimi içeren bağlantılarda tarama yapar.
+
+·        **Intitle:** Google üzerinde bir doküman başlığında belirli bir terimi aramasını sağlar.
+
+Örnek bir arama aşağıda yer almaktadır.
+
+"public $user =" | "public $password = " | "public $secret =" | "public $db =" ext:txt | ext:log -git
+
+[https://www.exploit-db.com/google-hacking-database](https://www.exploit-db.com/google-hacking-database) sitesi üzerinde dork örneklerini bulup inceleyebilirsiniz.
+
+#### Website Archiving/Caching
+
+Bazı siteler internet üzerindeki sitelerin bilgilerini arşivleyip depolar. [https://web.archive.org/](https://web.archive.org/) adresi üzerinden baktığınız sitenin zamanda eski haline giderek siteyi görebilirsiniz.
+
+#### Public Source Code Repositories
+
+Saldırganlar, Github veya Gitlab üzerinde public olan kod kaynağına ulaşarak değerli bilgiler elde edebilir veya sistemin açığını bulabilir.
+
+### 3.1.10 Lab – Finding Out About the Orginization
+
+#### Part 1 Find Information about Email Breaches.
+
+Çalışanların iş maili daha önceden ifşa edildiyse bu bilgi kullanılabilir. Bazı online servisler mailin ifşa edilip edilmediğini öğrenmek için kullanılabilir.
+
+·        haveibeenpwned.com
+
+·        f-secure.com
+
+·        hacknotice.com
+
+·        breachdirectory.com
+
+·        keepersecurity.com
+
+**Step 1: Use a tool to find email adresses for a domain**
+
+Örnek olarak Kali’de yüklü olarak gelen emailharvester toolunu kullanabiliriz.
+<div class="code-window">
+<br>
+<span class="highlight">kali@kali</span> emailharvester -d example.com
+</div>
+
+![](./assets/images/Resim22.jpg)
+
+**Step 2: Use Spiderfoot to research email adresses**
+
+spiderfoot -l 127.0.0.1:5001
+
+Komutu ile ara yüzümüzü çalıştırdıktan sonra erişim sağlayabiliriz. Burada new scan diyerek email için olan modüllerle arama yapabiliriz. Birkaç email modülünden örnek verecek olursam; Ahmia, AccountFinder, Archive.org, EmailCrawl.
+
+Başka modül araştırarak da scanleyebilirsiniz.
+
+#### Part 2 View File Metadata
+
+File metadataları saldırganlar için birçok değerli bilgi içerebilir. Mesela fotoğrafın oluşturulduğu cihaz hakkında bilgi verebilir. Saldırgan da bu cihazın potansiyel zafiyetlerini araştırarak öğrenebilir veya bir başka örnek olarak dosyanın yapımcısının ismi, dosyanın ne zaman oluşturulduğu gibi bilgiler öğrenilebilir.
+
+**Step 1: Use Exiftool**
+
+Exiftoolun kurulumunu tamamladıktan sonra [https://www.exploit-db.com/google-hacking-database](https://www.exploit-db.com/google-hacking-database) üzerinden çeşitli dorking aratıp gizli belgeleri indirdikten sonra exiftool ile dosyanın metadataları incelenebilir.
+
+Tüm dosyayı taramak için ise -csv parametresi kullanılabilir.
