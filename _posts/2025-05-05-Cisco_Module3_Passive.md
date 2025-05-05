@@ -1,7 +1,7 @@
 ---
 categories: [modul]
 layout: post
-desc: "Cisco Ethical Hacker kursunun ikinci bölümüdür. Sızma testi sürecinde planlama ve kapsam belirleme aşamalarının neden kritik olduğunu vurgular. Aynı zamanda regülasyonlara uyum, yasal sorumluluklar ve etik ilkeler çerçevesinde nasıl hareket edilmesi gerektiğini detaylandırır."
+desc: "Cisco Ethical Hacker kursunun üçüncü bölümünün pasif bilgi toplama kısmıdır. hedef sistemlerle doğrudan etkileşime girmeden bilgi toplama yöntemi olan pasif keşif (passive reconnaissance) anlatılmıştır. OSINT araçları, DNS sorguları ve WHOIS gibi tekniklerle, sistemler hakkında iz bırakmadan bilgi edinme yöntemleri uygulanmıştır."
 logo: "/assets/images/cisco.png"
 author: Buse Naz Yılmaz
 title: Cisco Modül 3 - Passive Recon 
@@ -180,7 +180,7 @@ Modülü indirmek ve kullanmak için;
 Gerekli ayarlara baktıktan sonra source yine hackxor.net olarak ayarlayalım.
 <div class="code-window">
 <br>
-<span class="highlight">[recon-ng][cisco][intersting_files]</span> > options set source hackxor.net<br><span class="highlight">[recon-ng][cisco][intersting_files]</span> > run
+<span class="highlight">[recon-ng][cisco][interesting_files]</span> > options set source hackxor.net<br><span class="highlight">[recon-ng][cisco][interesting_files]</span> > run
 </div>
 
 ![](./assets/images/Resim14.jpg)
