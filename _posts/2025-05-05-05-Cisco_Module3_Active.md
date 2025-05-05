@@ -258,7 +258,244 @@ Server Message Block yani SMB hem Windows hem de Linux makinelerde dosya paylaş
 ![](./assets/images/Resim34.jpg)
 
 Daha önce de bahsettiğimiz gibi nmap içinde bazı scriptler sayesinde istenilen sistem hakkında daha detaylı bilgi sahibi olunabilir. Hazır SMB portlarının açık oluğunu gördüğümüze göre nmap üzerindeki SMB scriptlerini çalıştırıp daha fazla bilgi edinebiliriz.
+
 <div class="code-window">
 <br>
 <span class="highlight">kali@kali</span> nmap –script smb-enum-users.se -p139,445 10.6.6.23
 </div> 
+
+![](./assets/images/Resim35.jpg)
+
+Çıktıda görüldüğü üzere iki tane kullanıcı adı bulabildik Arbiter ve Masterchief.
+
+Şimdi de yine bir script kullanarak SMB üzerinde paylaşılmış dosyaları görelim.
+
+![](./assets/images/Resim36.jpg)
+
+Burda başında $ işareti olan 2 tane gizli paylaşım bulduk ve altta yer alan Anonymous Access: read/write olması çok kritik bir risktir.
+
+### 3.2.4 Packet Inspection and Eavesdropping
+
+Wireshark, tshark ve tcpdump gibi araçlarla paket yakalamaları yapılabilir, paketler incelenebilir ve dinleyebilirsiniz. Penetrasyon test uzmanları için bu tür araçlar, pasif keşif yapmak için kullanışlı olabilir. Tabii ki, bu tür bir keşif, hedefe fiziksel ya da kablosuz bir bağlantı gerektirir.
+
+### 3.2.5 Lab – Packet Crafting with Scapy
+
+#### Part 1 Investigate the Scapy Tool
+
+IP paketi göndermeden önce IP paketinin içeriğini anlamak önemlidir. Her IP paketinde, paket yapısı hakkında bilgi veren başlık eşlik eder. Her binary değeri IP paketinde farklı anlamlara gelmektedir.
+
+ls() fonksiyonu ile alanlar hakkında detayları inceleyebilirsiniz. Scapy içerisinde fonksiyon kullanmanın genel mantığı function\_name (arguments) şeklindedir. Alanlar hakkında daha fazla bilgi almak için ise ls(IP) komutunu çalıştırabilirsiniz.
+
+Aşağıdaki tabloda alan adları ve açıklamaları verilmiştir. 
+
+![](./assets/images/Resim37.jpg)
+
+#### Part 2 Use Scapy to Sniff Network Traffic
+
+Ağ trafiğini, tcpdump veya tshark gibi görüntülemek için Scapy aracını kullanabiliriz.
+
+**Step 1: Use the sniff() function**
+
+Default olarak eth0 ağını dinlemek için direkt olarak;
+
+·        sniff()
+
+Sniff ile ağımızı dinliyorken yan terminal üzerinden pingleyerek gönderilen paket sayısını görüntüleyelim.
+
+Scapy komut terminalinde dinlemeyi açtık. Yanda başka bir terminal üzerinde ping komutumuzu gönderelim.
+
+
+<div class="code-window">
+<br>
+<span class="highlight">kali@kali</span> ping -c 5 www.cisco.com
+</div>
+
+Scapy terminalinde Ctrl + C yaptıktan sonra gelen çıktıda gelen paketlerin sayısı yer almaktadır.
+
+![](./assets/images/Resim38.jpg)
+
+**Step 2: Capture and save traffic on a spesific interface**
+
+ifconfig üzerinde 10.6.6.1 ip adresinin interface ismini bir kenara not alalım. Scapy aracının terminale gelip aşağıdaki komutu yazalım;
+
+·        sniff(iface=”br-internal”)
+
+Yukarıda yaptığımız gibi sniff fonksiyonu ağı dinlemeye yaramaktadır. Fakat default olarak eth0 interface’ini dinlediğinden bahsetmiştik. Bu sefer bu komutta belirli bir interface üzerinden dinleme yapıyoruz. Br-internal ise virtual makineler için köprü interface idir.
+
+Komutu girdikten sonra bu sefer Mozilla üzerinden 10.6.6.23 adresini açıyoruz.
+
+![](./assets/images/Resim39.jpg)
+
+Gravemind sayfası geldikten sonra Scapy terminalinden dinlemeyi durdurabiliriz Ctrl + C yaparak çıktıyı görüntüleyebilirsiniz.
+
+![](./assets/images/Resim40.jpg)
+
+Trafiği görüntülemek için ilk öncelikle bir değişkene kaydedip sonrasında görüntüleyebiliriz.
+
+·        a=\_
+
+·        a.summary()
+
+**Step 3: Examine the collected packets**
+
+Scapy üzerinden yine br-internal isimli interface’imizi dinlemeye alalım. Fakat bu sefer sadece ICMP protokolünün paketlerini ve toplamda 10 paket yakalamasını isteyelim.
+
+·        sniff(iface=”br-internal”,filter=”ICMP”,count=10)
+Farklı bir sekmeye giderek 10.6.6.23 IP adresine ping atalım.
+
+·        ping -c 10 10.6.6.23
+
+Scapy terminaline gelerek kaç tane ICMP paketinin yakalandığını görebilirsiniz. Örnek yukarıdaki çıktıda verilmiştir. Yakalanan paketleri kaydedip görüntülemek için;
+
+·        a=\_
+
+·        a.nsummary()
+\*nsummary() ve summary() benzer fakat farklı komutlardır. nsummary() komutu birden fazla paketi görüntülemeye yararken summary() komutu yalnızca tek paketi görüntülemeye yarar.
+
+Eğer paket hakkında daha fazla bilgi istersiniz paket numaralarının başındaki sıfırları almadan paketin numarasını yazarak bilgi alabilirsiniz. Aşağıda örneği verilmiştir;
+
+·        a\[2\]
+
+![](./assets/images/Resim41.jpg)
+
+Bu çıktıları pcap dosyası olarak kaydedip Wireshark üzerinde de inceleyebiliriz. Bunu yapmak için aşağıdaki komutları kullanabiliriz.
+
+<div class="code-window">
+<br>
+<span class="highlight">kali@kali</span> wrpcap(“capture1.pcap”, a)
+</div> 
+
+Kaydedilen pcap dosyasını Wireshark üzerinde inceleyebiliriz.
+
+![](./assets/images/Resim42.jpg)
+
+#### Part 3 Create and Send an ICMP Packet
+
+ICMP, ağ cihazları arasında kontrol mesajları göndermek amacıyla tasarlanmış bir protokoldür. Birçok farklı türde ICMP paketi vardır.
+
+**Step 1: Use interactive mode to create and send a custom ICMP packet.**
+
+Scapy terminali üzerinde “br-internal” isimli interface’i dinlemeye başlayalım.
+
+·        sniff(iface=”br-internal”)
+
+Dinlemeye başladıktan sonra yeni bir terminal açıp sudo izniyle birlikte tekrardan bir Scapy terminali açalım. Burada kendi ICMP paketimizi oluşturup 10.6.6.23 IP adresine göndereceğiz.
+
+·        send(IP(dst="10.6.6.23")/ICMP()/"This is a test")
+
+Bu komutumuzu bölümleriyle birlikte inceleyelim.
+
+·        **IP(dst="10.6.6.23")** : Bu kısım IP katmanını oluşturur. dst ile paketin nereye gideceğini belirtiyoruz.
+
+·        **/ICMP()** : IP katmanının üstüne ICMP katmanı eklenir. Default olarak echo-request mesajı oluşturulur g eğer farklı bir tipte ICMP mesajı oluşturmak istiyorsanız type fonksiyonunu kullanabilirsiniz örneğin type=0.
+
+·        **/”This is a test”** : Bu kısım pakete ham veri ekler.
+
+Bu mesajı gönderdikten sonra dinleme yaptığımız Scapy terminaline dönüp CTRL + C yapabiliriz. Aldığımız çıktı aşağıdaki gibidir;
+
+![](./assets/images/Resim43.jpg)
+
+Bu çıktıyı kaydedip içeriğini inceleyelim.
+
+·        a=\_
+
+·        a.nsummary()
+
+·        a\[2\]
+\*Bu tür ICMP paketleri genelde hedefin **ulaşılabilir olup olmadığını test etmek** için kullanılır.
+
+#### Part 4 Create and Send a TCP SYN Packet
+
+Şimdi sırada TCP SYN paketi oluşturup göndermek var. Yine ilk başta olduğu gibi interface’imizi dinlemeye alalım.
+
+·        sniff(iface=”br-internal”)
+
+Diğer Scrapy terminaline geçelim ve paketi oluşturmaya başlayalım.
+
+·        send(IP(dst="10.6.6.23")/TCP(dport=445, flags="S"))
+
+Önceki oluşturduğumuz ICMP paketimiz ile benzerlik olduğunu görebiliyoruz. Bu paketi de bölümlere ayırıp inceleyelim.
+
+·        **IP(dst="10.6.6.23")** : Bu kısım IP katmanını tanımlar. Paketin gideceği hedefi işaret eder.
+
+·        **TCP(dport=445, flags="S")** : Bu kısım TCP katmanını tanımlar. Hedef TCP portunu ve bayrağı işaret eder. Bayrak değeri S olduğu için bu bir TCP SYN yani bağlantı başlatma işlemidir.
+
+Bu aslında kabaca bir port tarama işlemidir, nmap gibi araçlar bunu otomatikleştirirken el ile de böyle port taraması gerçekleştirebiliriz. Portun açık olup olmadığını anlamak için ise akıştaki paketleri incelemek gerekmektedir. Eğer gelen cevap paketinde flags değer “SA” yani SYN-ACK ise port açık anlamında gelmektedir.
+
+Komutu gönderdikten sonra dinleme terminali üzerinden CTRL + C yaparak dinlemeyi durduralım. Trafiği kaydedip inceleyelim.
+
+·        a=\_
+
+·        a.nsummary()
+
+·        a\[2\]
+
+·        a\[3\]
+
+![](./assets/images/Resim44.jpg)
+
+2\. paket bizim bağlantı başlatmak için gönderdiğimiz flags değeri “S” olan pakettir. 3. Paketi incelediğimizde ise flags değerinin SA yani SYN-ACK olduğunu görüyoruz. Bu demek oluyor ki 445 portu açık ve bağlantı isteğimizi onaylamış.
+
+### 3.2.6 Lab – Network Sniffing with Wireshark
+
+#### Part 1 Capture and Save Network Traffic
+
+Bu partta CLI üzerinden tcpdump kullanarak trafiği yakalayacağız. Trafiği pcap dosyası olarak kaydettikten sonra Wireshark veya benzeri bir uygulama üzerinden inceleyeceğiz.
+
+Terminali açıp aşağıdaki komutu girelim;
+
+<div class="code-window">
+<br>
+<span class="highlight">kali@kali</span> ifconfig
+</div> 
+
+Burada Ethernet adaptörünün (genelde eth0) adını kopyalayın. Sonrasında tcpdump aracını kullanmak için terminale;
+
+<div class="code-window">
+<br>
+<span class="highlight">kali@kali</span> sudo tcpdump -i eth0 -s 0 -w packetdump.pcap
+</div> 
+
+yazalım. Bu komutu açıklayalım;
+
+·        **\-i eth0 :** Hangi  ara yüzü üzerinden trafiğin dinleneceğini belirtir.
+
+·        **\-s 0 :** Paketi tamamen al hiçbir kısmını atlama demektir.
+
+·        **\-w packetdump.pcap :** Yakalanan paketleri ekrana yazdırmak yerine dosyaya kaydet.
+
+Bu komutu yazdıktan sonra tcpdump bizi dinlemeye başlıyor. Web arayıcısına giderek trafik üretmeye başlayabiliriz. Ürettikten sonra tekrardan terminale gelip trafiği CTRL + C ile durdurabiliriz. Sonuçların kaydedildiği dosyayı Wireshark üzerinde inceleyebiliriz.
+
+#### Part 2 View and Analyze the Packet Capture
+
+Wireshark ara yüzünü açtıktan sonra **File>Open** sekmesinden packetdump.pcap isimli dosyayı incelemek üzere açabiliriz.
+
+Tarayıcada bir web sitesine erişmek istediğinizde bilgisayar DNS sunucu IP adresine bir DNS sorgusu gönderir. DNS kayıtlarını yakaladığımız pcap dosyasında incelersek de kullanıcının ziyaret ettiği site alan adlarını ve IP adreslerini görebliriz.
+
+Web trafiği oluştururken ziyaret ettiğimiz skillsforall.com sitesini Wireshark üzerinde filtreleyelim.
+
+**Step 1: Analyze DNS traffic**
+
+![](./assets/images/Resim45.jpg)
+
+Search iconuna skillsforall.com yazdıktan sonra çıkan alttaki menüden “String” değerini ve skillsforall kelimesini yazalım. Yukarıdaki ekran görüntüsünde yaptıklarımızı görebilirsiniz. İlk çıkan paketi incelemek için üzerine tıklayalım.
+
+Burada yer alan Ethernet II kısmında hem destination hem de source MAC adreslerini görebilirsiniz. Teyit etmek için terminal üzerinden ifconfig komutunu yazıp eth0 ara yüzünün MAC adresine bakabilirsiniz.
+
+![](./assets/images/Resim46.jpg)
+
+![](./assets/images/Resim47.jpg)
+
+Paket bilgileri kısmında Domain Name System query bölümünü inceleyim. Burada DNS server’ına ne gönderildiğinin detayını bulabilirsiniz. Ayrıca DNS server’ının cevabın Wireshark’ta hangi paket olduğunu belirten bir Response In kısmı da vardır.
+
+![](./assets/images/Resim48.jpg)
+
+**Step 2: Analyze an HTTP session**
+
+Kali makinemiz üzerinde hazır halde yüklü olan DVWA sayfasına erişip login olmayı deneyeceğiz. Bunu da Wireshark üzerinde görüntüleyerek kullanıcı bilgilerini elde etmeye çalışacağız. Bunun için ilk öncelikle DVWA sunucusunun IP bloğunun ara yüz adını öğrenmemiz gerekiyor. DVWA 10.6.6.13 adresinde yer almaktadır.
+
+![](./assets/images/Resim49.jpg)
+
+Burada görüldüğü gibi br-internal ara yüzümüzün ismidir. Wireshark’ı açtıktan sonra aşağıda yer alan ara yüz isimlerinden br-internal ara yüzünü seçiyoruz. Böylece Wireshark br-internal ara yüzünü dinlemeye başlıyor. 
+
+![](./assets/images/Resim50.jpg)
