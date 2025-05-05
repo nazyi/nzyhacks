@@ -99,7 +99,7 @@ Bu işlem hedef ortamdaki kullanıcılarının hangi yetki rollerinin kullanıld
 
 <div class="code-window">
 <br>
-<span class="highlight">kali@kali</span> nmap --script smb-enum-groups.nse -p 445 <host>
+<span class="highlight">kali@kali</span> nmap --script smb-enum-groups.nse -p 445 host
 </div>
 
 nmap taramasının sonucunda gelen çıktada yer alan RID ve SID terimlerini inceleyelim.
@@ -115,7 +115,7 @@ nmap taramasının sonucunda gelen çıktada yer alan RID ve SID terimlerini inc
 Bir ağda dosya, klasör ve yazıcı paylaşan sistemleri tespit etmeye Network Share Enumeration denir. Bunları bulmaya yönelik örnek nmap komutu aşağıda yer almaktadır.
 <div class="code-window">
 <br>
-<span class="highlight">kali@kali</span> nmap --script smb-enum-shares.nse -p 445 <host>
+<span class="highlight">kali@kali</span> nmap --script smb-enum-shares.nse -p 445 host
 </div>
 
 #### Additional SMB Enumeration Examples
@@ -123,13 +123,13 @@ Bir ağda dosya, klasör ve yazıcı paylaşan sistemleri tespit etmeye Network 
 Bir sistemde çalışan uygulamaları ve işletim sistemlerini daha detaylı tanımlamak ve ek bilgi öğrenmek için;
 <div class="code-window">
 <br>
-<span class="highlight">kali@kali</span> nmap -sC  <target\_ip>
+<span class="highlight">kali@kali</span> nmap -sC  target\_ip
 </div> 
   
 Eğer hem daha detaylı bilgi hem de işletim sistemi tespiti de istersen;
 <div class="code-window">
 <br>
-<span class="highlight">kali@kali</span> nmap -sC -sV -0  <target\_ip>
+<span class="highlight">kali@kali</span> nmap -sC -sV -0  target\_ip
 </div> 
 
 Ve tablo ile nmap smb enum scriptleri hakkında bilgi vermek istedim.
@@ -139,13 +139,13 @@ Ve tablo ile nmap smb enum scriptleri hakkında bilgi vermek istedim.
 SMB üzerinden bilgi çekmek için bir farklı tool olan enum4linux da vardır.
 <div class="code-window">
 <br>
-<span class="highlight">kali@kali</span> enum4linux <target\_ip>
+<span class="highlight">kali@kali</span> enum4linux target\_ip
 </div> 
  
 Başka bir örnek smbclient toolu.
 <div class="code-window">
 <br>
-<span class="highlight">kali@kali</span> smbclient -L <target\_ip><br><span class="highlight">kali@kali</span> smbclient  //<target\_ip/user>
+<span class="highlight">kali@kali</span> smbclient -L target\_ip<br><span class="highlight">kali@kali</span> smbclient  //target\_ip/user
 </div> 
 
 #### Web Page Enumeration/Web Application Enumeration
@@ -153,13 +153,13 @@ Başka bir örnek smbclient toolu.
 Hedef host üzerinde bir web server çalıştığını belirlersek, saldırı ara yüzünü belirlemek için nmap scripti olan http-enum scriptini kullanabiliriz. Bu script sayesinde klasör veya dosya pathlerini brute-force kullanarak bulabiliriz.
 <div class="code-window">
 <br>
-<span class="highlight">kali@kali</span> nmap -sV –script=http-enum -p 80 <target\_ip>
+<span class="highlight">kali@kali</span> nmap -sV –script=http-enum -p 80 target\_ip
 </div>  
 
 Bahsedilmesi gereken bir farklı tool ise Nikto aracıdır. Nikto, açık kaynak kodlu web zafiyetlerini tarayan bir araçtır. Basit bir nikto kullanım komutuna aşağıda yer almaktadır.
 <div class="code-window">
 <br>
-<span class="highlight">kali@kali</span> nikto -h <target_ip>
+<span class="highlight">kali@kali</span> nikto -h target_ip
 </div>
 
 #### Service Enumeration
@@ -167,7 +167,7 @@ Bahsedilmesi gereken bir farklı tool ise Nikto aracıdır. Nikto, açık kaynak
 Uzaktaki bir sistemde çalışan servislerin (hizmetlerin) belirlenmesi işlemidir. Aşağıdaki komut ile uzaktaki bir Windows sisteminde hangi servislerin detaylı olarak tespit etmek mümkündür.
 <div class="code-window">
 <br>
-<span class="highlight">kali@kali</span> nmap –script smb-enum-process.nse -p 445 –script-args smbuser=<user> , smbpass=<pass>
+<span class="highlight">kali@kali</span> nmap –script smb-enum-process.nse -p 445 –script-args smbuser=user , smbpass=pass
 </div> 
 
 #### Exploring Enumeration via Packet Crafting
