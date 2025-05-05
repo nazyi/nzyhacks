@@ -10,18 +10,21 @@
 
 .modul-item {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items: stretch; /* Kartın yüksekliği ikiye eşit dağılır */
   background-color: #1c1c1c;
   border: 1px solid #444;
-  padding: 20px;
   border-radius: 8px;
-  gap: 20px;
+  overflow: hidden;
+  min-height: 140px; /* Her kartın minimum yüksekliği sabit */
 }
 
 .modul-description {
   flex: 1;
+  padding: 20px;
   color: #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .modul-description h3 {
@@ -29,9 +32,20 @@
   color: #FF69B4;
 }
 
+.modul-logo {
+  width: 140px;
+  min-width: 140px;
+  background-color: #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
 .modul-logo img {
-  width: 3000px;
-  height: auto;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 100px;
+  object-fit: contain;
   border-radius: 6px;
 }
+
