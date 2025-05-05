@@ -206,3 +206,63 @@ dnsrecon ve dig toolları kullanılabilir.
 ### 3.1.5 Identification of Technical and Administrative Contacts
 
 Bir domain hakkında teknik ve idari iletişim bilgilerine bakmak için whois komutunu kullanabiliriz. Örnek olarak h4cker.org sitesine bakalım.
+
+<div class="code-window">
+<br>
+<span class="highlight">kali@kali</span> whois h4cker.org
+</div>
+
+![](./assets/images/Resim15.jpg)
+
+### 3.1.6 Lab – DNS Lookups
+
+#### Part 1 Use nslookup to Obtain Domain and IP Adress Information
+
+Nslookup hem Linux hem de Windows makinelerinde, temel olarak domain ismi ve IP adres bilgilerini getirir.
+
+**Step 1: Using the nslookup command**
+
+Sadece nslookup yazarsak interaktif moda geçebiliriz. Moda geçtikten sonra örnek olarak cisco.com domain adresine bakalım.
+
+<div class="code-window">
+<br>
+<span class="highlight">kali@kali</span> nslookup<br>>cisco.com
+</div>
+
+Buradaki çıktıda hem IPv4 hem de IPv6 adreslerini görebilirsiniz. 
+Domain adresinin name server bilgilerini görmek içinse;
+
+<div class="code-window">
+<br>
+> set type=ns<br>>cisco.com
+</div>
+
+**Step 2: Change the server used to perform lookups**
+
+Bazen DNS sunucusunun bir adresi çözümleyememesi veya cevap bulunamamasına çözüm olarak farklı bir DNS sunucu kullanabiliriz.
+
+![](./assets/images/Resim16.jpg)
+
+Yukarıda verilen çıktıda skillsforall.com adresini Google’un DNS sunucu ile çözümlemeye çalışıyoruz. Google DNS sunucusunun IP adresi 8.8.8.8.
+
+<div class="code-window">
+<br>
+<span class="highlight">kali@kali</span> nslookup skillsforall.com 8.8.8.8
+</div>
+
+İnteraktif modda server’ı değiştimek için;
+
+<div class="code-window">
+<br>
+<span class="highlight">kali@kali</span> nslookup<br>> server 8.8.8.8<br>> set type=any<br>> skillsforall.com
+</div>
+
+Type olarak “any” seçtiğimiz zaman, etki alanları hakkında bütün bulabildiği bilgileri gösterir.
+
+#### Part 2 Use Whois Function to Obtain Domain Information
+
+Whois, DNS sunucu kayıtları yerine alan adı nerede ve kim, fiziksel adres ve teknik bilgilere erişim için kullanılan bir araçtır.
+
+ **Step 1: Use whois to determine IP address registration information**
+
+Nslookup cisco.com çıktısından aldığımız bilgi ile cisco.com’un name server’ı olan ns1.cisco.com adresinin IP bilgisini bulduk. IP adresi 72.163.5.201 idi. Bu IP adresini whois ile taratalım. Böylece IP adresinin scope aralığını bulalım.
