@@ -1,11 +1,11 @@
 ---
 categories: [modul]
 layout: post
-desc: "Cisco Ethical Hacker kursunun üçüncü bölümünün pasif bilgi toplama kısmıdır. hedef sistemlerle doğrudan etkileşime girmeden bilgi toplama yöntemi olan pasif keşif (passive reconnaissance) anlatılmıştır. OSINT araçları, DNS sorguları ve WHOIS gibi tekniklerle, sistemler hakkında iz bırakmadan bilgi edinme yöntemleri uygulanmıştır."
+desc: "Cisco Ethical Hacker kursunun üçüncü bölümünün zafiyet taraması kısmıdır. Zafiyet tarayıcılarının çalışma prensipleri, tarama türleri (authenticated, unauthenticated, stealth, compliance vb.) ve Kali Linux üzerinde Nmap ile GVM araçları kullanılarak yapılan zafiyet analizleri uygulamalı olarak ele alınmıştır. Ayrıca, tarama sonuçlarının analizinde dikkat edilmesi gereken noktalar ile CVE, CWE, CVSS gibi güvenlik kaynakları tanıtılmıştır."
 logo: "/assets/images/cisco.png"
 author: Buse Naz Yılmaz
 title: Cisco Modül 3 - Vulnerability Scans
-order: 3
+order: 5
 ---
 # Cisco Ethical Hacker
 
