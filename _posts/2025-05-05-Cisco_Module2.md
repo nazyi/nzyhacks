@@ -115,7 +115,7 @@ Kapsam belirleme, pentestin en önemli unsurlarından biridir. Test edilecek cih
 
 **WADL vs WSDL?**
 
-[](/assets/images/Resim2.jpg)
+![](/assets/images/Resim2.jpg)
 
 Pentest için diğer kullanılan kaynaklardan bazıları aşağıda verilmiştir.
 
