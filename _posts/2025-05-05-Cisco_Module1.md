@@ -5,6 +5,7 @@ desc: "Cisco Ethical Hacker kursunun ilk bölümüdür. Siber güvenlikte tehdit
 logo: "/assets/images/cisco.png"
 author: Buse Naz Yılmaz
 title: Cisco Modül 1 
+order: 1
 ---
 
 # Cisco Ethical Hacker
