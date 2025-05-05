@@ -96,6 +96,7 @@ SMB\_COM\_SESSION\_SETUP\_ANDX: Bu mesajda saldırgan, oturum açmak için izin 
 Bu işlem hedef ortamdaki kullanıcılarının hangi yetki rollerinin kullanıldığını anlamak için yapılır. Böylece yol haritası biraz daha belirginleşir. Yetki yükseltme denemeleri için yol gösterici olur.
 
 Örnek nmap syntax’i;
+
 <div class="code-window">
 <br>
 <span class="highlight">kali@kali</span> nmap --script smb-enum-groups.nse -p 445 <host>
