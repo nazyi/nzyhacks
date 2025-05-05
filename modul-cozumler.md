@@ -5,6 +5,8 @@ title: modul-cozumler
 
 # Modül Çözümleri
 
+{% assign moduller = site.posts | where: "categories", "modul" | sort: "order" %}
+
 <div class="modul-listesi">
   {% for post in site.posts %}
     {% if post.categories contains "modul" %}
