@@ -56,7 +56,9 @@ Kali’de spiderfootu açtıktan sonra toolu kullanmak için
 </div>
 
 Bu komutu yazdıktan sonra tarayıcı üzerinden ip adresini ve portu açıp SpiderFoot ara yüzüne erişebilirsiniz.
+
 ![](./assets/images/Resim3.jpg)
+
 **Step 1: Run SpiderFoot scan for a Domain**
 
 Ara yüz üzerinde New Scan diyerek yeni bir scan yapalım. Scan Name kısmına scan adımızı, Scan Target kısmına hedef domainimizi yazıyoruz. Aşağıda yer alan “By Use Case”, “By Reired Data” ve “By Module” kısımlarından gerekli ayarlamaları yapabilirsiniz. Biz şimdilik test için h4cker.org sitesini Footprint case’ini kullanarak deniyoruz.
@@ -99,10 +101,12 @@ Yeni modül indirmek için ilk öncelikle modüle search ile modülleri görünt
 ![](./assets/images/Resim6.jpg)
 
 Biz örnek olarak bing\_domain\_web modülünü indirelim. İndirmek için;
+
 <div class="code-window">
 <br>
 <span class="highlight">[recon-ng][default]</span> > marketplace install recon/domain-hosts/bing_domain_web
 </div>
+
 Aynı işlemi hackertarget modülü için de uygulayıp modülü indirin.
 
 **Step 5: Run the New Modules**
@@ -125,7 +129,7 @@ Info çıktısındaki gibi biz gereken tek ayar source yani kaynağın ayarlanma
 
 <div class="code-window">
 <br>
-<span class="highlight">[recon-ng][cisco][hackertarget]</span> > options set source hackxor.net    SOURCE -> hackxor.net
+<span class="highlight">[recon-ng][cisco][hackertarget]</span> > options set source hackxor.net<br>SOURCE -> hackxor.net
 </div>
 
 
@@ -162,3 +166,43 @@ Dashboard üzerinden aldığımız görüntüdeki başlıklara bakmak için ise 
 Recon-ng’nin veritabanındaki sonuçları daha iyi görüntüleyebilmek için web ara yüzü vardır.
 
 Yeni bir terminal açıp recon-web yazalım. Böylece databasedeki bilgilerin toplanma süreci başlar. Outputta çıkan URL üzerine tıklayarak ara yüze erişebilirsiniz. Ara yüzde ilk başta default workspace’in sonuçları gelir yukarıdaki turuncu yazan default yazısına tıklayarak kendi workspace’inizi seçebilirsiniz.
+
+![](./assets/images/Resim10.jpg)
+
+#### Part 4 Find Interesting Files with Recon-ng
+
+Site üzerinde değişik dosyalar bulmak için yeni bir modül indirelim.
+
+![](./assets/images/Resim12.jpg)
+
+Modülü indirmek ve kullanmak için;
+
+<div class="code-window">
+<br>
+<span class="highlight">[recon-ng][default]</span> > marketplace install discovery/info/disclosure/interesting_files<br><span class="highlight">[recon-ng][default]</span> >	modules load interesting_files<br><span class="highlight">[recon-ng][cisco][interesting_files]</span> > info
+</div>
+
+![](./assets/images/Resim13.jpg)
+
+Gerekli ayarlara baktıktan sonra source yine hackxor.net olarak ayarlayalım.
+
+<div class="code-window">
+<br>
+<span class="highlight">[recon-ng][cisco][intersting_files]</span> > options set source hackxor.net<br><span class="highlight">[recon-ng][cisco][intersting_files]</span> > run
+</div>
+
+![](./assets/images/Resim14.jpg)
+
+Kaydedilen çıktıları /root/.recon-ng/workspaces/cisco/http\_hackxor.net\_robots.txt dosyasından okuyabilirsiniz.
+
+recon-ng/data klasöürü içindeki csv dosyasının içinde de sonuçları okuyabilirsiniz.
+
+### 3.1.4 DNS Lookups
+
+DNS sorguları yapılarak hedef sistemin IP adresini veya varsa kullanılan diğer alt alan adlarını öğrenmeye çalışılabilir.
+
+dnsrecon ve dig toolları kullanılabilir.
+
+### 3.1.5 Identification of Technical and Administrative Contacts
+
+Bir domain hakkında teknik ve idari iletişim bilgilerine bakmak için whois komutunu kullanabiliriz. Örnek olarak h4cker.org sitesine bakalım.
