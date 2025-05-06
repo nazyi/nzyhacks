@@ -211,7 +211,7 @@ HTML dosyamızı oluşturalım sonra aşağıda verilen html kodu içine yazalı
 
 **<head>**
 
-**<meta http-equiv="refresh" content="0; url=http://10.6.6.1/" />**
+meta http-equiv="refresh" content="0; url=http://10.6.6.1/" 
 
 **</head>**
 
