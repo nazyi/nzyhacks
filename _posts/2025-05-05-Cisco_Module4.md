@@ -199,3 +199,189 @@ Başarılı bir şekilde dinlemeye başladık.
 
 ![](./assets/images/Resim77.jpg)
 
+#### Part 2 Capturing and Viewing User Credentials
+
+Normal bir saldırıda bu web sitesini kurbana iletmek için link veya QR kod ile gönderilirdi. Ancak bu lab ortamında sadece bir html dokümanı oluşturarak websitesine yönlendirme yapacağız.
+
+**Step 1: Create the Social Engineering Exploit**
+
+HTML dosyamızı oluşturalım sonra aşağıda verilen html kodu içine yazalım.
+
+ **<html>**
+
+**<head>**
+
+**<meta http-equiv="refresh" content="0; url=http://10.6.6.1/" />**
+
+**</head>**
+
+**</html>**
+
+Kodu yazdıktan sonra adını Great\_link.html koyalım ve kaydedelim.
+
+**Step 2: Capture User Credentials**
+
+HTML dosyasını kaydettikten sonra üstüne çift tıklayalım ve klonladığımız sayfa açılsın. Peki bu sayfanın orijinalinden farkı nedir? Hemen inceleyelim. İlk görüntü benim klonladığım sayfadır.
+
+![](./assets/images/Resim78.jpg)
+
+Aşağıdaki ise orijinal sayfadır sayfanın uzantılarına dikkat edelim.
+
+![](./assets/images/Resim79.jpg)
+
+Şimdi ise bilgilerimizi girerek test edelim. Aşağıdaki bilgileri girelim.
+
+·        Username: [some.user@gmail.com](mailto:some.user@gmail.com)
+
+·        Password: Pa55w0rdd!
+
+![](./assets/images/Resim80.jpg)
+
+Login butonuna tıkladığımız an bizi dvwa sayfasının orijinaline yönlendirecek. Bunu sayfanın URL’sinden takip edebilirsiniz.
+
+![](./assets/images/Resim81.jpg)
+
+Yukarıda görüldüğü gibidir.
+
+**Step 3: View the Captured Information**
+
+SET aracının terminaline geri dönelim. Çıktıda girilen bilgileri görebilirsiniz.
+
+![](./assets/images/Resim82.jpg)
+
+CTRL + C ile XML formatında bir rapor oluşturup kaydedebilirsiniz. Kaydedilen dosyaya cat ile erişerek içeriğini görüntüleyebilirsiniz.
+
+![](./assets/images/Resim83.jpg)
+
+### 4.4.5 Lab – Using the Browser Exploitation Famework (BeEF)
+
+#### Part 1 Load the BeEF GUI Environment
+
+**Step 1: Start BeEF**
+
+Application> All Application> beef start menüsünden aracımızı çalıştıralım. İlk çalıştırdığımızda bizden şifreyi değiştirmemizi isteyecektir. Şifreyi değiştirin ve unutmayın.
+
+GUI açıldıktan sonra bilgilerimizle giriş yapıyoruz.
+
+·        Username: beef
+
+·        Password: şifreniz
+
+![](./assets/images/Resim84.jpg)
+
+**Step 2: Hook the local browser to simulate a client-side attack**
+
+Sömürmeden önce ilk olarak hedef tarayıcıyı “hook” etmeniz gerekir. Bu lab için yerel sistemi kullanacağız. Eğer gerçek bir test olsaydı kurbanın sık ziyaret ettiğin web istelerini belirleyip içine BeEF hook JavaScript kodu yerleştirip işlemi gerçekleştirirdik. Bu labda demo sürüm üzerinden gideceğiz.
+
+Demo sürüm için bir websitesi oluşturulmuş bize.
+
+[http://127.0.0.1:3000/demos/butcher/index.html](http://127.0.0.1:3000/demos/butcher/index.html)
+
+![](./assets/images/Resim85.jpg)
+
+Adresi üzerinden siteye erişebiliriz. Siteye eriştikten sonra biraz inceleyelim. Hook oluşturmak için arkda bir JS kodu çalıştığını biliyoruz. CTRL + U yaparak source code inceleyelim. 
+
+![](./assets/images/Resim86.jpg)
+
+Burada yer alan hook.js dosyası ile beef hook oluşturduğumuzu görüyoruz. 
+Kontrol panelinin olduğu sayfaya geri dönelim. Burada solda yer alan Hooked Browsers menüsü üzerinde yeni bilgiler eklendiğini görüyoruz.  
+
+![](./assets/images/Resim87.jpg)
+
+Online Browsers menüsüne tıklıyoruz ve bilgiler önümüze geliyor. 
+
+![](./assets/images/Resim88.jpg)
+
+#### Part 2 Investigate BeEF Exploit Capabilities
+
+**Step 1: Investigate the commands and network tabs**
+
+Diğer menüler hakkında da bilgi sahibi olalım. Commands menüsüne tıklayarak incelemeye başlayalım.
+
+Burada yer alan Module Tree tarayıcıya yönelik gerçekletirebilecek tüm saldırı, bilgi toplama ve sosyal mühendislikleri kategorilere ayırmış şekilde gösterir.
+
+![](./assets/images/Resim89.jpg)
+
+Bu menü üzerindekileri genişletirsek her fonksiyonun yanındaki renk kodlarını fark edeceksiniz. Her renk kodunun farklı bir anlamı vardır.
+
+![](./assets/images/Resim90.jpg)
+
+·        **Yeşil**: Bu komut modülü hedefe karşı çalışıyor ve kullanıcıya görünmezdir.
+
+·        **Turuncu**: Bu komu modülü hedefe karşı çalışıyor fakat kullanıcıya gözükebilir.
+
+·        **Beyaz**: Bu komut modülü hedefe karşı doğrulanmış değil.
+
+·        **Kırmızı:** Bu komut modülü kullanıcıya karşı kullanılamıyor.
+
+**Not**: Module Tree aynı bir filtre gibi kullanılır ve burada arama yapabilirsiniz.
+
+Network menüsüne gidelim. Burada kurban ile olan ağ topolojisini görebilirsiniz. Biz local üzerinde çalıştığımız için sadece bir ağ ve bir hostu gösterecektir. 
+
+![](./assets/images/Resim91.jpg)
+
+**Step 2: Use BeEF to iniate a social enginerring attack**
+
+Bu adımda kancalanmış web sayfasına sahte bir bildirim göndererek kullanıcıya zararlı bir plugin yükleteceğiz.
+
+Commands menüsüne tıklayalım. Social Engineering kategorisine kadar aşağıya inelim. Burada yer alan Fake Notification Bar (Firefox) seçeneğini seçelim.
+
+![](./assets/images/Resim92.jpg)
+
+Seçtikten sonra modülün çalışacağı URL ve bildirimin göndereceği mesaj sağ tarafta menü üzerinde görüntülenmektedir. 
+
+![](./assets/images/Resim93.jpg)
+
+URL’yi http://10.6.6.13 olarak değiştirin. Bu URL DVWA sanal sunucusunun oturum açma ekranına yönlendirir. URL, yerel olarak veya ağda bulunan herhangi bir web sayfasını işaret edebilir. Canlı ortamda bu klonlanmış bir site veya kötü bir script içeren sayfa da olabilir. 
+Gönderilecek mesajı da “AdBlocker Security Extension is out of date. Install the new version now.” olarak değiştirelim. 
+Execute butonuna basarak modülü çalıştırabiliriz. Butcher sayfasına geri dönünce uyarıyı görüntüleyebilirsiniz. 
+
+![](./assets/images/Resim94.jpg)
+
+Install plug-in butonuna tıklayınca aşağıdaki ekran görüntüsündeki gibi bizim klonladığımız kötü içerikli olan DVWA giriş sayfasına yönlendirilmektedir.
+
+![](./assets/images/Resim95.jpg)
+
+**Step 3: Use TabNabbing to display malicious website**
+
+Kancalanmış bir tarayıcı sekmesi çok uzun süre boşta kalırsa farklı bir URL adresine yönlendiren bir fonksiyondur.
+
+Yukarıda yaptığımız işlemleri tekrarlayalım.
+
+·        Yeni bir mozilla sayfası açın.
+
+·        Yeni bir sayfa üzerinden [http://127.0.0.1:3000/ui/authentication](http://127.0.0.1:3000/ui/authentication) açın.
+
+·        Sisteme bilgilerinizkle giriş yapın.
+
+**·**        Mozilla üzerinden [http://127.0.0.1:3000/demos/butcher/index.html](http://127.0.0.1:3000/demos/butcher/index.html) **adresine erişin.**
+
+**·**        **BeEF kontrol paneli üzerinden Online Browsers menüsünden** **Command** **sekmesini açın.**
+
+**·**        **Social Engineering** **kategorisinden** **TabNabbing** **seçin.**
+
+Burada yine modülün genel ayarlamalarını görebilirsiniz.
+
+![](./assets/images/Resim96.jpg)
+
+15 dakika yerine 1 yazın ve tarayıcınıza 1 dakikalığına dokunmayın. Normalde tarayıcıda açık olan site
+![](./assets/images/Resim97.jpg)
+Bu iken, aşağıdaki ise 1 dakika boyunca boşta bırakılınca yönlendirilen sitedir. 
+
+![](./assets/images/Resim98.jpg)
+
+Ortadaki kutucuğa “This is my secret” yazalım. Sonra Control Panel sayfasından Logs menüsünde kutucuğa yazılan değeri görebilirsiniz.
+
+![](./assets/images/Resim99.jpg)
+
+## 4.5 Methods of Influence
+
+·        **Authority**: Sosyal mühendislikte hem özgüven hem de belki otorite gösterir.
+
+·        **Scarcity and Urgency**: Aciliyet duygusunu arttırmak kurbanı manipüle etmek için kullanılan bir yöntemdir.
+
+·        **Social Proof**: İnsanlar bir durum karşısında nasıl davranacağını bilemediğinde, başkalarının davranışlarını örnek almasıdır.
+
+·        **Likeness**: İnsanların hoşlandıkları kişilerden daha kolay etkilendiği için güzel görünümlü hoş birini kullanmak daha çok işe yarar.
+
+·        **Fear**: İnsanlar başlarına kötü bir şey gelecek düşüncesiyle endişeyle düşüncesiz hareketler sergileyebilir.
