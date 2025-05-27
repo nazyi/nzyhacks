@@ -5,9 +5,6 @@ title: TryHackMe Pickle Rick
 desc: ""
 logo: "/assets/images/picklerick.jpeg"
 author: Buse Naz Yılmaz
-media_subpath: ./assets/images/tryhackme_picklerick/
-image:
-  path: room_image.webp
 ---
 # Port Taraması
 
@@ -32,5 +29,5 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </div>
 Nmap taraması sonucunda ssh ve http portlarının açık olduğunu buluyoruz. SSH hakkında elimizde açık bir zafiyet olmadığı için 80 portuna tarayıcı üzerinden erişiyorum. 
 
-![](first.webp){: width="400" height="300" }
+![](./assets/images//tryhackme_picklerick/first.webp){: width="400" height="300" }
 
