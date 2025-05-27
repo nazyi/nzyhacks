@@ -4,7 +4,7 @@ layout: post
 desc: "Cisco Ethical Hacker kursunun ikinci bölümüdür. Sızma testi sürecinde planlama ve kapsam belirleme aşamalarının neden kritik olduğunu vurgular. Aynı zamanda regülasyonlara uyum, yasal sorumluluklar ve etik ilkeler çerçevesinde nasıl hareket edilmesi gerektiğini detaylandırır."
 logo: "/assets/images/cisco.png"
 author: Buse Naz Yılmaz
-title: Cisco Modül 2 
+title: Cisco Ethical Hacker Modül 2 
 order: 2
 ---
 
