@@ -114,7 +114,7 @@ Sisteme erişim sağladıktan sonra “comte” kullanıcının home klasörün�
 </div>
 Fakat buradaki user.txt dosyasını görüntülemeye çalıştığımızda “Permission Denied” hatası aldık. Bunun için biraz daha bakınmaya karar verdik. Ls -al komutu ile gizli klasörlere bakalım. 
 <div style="text-align: center;">
-  <img src="./assets/images/tryhackme_cheesectf/comte.webp" width="600" height="300">
+  <img src="./assets/images/tryhackme_cheesectf/ls.webp" width="600" height="300">
 </div>
 Buradaki .ssh dosyasını inceleyebiliriz. .ssh klasörü içinde izin verilen ssh anahtarlarının dosyasını bulduk. 
 <div style="text-align: center;">
@@ -127,7 +127,7 @@ Kendi Kali makinemiz üzerinde ssh-keygen aracını kullanarak kendi anahtarım�
 </div>
 Anahtarı oluşturduktan sonra oluşturulduğu yere giderek public olan anahtarı kopyalayalım. 
 <div style="text-align: center;">
-  <img src="./assets/images/tryhackme_cheesectf/public.webp" width="800" height="20">
+  <img src="./assets/images/tryhackme_cheesectf/public.webp" width="800" height="200">
 </div>
 Kopyaladığımız değeri kurbanın sistemi üzerindeki .ssh/authorized\_keys dosyasına ekleyerek sistemin bize güvenmesini sağlayacağız. Böylece comte kullanıcısına ssh üzerinden bağlanabileceğiz.
 
