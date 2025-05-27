@@ -1,6 +1,7 @@
 ---
 categories: [makine]
 layout: post
+title: TryHackMe Pickle Rick
 desc: ""
 logo: "/assets/images/cap.png"
 author: Buse Naz Yılmaz
