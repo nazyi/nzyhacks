@@ -4,7 +4,7 @@ layout: post
 desc: "Cisco Ethical Hacker kursunun üçüncü bölümünün zafiyet taraması kısmıdır. Zafiyet tarayıcılarının çalışma prensipleri, tarama türleri (authenticated, unauthenticated, stealth, compliance vb.) ve Kali Linux üzerinde Nmap ile GVM araçları kullanılarak yapılan zafiyet analizleri uygulamalı olarak ele alınmıştır. Ayrıca, tarama sonuçlarının analizinde dikkat edilmesi gereken noktalar ile CVE, CWE, CVSS gibi güvenlik kaynakları tanıtılmıştır."
 logo: "/assets/images/cisco.png"
 author: Buse Naz Yılmaz
-title: Cisco Modül 3 - Vulnerability Scans
+title: Cisco Ethical Hacker Modül 3 - Vulnerability Scans
 order: 5
 ---
 # Cisco Ethical Hacker
