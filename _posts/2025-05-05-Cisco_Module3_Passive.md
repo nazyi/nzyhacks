@@ -489,7 +489,11 @@ Saldırganlar, Github veya Gitlab üzerinde public olan kod kaynağına ulaşara
 
 **Step 2: Use Spiderfoot to research email adresses**
 
-spiderfoot -l 127.0.0.1:5001
+<div class="code-window">
+<br>
+<span class="highlight">kali@kali</span> spiderfoot -l 127.0.0.1:5001
+</div>
+
 
 Komutu ile ara yüzümüzü çalıştırdıktan sonra erişim sağlayabiliriz. Burada new scan diyerek email için olan modüllerle arama yapabiliriz. Birkaç email modülünden örnek verecek olursam; Ahmia, AccountFinder, Archive.org, EmailCrawl.
 
