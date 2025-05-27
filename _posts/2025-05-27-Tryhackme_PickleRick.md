@@ -52,5 +52,74 @@ Bu işlem için gobuster isimli bir aracı kullanacağız. Gobuster, hızlı ve 
 Bu komut bizim -w parametresi ile belirttiğimiz wordlist ögelerini deneyerek gizli dosyaları bulmamızı sağlayacak.  Komutun çıktısında birkaç tane gizli dosya bulabildiğimizi görüyoruz. 
 
 <div style="text-align: center;">
-  <img src="./assets/images/tryhackme_picklerick/th.webp" width="600" height="100">
+  <img src="./assets/images/tryhackme_picklerick/th.webp" width="650" height="100">
+</div>
+
+Bu dosyaları tarayıcı üzerinde görüntüleyelim. İlk olarak login.php adresine gidelim. Adreste aşağıdaki ekran görüntüsü gibi bir giriş sayfası bizi karşılıyor. 
+<div style="text-align: center;">
+  <img src="./assets/images/tryhackme_picklerick/fort.webp" width="380" height="440">
+</div>
+
+Bir kullanıcı adına sahibiz fakat şifreyi hala bilmiyoruz. Gobuster bize diğer birkaç tane dosya daha olduğunu söylemişti. O dosyadan bir tanesi de robots.txt (çıktının aşağılarında olduğu için ekran görüntüsünde yer almıyor). Robots.txt dosyası, Google botlarına hangi sayfaları ve dizinleri tarayıp indekslenebileceklerini hangilerini taramayacaklarını bildiren bir sayfadır. 
+Bu sayfada bize bir değer veriliyor. 
+
+<div style="text-align: center;">
+  <img src="./assets/images/tryhackme_picklerick/fif.webp" width="400" height="100">
+</div>
+# İlk Malzeme
+
+Bu değeri giriş yaparken şifre olarak deneyelim. Bingo! Giriş yapabildik. Bizi bir command panel karşılıyor.
+<div style="text-align: center;">
+  <img src="./assets/images/tryhackme_picklerick/si.webp" width="500" height="100">
+</div>
+Panel üzerinde ls komutu ile listeleme yapalım. 
+<div style="text-align: center;">
+  <img src="./assets/images/tryhackme_picklerick/seve.webp" width="200" height="200">
+</div>
+İlk dosyanın adı oldukça şüpheli gözüküyor. Dosyaya erişmek için [http://10.10.246.186/Sup3rS3cretPickl3Ingred.txt](http://10.10.246.186/Sup3rS3cretPickl3Ingred.txt) isimli URL adresine gidelim.
+<div style="text-align: center;">
+  <img src="./assets/images/tryhackme_picklerick/ei.webp" width="500" height="100">
+</div>
+Bingo ilk gizli malzememizi buluyoruz. Daha fazla malzeme toplamak için devam edelim. Ls komutu ile bulduğumuz dosyalara tekrardan göz gezdirelim. Dosyaların arasından clue.txt dosyası ile bir ipucu yakalayabiliriz. 
+<div style="text-align: center;">
+  <img src="./assets/images/tryhackme_picklerick/nin.webp" width="400" height="100">
+</div>
+# İkinci Malzeme
+
+Dosya sistemine göz atmamız gerektiğini söylüyor.
+
+·        ls /home
+
+ ile home klasörümüzün içini görüntüleyelim. Çıktıda rick ve ubuntu isimli iki farklı klasör grüyoruz. Bunlardan rick olanı görüntüleyelim.
+
+·        ls /home/rick
+
+Burada second ingredients isimli bir dosya olduğunu görüntülüyoruz. Fakat bu dosyanın içeriğini cat nano veya vim tarzı komutlarla görüntüleyemiyoruz.
+<div style="text-align: center;">
+  <img src="./assets/images/tryhackme_picklerick/ten.webp" width="300" height="180">
+</div>
+Cat benzeri komutları araştırıp şansımızı tekrardan deneyelim. Aşağıdaki komut ile çıktıya ulaşabiliyorum.
+·        less ‘/home/rick/second ingredients’
+<div style="text-align: center;">
+  <img src="./assets/images/tryhackme_picklerick/el.webp" width="150" height="50">
+</div>
+Diğer malzemeyi bulmak için araştırmamıza devam edelim.
+
+# Üçüncü Malzeme
+
+Root klasörünün içeriğini görüntülemeye çalışalım. ls /root komutunu deneyelim fakat sanırım root klasörüne erişimimiz yok. Yetkinliğimizi görüntülemek için sudo -l komutunu kullanalım. Fakat bu da ne?
+<div style="text-align: center;">
+  <img src="./assets/images/tryhackme_picklerick/twe.webp" width="750" height="100">
+</div>
+Çıktıda belirttiği şey www-data kullanıcısı herhangi bir komutu şifresiz olarak çalıştırabilir. O halde root klasörünün içini görüntüleyebiliriz.
+
+·        sudo ls /root
+<div style="text-align: center;">
+  <img src="./assets/images/tryhackme_picklerick/13.webp" width="75" height="60">
+</div>
+Ve üçüncü malzememizin bulunduğu txt dosyasını görüyoruz. Less komutunu kulalanrak içeriğini görüntüleyelim ve son bayrağımızı da alalım.
+
+·        less /root/3rd.txt
+<div style="text-align: center;">
+  <img src="./assets/images/tryhackme_picklerick/14.webp" width="250" height="50">
 </div>
