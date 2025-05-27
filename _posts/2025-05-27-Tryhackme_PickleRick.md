@@ -5,7 +5,7 @@ title: TryHackMe Pickle Rick
 desc: ""
 logo: "/assets/images/cap.png"
 author: Buse Naz Yılmaz
-media_subpath: /images/tryhackme_picklerick/
+media_subpath: /assets/images/tryhackme_picklerick/
 image:
   path: room_image.webp
 ---
