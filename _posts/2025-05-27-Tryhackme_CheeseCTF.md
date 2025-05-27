@@ -1,7 +1,7 @@
 ---
 categories: [makine]
 layout: post
-title: CyberExam Uncovering Hidden SSID 
+title: TryHackMe Cheese CTF
 desc: "Cheese, sizi lezzetli ama tehlikeli bir web sunucusuna götürüyor. Amacınız? Güvenlik açıklarını kullanarak sistemdeki dijital peynir tuzaklarını aşmak ve tüm bayrakları toplamak. "
 logo: "/assets/images/cheese_ctf.png"
 author: Buse Naz Yılmaz
