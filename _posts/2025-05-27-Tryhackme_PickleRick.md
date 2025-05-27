@@ -2,7 +2,7 @@
 categories: [makine]
 layout: post
 title: TryHackMe Pickle Rick
-desc: ""
+desc: "Rick and Morty temalı bu görev, bir web sunucusunu istismar etmenizi ve Rick'in iksirini yapmasına ve kendini bir turşudan insana dönüştürmesine yardımcı olacak üç malzemeyi bulmanızı gerektiriyor."
 logo: "/assets/images/picklerick.jpeg"
 author: Buse Naz Yılmaz
 ---
