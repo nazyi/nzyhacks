@@ -117,7 +117,7 @@ Kapsam belirleme, pentestin en önemli unsurlarından biridir. Test edilecek cih
 **WADL vs WSDL?**
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_passive/wadl.jpeg" width="770" height="340">
+  <img src="./assets/images/ciscomodule2/wadl.jpeg" width="770" height="340">
 </div>
 
 Pentest için diğer kullanılan kaynaklardan bazıları aşağıda verilmiştir.
