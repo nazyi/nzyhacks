@@ -40,7 +40,7 @@ Komut bir süre çalıştıktan sonra bir BSSID değer yakalıyoruz. Bu değer e
 
 ·        airodump-ng –bssid 0A:F6:14:E7:8A:6B -c 6 -w capture wlan0mon
 <div style="text-align: center;">
-  <img src="./assets/images/cyberexam_unhidden/airodump.webp" width="600" height="200">
+  <img src="./assets/images/cyberexam_unhidden/airodump.webp" width="600" height="90">
 </div>
 Saldırının başarılı olup olmadığını çıktıda sağ üstte yer alan [WPA handshake: 0A:F6:14:E7:8A:6B] ile anlayabilirsiniz. Bu dinlemenin başarılı olduğunu ve 4-way handshake yakalandığını gösterir. Bu terminalimizde bu BSSID değerini dinlemeye başladıktan sonra bu ağın ESSID değerine erişmek için bu ağa bağlı olan bir cihaza ağdan koparma yani deauth saldırısı gerçekleştireceğiz. 
 <div style="text-align: center;">
@@ -63,5 +63,5 @@ Ben saldırıyı bir adım öteye götürmek istedim ve ağın şifresini de bul
 
 ·        aircrack-ng -w wordlist.txt -b 0A:F6:14:E7:8A:6B capture-01.cap
 <div style="text-align: center;">
-  <img src="./assets/images/cyberexam_unhidden/şifre.webp" width="600" height="200">
+  <img src="./assets/images/cyberexam_unhidden/şifre.webp" width="500" height="300">
 </div>
