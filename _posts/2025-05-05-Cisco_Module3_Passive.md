@@ -185,7 +185,7 @@ Yeni bir terminal açıp recon-web yazalım. Böylece databasedeki bilgilerin to
 Site üzerinde değişik dosyalar bulmak için yeni bir modül indirelim.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_passive/intereset.webp" width="1100" height="60">
+  <img src="./assets/images/ciscomodule3_passive/interest.webp" width="1100" height="60">
 </div>
 
 Modülü indirmek ve kullanmak için;
