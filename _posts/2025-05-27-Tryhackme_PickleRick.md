@@ -98,7 +98,7 @@ Burada second ingredients isimli bir dosya olduğunu görüntülüyoruz. Fakat b
 <div style="text-align: center;">
   <img src="./assets/images/tryhackme_picklerick/ten.webp" width="300" height="180">
 </div>
-Cat benzeri komutları araştırıp şansımızı tekrardan deneyelim. Aşağıdaki komut ile çıktıya ulaşabiliyorum.
+Cat benzeri komutları araştırıp şansımızı tekrardan deneyelim. Aşağıdaki komut ile çıktıya ulaşabiliyorum.  
 ·        less ‘/home/rick/second ingredients’
 <div style="text-align: center;">
   <img src="./assets/images/tryhackme_picklerick/el.webp" width="150" height="50">
