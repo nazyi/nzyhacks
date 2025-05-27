@@ -3,7 +3,7 @@ categories: [makine]
 layout: post
 title: TryHackMe Pickle Rick
 desc: ""
-logo: "/assets/images/cap.png"
+logo: "/assets/images/picklerick.jpeg"
 author: Buse Naz Yılmaz
 media_subpath: /assets/images/tryhackme_picklerick/
 image:
