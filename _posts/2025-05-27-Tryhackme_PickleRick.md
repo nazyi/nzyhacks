@@ -29,5 +29,8 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </div>
 Nmap taraması sonucunda ssh ve http portlarının açık olduğunu buluyoruz. SSH hakkında elimizde açık bir zafiyet olmadığı için 80 portuna tarayıcı üzerinden erişiyorum. 
 
-![](./assets/images//tryhackme_picklerick/first.webp){: width="400" height="300" }
+<div style="text-align: center;">
+  <img src="./assets/images/tryhackme_picklerick/first.webp" width="400" height="300">
+</div>
+
 
