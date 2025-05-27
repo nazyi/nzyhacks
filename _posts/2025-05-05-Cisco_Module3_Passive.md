@@ -57,7 +57,9 @@ Kali’de spiderfootu açtıktan sonra toolu kullanmak için
 
 Bu komutu yazdıktan sonra tarayıcı üzerinden ip adresini ve portu açıp SpiderFoot ara yüzüne erişebilirsiniz.
 
-![](./assets/images/Resim3.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_passive/spiderscan.webp" width="660" height="230">
+</div>
 
 **Step 1: Run SpiderFoot scan for a Domain**
 
@@ -97,7 +99,10 @@ Modüllere Github reposundan ulaşılabilir. Modüller hakkında detaylı bilgiy
 
 Yeni modül indirmek için ilk öncelikle modüle search ile modülleri görüntüleyelim.
 
-![](./assets/images/Resim6.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_passive/search.webp" width="700" height="300">
+</div>
+
 
 Biz örnek olarak bing\_domain\_web modülünü indirelim. İndirmek için;
 <div class="code-window">
@@ -135,7 +140,10 @@ Komutu ile hedefimizi ayarlayalım. Tekrardan info diyerek ayarlanıp ayarlanmad
 <span class="highlight">[recon-ng][cisco][hackertarget]</span> > run
 </div>
 
-![](./assets/images/Resim7.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_passive/run.webp" width="500" height="420">
+</div>
+
 
 Toplanan bilgilerin genel bir özetini tablo halinde görmek istiyorsak “dashboard” komutunu kullanabiliriz. 
 
@@ -144,7 +152,10 @@ Toplanan bilgilerin genel bir özetini tablo halinde görmek istiyorsak “dashb
 <span class="highlight">[recon-ng][cisco][hackertarget]</span> > dashboard
 </div>
 
-![](./assets/images/Resim8.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_passive/dashboard.webp" width="400" height="550">
+</div>
+
 
 Dashboard üzerinden aldığımız görüntüdeki başlıklara bakmak için ise “Show” komutunu kullanabiliriz. Örnek kullanım “show hosts”.
 
@@ -153,7 +164,10 @@ Dashboard üzerinden aldığımız görüntüdeki başlıklara bakmak için ise 
 <span class="highlight">[recon-ng][cisco][hackertarget]</span> > show hosts
 </div>
 
-![](./assets/images/Resim9.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_passive/showhost.webp" width="750" height="180">
+</div>
+
 
 **Step 6: Investigate the Web Interface**
 
@@ -161,13 +175,18 @@ Recon-ng’nin veritabanındaki sonuçları daha iyi görüntüleyebilmek için 
 
 Yeni bir terminal açıp recon-web yazalım. Böylece databasedeki bilgilerin toplanma süreci başlar. Outputta çıkan URL üzerine tıklayarak ara yüze erişebilirsiniz. Ara yüzde ilk başta default workspace’in sonuçları gelir yukarıdaki turuncu yazan default yazısına tıklayarak kendi workspace’inizi seçebilirsiniz.
 
-![](./assets/images/Resim10.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_passive/recon.webp" width="600" height="400">
+</div>
+
 
 #### Part 4 Find Interesting Files with Recon-ng
 
 Site üzerinde değişik dosyalar bulmak için yeni bir modül indirelim.
 
-![](./assets/images/Resim12.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_passive/intereset.webp" width="1100" height="60">
+</div>
 
 Modülü indirmek ve kullanmak için;
 <div class="code-window">
@@ -175,7 +194,10 @@ Modülü indirmek ve kullanmak için;
 <span class="highlight">[recon-ng][default]</span> > marketplace install discovery/info/disclosure/interesting_files<br><span class="highlight">[recon-ng][default]</span> >	modules load interesting_files<br><span class="highlight">[recon-ng][cisco][interesting_files]</span> > info
 </div>
 
-![](./assets/images/Resim13.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_passive/custom.webp" width="760" height="100">
+</div>
+
 
 Gerekli ayarlara baktıktan sonra source yine hackxor.net olarak ayarlayalım.
 <div class="code-window">
@@ -183,7 +205,10 @@ Gerekli ayarlara baktıktan sonra source yine hackxor.net olarak ayarlayalım.
 <span class="highlight">[recon-ng][cisco][interesting_files]</span> > options set source hackxor.net<br><span class="highlight">[recon-ng][cisco][interesting_files]</span> > run
 </div>
 
-![](./assets/images/Resim14.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_passive/robots.webp" width="650" height="310">
+</div>
+
 
 Kaydedilen çıktıları /root/.recon-ng/workspaces/cisco/http\_hackxor.net\_robots.txt dosyasından okuyabilirsiniz.
 
@@ -202,8 +227,6 @@ Bir domain hakkında teknik ve idari iletişim bilgilerine bakmak için whois ko
 <br>
 <span class="highlight">kali@kali</span> whois h4cker.org
 </div>
-
-![](./assets/images/Resim15.jpg)
 
 ### 3.1.6 Lab – DNS Lookups
 
@@ -230,9 +253,7 @@ Domain adresinin name server bilgilerini görmek içinse;
 
 Bazen DNS sunucusunun bir adresi çözümleyememesi veya cevap bulunamamasına çözüm olarak farklı bir DNS sunucu kullanabiliriz.
 
-![](./assets/images/Resim16.jpg)
-
-Yukarıda verilen çıktıda skillsforall.com adresini Google’un DNS sunucu ile çözümlemeye çalışıyoruz. Google DNS sunucusunun IP adresi 8.8.8.8.
+Verilen çıktıda skillsforall.com adresini Google’un DNS sunucu ile çözümlemeye çalışıyoruz. Google DNS sunucusunun IP adresi 8.8.8.8.
 <div class="code-window">
 <br>
 <span class="highlight">kali@kali</span> nslookup skillsforall.com 8.8.8.8
@@ -255,7 +276,10 @@ Whois, DNS sunucu kayıtları yerine alan adı nerede ve kim, fiziksel adres ve 
 
 Nslookup cisco.com çıktısından aldığımız bilgi ile cisco.com’un name server’ı olan ns1.cisco.com adresinin IP bilgisini bulduk. IP adresi 72.163.5.201 idi. Bu IP adresini whois ile taratalım. Böylece IP adresinin scope aralığını bulalım.
 
-![](./assets/images/Resim17.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_passive/whois.webp" width="660" height="330">
+</div>
+
 
 #### Part 3 Compare te Output of the Nslookup and Dig Functions
 
@@ -297,7 +321,10 @@ Daha önceden bulduğumuz ns1.cisco.com adresinin IP adresini deneyelim.
 
 Aşağıdaki çıktıda görüldüğü üzere hostname bulduk.
 
-![](./assets/images/Resim18.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_passive/dig.webp" width="660" height="370">
+</div>
+
 
 **Step 2: Use the host utility to perform rDNS lookups**
 
@@ -321,7 +348,9 @@ Sitelerin SSL sertifikaları incelenerek zayıf sertifikalar veya kriptografik z
 
 Crt.sh gibi bir site üzerinden istediğiniz kurum veya sayfanın sertifikası sorgulanabilir. Örnek olarak h4cker.org adresini inceleyelim.
 
-![](./assets/images/Resim19.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_passive/lets.webp" width="630" height="210">
+</div>
 
 Daha önceden bilmediğimiz subdomain adreslerini burada da görebiliriz.
 
@@ -339,7 +368,10 @@ Her yeni bir sertifika veya bir sertifika hareketi log altına alınır böylece
 
 Kali üzerindeki bazı SSL toollarının isimlerini ve amaçlarını anlatalım.
 
-![](./assets/images/Resim20.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_passive/arac.webp" width="630" height="340">
+</div>
+
 
 #### Part 3 Use Kali Tools to Gather Certificate Information
 
@@ -355,7 +387,10 @@ Kali üzerinde hedefimiz için bir sslscan taraması yapıyoruz.
 
 Dosyanın konumunu bulduktan sonra Mozilla üzerinde html dosyasını açabilirsiniz.
 
-![](./assets/images/Resim21.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_passive/html.webp" width="500" height="410">
+</div>
+
 
 ### 3.1.9 Company Reputation and Security Posture
 
@@ -447,7 +482,10 @@ Saldırganlar, Github veya Gitlab üzerinde public olan kod kaynağına ulaşara
 <span class="highlight">kali@kali</span> emailharvester -d example.com
 </div>
 
-![](./assets/images/Resim22.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_passive/searching.webp" width="400" height="380">
+</div>
+
 
 **Step 2: Use Spiderfoot to research email adresses**
 
