@@ -23,42 +23,41 @@
   <body>
 
     <header>
-      <div class="container header-flex">
+  <div class="container header-flex" style="display: flex; justify-content: space-between; align-items: center;">
 
-  <!-- Sol: Site Başlığı -->
-  <div class="site-title" style="display: flex; align-items: center; gap: 8px;">
-    <a id="a-title" href="{{ site.baseurl }}" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
-      <img src="{{ '/assets/images/favicon.ico' | relative_url }}" alt="icon" style="width: 24px; height: 24px;">
-      <h1 style="margin: 0; font-size: 1.5em;">nzyhacks</h1>
-    </a>
-  </div>
+    <!-- Sol: Site Başlığı -->
+    <div class="site-title">
+      <a id="a-title" href="{{ site.baseurl }}" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+        <img src="{{ '/assets/images/favicon.ico' | relative_url }}" alt="icon" style="width: 24px; height: 24px; margin-right: 8px;">
+        <h1 style="margin: 0; font-size: 1.5em;">nzyhacks</h1>
+      </a>
+    </div>
 
-</div>
-        <!-- Sağ: Menü -->
-        <nav class="header-menu">
-          <ul>
-            <!-- Ana Sayfa -->
-            <li><a href="{{ site.baseurl  }}/">Ana Sayfa</a></li>
+    <!-- Sağ: Menü -->
+    <nav class="header-menu">
+      <ul>
+        <!-- Ana Sayfa -->
+        <li><a href="{{ site.baseurl }}/">Ana Sayfa</a></li>
 
-            <!-- Çözümler Dropdown Menüsü -->
-            <li class="dropdown">
-              <a href="{{ site.baseurl }}/cozumler">Çözümler</a>
-              <ul class="dropdown-content">
-                <li><a href="{{ site.baseurl }}/makine-cozumler">Makine Çözümleri</a></li>
-                <li><a href="{{ site.baseurl  }}/modul-cozumler">Modül Çözümleri</a></li>
-              </ul>
-            </li>
-
-            <!-- İletişim -->
-            <li><a href="{{ site.baseurl }}/iletisim">İletişim</a></li>
-
-            <!-- Hakkında (Opsiyonel) -->
-            <li><a href="{{ site.baseurl }}/hakkinda">Hakkında</a></li>
+        <!-- Çözümler Dropdown Menüsü -->
+        <li class="dropdown">
+          <a href="{{ site.baseurl }}/cozumler">Çözümler</a>
+          <ul class="dropdown-content">
+            <li><a href="{{ site.baseurl }}/makine-cozumler">Makine Çözümleri</a></li>
+            <li><a href="{{ site.baseurl }}/modul-cozumler">Modül Çözümleri</a></li>
           </ul>
-        </nav>
+        </li>
 
-      </div>
-    </header>
+        <!-- İletişim -->
+        <li><a href="{{ site.baseurl }}/iletisim">İletişim</a></li>
+
+        <!-- Hakkında (Opsiyonel) -->
+        <li><a href="{{ site.baseurl }}/hakkinda">Hakkında</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
 
     <div class="container">
       <section id="main_content">
