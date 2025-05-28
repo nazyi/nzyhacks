@@ -18,7 +18,9 @@ Pasif bilgi toplamaktan sonra sıra aktif bilgi toplamaya geldi. İlk aşamada h
 
 Port taramasında kullanılan en yaygın nmap aracının çıktılarını ufak bir açıklamak istedim.
 
-![](./assets/images/Resim23.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/1.webp" width="600" height="160">
+</div>
 
 ### 3.2.1 Nmap Scan Types
 
@@ -28,13 +30,17 @@ Nmap üzerinde amaca göre birçok scan türü vardır. Bazıları aşağıda ye
 
 Nmap default olarak farklı belirtilmedikçe hedef sistemle TCP bağlantısı kurmaya çalışır. Her porta TCP paketi atılarak gelen cevaba göre portun durumu belirlenir. Yani bu scan türü kapı açık mı diye bakmak için cidden kapıdan içeri girer veya kapıyı çalar. Böyle olduğu için de hedef sistemler üzerinde log tutuluyorsa loglar üstünde attacker IP bilgisi yer alabilir.
 
-![](./assets/images/Resim24.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/stopen.webp" width="680" height="160">
+</div>
 
 **UDP Scan (-sU)**
 
 Genellikle TCP portları aranır fakat örneğin DNS, SNMP ve DHCP gibi sunucular UDP kullandıkları için amaca göre UDP portlarını da taramanız gerekebilmektedir.
 
-![](./assets/images/Resim25.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/suopen.webp" width="680" height="160">
+</div>
 
 **TCP FIN Scan (-sF)**
 
@@ -42,7 +48,9 @@ Bazen SYN taraması ağ filtresi veya firewall tarafından seçildiği için eng
 
 \*Windows makinelerini bu tarama ile taramak doğru sonuçlar vermeyebilir. Çünkü Windows makineler portların durumuna bakmaksızın pakete cevap vermektedir.
 
-![](./assets/images/Resim26.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/sfopen.webp" width="680" height="160">
+</div>
 
 **Host Discovery Scan (-sn)**
 
@@ -86,7 +94,9 @@ Kullanıcı bilgilerini toplamak için birden fazla araç ve yöntem vardır. Bu
 
 Aşağıda SMB mesaj illüstrasyonunu inceleyelim.
 
-![](./assets/images/Resim27.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/smbenum.webp" width="460" height="460">
+</div>
 
 SMB\_COM\_NEGOTIATE: Sunucuya hangi protokolleri veya bayrakları desteklediğini sorduğu mesajdır. Sunucu da desteklediği protokoller ve bayrakları söyleyerek geri mesaj atar.
 
@@ -109,7 +119,9 @@ nmap taramasının sonucunda gelen çıktada yer alan RID ve SID terimlerini inc
 
 ·        **RID:** SID’nin sonundaki kısımdır ve kullanıcı veya grubu Windows bazında tanımlar.
 
-![](./assets/images/Resim28.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/rid.webp" width="460" height="300">
+</div>
 
 #### Network Share Enumeration
 
@@ -135,7 +147,9 @@ Eğer hem daha detaylı bilgi hem de işletim sistemi tespiti de istersen;
 
 Ve tablo ile nmap smb enum scriptleri hakkında bilgi vermek istedim.
 
-![](./assets/images/Resim29.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/smbnmap.webp" width="650" height="400">
+</div>
 
 SMB üzerinden bilgi çekmek için bir farklı tool olan enum4linux da vardır.
 <div class="code-window">
@@ -183,7 +197,9 @@ Paket oluşturarak bilgi toplama yaparken, Scapy en çok tercih edilen toolllar 
 
 Bu paketi gönderirken aynı sırada tshark ile kendi ağımızı dinlersek ICMP paket isteğini görüntüleyebiliriz. 
 
-![](./assets/images/Resim30.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/tshark.webp" width="700" height="200">
+</div>
 
 \*tshark, Wireshark’ın terminal sürümüdür.
 
@@ -233,13 +249,17 @@ Verilen çıktıda toplamda 7 tane hostun aktif olduğunu görüyoruz.
 
 Wireshark üzerinde 10.6.6.23 hostunun şüpheli olduğu söyleniyor spesifik olarak onu inceleyelim.
 
-![](./assets/images/Resim31.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/sudonmap.webp" width="500" height="360">
+</div>
 
 **Step 2: Obtain additional information about the host and services**
 
 Hostun 21 numaralı portu olan FTP servisi hakkında daha fazla bilgi alalım.
 
-![](./assets/images/Resim32.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/21ftp.webp" width="400" height="100">
+</div>
 
 \-A parametresi, OS keşfi, versiyon keşfi ve script taraması gibi çoğu maddeyi kapsar. Fakat kullanırken IDS tarafından tespit edilebilirsiniz. Daha fazla bilgi edinmek için aşağıdaki komutu girelim.
 <div class="code-window">
@@ -247,7 +267,9 @@ Hostun 21 numaralı portu olan FTP servisi hakkında daha fazla bilgi alalım.
 <span class="highlight">kali@kali</span> nmap -p21 -sV -A 10.6.6.23
 </div> 
 
-![](./assets/images/Resim33.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/ftpvstpf.webp" width="650" height="360">
+</div>
 
 Çıktıda gözüktüğü gibi anon girişi kabul edilmektedir ve birkaç tane txt dosyası yer almaktadır.
 
@@ -255,7 +277,9 @@ Hostun 21 numaralı portu olan FTP servisi hakkında daha fazla bilgi alalım.
 
 Server Message Block yani SMB hem Windows hem de Linux makinelerde dosya paylaşımı desteklemektedir. 139 ve 445 numaralı portlarda çalışmaktadır. Bu portlar hakkında nmap ile daha fazla şey öğrenelim.
 
-![](./assets/images/Resim34.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/worksgruup.webp" width="600" height="400">
+</div>
 
 Daha önce de bahsettiğimiz gibi nmap içinde bazı scriptler sayesinde istenilen sistem hakkında daha detaylı bilgi sahibi olunabilir. Hazır SMB portlarının açık oluğunu gördüğümüze göre nmap üzerindeki SMB scriptlerini çalıştırıp daha fazla bilgi edinebiliriz.
 
@@ -264,13 +288,17 @@ Daha önce de bahsettiğimiz gibi nmap içinde bazı scriptler sayesinde istenil
 <span class="highlight">kali@kali</span> nmap –script smb-enum-users.nse -p139,445 10.6.6.23
 </div> 
 
-![](./assets/images/Resim35.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/netbios.webp" width="600" height="230">
+</div>
 
 Çıktıda görüldüğü üzere iki tane kullanıcı adı bulabildik Arbiter ve Masterchief.
 
 Şimdi de yine bir script kullanarak SMB üzerinde paylaşılmış dosyaları görelim.
 
-![](./assets/images/Resim36.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/hostscripy.webp" width="400" height="440">
+</div>
 
 Burda başında $ işareti olan 2 tane gizli paylaşım bulduk ve altta yer alan Anonymous Access: read/write olması çok kritik bir risktir.
 
@@ -288,7 +316,9 @@ ls() fonksiyonu ile alanlar hakkında detayları inceleyebilirsiniz. Scapy içer
 
 Aşağıdaki tabloda alan adları ve açıklamaları verilmiştir. 
 
-![](./assets/images/Resim37.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/version.webp" width="600" height="600">
+</div>
 
 #### Part 2 Use Scapy to Sniff Network Traffic
 
@@ -312,7 +342,9 @@ Scapy komut terminalinde dinlemeyi açtık. Yanda başka bir terminal üzerinde 
 
 Scapy terminalinde Ctrl + C yaptıktan sonra gelen çıktıda gelen paketlerin sayısı yer almaktadır.
 
-![](./assets/images/Resim38.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/sniffed.webp" width="600" height="80">
+</div>
 
 **Step 2: Capture and save traffic on a spesific interface**
 
@@ -324,11 +356,15 @@ Yukarıda yaptığımız gibi sniff fonksiyonu ağı dinlemeye yaramaktadır. Fa
 
 Komutu girdikten sonra bu sefer Mozilla üzerinden 10.6.6.23 adresini açıyoruz.
 
-![](./assets/images/Resim39.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/gravemind.webp" width="650" height="330">
+</div>
 
 Gravemind sayfası geldikten sonra Scapy terminalinden dinlemeyi durdurabiliriz Ctrl + C yaparak çıktıyı görüntüleyebilirsiniz.
 
-![](./assets/images/Resim40.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/sniffed2.webp" width="600" height="80">
+</div>
 
 Trafiği görüntülemek için ilk öncelikle bir değişkene kaydedip sonrasında görüntüleyebiliriz.
 
@@ -356,7 +392,9 @@ Eğer paket hakkında daha fazla bilgi istersiniz paket numaralarının başınd
 
 ·        a\[2\]
 
-![](./assets/images/Resim41.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/ether.webp" width="900" height="80">
+</div>
 
 Bu çıktıları pcap dosyası olarak kaydedip Wireshark üzerinde de inceleyebiliriz. Bunu yapmak için aşağıdaki komutları kullanabiliriz.
 
@@ -367,7 +405,9 @@ Bu çıktıları pcap dosyası olarak kaydedip Wireshark üzerinde de inceleyebi
 
 Kaydedilen pcap dosyasını Wireshark üzerinde inceleyebiliriz.
 
-![](./assets/images/Resim42.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/pcap.webp" width="650" height="220">
+</div>
 
 #### Part 3 Create and Send an ICMP Packet
 
@@ -393,7 +433,9 @@ Bu komutumuzu bölümleriyle birlikte inceleyelim.
 
 Bu mesajı gönderdikten sonra dinleme yaptığımız Scapy terminaline dönüp CTRL + C yapabiliriz. Aldığımız çıktı aşağıdaki gibidir;
 
-![](./assets/images/Resim43.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/sniffed3.webp" width="600" height="80">
+</div>
 
 Bu çıktıyı kaydedip içeriğini inceleyelim.
 
@@ -432,7 +474,9 @@ Komutu gönderdikten sonra dinleme terminali üzerinden CTRL + C yaparak dinleme
 
 ·        a\[3\]
 
-![](./assets/images/Resim44.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/sniffed4.webp" width="1000" height="300">
+</div>
 
 2\. paket bizim bağlantı başlatmak için gönderdiğimiz flags değeri “S” olan pakettir. 3. Paketi incelediğimizde ise flags değerinin SA yani SYN-ACK olduğunu görüyoruz. Bu demek oluyor ki 445 portu açık ve bağlantı isteğimizi onaylamış.
 
@@ -476,42 +520,60 @@ Web trafiği oluştururken ziyaret ettiğimiz skillsforall.com sitesini Wireshar
 
 **Step 1: Analyze DNS traffic**
 
-![](./assets/images/Resim45.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/skillsfrorall.webp" width="880" height="120">
+</div>
 
 Search iconuna skillsforall.com yazdıktan sonra çıkan alttaki menüden “String” değerini ve skillsforall kelimesini yazalım. Yukarıdaki ekran görüntüsünde yaptıklarımızı görebilirsiniz. İlk çıkan paketi incelemek için üzerine tıklayalım.
 
 Burada yer alan Ethernet II kısmında hem destination hem de source MAC adreslerini görebilirsiniz. Teyit etmek için terminal üzerinden ifconfig komutunu yazıp eth0 ara yüzünün MAC adresine bakabilirsiniz.
 
-![](./assets/images/Resim46.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/destination.webp" width="1000" height="180">
+</div>
 
-![](./assets/images/Resim47.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/eth0.webp" width="950" height="200">
+</div>
 
 Paket bilgileri kısmında Domain Name System query bölümünü inceleyim. Burada DNS server’ına ne gönderildiğinin detayını bulabilirsiniz. Ayrıca DNS server’ının cevabın Wireshark’ta hangi paket olduğunu belirten bir Response In kısmı da vardır.
 
-![](./assets/images/Resim48.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/response.webp" width="600" height="450">
+</div>
 
 **Step 2: Analyze an HTTP session**
 
 Kali makinemiz üzerinde hazır halde yüklü olan DVWA sayfasına erişip login olmayı deneyeceğiz. Bunu da Wireshark üzerinde görüntüleyerek kullanıcı bilgilerini elde etmeye çalışacağız. Bunun için ilk öncelikle DVWA sunucusunun IP bloğunun ara yüz adını öğrenmemiz gerekiyor. DVWA 10.6.6.13 adresinde yer almaktadır.
 
-![](./assets/images/Resim49.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/br-inter.webp" width="890" height="200">
+</div>
 
 Burada görüldüğü gibi br-internal ara yüzümüzün ismidir. Wireshark’ı açtıktan sonra aşağıda yer alan ara yüz isimlerinden br-internal ara yüzünü seçiyoruz. Böylece Wireshark br-internal ara yüzünü dinlemeye başlıyor. 
 
-![](./assets/images/Resim50.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/capture.webp" width="800" height="270">
+</div>
 
 Dinlemeye başladıktan sonra tarayıcı üzerinden 10.6.6.13 adresine yani DVWA sayfasına erişiyoruz. Giriş yapmak için **admin** ve **password** değerlerini giriyoruz. Değerleri girdikten sonra tarayıcı kapatıp Wireshark’ta yukarıdaki kırmızı kareye basarak dinlemeyi durduruyoruz. Arama menüsüne String değerini, arama yerine ise POST yazıyoruz.
 
-![](./assets/images/Resim51.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/postt.webp" width="1200" height="70">
+</div>
 
 Çıkan pakette login.php üzerinden bilgi gönderildiği görülüyor. Paketin HTML Form URL Encoded kısmında login bilgilerini görebilirsiniz. 
 
-![](./assets/images/Resim52.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/hypertext.webp" width="830" height="250">
+</div>
 
 Cookieler birçok farklı amaç için kullanılır. En yaygın olarak, bir kullanıcının oturum bilgilerini saklamak için kullanılırlar. Çerezler ele geçirilebilir ve kullanıcının oturumu çalınabilir. İlk çerez, Set-Cookie değeri ile HTTP yanıtı içinde gönderilir.
 
 Wireshark üzerinde 302 Found diye aratarak ilk çerezi bulabiliriz.
 
-![](./assets/images/Resim53.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_active/set.webp" width="880" height="620">
+</div>
 
 Çıktıda görüldüğü gibi PHPSESSID çerezi atanmıştır.
