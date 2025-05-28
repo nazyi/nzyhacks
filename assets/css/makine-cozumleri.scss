@@ -43,10 +43,18 @@
   color: inherit;
 }
 
-.site-title img {
-  width: 45px;
-  height: 45px;
-  margin-right: 8px;
-  vertical-align: middle;
+.site-icon {
+  width: 110px;
+  height: 110px;
+  margin-right: 0px;
   border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  object-fit: contain; /* taşma olmasın */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.site-icon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  cursor: pointer; /* üstüne gelince el işareti */
 }
