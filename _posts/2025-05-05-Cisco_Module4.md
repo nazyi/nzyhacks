@@ -85,55 +85,73 @@ SET kullanarak spear phing emailinin ne kadar kolay yapıldığını görelim.
 <span class="highlight">kali@kali</span> sudo setoolkit
 </div>
 
-![](./assets/images/Resim61.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/fsoci.webp" width="300" height="500">
+</div>
 
 **Step 2**
 
 Menü üzerinden Social-Engineering Attack seçeneğini seçelim.
 
-![](./assets/images/Resim62.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/socialeng.webp" width="500" height="250">
+</div>
 
 **Step 3**
 
 Çıkan menü üzerinden de Spear-Phishing Attack Vectors seçeneğini seçelim.
 
-![](./assets/images/Resim63.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/spearp.webp" width="600" height="250">
+</div>
 
 **Step 4**
 
 Burada bize yine birkaç tane seçenek sunuluyor biz 2. Seçeneği seçiyoruz.
 
-![](./assets/images/Resim64.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/createf.webp" width="400" height="100">
+</div>
 
 **Step 5**
 
 Burada file formatı seçmemiz isteniliyor. Biz 13. Seçenekten devam ediyoruz.
 
-![](./assets/images/Resim65.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/adobe.webp" width="650" height="460">
+</div>
 
 **Step 6**
 
 E-maile koyacağımız PDF dosyasının formatının nasıl olduğunu seçiyoruz. Boş pdf seçeneği olan 2.yi seçiyoruz.
 
-![](./assets/images/Resim66.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/built.webp" width="600" height="70">
+</div>
 
 **Step 7**
 
 Hangi tür reverse Shell kullanacağımızı seçiyoruz. Biz ilk seçeneği seçiyoruz.
 
-![](./assets/images/Resim67.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/reverse.webp" width="1000" height="150">
+</div>
 
 **Step 8 – 9**
 
 Shellin dinleme yapacağı IP adresi ve portu da verdikten sonra dosyanın adını değiştirmeyi veya değiştirmemeyi soruyor.
 
-![](./assets/images/Resim68.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/setpayload.webp" width="640" height="450">
+</div>
 
 **Step 10**
 
 Bu zararlıyı bir e-mail grubuna mı yoksa tek bir e-mail adresine mi gönderileceğini belirliyoruz. Tek bir adresi seçiyoruz.
 
-![](./assets/images/Resim69.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/email.webp" width="600" height="130">
+</div>
 
 **Step 11 – 14**
 
@@ -147,8 +165,9 @@ Browser Exploitation Framework ile XSS açıklarını kullanarak çerez çalmaya
 
 Çalınan cookielerin örnek görüntüsü aşağıdadır.
 
-![](./assets/images/Resim70.jpg)
-
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/cookie1.webp" width="650" height="600">
+</div>
 Cookie çalındıktan sonra kullanıcıya fake bildirim bile gönderilebilmektedir. 
 
 ### 4.4.3 Call Spoofing Tools
@@ -169,15 +188,20 @@ Arayan kişi olarak görünen numarayı çok basit bir şekilde değiştirebilir
 
 Setoolkit aracının menüsünden ilk başta “Social-Engineering Attacks” seçeneğini seçiyoruz.
 
-![](./assets/images/Resim71.jpg)
-
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/social2.webp" width="420" height="180">
+</div>
 Bu menüden sonra ise 2. seçenek olan “Website Attack Vectors” seçiyoruz.
 
-![](./assets/images/Resim72.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/website.webp" width="420" height="270">
+</div>
 
 Buradaki atakların açıklamasını okuduktan sonra bizim yapacağımız atak için 3. Seçenek olan “Credential Harvester Attack Method” seçiyoruz. 
 
-![](./assets/images/Resim73.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/credential.webp" width="500" height="200">
+</div>
 
 **Step 2: Clone the DVWA.vm login screen**
 
@@ -185,19 +209,26 @@ Bu adımda DVWA.vm oturum açma web sitesini kopyalacağız. SET bilgisayarda ba
 
 Aşağıdaki menüden Site Cloner seçeneğini seçiyoruz.
 
-![](./assets/images/Resim74.jpg)
-
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/site.webp" width="300" height="120">
+</div>
 Bize web saldırganının IP adresini soruyor Kali makinemizde 10.6.6.0/24 bloğunda olduğumuz için 10.6.6.1 adresini giriyoruz. 
 
-![](./assets/images/Resim75.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/podt.webp" width="800" height="20">
+</div>
 
 Şimdi ise klonlamak istediğimiz web sitesinin URL adresini giriyoruz. 
 
-![](./assets/images/Resim76.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/createf.webp" width="600" height="40">
+</div>
 
 Başarılı bir şekilde dinlemeye başladık.
 
-![](./assets/images/Resim77.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/webattackwebp" width="500" height="160">
+</div>
 
 #### Part 2 Capturing and Viewing User Credentials
 
@@ -223,11 +254,15 @@ Kodu yazdıktan sonra adını Great\_link.html koyalım ve kaydedelim.
 
 HTML dosyasını kaydettikten sonra üstüne çift tıklayalım ve klonladığımız sayfa açılsın. Peki bu sayfanın orijinalinden farkı nedir? Hemen inceleyelim. İlk görüntü benim klonladığım sayfadır.
 
-![](./assets/images/Resim78.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/dvwa1.webp" width="530" height="450">
+</div>
 
 Aşağıdaki ise orijinal sayfadır sayfanın uzantılarına dikkat edelim.
 
-![](./assets/images/Resim79.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/dvwa2.webp" width="530" height="450">
+</div>
 
 Şimdi ise bilgilerimizi girerek test edelim. Aşağıdaki bilgileri girelim.
 
@@ -235,11 +270,15 @@ Aşağıdaki ise orijinal sayfadır sayfanın uzantılarına dikkat edelim.
 
 ·        Password: Pa55w0rdd!
 
-![](./assets/images/Resim80.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/dvwa3.webp" width="530" height="450">
+</div>
 
 Login butonuna tıkladığımız an bizi dvwa sayfasının orijinaline yönlendirecek. Bunu sayfanın URL’sinden takip edebilirsiniz.
 
-![](./assets/images/Resim81.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/dvwa4.webp" width="530" height="450">
+</div>
 
 Yukarıda görüldüğü gibidir.
 
@@ -247,11 +286,15 @@ Yukarıda görüldüğü gibidir.
 
 SET aracının terminaline geri dönelim. Çıktıda girilen bilgileri görebilirsiniz.
 
-![](./assets/images/Resim82.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/username.webp" width="730" height="150">
+</div>
 
 CTRL + C ile XML formatında bir rapor oluşturup kaydedebilirsiniz. Kaydedilen dosyaya cat ile erişerek içeriğini görüntüleyebilirsiniz.
 
-![](./assets/images/Resim83.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/cat.webp" width="530" height="450">
+</div>
 
 ### 4.4.5 Lab – Using the Browser Exploitation Famework (BeEF)
 
@@ -267,7 +310,9 @@ GUI açıldıktan sonra bilgilerimizle giriş yapıyoruz.
 
 ·        Password: şifreniz
 
-![](./assets/images/Resim84.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/beef1.webp" width="450" height="370">
+</div>
 
 **Step 2: Hook the local browser to simulate a client-side attack**
 
@@ -277,20 +322,28 @@ Demo sürüm için bir websitesi oluşturulmuş bize.
 
 [http://127.0.0.1:3000/demos/butcher/index.html](http://127.0.0.1:3000/demos/butcher/index.html)
 
-![](./assets/images/Resim85.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/beef2.webp" width="720" height="370">
+</div>
 
 Adresi üzerinden siteye erişebiliriz. Siteye eriştikten sonra biraz inceleyelim. Hook oluşturmak için arkda bir JS kodu çalıştığını biliyoruz. CTRL + U yaparak source code inceleyelim. 
 
-![](./assets/images/Resim86.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/script.webp" width="950" height="100">
+</div>
 
 Burada yer alan hook.js dosyası ile beef hook oluşturduğumuzu görüyoruz. 
 Kontrol panelinin olduğu sayfaya geri dönelim. Burada solda yer alan Hooked Browsers menüsü üzerinde yeni bilgiler eklendiğini görüyoruz.  
 
-![](./assets/images/Resim87.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/online.webp" width="300" height="200">
+</div>
 
 Online Browsers menüsüne tıklıyoruz ve bilgiler önümüze geliyor. 
 
-![](./assets/images/Resim88.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/online2.webp" width="620" height="570">
+</div>
 
 #### Part 2 Investigate BeEF Exploit Capabilities
 
@@ -300,11 +353,15 @@ Diğer menüler hakkında da bilgi sahibi olalım. Commands menüsüne tıklayar
 
 Burada yer alan Module Tree tarayıcıya yönelik gerçekletirebilecek tüm saldırı, bilgi toplama ve sosyal mühendislikleri kategorilere ayırmış şekilde gösterir.
 
-![](./assets/images/Resim89.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/browser.webp" width="500" height="330">
+</div>
 
 Bu menü üzerindekileri genişletirsek her fonksiyonun yanındaki renk kodlarını fark edeceksiniz. Her renk kodunun farklı bir anlamı vardır.
 
-![](./assets/images/Resim90.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/renkkod.webp" width="200" height="600">
+</div>
 
 ·        **Yeşil**: Bu komut modülü hedefe karşı çalışıyor ve kullanıcıya görünmezdir.
 
@@ -318,7 +375,9 @@ Bu menü üzerindekileri genişletirsek her fonksiyonun yanındaki renk kodları
 
 Network menüsüne gidelim. Burada kurban ile olan ağ topolojisini görebilirsiniz. Biz local üzerinde çalıştığımız için sadece bir ağ ve bir hostu gösterecektir. 
 
-![](./assets/images/Resim91.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/hooked.webp" width="400" height="240">
+</div>
 
 **Step 2: Use BeEF to iniate a social enginerring attack**
 
@@ -326,21 +385,29 @@ Bu adımda kancalanmış web sayfasına sahte bir bildirim göndererek kullanıc
 
 Commands menüsüne tıklayalım. Social Engineering kategorisine kadar aşağıya inelim. Burada yer alan Fake Notification Bar (Firefox) seçeneğini seçelim.
 
-![](./assets/images/Resim92.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/fake.webp" width="350" height="340">
+</div>
 
 Seçtikten sonra modülün çalışacağı URL ve bildirimin göndereceği mesaj sağ tarafta menü üzerinde görüntülenmektedir. 
 
-![](./assets/images/Resim93.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/fake2.webp" width="460" height="240">
+</div>
 
 URL’yi http://10.6.6.13 olarak değiştirin. Bu URL DVWA sanal sunucusunun oturum açma ekranına yönlendirir. URL, yerel olarak veya ağda bulunan herhangi bir web sayfasını işaret edebilir. Canlı ortamda bu klonlanmış bir site veya kötü bir script içeren sayfa da olabilir. 
 Gönderilecek mesajı da “AdBlocker Security Extension is out of date. Install the new version now.” olarak değiştirelim. 
 Execute butonuna basarak modülü çalıştırabiliriz. Butcher sayfasına geri dönünce uyarıyı görüntüleyebilirsiniz. 
 
-![](./assets/images/Resim94.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/plugin.webp" width="660" height="100">
+</div>
 
 Install plug-in butonuna tıklayınca aşağıdaki ekran görüntüsündeki gibi bizim klonladığımız kötü içerikli olan DVWA giriş sayfasına yönlendirilmektedir.
 
-![](./assets/images/Resim95.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/login.webp" width="360" height="330">
+</div>
 
 **Step 3: Use TabNabbing to display malicious website**
 
@@ -362,17 +429,25 @@ Yukarıda yaptığımız işlemleri tekrarlayalım.
 
 Burada yine modülün genel ayarlamalarını görebilirsiniz.
 
-![](./assets/images/Resim96.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/tabnab.webp" width="430" height="240">
+</div>
 
 15 dakika yerine 1 yazın ve tarayıcınıza 1 dakikalığına dokunmayın. Normalde tarayıcıda açık olan site
-![](./assets/images/Resim97.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/butcher.webp" width="750" height="440">
+</div>
 Bu iken, aşağıdaki ise 1 dakika boyunca boşta bırakılınca yönlendirilen sitedir. 
 
-![](./assets/images/Resim98.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/secret.webp" width="510" height="480">
+</div>
 
 Ortadaki kutucuğa “This is my secret” yazalım. Sonra Control Panel sayfasından Logs menüsünde kutucuğa yazılan değeri görebilirsiniz.
 
-![](./assets/images/Resim99.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule4/thisismy.webp" width="810" height="200">
+</div>
 
 ## 4.5 Methods of Influence
 
