@@ -15,7 +15,9 @@ order: 5
 
 ### 3.3.1 How a Typical Automated Vulnerability Scanner Works
 
-![](./assets/images/Resim54.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_vuln/scanner.webp" width="600" height="430">
+</div>
 
 Birbirinden farklı da olsa çoğu zafiyet tarayıcısı benzer bir süreci takip eder. Görselleştirilmiş hali yukarıda verilmiştir.
 
@@ -82,7 +84,9 @@ Portları ve servislerin sürümlerini öğrenmek için bir nmap taraması gerç
 <span class="highlight">kali@kali</span> nmap -sV 10.6.6.23
 </div>
 
-![](./assets/images/Resim55.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_vuln/nmapsv.webp" width="660" height="230">
+</div>
 
 İşletim sistemini bulmak için ise aşağıdaki komut;
 
@@ -91,7 +95,9 @@ Portları ve servislerin sürümlerini öğrenmek için bir nmap taraması gerç
 <span class="highlight">kali@kali</span> sudo nmap -O 10.6.6.23
 </div>
 
-![](./assets/images/Resim56.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_vuln/running.webp" width="760" height="90">
+</div>
 
 **Step 2: Use the nmap Vulners script tos can for vulnerabilities**
 
@@ -104,7 +110,9 @@ CVE skoru 4 veya daha yüksek olan sistemde olan zafiyetleri taramak için aşa�
 <span class="highlight">kali@kali</span> nmap -sV –script vulners –script-args mincvss=4 10.6.6.23
 </div>
 
-![](./assets/images/Resim57.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_vuln/21.webp" width="800" height="400">
+</div>
 
 Görüldüğü üzere sistemde birçok yüksek potansiyel zafiyet bulunmaktadır.
 
@@ -124,17 +132,23 @@ Ara yüze erişmek için;
 
 Ara yüze eriştikten sonra tarama başlatmak için Scans > Tasks sayfasına gelin. Sol üst tarafta yer alan üç tane simgeden asaya benzeyeni seçin.
 
-![](./assets/images/Resim58.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_vuln/asa.webp" width="700" height="350">
+</div>
 
 **Step 3: Scan the target host for vulnerabilities**
 
 Yukarıdaki çıktıda da görüldüğü üzere IP adress yerine hedefimiz olan 10.6.6.23 veya gravemind.vm adresini yazabilirsiniz Yazdıktan sonra Start Scan butonuna tıklayın. Taramanın bitmesi biraz sürebilir.
 
-![](./assets/images/Resim59.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_vuln/reports.webp" width="700" height="350">
+</div>
 
 Bizi böyle bir sayfa karşılıyor. Bu sayfada Date bilgisine tıklarsak bulunan CVE’ler veya host hakkında daha fazla bilgiye erişebiliriz. 
 
-![](./assets/images/Resim60.jpg)
+<div style="text-align: center;">
+  <img src="./assets/images/ciscomodule3_vuln/tue.webp" width="700" height="250">
+</div>
 
 ### 3.3.4 Challanges to Consider When Running a Vulnerability Scan
 
