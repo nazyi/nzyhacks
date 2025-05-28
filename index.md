@@ -2,11 +2,11 @@
 
   <!-- Sol: Selamlama Metni -->
   <div style="flex: 1; min-width: 250px;">
-    <h2 style="margin-bottom: 16px;">Selam! 👋</h2>
+    <h2 style="margin-bottom: 16px;">Selam! </h2>
     <p style="font-size: 1.2em;">Ben  Naz . Siber güvenlik tutkunu, CTF meraklısı ve nzyhacks’in yaratıcısıyım.</p>
   </div>
 
- <!-- Sağ: Fotoğraf -->
+
 <div style="flex: 1; min-width: 250px; text-align: center;">
   <style>
     .profile-photo {
