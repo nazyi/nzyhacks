@@ -94,7 +94,7 @@ SET kullanarak spear phing emailinin ne kadar kolay yapıldığını görelim.
 Menü üzerinden Social-Engineering Attack seçeneğini seçelim.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule4/socialeng.webp" width="600" height="250">
+  <img src="./assets/images/ciscomodule4/socialeng.webp" width="500" height="250">
 </div>
 
 **Step 3**
@@ -102,7 +102,7 @@ Menü üzerinden Social-Engineering Attack seçeneğini seçelim.
 Çıkan menü üzerinden de Spear-Phishing Attack Vectors seçeneğini seçelim.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule4/spearp.webp" width="600" height="250">
+  <img src="./assets/images/ciscomodule4/spearp.webp" width="500" height="250">
 </div>
 
 **Step 4**
