@@ -521,7 +521,7 @@ Web trafiği oluştururken ziyaret ettiğimiz skillsforall.com sitesini Wireshar
 **Step 1: Analyze DNS traffic**
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/skillsfrorall.webp" width="880" height="120">
+  <img src="./assets/images/ciscomodule3_active/skillsforall.webp" width="880" height="120">
 </div>
 
 Search iconuna skillsforall.com yazdıktan sonra çıkan alttaki menüden “String” değerini ve skillsforall kelimesini yazalım. Yukarıdaki ekran görüntüsünde yaptıklarımızı görebilirsiniz. İlk çıkan paketi incelemek için üzerine tıklayalım.
