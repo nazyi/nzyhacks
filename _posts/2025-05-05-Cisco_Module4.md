@@ -86,7 +86,7 @@ SET kullanarak spear phing emailinin ne kadar kolay yapıldığını görelim.
 </div>
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule4/fsoci.webp" width="300" height="500">
+  <img src="./assets/images/ciscomodule4/fsoci.webp" width="600" height="500">
 </div>
 
 **Step 2**
@@ -94,7 +94,7 @@ SET kullanarak spear phing emailinin ne kadar kolay yapıldığını görelim.
 Menü üzerinden Social-Engineering Attack seçeneğini seçelim.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule4/socialeng.webp" width="500" height="250">
+  <img src="./assets/images/ciscomodule4/socialeng.webp" width="600" height="250">
 </div>
 
 **Step 3**
@@ -118,7 +118,7 @@ Burada bize yine birkaç tane seçenek sunuluyor biz 2. Seçeneği seçiyoruz.
 Burada file formatı seçmemiz isteniliyor. Biz 13. Seçenekten devam ediyoruz.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule4/adobe.webp" width="650" height="460">
+  <img src="./assets/images/ciscomodule4/adobe.webp" width="600" height="460">
 </div>
 
 **Step 6**
@@ -227,7 +227,7 @@ Bize web saldırganının IP adresini soruyor Kali makinemizde 10.6.6.0/24 bloğ
 Başarılı bir şekilde dinlemeye başladık.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule4/webattackwebp" width="500" height="160">
+  <img src="./assets/images/ciscomodule4/webattack.webp" width="500" height="160">
 </div>
 
 #### Part 2 Capturing and Viewing User Credentials
