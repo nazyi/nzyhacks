@@ -86,7 +86,7 @@ SET kullanarak spear phing emailinin ne kadar kolay yapıldığını görelim.
 </div>
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule4/fsoci.webp" width="600" height="500">
+  <img src="./assets/images/ciscomodule4/fsoci.webp" width="300" height="500">
 </div>
 
 **Step 2**
