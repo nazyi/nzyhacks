@@ -171,3 +171,19 @@ h1, h2, h3, h4, h5, h6 {
 p {
   font-size: 14px; /* İçeriğin fontunu küçülttük */
 }
+
+.site-icon {
+  width: 100px;
+  height: 100px;
+  margin-right: 6px;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  object-fit: contain; /* taşma olmasın */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.site-icon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  cursor: pointer; /* üstüne gelince el işareti */
+}
