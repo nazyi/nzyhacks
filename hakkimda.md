@@ -15,8 +15,8 @@ title: hakkimda
   <div style="flex: 1; min-width: 250px; text-align: center;">
     <style>
       .profile-photo {
-        width: 200px; /* sabit boyut verelim ki daire net gözüksün */
-        height: 200px;
+        width: 210px; /* sabit boyut verelim ki daire net gözüksün */
+        height: 210px;
         border-radius: 50%;
         object-fit: cover; /* resim taşmadan sığsın */
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
