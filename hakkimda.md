@@ -8,7 +8,7 @@ title: hakkimda
   <!-- Sol: Selamlama Metni -->
   <div style="flex: 1; min-width: 250px;">
     <h2 style="margin-bottom: 16px;">Selam! </h2>
-    <p style="font-size: 1.2em;">Ben Naz. Siber güvenlik tutkunu, CTF meraklısı ve nzyhacks’in yaratıcısıyım.</p>
+    <p style="font-size: 1.2em;">Ben Naz, pembe odamda hacklemeyi öğreniyorum.</p>
   </div>
 
   <!-- Sağ: Avatar Fotoğrafı -->
