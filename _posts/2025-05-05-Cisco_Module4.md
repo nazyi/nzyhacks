@@ -221,7 +221,7 @@ Bize web saldırganının IP adresini soruyor Kali makinemizde 10.6.6.0/24 bloğ
 Şimdi ise klonlamak istediğimiz web sitesinin URL adresini giriyoruz. 
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule4/createf.webp" width="600" height="40">
+  <img src="./assets/images/ciscomodule4/createf.webp" width="400" height="10">
 </div>
 
 Başarılı bir şekilde dinlemeye başladık.
