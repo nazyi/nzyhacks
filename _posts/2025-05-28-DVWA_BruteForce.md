@@ -71,7 +71,7 @@ Hydra’da brute-force yapmak için komutumuz şu şekilde:
 <span class="highlight">root@kali$</span> hydra -l admin -P /root/Desktop/olasisifre.txt 127.0.0.1 http-get-form "/vulnerabilities/brute/:username=^USER^&password=^PASS^&user_token=%CSRF%&Login=Login:H=Cookie: PHPSESSID=hdbj798bma7cpkjsdr42ja8r73; security=medium:F=Username and/or password incorrect." -t 6 -v
 </div>
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/sleep.webp" width="1450" height="300">
+  <img src="./assets/images/dvwa_bruteforce/hydra.webp" width="850" height="270">
 </div>
 ##  High Sec
 
@@ -81,23 +81,23 @@ Anti-CSRF token, CSRF saldırılarına karşı koruma sağlayan rastgele üretil
 
 Gelelim Burp üzerinde bu işlemi nasıl gerçekleştirdiğimize. İlk öncelikle paketi yakalıyoruz random bir deneme yapıp. Ondan sonra sağ üstte bulunan ayarlar kısmından Session sekmesine geliyoruz. Session handling rules kısmından add diyoruz.
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/session.webp" width="1150" height="255">
+  <img src="./assets/images/dvwa_bruteforce/session.webp" width="1050" height="255">
 </div>
 Rule actions kısmından Run macro seçeneğini seçiyoruz. Run Macro, oturum açma veya token yenileme gibi otomatik işlemleri tekrar ederek isteklere dinamik değerlerin eklenmesini sağlar.
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/runmacro.webp" width="600" height="420">
+  <img src="./assets/images/dvwa_bruteforce/runmacro.webp" width="500" height="320">
 </div>
 Select Macro kısmından add dedikten sonra aşağıdaki Tolerate URL mismatch kabul ediyoruz. Bu özellik, parametreleri eşleştirirken URL farklılıklarını göz ardı ederek aynı parametre adlarına sahip isteklerin eşleşmesine izin verir. Özellikle oturum doğrulama veya token yenileme gibi işlemlerde farklı URL'ler arasında parametrelerin takibini kolaylaştırır.
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/runmacro.webp" width="800" height="500">
+  <img src="./assets/images/dvwa_bruteforce/runmacro.webp" width="700" height="400">
 </div>
 Add ile macro paketimizi yükledikten sonra Configure Item üzerine tıklıyoruz.
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/configure.webp" width="1330" height="80">
+  <img src="./assets/images/dvwa_bruteforce/configure.webp" width="850" height="80">
 </div>
 Configure Item içinde aşağıda bulunan custom parameter bölümüne add diyoruz. Açılan sayfada parameter adını yazıp en altta bulunan search yerine token diyip aratıyoruz. Çıkan sonuçta token değerini alıyoruz. OK’a basıp kapatıyoruz.
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/macroitem.webp" width="9060" height="590">
+  <img src="./assets/images/dvwa_bruteforce/macroitem.webp" width="860" height="490">
 </div>
 Yine Session handling rule editör sayfasına gelince bu sefer Scope sekmesinden Tools Scope üzerinde sadece Intruder’ı tikli bırakıp URL Scoper üzerinden ise Use Suite Scope işaretliyoruz.
 <div style="text-align: center;">
@@ -105,5 +105,5 @@ Yine Session handling rule editör sayfasına gelince bu sefer Scope sekmesinden
 </div>
 Her şey bitince Intruder’a gelip paketimiz üzerinden işlemlerimizi tekrardan yapıyoruz.
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/son.webp" width="1150" height="230">
+  <img src="./assets/images/dvwa_bruteforce/son.webp" width="850" height="230">
 </div>
