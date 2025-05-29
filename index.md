@@ -28,3 +28,69 @@
     <img src="{{ '/assets/images/waving.png' | relative_url }}" alt="Naz Avatar" class="waving-avatar">
   </div>
 </div>
+
+<!-- Altına Eklenen Kartlar -->
+<div style="display: flex; flex-direction: column; gap: 40px; margin-top: 80px; padding: 0 20px;">
+  <style>
+    .card {
+      background-color: #1e1e1e;
+      color: #eee;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .fade-in-left {
+      transform: translateX(-100px);
+    }
+
+    .fade-in-right {
+      transform: translateX(100px);
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  </style>
+
+  <div class="card fade-in-left">
+    <h3>CTF Maceralarım</h3>
+    <p>Hack The Box, TryHackMe gibi platformlarda çözdüğüm makineleri ve edindiğim notları buradan görebilirsin.</p>
+  </div>
+
+  <div class="card fade-in-right">
+    <h3>Öğrendiklerim</h3>
+    <p>XSS, SQLi, CSRF gibi OWASP 10 zafiyetlerini çalışıyorum. Buraya notlarımı ve örnekleri koyuyorum.</p>
+  </div>
+
+  <div class="card fade-in-left">
+    <h3>Karalama Defteri</h3>
+    <p>Bazen küçük ipuçları, bazen komut satırı notları. Ne bulduysam buraya karalıyorum.</p>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const cards = document.querySelectorAll('.card');
+
+    function revealOnScroll() {
+      const triggerBottom = window.innerHeight * 0.85;
+
+      cards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        if (cardTop < triggerBottom) {
+          card.classList.add('visible');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+  });
+</script>
