@@ -86,7 +86,7 @@
   <div style="flex: 1; min-width: 250px;">
     <h2 style="font-size: 1.8em; margin-bottom: 12px;">İşlerin piştiği yer 😼</h2>
     <p style="font-size: 1.2em; line-height: 1.6; color: #ddd;">
-      Aile bütçesiyle ters orantılı ama hayallerle birebir orantılı bir köşe. 
+      Aile bütçesiyle ters orantılı ama hayallerimle doğru orantılı bir köşe. 
     </p>
   </div>
 </div>
