@@ -61,7 +61,7 @@
 
   <div class="card fade-in-left">
     <h3>CTF Maceralarım</h3>
-    <p>Hack The Box, TryHackMe gibi platformlarda çözdüğüm makineleri ve edindiğim notları buradan görebilirsin.</p>
+    <p>Hack The Box, TryHackMe, CyberExam gibi platformlarda çözdüğüm makineleri ve edindiğim notları buradan görebilirsin.</p>
   </div>
 
   <div class="card fade-in-right">
@@ -72,6 +72,23 @@
   <div class="card fade-in-left">
     <h3>Karalama Defteri</h3>
     <p>Bazen küçük ipuçları, bazen komut satırı notları. Ne bulduysam buraya karalıyorum.</p>
+  </div>
+</div>
+
+<!-- Odamın Fotoğrafı ve Yazı Bölümü -->
+<div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 100px; gap: 40px; padding: 0 20px;">
+  <!-- Sol: Oda Fotoğrafı -->
+  <div style="flex: 1; min-width: 250px; text-align: center;">
+    <img src="{{ '/assets/images/odam.jpg' | relative_url }}" alt="Naz'ın Odası" style="width: 100%; max-width: 400px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+  </div>
+
+  <!-- Sağ: Yazı -->
+  <div style="flex: 1; min-width: 250px;">
+    <h2 style="font-size: 1.8em; margin-bottom: 12px;">İşlerin piştiği yer 😼</h2>
+    <p style="font-size: 1.2em; line-height: 1.6; color: #ddd;">
+      Her satır kod, her çözülmüş makine, her not tam da bu köşede yazıldı.<br>
+      Pembe ışıklar, kahve kokusu ve bolca merak eşliğinde...
+    </p>
   </div>
 </div>
 
