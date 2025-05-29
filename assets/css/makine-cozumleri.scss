@@ -17,6 +17,13 @@
   padding: 20px;
   border-radius: 8px;
   gap: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.machine-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 
 .machine-description {
