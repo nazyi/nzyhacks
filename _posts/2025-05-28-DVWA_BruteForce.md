@@ -31,7 +31,7 @@ Bu atakta ise olası kullanıcı adlarını ve şifrelerini ayrı olarak bir txt
 Bu sefer Attack Type Cluster Bomb seçtim. Yine deneme yapacağım parametreler üzerinde işaretlemeler yaptım. 2 tane parametremiz olduğu için hangi parametrede hangi payload dosyasını kullanacaksam Payload List kısmından ona göre seçtim. Örnek olarak ilk parametrem username ise Payload List 1 seçip Load butonundan olasinick.txt seçtim. Payload Type Simple list’te kaldı. Settings ayarlarına gelip Grep - Match bölümünde olan listeyi clear ile temizledikten sonra incorrect ekledim. Bunu eklememin sebebi doğru giriş yaptığımda anlamam için bir işaret olması gerekiyordu. Her denemede gelen password is incorrect hatasını burp algılayıp olanları 1 olmayanları 0 olarak sınıflandırdığı için doğru girişimdeki değerleri direkt seçebilecektim.
 
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/cluster.webp" width="1000" height="370">
+  <img src="./assets/images/dvwa_bruteforce/cluster.webp" width="900" height="370">
 </div>
 
 <div style="text-align: center;">
@@ -40,7 +40,7 @@ Bu sefer Attack Type Cluster Bomb seçtim. Yine deneme yapacağım parametreler 
 
 Aşağıdaki çıktıda değerler işaretlenmiştir. 
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/adminpass.webp" width="1210" height="400">
+  <img src="./assets/images/dvwa_bruteforce/adminpass.webp" width="1000" height="400">
 </div>
 
 ## Wfuzz
@@ -97,7 +97,7 @@ Add ile macro paketimizi yükledikten sonra Configure Item üzerine tıklıyoruz
 </div>
 Configure Item içinde aşağıda bulunan custom parameter bölümüne add diyoruz. Açılan sayfada parameter adını yazıp en altta bulunan search yerine token diyip aratıyoruz. Çıkan sonuçta token değerini alıyoruz. OK’a basıp kapatıyoruz.
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/macroitem.webp" width="1060" height="690">
+  <img src="./assets/images/dvwa_bruteforce/macroitem.webp" width="9060" height="590">
 </div>
 Yine Session handling rule editör sayfasına gelince bu sefer Scope sekmesinden Tools Scope üzerinde sadece Intruder’ı tikli bırakıp URL Scoper üzerinden ise Use Suite Scope işaretliyoruz.
 <div style="text-align: center;">
