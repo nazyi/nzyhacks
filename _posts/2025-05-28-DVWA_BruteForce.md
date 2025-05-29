@@ -1,7 +1,7 @@
 ---
 categories: [makine]
 layout: post
-desc: ""
+desc: "DVWA (Damn Vulnerable Web Application) üzerindeki brute force zafiyet laboratuvarında, web uygulamalarına karşı kullanıcı adı ve şifre kombinasyonlarını otomatik araçlarla deneyerek kimlik doğrulama mekanizmalarını aşmayı öğrendik. Bu labda, Hydra gibi araçlar kullanarak zayıf veya tahmin edilebilir şifreleri nasıl tespit edebileceğimizi ve bir sisteme yetkisiz erişim sağlayabileceğimizi uygulamalı olarak gördük."
 logo: "/assets/images/dvwa1.png"
 author: Buse Naz Yılmaz
 title: DVWA Brute Force
