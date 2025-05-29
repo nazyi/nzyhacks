@@ -34,7 +34,7 @@
   height: auto;
   object-fit: contain;
   border-radius: 6px;
-  filter: brightness(0) invert(1);
+  filter: brightness(0) saturate(100%) sepia(100%) hue-rotate(170deg) brightness(1.2);
 }
 
 .site-title a {
