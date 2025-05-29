@@ -14,8 +14,10 @@ title: bloglar
           <p>{{ post.desc }}</p>
         </div>
         <div class="blog-logo">
-          <img src="{{ post.logo | relative_url }}" alt="{{ post.title }} logo">
-        </div>
+  <div class="logo-container">
+    <img src="{{ post.logo | relative_url }}" alt="{{ post.title }} logo">
+  </div>
+</div>
       </div>
     {% endif %}
   {% endfor %}
