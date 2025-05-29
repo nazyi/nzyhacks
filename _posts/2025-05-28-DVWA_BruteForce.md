@@ -89,7 +89,7 @@ Rule actions kısmından Run macro seçeneğini seçiyoruz. Run Macro, oturum a�
 </div>
 Select Macro kısmından add dedikten sonra aşağıdaki Tolerate URL mismatch kabul ediyoruz. Bu özellik, parametreleri eşleştirirken URL farklılıklarını göz ardı ederek aynı parametre adlarına sahip isteklerin eşleşmesine izin verir. Özellikle oturum doğrulama veya token yenileme gibi işlemlerde farklı URL'ler arasında parametrelerin takibini kolaylaştırır.
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/runmacro.webp" width="700" height="400">
+  <img src="./assets/images/dvwa_bruteforce/addmacro.webp" width="700" height="400">
 </div>
 Add ile macro paketimizi yükledikten sonra Configure Item üzerine tıklıyoruz.
 <div style="text-align: center;">
