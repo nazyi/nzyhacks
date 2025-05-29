@@ -66,3 +66,23 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
   cursor: pointer; /* üstüne gelince el işareti */
 }
+
+
+
+.logo-container {
+  width: 100px;
+  height: 100px;
+  background-color: #ffffff; /* Yuvarlak beyaz arkaplan */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
