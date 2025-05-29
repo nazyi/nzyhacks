@@ -4,8 +4,7 @@
   <div style="flex: 1; min-width: 250px;">
     <h1 style="font-size: 2.2em; margin-bottom: 12px;">Hoş geldin!</h1>
     <p style="font-size: 1.2em; line-height: 1.6;">
-      Ben Naz. Siber güvenliği pembe odamdan öğreniyorum.<br>
-      Burada çözdüğüm CTF’leri, öğrendiğim şeyleri ve küçük notlarımı paylaşıyorum.
+    Ben Naz. Siber güvenlik yolculuğumu burada belgeliyorum; öğrendiklerimi ve deneyimlerimi paylaşmak için kendi küçük köşem.
     </p>
   </div>
 
