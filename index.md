@@ -87,8 +87,7 @@
   <div style="flex: 1; min-width: 250px;">
     <h2 style="font-size: 1.8em; margin-bottom: 12px;">İşlerin piştiği yer 😼</h2>
     <p style="font-size: 1.2em; line-height: 1.6; color: #ddd;">
-      Her satır kod, her çözülmüş makine, her not tam da bu köşede yazıldı.<br>
-      Pembe ışıklar, kahve kokusu ve bolca merak eşliğinde...
+      Aile bütçesiyle ters orantılı ama hayallerle birebir orantılı bir köşe. 
     </p>
   </div>
 </div>
