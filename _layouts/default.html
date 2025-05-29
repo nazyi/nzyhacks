@@ -15,6 +15,11 @@
      {% if page.title == "modul-cozumler" %}
     <link rel="stylesheet" href="{{ '/assets/css/modul-cozumleri.css?v=' | relative_url }}">
     {% endif %}
+
+    {% if page.title == "bloglar" %}
+    <link rel="stylesheet" href="{{ '/assets/css/blog.css?v=' | relative_url }}">
+    {% endif %}
+
     
     {% include head-custom.html %}
     {% seo %}
