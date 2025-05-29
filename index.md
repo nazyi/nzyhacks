@@ -42,6 +42,7 @@
       transform: translateY(40px);
       transition: all 0.8s ease;
       max-width: 800px;
+      min-width: 800px;
       margin: 0 auto;
     }
 
@@ -66,12 +67,12 @@
 
   <div class="card fade-in-right">
     <h3>Öğrendiklerim</h3>
-    <p>XSS, SQLi, CSRF gibi OWASP 10 zafiyetlerini çalışıyorum. Buraya notlarımı ve örnekleri koyuyorum.</p>
+    <p>Farklı modüller üzerinde çalışarak bilgimi derinleştiriyorum; bu sayfada notlarımı ve örnekleri bulabilirsin.</p>
   </div>
 
   <div class="card fade-in-left">
     <h3>Karalama Defteri</h3>
-    <p>Bazen küçük ipuçları, bazen komut satırı notları. Ne bulduysam buraya karalıyorum.</p>
+    <p>Bazen küçük ipuçları, bazen komut satırı notları… Burada öğrendiklerimi, denediklerimi ve bulduklarımı karalıyorum.</p>
   </div>
 </div>
 
