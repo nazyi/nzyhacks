@@ -4,6 +4,7 @@ layout: post
 title: CyberExam Uncovering Hidden SSID 
 desc: "Kapsamı belirlemek için, kablosuz ağ penetrasyon testinde wifi ağlarını bulmaya çalışıyorum. Ancak, bazı SSID değerlerinin gizli olduğunu keşfettim. Bu konuda bana yardımcı olabilir misiniz?"
 logo: "/assets/images/hidden_wifi.png"
+tags: [CyberExam]
 author: Buse Naz Yılmaz
 ---
 # Giriş
