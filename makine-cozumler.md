@@ -5,9 +5,10 @@ title: makine-cozumler
 
 # Makine Çözümleri
 
+{% assign makineler = site.posts | where: "categories", "makine" | sort: "order" %}
+
 <div class="makine-listesi">
-  {% for post in site.posts %}
-    {% if post.categories contains "makine" %}
+  {% for post in makineler %}
       <div class="machine-item">
         <div class="machine-description">
           <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
