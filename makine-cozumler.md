@@ -8,7 +8,6 @@ title: makine-cozumler
 {% assign platforms = "HTB,TryHackMe,CyberExam" | split: "," %}
 
 {% for platform in platforms %}
-  <h2 style="color:#FF69B4;">{{ platform }}</h2>
   <div class="makine-listesi">
     {% for post in site.posts %}
       {% if post.categories contains "makine" and post.tags contains platform %}
