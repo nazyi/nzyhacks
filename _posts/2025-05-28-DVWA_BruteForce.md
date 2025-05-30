@@ -5,6 +5,7 @@ desc: "DVWA (Damn Vulnerable Web Application) üzerindeki brute force zafiyet la
 logo: "/assets/images/dvwa1.png"
 author: Buse Naz Yılmaz
 title: DVWA Brute Force
+order: 6
 tags: [web] 
 ---
 
