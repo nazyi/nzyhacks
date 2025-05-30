@@ -18,6 +18,5 @@ title: makine-cozumler
           <img src="{{ post.logo | relative_url }}" alt="{{ post.title }} logo">
         </div>
       </div>
-    {% endif %}
   {% endfor %}
 </div>
