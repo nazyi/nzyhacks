@@ -4,9 +4,10 @@ layout: post
 title: TryHackMe Pickle Rick
 desc: "Rick and Morty temalı bu görev, bir web sunucusunu istismar etmenizi ve Rick'in iksirini yapmasına ve kendini bir turşudan insana dönüştürmesine yardımcı olacak üç malzemeyi bulmanızı gerektiriyor."
 logo: "/assets/images/picklerick.jpeg"
-tags: [TryHackMe]
+tags: [TryHackMe, Command Injection]
 order: 4 
-author: Buse Naz Yılmaz
+author: nazy
+translation_url: /en/Tryhackme_PickleRick
 ---
 # Port Taraması
 
@@ -32,13 +33,13 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel<br>
 Nmap taraması sonucunda ssh ve http portlarının açık olduğunu buluyoruz. SSH hakkında elimizde açık bir zafiyet olmadığı için 80 portuna tarayıcı üzerinden erişiyorum. 
 
 <div style="text-align: center;">
-  <img src="./assets/images/tryhackme_picklerick/first.webp" width="500" height="400">
+  <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/first.webp' | relative_url }}" width="500" height="400" alt="Rick is sup4r cool başlıklı web sitesinin tarayıcıda açılmış hali">
 </div>
 
 Rick bizden bilgisayarına erişip son üç tane gizli malzemeyi bulmamızı istiyor fakat şifresini hatırlamadığını belirtiyor. Web sayfası üzerinden bilgi edinmye çalışalım. İlk öncelikle sayfanın kodunu incelemeyle başlayalım. Kaynak kodunu incelerken bize verilen bir kullanıcı adı olduğunu görüyoruz. 
 
 <div style="text-align: center;">
-  <img src="./assets/images/tryhackme_picklerick/sec.webp" width="700" height="400">
+  <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/sec.webp' | relative_url }}" width="700" height="400" alt="Sayfa kaynak kodunda bulunan gizli kullanıcı adı yorumu">
 </div>
 
 Harika! Şimdi ise daha fazla detay öğrenmek için gizli dosyaları tarayacağız.
@@ -54,37 +55,37 @@ Bu işlem için gobuster isimli bir aracı kullanacağız. Gobuster, hızlı ve 
 Bu komut bizim -w parametresi ile belirttiğimiz wordlist ögelerini deneyerek gizli dosyaları bulmamızı sağlayacak.  Komutun çıktısında birkaç tane gizli dosya bulabildiğimizi görüyoruz. 
 
 <div style="text-align: center;">
-  <img src="./assets/images/tryhackme_picklerick/th.webp" width="650" height="100">
+  <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/th.webp' | relative_url }}" width="650" height="100" alt="Gobuster taramasının bulduğu gizli dizin ve dosyaların listesi">
 </div>
 
 Bu dosyaları tarayıcı üzerinde görüntüleyelim. İlk olarak login.php adresine gidelim. Adreste aşağıdaki ekran görüntüsü gibi bir giriş sayfası bizi karşılıyor. 
 <div style="text-align: center;">
-  <img src="./assets/images/tryhackme_picklerick/fort.webp" width="380" height="440">
+  <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/fort.webp' | relative_url }}" width="380" height="440" alt="login.php sayfasındaki giriş formu ekran görüntüsü">
 </div>
 
 Bir kullanıcı adına sahibiz fakat şifreyi hala bilmiyoruz. Gobuster bize diğer birkaç tane dosya daha olduğunu söylemişti. O dosyadan bir tanesi de robots.txt (çıktının aşağılarında olduğu için ekran görüntüsünde yer almıyor). Robots.txt dosyası, Google botlarına hangi sayfaları ve dizinleri tarayıp indekslenebileceklerini hangilerini taramayacaklarını bildiren bir sayfadır. 
 Bu sayfada bize bir değer veriliyor. 
 
 <div style="text-align: center;">
-  <img src="./assets/images/tryhackme_picklerick/fif.webp" width="400" height="100">
+  <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/fif.webp' | relative_url }}" width="400" height="100" alt="robots.txt dosyasında bulunan gizli şifre değeri">
 </div>
 # İlk Malzeme
 
 Bu değeri giriş yaparken şifre olarak deneyelim. Bingo! Giriş yapabildik. Bizi bir command panel karşılıyor.
 <div style="text-align: center;">
-  <img src="./assets/images/tryhackme_picklerick/si.webp" width="500" height="100">
+  <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/si.webp' | relative_url }}" width="500" height="100" alt="Giriş sonrası erişilen komut çalıştırma panelinin görünümü">
 </div>
 Panel üzerinde ls komutu ile listeleme yapalım. 
 <div style="text-align: center;">
-  <img src="./assets/images/tryhackme_picklerick/seve.webp" width="200" height="200">
+  <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/seve.webp' | relative_url }}" width="200" height="200" alt="Command panelinde 'ls' komutunun dosya listesi çıktısı">
 </div>
 İlk dosyanın adı oldukça şüpheli gözüküyor. Dosyaya erişmek için [http://10.10.246.186/Sup3rS3cretPickl3Ingred.txt](http://10.10.246.186/Sup3rS3cretPickl3Ingred.txt) isimli URL adresine gidelim.
 <div style="text-align: center;">
-  <img src="./assets/images/tryhackme_picklerick/ei.webp" width="500" height="100">
+  <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/ei.webp' | relative_url }}" width="500" height="100" alt="Sup3rS3cretPickl3Ingred.txt dosyasında bulunan ilk malzeme">
 </div>
 Bingo ilk gizli malzememizi buluyoruz. Daha fazla malzeme toplamak için devam edelim. Ls komutu ile bulduğumuz dosyalara tekrardan göz gezdirelim. Dosyaların arasından clue.txt dosyası ile bir ipucu yakalayabiliriz. 
 <div style="text-align: center;">
-  <img src="./assets/images/tryhackme_picklerick/nin.webp" width="400" height="100">
+  <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/nin.webp' | relative_url }}" width="400" height="100" alt="clue.txt dosyasındaki dosya sistemine bakma ipucu">
 </div>
 # İkinci Malzeme
 
@@ -98,12 +99,12 @@ Dosya sistemine göz atmamız gerektiğini söylüyor.
 
 Burada second ingredients isimli bir dosya olduğunu görüntülüyoruz. Fakat bu dosyanın içeriğini cat nano veya vim tarzı komutlarla görüntüleyemiyoruz.
 <div style="text-align: center;">
-  <img src="./assets/images/tryhackme_picklerick/ten.webp" width="300" height="180">
+  <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/ten.webp' | relative_url }}" width="300" height="180" alt="'second ingredients' dosyasının cat ile açılamama hatası">
 </div>
 Cat benzeri komutları araştırıp şansımızı tekrardan deneyelim. Aşağıdaki komut ile çıktıya ulaşabiliyorum.  
 ·        less ‘/home/rick/second ingredients’
 <div style="text-align: center;">
-  <img src="./assets/images/tryhackme_picklerick/el.webp" width="150" height="50">
+  <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/el.webp' | relative_url }}" width="150" height="50" alt="less komutuyla görüntülenen ikinci malzeme içeriği">
 </div>
 Diğer malzemeyi bulmak için araştırmamıza devam edelim.
 
@@ -111,17 +112,17 @@ Diğer malzemeyi bulmak için araştırmamıza devam edelim.
 
 Root klasörünün içeriğini görüntülemeye çalışalım. ls /root komutunu deneyelim fakat sanırım root klasörüne erişimimiz yok. Yetkinliğimizi görüntülemek için sudo -l komutunu kullanalım. Fakat bu da ne?
 <div style="text-align: center;">
-  <img src="./assets/images/tryhackme_picklerick/twe.webp" width="750" height="100">
+  <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/twe.webp' | relative_url }}" width="750" height="100" alt="sudo -l çıktısında www-data için NOPASSWD yetkisi">
 </div>
 Çıktıda belirttiği şey www-data kullanıcısı herhangi bir komutu şifresiz olarak çalıştırabilir. O halde root klasörünün içini görüntüleyebiliriz.
 
 ·        sudo ls /root
 <div style="text-align: center;">
-  <img src="./assets/images/tryhackme_picklerick/13.webp" width="75" height="60">
+  <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/13.webp' | relative_url }}" width="75" height="60" alt="'sudo ls /root' komutuyla görülen 3rd.txt dosyası">
 </div>
 Ve üçüncü malzememizin bulunduğu txt dosyasını görüyoruz. Less komutunu kulalanrak içeriğini görüntüleyelim ve son bayrağımızı da alalım.
 
 ·        less /root/3rd.txt
 <div style="text-align: center;">
-  <img src="./assets/images/tryhackme_picklerick/14.webp" width="250" height="50">
+  <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/14.webp' | relative_url }}" width="250" height="50" alt="less /root/3rd.txt ile elde edilen üçüncü malzeme bayrağı">
 </div>

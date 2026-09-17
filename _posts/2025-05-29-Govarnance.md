@@ -1,10 +1,12 @@
 ---
 categories: [blog]
 layout: post
-desc: " Veri ve bilgi gibi temel kavramlardan yola çıkarak, kişisel verilerimizi koruyan GDPR gibi önemli regülasyonları ve şirketlerde bilgilerin nasıl sınıflandırıldığını anlattım. Ayrıca, dijital dünyada karşılaştığımız siber saldırı türlerini (zararlı yazılımlar, oltalama, fidye yazılımları gibi) detaylıca inceleyerek, bu tehditlere karşı nasıl korunabileceğimize dair bilgiler sundum. Son olarak da Bilgi Güvenliği Yönetim Sistemi'nin (BGYS) temel adımlarını ele aldım. "
+desc: "Veri sınıflandırma, GDPR gibi regülasyonlar, yaygın siber saldırı türleri ve Bilgi Güvenliği Yönetim Sistemi'nin (BGYS) temellerine kısa bir bakış."
 logo: "/assets/images/blog_icon/govarnance.png"
-author: Buse Naz Yılmaz
+author: nazy
 title: Bilgi Yönetişimi 202 
+tags: [Bilgi Yönetişimi, GDPR]
+translation_url: /en/Govarnance
 ---
 
 **Terminoloji**

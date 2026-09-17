@@ -1,24 +1,10 @@
 ---
 layout: default
-title: bloglar
+title: Bloglar
+translation_url: /en/bloglar
 ---
 
 # Bloglar
 
-<div class="blog-listesi">
-  {% for post in site.posts %}
-    {% if post.categories contains "blog" %}
-      <div class="blog-item">
-        <div class="blog-description">
-          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-          <p>{{ post.desc }}</p>
-        </div>
-        <div class="blog-logo">
-  <div class="logo-container">
-    <img src="{{ post.logo | relative_url }}" alt="{{ post.title }} logo">
-  </div>
-</div>
-      </div>
-    {% endif %}
-  {% endfor %}
-</div>
+{% assign blog_posts = site.posts | where: "lang", "tr" | where_exp: "post", "post.categories contains 'blog'" %}
+{% include solution-list.html posts=blog_posts %}

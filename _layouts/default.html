@@ -1,74 +1,409 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
+{% assign lang = page.lang | default: site.lang | default: "tr" %}
+{% assign t = site.data.i18n[lang] %}
+{% if lang == "en" %}
+  {% assign prefix = "/en" %}
+  {% assign tr_url = page.translation_url | default: "/" %}
+  {% assign en_url = page.url %}
+  {% assign switch_url = tr_url %}
+  {% assign other_code = "TR" %}
+  {% assign search_index = "/search-en.json" %}
+  {% assign feed_url = "/feed-en.xml" %}
+{% else %}
+  {% assign prefix = "" %}
+  {% assign tr_url = page.url %}
+  {% assign en_url = page.translation_url | default: "/en/" %}
+  {% assign switch_url = en_url %}
+  {% assign other_code = "EN" %}
+  {% assign search_index = "/search.json" %}
+  {% assign feed_url = "/feed.xml" %}
+{% endif %}
+<html lang="{{ lang }}">
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     <link rel="icon" href="{{ '/assets/images/favicon/favicon-32x32.png' | relative_url }}" type="image/x-icon" />
+    <link rel="alternate" hreflang="tr" href="{{ tr_url | absolute_url }}">
+    <link rel="alternate" hreflang="en" href="{{ en_url | absolute_url }}">
+    <link rel="alternate" hreflang="x-default" href="{{ tr_url | absolute_url }}">
+    <link rel="alternate" type="application/atom+xml" title="nzyhacks" href="{{ feed_url | relative_url }}">
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem('nzy-theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
 
-    
-    {% if page.title == "makine-cozumler" %}
-    <link rel="stylesheet" href="{{ '/assets/css/makine-cozumleri.css?v=' | relative_url }}">
-    {% endif %}
-
-     {% if page.title == "modul-cozumler" %}
-    <link rel="stylesheet" href="{{ '/assets/css/modul-cozumleri.css?v=' | relative_url }}">
-    {% endif %}
-
-    {% if page.title == "bloglar" %}
-    <link rel="stylesheet" href="{{ '/assets/css/blog.css?v=' | relative_url }}">
-    {% endif %}
-
-    
     {% include head-custom.html %}
     {% seo %}
   </head>
 
   <body>
 
-    <header>
-  <div class="container header-flex" style="display: flex; justify-content: space-between; align-items: center;">
+    <header class="site-header">
+      <div class="container header-flex">
 
-    <!-- Sol: Site Başlığı -->
-    <div class="site-title">
-  <a id="a-title" href="{{ site.baseurl }}" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
-    <img src="{{ '/assets/images/favicon/removebg.png' | relative_url }}" alt="icon" class="site-icon">
-    <h1 style="margin: 0; font-size: 1.5em;">nzyhacks</h1>
-  </a>
-</div>
+        <!-- Sol: Site Başlığı -->
+        <div class="site-title">
+          <a id="a-title" href="{{ site.baseurl }}{{ prefix }}/">
+            <img src="{{ '/assets/images/favicon/removebg.png' | relative_url }}" alt="{{ t.logo_alt }}" class="site-icon">
+            <h1>nzyhacks</h1>
+          </a>
+        </div>
 
-    <!-- Sağ: Menü -->
-    <nav class="header-menu">
-      <ul>
-        <!-- Ana Sayfa -->
-        <li><a href="{{ site.baseurl }}/">Ana Sayfa</a></li>
+        <!-- Sağ: Menü + tema/dil düğmesi -->
+        <div class="header-actions">
+          <nav class="header-menu">
+            <button id="nav-toggle" class="nav-toggle" type="button" aria-label="{{ t.nav_toggle_aria }}" aria-expanded="false" aria-controls="nav-list">
+              <span></span><span></span><span></span>
+            </button>
 
-         <!-- Bloglar -->
-        <li><a href="{{ site.baseurl }}/bloglar">Bloglar</a></li>
-        
-        <!-- Çözümler Dropdown Menüsü -->
-        <li class="dropdown">
-          <a href="{{ site.baseurl }}/cozumler">Çözümler</a>
-          <ul class="dropdown-content">
-            <li><a href="{{ site.baseurl }}/makine-cozumler">Makine Çözümleri</a></li>
-            <li><a href="{{ site.baseurl }}/modul-cozumler">Modül Çözümleri</a></li>
-          </ul>
-        </li>
-      
-        <!-- Hakkında (Opsiyonel) -->
-        <li><a href="{{ site.baseurl }}/hakkimda">Hakkımda</a></li>
-      </ul>
-    </nav>
+            <ul id="nav-list">
+              <li><a href="{{ site.baseurl }}{{ prefix }}/">{{ t.nav_home }}</a></li>
 
-  </div>
-</header>
+              <li><a href="{{ site.baseurl }}{{ prefix }}/bloglar">{{ t.nav_blog }}</a></li>
+
+              <li class="dropdown">
+                <span class="dropdown-row">
+                  <a href="{{ site.baseurl }}{{ prefix }}/cozumler">{{ t.nav_solutions }}</a>
+                  <button class="dropdown-caret" type="button" aria-label="{{ t.dropdown_toggle_aria }}" aria-expanded="false">▾</button>
+                </span>
+                <ul class="dropdown-content">
+                  <li><a href="{{ site.baseurl }}{{ prefix }}/makine-cozumler">{{ t.nav_machine_solutions }}</a></li>
+                  <li><a href="{{ site.baseurl }}{{ prefix }}/modul-cozumler">{{ t.nav_module_solutions }}</a></li>
+                </ul>
+              </li>
+
+              <li><a href="{{ site.baseurl }}{{ prefix }}/dokumantasyon">{{ t.nav_documentation }}</a></li>
+
+              <li><a href="{{ site.baseurl }}{{ prefix }}/hakkimda">{{ t.nav_about }}</a></li>
+            </ul>
+          </nav>
+
+          <button id="search-toggle" class="search-toggle" type="button" aria-label="{{ t.search_toggle_aria }}">🔍</button>
+          <a href="{{ switch_url | relative_url }}" class="lang-toggle" aria-label="{{ t.lang_toggle_aria }}">{{ other_code }}</a>
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="{{ t.theme_toggle_aria }}">🌙</button>
+        </div>
+
+      </div>
+    </header>
+
+    <div id="search-overlay" class="search-overlay" hidden>
+      <div class="search-panel">
+        <div class="search-panel-header">
+          <input type="search" id="search-input" class="search-input" placeholder="{{ t.search_placeholder }}" aria-label="{{ t.search_toggle_aria }}">
+          <button id="search-close" class="search-close" type="button" aria-label="{{ t.search_close_aria }}">✕</button>
+        </div>
+        <div id="search-results" class="search-results"></div>
+        <p id="search-empty" class="search-empty">{{ t.search_empty }}</p>
+      </div>
+    </div>
 
     <div class="container">
       <section id="main_content">
         {{ content }}
       </section>
     </div>
-    
+
+    <button id="back-to-top" class="back-to-top" type="button" aria-label="{{ t.back_to_top_aria }}">↑</button>
+
+    <footer class="site-footer">
+      <div class="container">
+        &copy; {{ site.time | date: "%Y" }} nzyhacks — {{ site.author | default: "nazy" }}
+        <p class="site-disclaimer">{{ t.footer_disclaimer }}</p>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var navToggle = document.getElementById('nav-toggle');
+        var navList = document.getElementById('nav-list');
+        var dropdown = document.querySelector('.dropdown');
+        var dropdownCaret = document.querySelector('.dropdown-caret');
+
+        function closeDropdown() {
+          if (!dropdown) return;
+          dropdown.classList.remove('open');
+          if (dropdownCaret) dropdownCaret.setAttribute('aria-expanded', 'false');
+        }
+
+        function closeNav() {
+          if (!navList) return;
+          navList.classList.remove('open');
+          if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+          closeDropdown();
+        }
+
+        if (navToggle && navList) {
+          navToggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var isOpen = navList.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            if (!isOpen) closeDropdown();
+          });
+        }
+
+        if (dropdownCaret && dropdown) {
+          dropdownCaret.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var isOpen = dropdown.classList.toggle('open');
+            dropdownCaret.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          });
+        }
+
+        document.addEventListener('click', function (e) {
+          if (navList && !navList.contains(e.target) && e.target !== navToggle) {
+            closeNav();
+          }
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') closeNav();
+        });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var btn = document.getElementById('theme-toggle');
+        if (!btn) return;
+
+        function updateIcon() {
+          var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+          btn.textContent = isDark ? '☀️' : '🌙';
+        }
+
+        updateIcon();
+
+        btn.addEventListener('click', function () {
+          var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+          if (isDark) {
+            document.documentElement.removeAttribute('data-theme');
+          } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+          try {
+            localStorage.setItem('nzy-theme', isDark ? 'light' : 'dark');
+          } catch (e) {}
+          updateIcon();
+        });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var toggle = document.getElementById('search-toggle');
+        var overlay = document.getElementById('search-overlay');
+        var input = document.getElementById('search-input');
+        var closeBtn = document.getElementById('search-close');
+        var resultsEl = document.getElementById('search-results');
+        var emptyEl = document.getElementById('search-empty');
+        if (!toggle || !overlay) return;
+
+        var indexData = null;
+        var indexPromise = null;
+        var currentMatches = [];
+
+        function loadIndex() {
+          if (!indexPromise) {
+            indexPromise = fetch('{{ search_index | relative_url }}')
+              .then(function (res) { return res.json(); })
+              .then(function (data) { indexData = data; return data; })
+              .catch(function () { indexData = []; return []; });
+          }
+          return indexPromise;
+        }
+
+        function render(items) {
+          resultsEl.innerHTML = '';
+          items.slice(0, 8).forEach(function (item) {
+            var a = document.createElement('a');
+            a.className = 'search-result';
+            a.href = item.url;
+
+            var title = document.createElement('strong');
+            title.textContent = item.title;
+
+            var date = document.createElement('small');
+            date.textContent = item.date;
+
+            var desc = document.createElement('span');
+            desc.textContent = item.desc;
+
+            a.appendChild(title);
+            a.appendChild(date);
+            a.appendChild(desc);
+            resultsEl.appendChild(a);
+          });
+        }
+
+        function openSearch() {
+          overlay.hidden = false;
+          document.body.style.overflow = 'hidden';
+          loadIndex();
+          setTimeout(function () { input.focus(); }, 0);
+        }
+
+        function closeSearch() {
+          overlay.hidden = true;
+          document.body.style.overflow = '';
+          input.value = '';
+          resultsEl.innerHTML = '';
+          emptyEl.style.display = 'none';
+          currentMatches = [];
+        }
+
+        toggle.addEventListener('click', openSearch);
+        closeBtn.addEventListener('click', closeSearch);
+
+        overlay.addEventListener('click', function (e) {
+          if (e.target === overlay) closeSearch();
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && !overlay.hidden) closeSearch();
+        });
+
+        input.addEventListener('input', function () {
+          var q = input.value.trim().toLowerCase();
+
+          if (!q) {
+            currentMatches = [];
+            resultsEl.innerHTML = '';
+            emptyEl.style.display = 'none';
+            return;
+          }
+
+          loadIndex().then(function (data) {
+            var matches = data.filter(function (item) {
+              return (item.title + ' ' + item.desc).toLowerCase().indexOf(q) !== -1;
+            });
+            currentMatches = matches;
+            render(matches);
+            emptyEl.style.display = matches.length === 0 ? 'block' : 'none';
+          });
+        });
+
+        input.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' && currentMatches.length === 1) {
+            window.location.href = currentMatches[0].url;
+          }
+        });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var windows = document.querySelectorAll('.code-window');
+        if (!windows.length) return;
+
+        function getCodeText(el) {
+          var clone = el.cloneNode(true);
+          var copyBtn = clone.querySelector('.code-copy');
+          if (copyBtn) copyBtn.remove();
+
+          // Group nodes into lines at each <br>; for each line, take the
+          // text after the last prompt (.highlight) marker as the command,
+          // and skip lines with no prompt marker at all (pure output).
+          var lines = [[]];
+          Array.prototype.forEach.call(clone.childNodes, function (node) {
+            if (node.nodeName === 'BR') {
+              lines.push([]);
+            } else {
+              lines[lines.length - 1].push(node);
+            }
+          });
+
+          var commands = [];
+          lines.forEach(function (lineNodes) {
+            var highlightIndex = -1;
+            lineNodes.forEach(function (node, i) {
+              if (node.nodeType === 1 && node.classList && node.classList.contains('highlight')) {
+                highlightIndex = i;
+              }
+            });
+            if (highlightIndex === -1) return;
+
+            var text = '';
+            for (var i = highlightIndex + 1; i < lineNodes.length; i++) {
+              text += lineNodes[i].textContent;
+            }
+            text = text.replace(/^[\s>]+/, '').trim();
+            if (text) commands.push(text);
+          });
+
+          if (commands.length) return commands.join('\n');
+
+          // No prompt markers at all (some posts forgot them) — fall back
+          // to copying the whole block rather than nothing.
+          clone.querySelectorAll('br').forEach(function (br) {
+            br.replaceWith('\n');
+          });
+          return clone.textContent.replace(/^\s+|\s+$/g, '');
+        }
+
+        windows.forEach(function (win) {
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'code-copy';
+          btn.setAttribute('aria-label', '{{ t.code_copy_aria }}');
+          btn.textContent = '📋';
+          win.appendChild(btn);
+
+          btn.addEventListener('click', function () {
+            var text = getCodeText(win);
+            var done = function () {
+              btn.textContent = '✅';
+              setTimeout(function () { btn.textContent = '📋'; }, 1500);
+            };
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(done).catch(done);
+            } else {
+              var textarea = document.createElement('textarea');
+              textarea.value = text;
+              textarea.style.position = 'fixed';
+              textarea.style.opacity = '0';
+              document.body.appendChild(textarea);
+              textarea.select();
+              try { document.execCommand('copy'); } catch (e) {}
+              document.body.removeChild(textarea);
+              done();
+            }
+          });
+        });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var btn = document.getElementById('back-to-top');
+        if (!btn) return;
+
+        function toggleVisibility() {
+          if (window.scrollY > 400) {
+            btn.classList.add('visible');
+          } else {
+            btn.classList.remove('visible');
+          }
+        }
+
+        window.addEventListener('scroll', toggleVisibility, { passive: true });
+        toggleVisibility();
+
+        btn.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      })();
+    </script>
+
   </body>
 </html>

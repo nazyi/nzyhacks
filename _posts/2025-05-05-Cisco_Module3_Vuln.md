@@ -3,9 +3,11 @@ categories: [modul]
 layout: post
 desc: "Cisco Ethical Hacker kursunun üçüncü bölümünün zafiyet taraması kısmıdır. Zafiyet tarayıcılarının çalışma prensipleri, tarama türleri (authenticated, unauthenticated, stealth, compliance vb.) ve Kali Linux üzerinde Nmap ile GVM araçları kullanılarak yapılan zafiyet analizleri uygulamalı olarak ele alınmıştır. Ayrıca, tarama sonuçlarının analizinde dikkat edilmesi gereken noktalar ile CVE, CWE, CVSS gibi güvenlik kaynakları tanıtılmıştır."
 logo: "/assets/images/cisco.png"
-author: Buse Naz Yılmaz
+author: nazy
 title: Cisco Ethical Hacker Modül 3 - Vulnerability Scans
+tags: [Cisco, Zafiyet Taraması]
 order: 5
+translation_url: /en/Cisco_Module3_Vuln
 ---
 # Cisco Ethical Hacker
 
@@ -16,7 +18,7 @@ order: 5
 ### 3.3.1 How a Typical Automated Vulnerability Scanner Works
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_vuln/scanner.webp" width="600" height="430">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_vuln/scanner.webp' | relative_url }}" width="600" height="430" alt="Otomatik zafiyet tarayıcısının çalışma sürecini gösteren adım adım şema">
 </div>
 
 Birbirinden farklı da olsa çoğu zafiyet tarayıcısı benzer bir süreci takip eder. Görselleştirilmiş hali yukarıda verilmiştir.
@@ -85,7 +87,7 @@ Portları ve servislerin sürümlerini öğrenmek için bir nmap taraması gerç
 </div>
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_vuln/nmapsv.webp" width="660" height="230">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_vuln/nmapsv.webp' | relative_url }}" width="660" height="230" alt="nmap -sV komutunun çıktısında görülen açık portlar ve servis sürümleri">
 </div>
 
 İşletim sistemini bulmak için ise aşağıdaki komut;
@@ -96,7 +98,7 @@ Portları ve servislerin sürümlerini öğrenmek için bir nmap taraması gerç
 </div>
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_vuln/running.webp" width="760" height="90">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_vuln/running.webp' | relative_url }}" width="760" height="90" alt="nmap -O komutu ile tespit edilen hedef işletim sistemi bilgisi">
 </div>
 
 **Step 2: Use the nmap Vulners script tos can for vulnerabilities**
@@ -111,7 +113,7 @@ CVE skoru 4 veya daha yüksek olan sistemde olan zafiyetleri taramak için aşa�
 </div>
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_vuln/21.webp" width="800" height="400">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_vuln/21.webp' | relative_url }}" width="800" height="400" alt="Nmap Vulners scripti çıktısında listelenen yüksek CVSS skorlu zafiyetler">
 </div>
 
 Görüldüğü üzere sistemde birçok yüksek potansiyel zafiyet bulunmaktadır.
@@ -133,7 +135,7 @@ Ara yüze erişmek için;
 Ara yüze eriştikten sonra tarama başlatmak için Scans > Tasks sayfasına gelin. Sol üst tarafta yer alan üç tane simgeden asaya benzeyeni seçin.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_vuln/asa.webp" width="700" height="350">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_vuln/asa.webp' | relative_url }}" width="700" height="350" alt="GVM arayüzünde Scans-Tasks sayfasında yeni tarama başlatma simgesi">
 </div>
 
 **Step 3: Scan the target host for vulnerabilities**
@@ -141,13 +143,13 @@ Ara yüze eriştikten sonra tarama başlatmak için Scans > Tasks sayfasına gel
 Yukarıdaki çıktıda da görüldüğü üzere IP adress yerine hedefimiz olan 10.6.6.23 veya gravemind.vm adresini yazabilirsiniz Yazdıktan sonra Start Scan butonuna tıklayın. Taramanın bitmesi biraz sürebilir.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_vuln/reports.webp" width="700" height="350">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_vuln/reports.webp' | relative_url }}" width="700" height="350" alt="GVM'de hedef IP adresi girilip taramanın başlatıldığı Start Scan ekranı">
 </div>
 
 Bizi böyle bir sayfa karşılıyor. Bu sayfada Date bilgisine tıklarsak bulunan CVE’ler veya host hakkında daha fazla bilgiye erişebiliriz. 
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_vuln/tue.webp" width="700" height="250">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_vuln/tue.webp' | relative_url }}" width="700" height="250" alt="GVM tarama raporunda bulunan CVE ve host detaylarının listelendiği sayfa">
 </div>
 
 ### 3.3.4 Challanges to Consider When Running a Vulnerability Scan

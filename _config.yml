@@ -2,9 +2,31 @@
 # Tema Ayarları
 theme: jekyll-theme-hacker
 
+# Site Bilgileri
+title: nzyhacks
+url: "https://nazyi.github.io"
+baseurl: "/nzyhacks"
+description: "Naz'ın IT ve siber güvenlik yolculuğu; CTF çözümleri, modül notları ve kurumsal araç dokümantasyonu."
+
+lang: tr
+
+# Sayfalara varsayılan sosyal paylaşım görseli (jekyll-seo-tag site geneli image alanını okumadığı için)
+# ve varsayılan dil (İngilizce sayfa/yazılar kendi front matter'ında lang: en ile bunu geçersiz kılar).
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/favicon/android-chrome-512x512.png
+      lang: tr
+
+# GitHub Pages'in native derleyicisi Gemfile'ı okumaz; eklentilerin
+# gerçekten devreye girmesi için burada açıkça listelenmeleri gerekir.
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
 # Permalink Yapısı
 permalink: /:title
-baseurl: "/nzyhacks"
 
 # Markdown Formatı
 markdown: kramdown

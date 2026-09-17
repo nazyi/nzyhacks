@@ -3,9 +3,11 @@ categories: [modul]
 layout: post
 desc: "Cisco Ethical Hacker kursunun ikinci bölümüdür. Sızma testi sürecinde planlama ve kapsam belirleme aşamalarının neden kritik olduğunu vurgular. Aynı zamanda regülasyonlara uyum, yasal sorumluluklar ve etik ilkeler çerçevesinde nasıl hareket edilmesi gerektiğini detaylandırır."
 logo: "/assets/images/cisco.png"
-author: Buse Naz Yılmaz
+author: nazy
 title: Cisco Ethical Hacker Modül 2 
+tags: [Cisco, Planlama ve Kapsam]
 order: 2
+translation_url: /en/Cisco_Module2
 ---
 
 # Cisco Ethical Hacker
@@ -34,7 +36,7 @@ HIPAA, elektronik olarak korunmuş sağlık bilgilerine odaklanır. HIPAA güven
 
 ·        **Healthcare Clearinghouse:** Standart olmayan sağlık bilgilerini standart formata getirenleri tanımlamaktadır.
 
-·        **Business Associates:** Kişi hizmeti alırken; bilgilerini alani ileten erişen veya sahip kişileri tanımlamaktadır.
+·        **Business Associates:** Kişi hizmeti alırken; bilgilerini ileten, erişen veya elinde bulunduran taraflar tanımlanmaktadır.
 
 ### 2.1.3 Payment Card Industry Data Security Standard (PCI DSS)
 
@@ -48,7 +50,7 @@ PCI endüstrisinde pentest yapmak için bazı anahtarları bilmeniz gerekir:
 
 ·        **ASV (Approved Scanning Vendor):** PCI SSC tarafından harici güvenlik açığını yürütmek için onaylanmış kurum.
 
-·        **Merchant:** Bir hizmet vevya servis karşısında ödemeyi kart olarak kabul etmesi durumundaki tüccarlar, kişiler.
+·        **Merchant:** Bir hizmet veya servis karşısında ödemeyi kart olarak kabul etmesi durumundaki tüccarlar, kişiler.
 
 ·        **PAN:** 19 hanelik kart numarası
 
@@ -74,7 +76,7 @@ PAN bilgisi okunamaz yani encrypted formatta saklanılması beklenmektedir. Luhn
 
 ### 2.1.5 Legal Concepts
 
-Penetrasyon testi gerçekleirmeden önce bazı hukuki kavramlar vardır.
+Penetrasyon testi gerçekleştirmeden önce bazı hukuki kavramlar vardır.
 
 ·        **Service-level Agreement**: SLA hem sizin hem de müşteri tarafının hak ve sorumluluklarını belirleyen, hizmet kalitesiyle ilgili anlaşmadır.
 
@@ -102,7 +104,7 @@ Sızma testlerinin hangi şartlar altında yapılacağını belirler. Test edile
 
 ### 2.2.2 Target Lists and In-Scope Assets
 
-Kapsam belirleme, pentestin en önemli unsurlarından biridir. Test edilecek cihazlar, varlıkların IP adresi veya proglamlama arayüzleri yani API’ler bu kapsamın içindedir. Api dokümantasyonu türleri hakkında aşağıda bilgi verilmiştir. Api dokümantasyonları uygulamanın arkasında çalışan hangi endpointe cevap gidiyor hangi endpointten cevap geliyor gibi kuralları anlatan bir dökümdür. Halka açık olmaması gerekmektedir. Dokümantasyonu okuyup ona göre saldırı düzenlenebilir.
+Kapsam belirleme, pentestin en önemli unsurlarından biridir. Test edilecek cihazlar, varlıkların IP adresi veya programlama arayüzleri yani API’ler bu kapsamın içindedir. Api dokümantasyonu türleri hakkında aşağıda bilgi verilmiştir. Api dokümantasyonları uygulamanın arkasında çalışan hangi endpointe cevap gidiyor hangi endpointten cevap geliyor gibi kuralları anlatan bir dökümdür. Halka açık olmaması gerekmektedir. Dokümantasyonu okuyup ona göre saldırı düzenlenebilir.
 
 ·        **SOAP:** XML formatını kullanır, mesajların nasıl görüneceğini tanımlayan XSD dosyaları vardır.
 
@@ -117,7 +119,7 @@ Kapsam belirleme, pentestin en önemli unsurlarından biridir. Test edilecek cih
 **WADL vs WSDL?**
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule2/wadl.jpeg" width="770" height="340">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule2/wadl.jpg' | relative_url }}" width="770" height="340" alt="WADL ve WSDL API dokümantasyon türlerini karşılaştıran tablo">
 </div>
 
 Pentest için diğer kullanılan kaynaklardan bazıları aşağıda verilmiştir.

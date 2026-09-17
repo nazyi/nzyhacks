@@ -3,10 +3,11 @@ categories: [makine]
 layout: post
 desc: "DVWA (Damn Vulnerable Web Application) üzerindeki brute force zafiyet laboratuvarında, web uygulamalarına karşı kullanıcı adı ve şifre kombinasyonlarını otomatik araçlarla deneyerek kimlik doğrulama mekanizmalarını aşmayı öğrendik. Bu labda, Hydra gibi araçlar kullanarak zayıf veya tahmin edilebilir şifreleri nasıl tespit edebileceğimizi ve bir sisteme yetkisiz erişim sağlayabileceğimizi uygulamalı olarak gördük."
 logo: "/assets/images/dvwa1.png"
-author: Buse Naz Yılmaz
+author: nazy
 title: DVWA Brute Force
 order: 6
-tags: [web] 
+tags: [web, Hydra]
+translation_url: /en/DVWA_BruteForce
 ---
 
 ## Low Sec
@@ -18,7 +19,7 @@ Güvenlik seviyesi düşükte brüte force saldırısı denedim. İlk önce Burp
 Kullanıcı adım admin şifrem ise password.
 
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/lowsec1.webp" width="850" height="270">
+  <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/lowsec1.webp' | relative_url }}" width="850" height="270" alt="Burp Suite Intruder'da character set brute force saldırısı ayarları">
 </div>
 
 ### Dictionary Attack
@@ -32,16 +33,16 @@ Bu atakta ise olası kullanıcı adlarını ve şifrelerini ayrı olarak bir txt
 Bu sefer Attack Type Cluster Bomb seçtim. Yine deneme yapacağım parametreler üzerinde işaretlemeler yaptım. 2 tane parametremiz olduğu için hangi parametrede hangi payload dosyasını kullanacaksam Payload List kısmından ona göre seçtim. Örnek olarak ilk parametrem username ise Payload List 1 seçip Load butonundan olasinick.txt seçtim. Payload Type Simple list’te kaldı. Settings ayarlarına gelip Grep - Match bölümünde olan listeyi clear ile temizledikten sonra incorrect ekledim. Bunu eklememin sebebi doğru giriş yaptığımda anlamam için bir işaret olması gerekiyordu. Her denemede gelen password is incorrect hatasını burp algılayıp olanları 1 olmayanları 0 olarak sınıflandırdığı için doğru girişimdeki değerleri direkt seçebilecektim.
 
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/cluster.webp" width="850" height="270">
+  <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/cluster.webp' | relative_url }}" width="850" height="270" alt="Intruder'da Cluster Bomb saldırı tipinin ve parametrelerin seçilmesi">
 </div>
 
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/grep.webp" width="560" height="470">
+  <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/grep.webp' | relative_url }}" width="560" height="470" alt="Grep - Match ayarlarına incorrect ifadesinin eklenmesi">
 </div>
 
 Aşağıdaki çıktıda değerler işaretlenmiştir. 
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/adminpass.webp" width="800" height="250">
+  <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/adminpass.webp' | relative_url }}" width="800" height="250" alt="Intruder saldırı sonuçlarında doğru kullanıcı adı ve şifrenin işaretlenmesi">
 </div>
 
 ## Wfuzz
@@ -52,7 +53,7 @@ Bütün user’ları bulmak için [http://localhost./hackable/users/](http://loc
 
 bütün userların şifrelerini deneyelim.
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/target.webp" width="1000" height="180">
+  <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/target.webp' | relative_url }}" width="1000" height="180" alt="Wfuzz aracıyla tüm kullanıcılar için şifre deneme sonuçları">
 </div>
 ## Medium Sec
 
@@ -60,7 +61,7 @@ bütün userların şifrelerini deneyelim.
 
 Burada olayın trick kısmı kaynak kodları incelediğimizde gözüküyor. DVWA arayüzünde en altta view source üstüne tıklayıp view all dediğimizde her seviyenin kaynak kodunu görmekteyiz. Burada low ile medium arasındaki kaynak kod farklılıklarına bakarsak şunu fark edeceksiniz:
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/sleep.webp" width="750" height="150">
+  <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/sleep.webp' | relative_url }}" width="750" height="150" alt="Medium seviye kaynak kodundaki sleep(2) gecikme fonksiyonu">
 </div>
 Buradaki sleep (2) kodu, kullanıcı her yanlış giriş yaptığında 2 saniye onu bekletmek demektir. Bunu genele vurduğumuzda ise brute-force atakları zaten uzun sürüyorken her denemede ekstra olarak 2 saniye bekletmek işi daha da zorlaştırır.
 
@@ -72,7 +73,7 @@ Hydra’da brute-force yapmak için komutumuz şu şekilde:
 <span class="highlight">root@kali$</span> hydra -l admin -P /root/Desktop/olasisifre.txt 127.0.0.1 http-get-form "/vulnerabilities/brute/:username=^USER^&password=^PASS^&user_token=%CSRF%&Login=Login:H=Cookie: PHPSESSID=hdbj798bma7cpkjsdr42ja8r73; security=medium:F=Username and/or password incorrect." -t 6 -v
 </div>
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/hydra.webp" width="850" height="270">
+  <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/hydra.webp' | relative_url }}" width="850" height="270" alt="Hydra aracıyla gerçekleştirilen brute force saldırısının terminal çıktısı">
 </div>
 ##  High Sec
 
@@ -82,29 +83,29 @@ Anti-CSRF token, CSRF saldırılarına karşı koruma sağlayan rastgele üretil
 
 Gelelim Burp üzerinde bu işlemi nasıl gerçekleştirdiğimize. İlk öncelikle paketi yakalıyoruz random bir deneme yapıp. Ondan sonra sağ üstte bulunan ayarlar kısmından Session sekmesine geliyoruz. Session handling rules kısmından add diyoruz.
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/session.webp" width="1050" height="255">
+  <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/session.webp' | relative_url }}" width="1050" height="255" alt="Burp Suite'te Session Handling Rules ekleme ekranı">
 </div>
 Rule actions kısmından Run macro seçeneğini seçiyoruz. Run Macro, oturum açma veya token yenileme gibi otomatik işlemleri tekrar ederek isteklere dinamik değerlerin eklenmesini sağlar.
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/runmacro.webp" width="500" height="320">
+  <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/runmacro.webp' | relative_url }}" width="500" height="320" alt="Rule Actions kısmında Run Macro seçeneğinin seçilmesi">
 </div>
 Select Macro kısmından add dedikten sonra aşağıdaki Tolerate URL mismatch kabul ediyoruz. Bu özellik, parametreleri eşleştirirken URL farklılıklarını göz ardı ederek aynı parametre adlarına sahip isteklerin eşleşmesine izin verir. Özellikle oturum doğrulama veya token yenileme gibi işlemlerde farklı URL'ler arasında parametrelerin takibini kolaylaştırır.
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/addmacro.webp" width="700" height="400">
+  <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/addmacro.webp' | relative_url }}" width="700" height="400" alt="Macro ekleme ekranında Tolerate URL mismatch ayarının işaretlenmesi">
 </div>
 Add ile macro paketimizi yükledikten sonra Configure Item üzerine tıklıyoruz.
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/configure.webp" width="850" height="80">
+  <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/configure.webp' | relative_url }}" width="850" height="80" alt="Macro yüklendikten sonra Configure Item butonuna tıklanması">
 </div>
 Configure Item içinde aşağıda bulunan custom parameter bölümüne add diyoruz. Açılan sayfada parameter adını yazıp en altta bulunan search yerine token diyip aratıyoruz. Çıkan sonuçta token değerini alıyoruz. OK’a basıp kapatıyoruz.
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/macroitem.webp" width="860" height="490">
+  <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/macroitem.webp' | relative_url }}" width="860" height="490" alt="Configure Item'da özel token parametresinin tanımlanması">
 </div>
 Yine Session handling rule editör sayfasına gelince bu sefer Scope sekmesinden Tools Scope üzerinde sadece Intruder’ı tikli bırakıp URL Scoper üzerinden ise Use Suite Scope işaretliyoruz.
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/tool.webp" width="855" height="400">
+  <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/tool.webp' | relative_url }}" width="855" height="400" alt="Session handling rule'da Tools Scope ve URL Scope ayarları">
 </div>
 Her şey bitince Intruder’a gelip paketimiz üzerinden işlemlerimizi tekrardan yapıyoruz.
 <div style="text-align: center;">
-  <img src="./assets/images/dvwa_bruteforce/son.webp" width="850" height="230">
+  <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/son.webp' | relative_url }}" width="850" height="230" alt="Anti-CSRF token bypass sonrası Intruder saldırı sonuçları">
 </div>

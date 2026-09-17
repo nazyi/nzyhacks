@@ -3,9 +3,11 @@ categories: [modul]
 layout: post
 desc: "Cisco Ethical Hacker kursunun üçüncü bölümünün pasif bilgi toplama kısmıdır. Hedef sistemlerle doğrudan etkileşime girmeden bilgi toplama yöntemi olan pasif keşif (passive reconnaissance) anlatılmıştır. OSINT araçları, DNS sorguları ve WHOIS gibi tekniklerle, sistemler hakkında iz bırakmadan bilgi edinme yöntemleri uygulanmıştır."
 logo: "/assets/images/cisco.png"
-author: Buse Naz Yılmaz
+author: nazy
 title: Cisco Ethical Hacker Modül 3 - Passive Recon 
+tags: [Cisco, Pasif Keşif]
 order: 3
+translation_url: /en/Cisco_Module3_Passive
 ---
 
 # Cisco Ethical Hacker
@@ -58,7 +60,7 @@ Kali’de spiderfootu açtıktan sonra toolu kullanmak için
 Bu komutu yazdıktan sonra tarayıcı üzerinden ip adresini ve portu açıp SpiderFoot ara yüzüne erişebilirsiniz.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_passive/spiderscan.webp" width="660" height="230">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_passive/spiderscan.webp' | relative_url }}" width="660" height="230" alt="SpiderFoot web arayüzünün tarayıcıda açılmış görünümü">
 </div>
 
 **Step 1: Run SpiderFoot scan for a Domain**
@@ -100,7 +102,7 @@ Modüllere Github reposundan ulaşılabilir. Modüller hakkında detaylı bilgiy
 Yeni modül indirmek için ilk öncelikle modüle search ile modülleri görüntüleyelim.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_passive/search.webp" width="700" height="300">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_passive/search.webp' | relative_url }}" width="700" height="300" alt="Recon-ng'de 'modules search' komutunun modül listesi çıktısı">
 </div>
 
 
@@ -141,7 +143,7 @@ Komutu ile hedefimizi ayarlayalım. Tekrardan info diyerek ayarlanıp ayarlanmad
 </div>
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_passive/run.webp" width="500" height="420">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_passive/run.webp' | relative_url }}" width="500" height="420" alt="Recon-ng'de hackertarget modülünün 'run' komutu çıktısı">
 </div>
 
 
@@ -153,7 +155,7 @@ Toplanan bilgilerin genel bir özetini tablo halinde görmek istiyorsak “dashb
 </div>
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_passive/dashboard.webp" width="400" height="550">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_passive/dashboard.webp' | relative_url }}" width="400" height="550" alt="Recon-ng dashboard komutunun topladığı bilgilerin özet tablosu">
 </div>
 
 
@@ -165,7 +167,7 @@ Dashboard üzerinden aldığımız görüntüdeki başlıklara bakmak için ise 
 </div>
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_passive/showhost.webp" width="750" height="180">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_passive/showhost.webp' | relative_url }}" width="750" height="180" alt="Recon-ng'de 'show hosts' komutuyla listelenen host bilgileri">
 </div>
 
 
@@ -176,7 +178,7 @@ Recon-ng’nin veritabanındaki sonuçları daha iyi görüntüleyebilmek için 
 Yeni bir terminal açıp recon-web yazalım. Böylece databasedeki bilgilerin toplanma süreci başlar. Outputta çıkan URL üzerine tıklayarak ara yüze erişebilirsiniz. Ara yüzde ilk başta default workspace’in sonuçları gelir yukarıdaki turuncu yazan default yazısına tıklayarak kendi workspace’inizi seçebilirsiniz.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_passive/recon.webp" width="600" height="400">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_passive/recon.webp' | relative_url }}" width="600" height="400" alt="Recon-ng'nin recon-web arayüzünde workspace sonuçlarının görüntülenmesi">
 </div>
 
 
@@ -185,7 +187,7 @@ Yeni bir terminal açıp recon-web yazalım. Böylece databasedeki bilgilerin to
 Site üzerinde değişik dosyalar bulmak için yeni bir modül indirelim.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_passive/interest.webp" width="1100" height="60">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_passive/interest.webp' | relative_url }}" width="1100" height="60" alt="Recon-ng'de interesting_files modülünün arama sonucu listelenmesi">
 </div>
 
 Modülü indirmek ve kullanmak için;
@@ -195,7 +197,7 @@ Modülü indirmek ve kullanmak için;
 </div>
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_passive/custom.webp" width="760" height="100">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_passive/custom.webp' | relative_url }}" width="760" height="100" alt="interesting_files modülünün 'info' komutuyla gösterilen ayarları">
 </div>
 
 
@@ -206,7 +208,7 @@ Gerekli ayarlara baktıktan sonra source yine hackxor.net olarak ayarlayalım.
 </div>
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_passive/robots.webp" width="650" height="310">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_passive/robots.webp' | relative_url }}" width="650" height="310" alt="interesting_files modülünün hackxor.net için bulduğu dosyaların çıktısı">
 </div>
 
 
@@ -277,7 +279,7 @@ Whois, DNS sunucu kayıtları yerine alan adı nerede ve kim, fiziksel adres ve 
 Nslookup cisco.com çıktısından aldığımız bilgi ile cisco.com’un name server’ı olan ns1.cisco.com adresinin IP bilgisini bulduk. IP adresi 72.163.5.201 idi. Bu IP adresini whois ile taratalım. Böylece IP adresinin scope aralığını bulalım.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_passive/whois.webp" width="660" height="330">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_passive/whois.webp' | relative_url }}" width="660" height="330" alt="whois sorgusuyla elde edilen IP adresi kayıt ve scope bilgileri">
 </div>
 
 
@@ -322,7 +324,7 @@ Daha önceden bulduğumuz ns1.cisco.com adresinin IP adresini deneyelim.
 Aşağıdaki çıktıda görüldüğü üzere hostname bulduk.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_passive/dig.webp" width="660" height="370">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_passive/dig.webp' | relative_url }}" width="660" height="370" alt="dig -x komutuyla yapılan ters DNS sorgusunun hostname sonucu">
 </div>
 
 
@@ -349,7 +351,7 @@ Sitelerin SSL sertifikaları incelenerek zayıf sertifikalar veya kriptografik z
 Crt.sh gibi bir site üzerinden istediğiniz kurum veya sayfanın sertifikası sorgulanabilir. Örnek olarak h4cker.org adresini inceleyelim.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_passive/lets.webp" width="630" height="210">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_passive/lets.webp' | relative_url }}" width="630" height="210" alt="crt.sh üzerinde h4cker.org için sertifika şeffaflığı (CT) sorgu sonuçları">
 </div>
 
 Daha önceden bilmediğimiz subdomain adreslerini burada da görebiliriz.
@@ -369,7 +371,7 @@ Her yeni bir sertifika veya bir sertifika hareketi log altına alınır böylece
 Kali üzerindeki bazı SSL toollarının isimlerini ve amaçlarını anlatalım.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_passive/arac.webp" width="630" height="340">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_passive/arac.webp' | relative_url }}" width="630" height="340" alt="Kali Linux'taki SSL analiz araçlarının isim ve açıklama listesi">
 </div>
 
 
@@ -388,7 +390,7 @@ Kali üzerinde hedefimiz için bir sslscan taraması yapıyoruz.
 Dosyanın konumunu bulduktan sonra Mozilla üzerinde html dosyasını açabilirsiniz.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_passive/html.webp" width="500" height="410">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_passive/html.webp' | relative_url }}" width="500" height="410" alt="sslscan çıktısının aha ile oluşturulan HTML raporunun tarayıcı görünümü">
 </div>
 
 
@@ -483,7 +485,7 @@ Saldırganlar, Github veya Gitlab üzerinde public olan kod kaynağına ulaşara
 </div>
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_passive/searching.webp" width="400" height="380">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_passive/searching.webp' | relative_url }}" width="400" height="380" alt="emailharvester aracının example.com için bulduğu e-posta adresleri">
 </div>
 
 

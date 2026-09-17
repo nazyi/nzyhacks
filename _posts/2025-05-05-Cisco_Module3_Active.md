@@ -3,9 +3,11 @@ categories: [modul]
 layout: post
 desc: "Cisco Ethical Hacker kursunun üçüncü bölümünün aktif bilgi toplama kısmıdır. aktif bilgi toplama teknikleri kapsamında Nmap tarama türleri ve numaralandırma (enumeration) yöntemleri detaylıca ele alınmıştır. Hedef sistemler hakkında daha derinlemesine bilgi edinmek amacıyla servisler, kullanıcılar, gruplar ve paylaşılan kaynaklar gibi bileşenlerin tespiti örnek araç ve komutlarla açıklanmıştır."
 logo: "/assets/images/cisco.png"
-author: Buse Naz Yılmaz
+author: nazy
 title: Cisco Ethical Hacker Modül 3 - Active Recon 
+tags: [Cisco, Aktif Keşif]
 order: 4
+translation_url: /en/Cisco_Module3_Active
 ---
 
 # Cisco Ethical Hacker
@@ -19,7 +21,7 @@ Pasif bilgi toplamaktan sonra sıra aktif bilgi toplamaya geldi. İlk aşamada h
 Port taramasında kullanılan en yaygın nmap aracının çıktılarını ufak bir açıklamak istedim.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/1.webp" width="600" height="160">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/1.webp' | relative_url }}" width="600" height="160" alt="Temel bir nmap taramasının örnek çıktısı">
 </div>
 
 ### 3.2.1 Nmap Scan Types
@@ -31,7 +33,7 @@ Nmap üzerinde amaca göre birçok scan türü vardır. Bazıları aşağıda ye
 Nmap default olarak farklı belirtilmedikçe hedef sistemle TCP bağlantısı kurmaya çalışır. Her porta TCP paketi atılarak gelen cevaba göre portun durumu belirlenir. Yani bu scan türü kapı açık mı diye bakmak için cidden kapıdan içeri girer veya kapıyı çalar. Böyle olduğu için de hedef sistemler üzerinde log tutuluyorsa loglar üstünde attacker IP bilgisi yer alabilir.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/stopen.webp" width="680" height="160">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/stopen.webp' | relative_url }}" width="680" height="160" alt="TCP Connect Scan (-sT) ile yapılan taramanın örnek çıktısı">
 </div>
 
 **UDP Scan (-sU)**
@@ -39,7 +41,7 @@ Nmap default olarak farklı belirtilmedikçe hedef sistemle TCP bağlantısı ku
 Genellikle TCP portları aranır fakat örneğin DNS, SNMP ve DHCP gibi sunucular UDP kullandıkları için amaca göre UDP portlarını da taramanız gerekebilmektedir.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/suopen.webp" width="680" height="160">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/suopen.webp' | relative_url }}" width="680" height="160" alt="UDP Scan (-sU) ile yapılan taramanın örnek çıktısı">
 </div>
 
 **TCP FIN Scan (-sF)**
@@ -49,7 +51,7 @@ Bazen SYN taraması ağ filtresi veya firewall tarafından seçildiği için eng
 \*Windows makinelerini bu tarama ile taramak doğru sonuçlar vermeyebilir. Çünkü Windows makineler portların durumuna bakmaksızın pakete cevap vermektedir.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/sfopen.webp" width="680" height="160">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/sfopen.webp' | relative_url }}" width="680" height="160" alt="TCP FIN Scan (-sF) ile yapılan taramanın örnek çıktısı">
 </div>
 
 **Host Discovery Scan (-sn)**
@@ -95,7 +97,7 @@ Kullanıcı bilgilerini toplamak için birden fazla araç ve yöntem vardır. Bu
 Aşağıda SMB mesaj illüstrasyonunu inceleyelim.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/smbenum.webp" width="460" height="460">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/smbenum.webp' | relative_url }}" width="460" height="460" alt="SMB protokolündeki mesajlaşma sürecini gösteren illüstrasyon">
 </div>
 
 SMB\_COM\_NEGOTIATE: Sunucuya hangi protokolleri veya bayrakları desteklediğini sorduğu mesajdır. Sunucu da desteklediği protokoller ve bayrakları söyleyerek geri mesaj atar.
@@ -120,7 +122,7 @@ nmap taramasının sonucunda gelen çıktada yer alan RID ve SID terimlerini inc
 ·        **RID:** SID’nin sonundaki kısımdır ve kullanıcı veya grubu Windows bazında tanımlar.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/rid.webp" width="460" height="300">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/rid.webp' | relative_url }}" width="460" height="300" alt="nmap smb-enum-groups.nse çıktısında görülen RID ve SID değerleri">
 </div>
 
 #### Network Share Enumeration
@@ -148,7 +150,7 @@ Eğer hem daha detaylı bilgi hem de işletim sistemi tespiti de istersen;
 Ve tablo ile nmap smb enum scriptleri hakkında bilgi vermek istedim.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/smbnmap.webp" width="650" height="400">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/smbnmap.webp' | relative_url }}" width="650" height="400" alt="Nmap SMB numaralandırma scriptlerini özetleyen tablo">
 </div>
 
 SMB üzerinden bilgi çekmek için bir farklı tool olan enum4linux da vardır.
@@ -198,7 +200,7 @@ Paket oluşturarak bilgi toplama yaparken, Scapy en çok tercih edilen toolllar 
 Bu paketi gönderirken aynı sırada tshark ile kendi ağımızı dinlersek ICMP paket isteğini görüntüleyebiliriz. 
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/tshark.webp" width="700" height="200">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/tshark.webp' | relative_url }}" width="700" height="200" alt="tshark ile dinlenirken yakalanan Scapy ICMP paket isteği">
 </div>
 
 \*tshark, Wireshark’ın terminal sürümüdür.
@@ -250,7 +252,7 @@ Verilen çıktıda toplamda 7 tane hostun aktif olduğunu görüyoruz.
 Wireshark üzerinde 10.6.6.23 hostunun şüpheli olduğu söyleniyor spesifik olarak onu inceleyelim.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/sudonmap.webp" width="500" height="360">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/sudonmap.webp' | relative_url }}" width="500" height="360" alt="nmap -sn taramasında tespit edilen 7 aktif host listesi">
 </div>
 
 **Step 2: Obtain additional information about the host and services**
@@ -258,7 +260,7 @@ Wireshark üzerinde 10.6.6.23 hostunun şüpheli olduğu söyleniyor spesifik ol
 Hostun 21 numaralı portu olan FTP servisi hakkında daha fazla bilgi alalım.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/21ftp.webp" width="400" height="100">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/21ftp.webp' | relative_url }}" width="400" height="100" alt="21 numaralı FTP portu hakkında elde edilen ek bilgiler">
 </div>
 
 \-A parametresi, OS keşfi, versiyon keşfi ve script taraması gibi çoğu maddeyi kapsar. Fakat kullanırken IDS tarafından tespit edilebilirsiniz. Daha fazla bilgi edinmek için aşağıdaki komutu girelim.
@@ -268,7 +270,7 @@ Hostun 21 numaralı portu olan FTP servisi hakkında daha fazla bilgi alalım.
 </div> 
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/ftpvstpf.webp" width="650" height="360">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/ftpvstpf.webp' | relative_url }}" width="650" height="360" alt="nmap -A taramasında görülen anonim FTP girişi ve txt dosyaları">
 </div>
 
 Çıktıda gözüktüğü gibi anon girişi kabul edilmektedir ve birkaç tane txt dosyası yer almaktadır.
@@ -278,7 +280,7 @@ Hostun 21 numaralı portu olan FTP servisi hakkında daha fazla bilgi alalım.
 Server Message Block yani SMB hem Windows hem de Linux makinelerde dosya paylaşımı desteklemektedir. 139 ve 445 numaralı portlarda çalışmaktadır. Bu portlar hakkında nmap ile daha fazla şey öğrenelim.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/worksgruup.webp" width="600" height="400">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/worksgruup.webp' | relative_url }}" width="600" height="400" alt="139 ve 445 portlarında nmap ile elde edilen SMB workgroup bilgisi">
 </div>
 
 Daha önce de bahsettiğimiz gibi nmap içinde bazı scriptler sayesinde istenilen sistem hakkında daha detaylı bilgi sahibi olunabilir. Hazır SMB portlarının açık oluğunu gördüğümüze göre nmap üzerindeki SMB scriptlerini çalıştırıp daha fazla bilgi edinebiliriz.
@@ -289,7 +291,7 @@ Daha önce de bahsettiğimiz gibi nmap içinde bazı scriptler sayesinde istenil
 </div> 
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/netbios.webp" width="600" height="230">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/netbios.webp' | relative_url }}" width="600" height="230" alt="smb-enum-users.nse çıktısında bulunan Arbiter ve Masterchief kullanıcıları">
 </div>
 
 Çıktıda görüldüğü üzere iki tane kullanıcı adı bulabildik Arbiter ve Masterchief.
@@ -297,7 +299,7 @@ Daha önce de bahsettiğimiz gibi nmap içinde bazı scriptler sayesinde istenil
 Şimdi de yine bir script kullanarak SMB üzerinde paylaşılmış dosyaları görelim.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/hostscripy.webp" width="400" height="440">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/hostscripy.webp' | relative_url }}" width="400" height="440" alt="SMB paylaşım taramasında bulunan gizli paylaşımlar ve anonim erişim izni">
 </div>
 
 Burda başında $ işareti olan 2 tane gizli paylaşım bulduk ve altta yer alan Anonymous Access: read/write olması çok kritik bir risktir.
@@ -317,7 +319,7 @@ ls() fonksiyonu ile alanlar hakkında detayları inceleyebilirsiniz. Scapy içer
 Aşağıdaki tabloda alan adları ve açıklamaları verilmiştir. 
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/version.webp" width="600" height="600">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/version.webp' | relative_url }}" width="600" height="600" alt="Scapy'de ls(IP) komutuyla listelenen IP paketi alan adları tablosu">
 </div>
 
 #### Part 2 Use Scapy to Sniff Network Traffic
@@ -343,7 +345,7 @@ Scapy komut terminalinde dinlemeyi açtık. Yanda başka bir terminal üzerinde 
 Scapy terminalinde Ctrl + C yaptıktan sonra gelen çıktıda gelen paketlerin sayısı yer almaktadır.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/sniffed.webp" width="600" height="80">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/sniffed.webp' | relative_url }}" width="600" height="80" alt="Scapy sniff() sonrası yakalanan ping paketlerinin sayısını gösteren çıktı">
 </div>
 
 **Step 2: Capture and save traffic on a spesific interface**
@@ -357,13 +359,13 @@ Yukarıda yaptığımız gibi sniff fonksiyonu ağı dinlemeye yaramaktadır. Fa
 Komutu girdikten sonra bu sefer Mozilla üzerinden 10.6.6.23 adresini açıyoruz.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/gravemind.webp" width="650" height="330">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/gravemind.webp' | relative_url }}" width="650" height="330" alt="Tarayıcıda 10.6.6.23 adresinde açılan Gravemind web sayfası">
 </div>
 
 Gravemind sayfası geldikten sonra Scapy terminalinden dinlemeyi durdurabiliriz Ctrl + C yaparak çıktıyı görüntüleyebilirsiniz.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/sniffed2.webp" width="600" height="80">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/sniffed2.webp' | relative_url }}" width="600" height="80" alt="br-internal arayüzünde yakalanan trafiğin Scapy çıktısı">
 </div>
 
 Trafiği görüntülemek için ilk öncelikle bir değişkene kaydedip sonrasında görüntüleyebiliriz.
@@ -393,7 +395,7 @@ Eğer paket hakkında daha fazla bilgi istersiniz paket numaralarının başınd
 ·        a\[2\]
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/ether.webp" width="900" height="80">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/ether.webp' | relative_url }}" width="900" height="80" alt="Scapy'de a[2] komutuyla görüntülenen paket detay bilgisi">
 </div>
 
 Bu çıktıları pcap dosyası olarak kaydedip Wireshark üzerinde de inceleyebiliriz. Bunu yapmak için aşağıdaki komutları kullanabiliriz.
@@ -406,7 +408,7 @@ Bu çıktıları pcap dosyası olarak kaydedip Wireshark üzerinde de inceleyebi
 Kaydedilen pcap dosyasını Wireshark üzerinde inceleyebiliriz.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/pcap.webp" width="650" height="220">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/pcap.webp' | relative_url }}" width="650" height="220" alt="wrpcap ile kaydedilen capture1.pcap dosyasının Wireshark görünümü">
 </div>
 
 #### Part 3 Create and Send an ICMP Packet
@@ -434,7 +436,7 @@ Bu komutumuzu bölümleriyle birlikte inceleyelim.
 Bu mesajı gönderdikten sonra dinleme yaptığımız Scapy terminaline dönüp CTRL + C yapabiliriz. Aldığımız çıktı aşağıdaki gibidir;
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/sniffed3.webp" width="600" height="80">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/sniffed3.webp' | relative_url }}" width="600" height="80" alt="Özel oluşturulan ICMP paketinin gönderimi sonrası Scapy sniff çıktısı">
 </div>
 
 Bu çıktıyı kaydedip içeriğini inceleyelim.
@@ -475,7 +477,7 @@ Komutu gönderdikten sonra dinleme terminali üzerinden CTRL + C yaparak dinleme
 ·        a\[3\]
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/sniffed4.webp" width="1000" height="300">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/sniffed4.webp' | relative_url }}" width="1000" height="300" alt="TCP SYN paketi gönderimi sonrası yakalanan SYN ve SYN-ACK paketleri">
 </div>
 
 2\. paket bizim bağlantı başlatmak için gönderdiğimiz flags değeri “S” olan pakettir. 3. Paketi incelediğimizde ise flags değerinin SA yani SYN-ACK olduğunu görüyoruz. Bu demek oluyor ki 445 portu açık ve bağlantı isteğimizi onaylamış.
@@ -521,7 +523,7 @@ Web trafiği oluştururken ziyaret ettiğimiz skillsforall.com sitesini Wireshar
 **Step 1: Analyze DNS traffic**
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/skillsforall.webp" width="880" height="120">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/skillsforall.webp' | relative_url }}" width="880" height="120" alt="Wireshark'ta skillsforall.com için filtrelenmiş DNS trafiği">
 </div>
 
 Search iconuna skillsforall.com yazdıktan sonra çıkan alttaki menüden “String” değerini ve skillsforall kelimesini yazalım. Yukarıdaki ekran görüntüsünde yaptıklarımızı görebilirsiniz. İlk çıkan paketi incelemek için üzerine tıklayalım.
@@ -529,17 +531,17 @@ Search iconuna skillsforall.com yazdıktan sonra çıkan alttaki menüden “Str
 Burada yer alan Ethernet II kısmında hem destination hem de source MAC adreslerini görebilirsiniz. Teyit etmek için terminal üzerinden ifconfig komutunu yazıp eth0 ara yüzünün MAC adresine bakabilirsiniz.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/destination.webp" width="1000" height="180">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/destination.webp' | relative_url }}" width="1000" height="180" alt="Wireshark'ta Ethernet II katmanındaki kaynak ve hedef MAC adresleri">
 </div>
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/eth0.webp" width="950" height="200">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/eth0.webp' | relative_url }}" width="950" height="200" alt="ifconfig komutu ile görüntülenen eth0 arayüzünün MAC adresi">
 </div>
 
 Paket bilgileri kısmında Domain Name System query bölümünü inceleyim. Burada DNS server’ına ne gönderildiğinin detayını bulabilirsiniz. Ayrıca DNS server’ının cevabın Wireshark’ta hangi paket olduğunu belirten bir Response In kısmı da vardır.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/response.webp" width="600" height="450">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/response.webp' | relative_url }}" width="600" height="450" alt="Wireshark'ta DNS sorgu paketinin detay ve Response In bilgisi">
 </div>
 
 **Step 2: Analyze an HTTP session**
@@ -547,25 +549,25 @@ Paket bilgileri kısmında Domain Name System query bölümünü inceleyim. Bura
 Kali makinemiz üzerinde hazır halde yüklü olan DVWA sayfasına erişip login olmayı deneyeceğiz. Bunu da Wireshark üzerinde görüntüleyerek kullanıcı bilgilerini elde etmeye çalışacağız. Bunun için ilk öncelikle DVWA sunucusunun IP bloğunun ara yüz adını öğrenmemiz gerekiyor. DVWA 10.6.6.13 adresinde yer almaktadır.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/br-inter.webp" width="890" height="200">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/br-inter.webp' | relative_url }}" width="890" height="200" alt="DVWA sunucusunun bulunduğu br-internal ağ arayüzünün tespiti">
 </div>
 
 Burada görüldüğü gibi br-internal ara yüzümüzün ismidir. Wireshark’ı açtıktan sonra aşağıda yer alan ara yüz isimlerinden br-internal ara yüzünü seçiyoruz. Böylece Wireshark br-internal ara yüzünü dinlemeye başlıyor. 
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/capture.webp" width="800" height="270">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/capture.webp' | relative_url }}" width="800" height="270" alt="Wireshark arayüz listesinde seçilen br-internal dinleme arayüzü">
 </div>
 
 Dinlemeye başladıktan sonra tarayıcı üzerinden 10.6.6.13 adresine yani DVWA sayfasına erişiyoruz. Giriş yapmak için **admin** ve **password** değerlerini giriyoruz. Değerleri girdikten sonra tarayıcı kapatıp Wireshark’ta yukarıdaki kırmızı kareye basarak dinlemeyi durduruyoruz. Arama menüsüne String değerini, arama yerine ise POST yazıyoruz.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/postt.webp" width="1200" height="70">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/postt.webp' | relative_url }}" width="1200" height="70" alt="Wireshark'ta String POST araması ile bulunan login isteği paketi">
 </div>
 
 Çıkan pakette login.php üzerinden bilgi gönderildiği görülüyor. Paketin HTML Form URL Encoded kısmında login bilgilerini görebilirsiniz. 
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/hypertext.webp" width="830" height="250">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/hypertext.webp' | relative_url }}" width="830" height="250" alt="HTML Form URL Encoded alanında görülen DVWA giriş bilgileri">
 </div>
 
 Cookieler birçok farklı amaç için kullanılır. En yaygın olarak, bir kullanıcının oturum bilgilerini saklamak için kullanılırlar. Çerezler ele geçirilebilir ve kullanıcının oturumu çalınabilir. İlk çerez, Set-Cookie değeri ile HTTP yanıtı içinde gönderilir.
@@ -573,7 +575,7 @@ Cookieler birçok farklı amaç için kullanılır. En yaygın olarak, bir kulla
 Wireshark üzerinde 302 Found diye aratarak ilk çerezi bulabiliriz.
 
 <div style="text-align: center;">
-  <img src="./assets/images/ciscomodule3_active/set.webp" width="880" height="620">
+  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/set.webp' | relative_url }}" width="880" height="620" alt="302 Found yanıtında Set-Cookie ile atanan PHPSESSID çerezi">
 </div>
 
 Çıktıda görüldüğü gibi PHPSESSID çerezi atanmıştır.

@@ -1,0 +1,35 @@
+{%- assign d_lang = include.lang | default: page.lang | default: site.lang | default: "tr" -%}
+{%- assign m = include.date | date: "%-m" -%}
+{%- if d_lang == "en" -%}
+  {%- case m -%}
+    {%- when '1' -%}{%- assign month = 'January' -%}
+    {%- when '2' -%}{%- assign month = 'February' -%}
+    {%- when '3' -%}{%- assign month = 'March' -%}
+    {%- when '4' -%}{%- assign month = 'April' -%}
+    {%- when '5' -%}{%- assign month = 'May' -%}
+    {%- when '6' -%}{%- assign month = 'June' -%}
+    {%- when '7' -%}{%- assign month = 'July' -%}
+    {%- when '8' -%}{%- assign month = 'August' -%}
+    {%- when '9' -%}{%- assign month = 'September' -%}
+    {%- when '10' -%}{%- assign month = 'October' -%}
+    {%- when '11' -%}{%- assign month = 'November' -%}
+    {%- when '12' -%}{%- assign month = 'December' -%}
+  {%- endcase -%}
+  {{- month }} {{ include.date | date: "%-d" }}, {{ include.date | date: "%Y" -}}
+{%- else -%}
+  {%- case m -%}
+    {%- when '1' -%}{%- assign month = 'Ocak' -%}
+    {%- when '2' -%}{%- assign month = 'Şubat' -%}
+    {%- when '3' -%}{%- assign month = 'Mart' -%}
+    {%- when '4' -%}{%- assign month = 'Nisan' -%}
+    {%- when '5' -%}{%- assign month = 'Mayıs' -%}
+    {%- when '6' -%}{%- assign month = 'Haziran' -%}
+    {%- when '7' -%}{%- assign month = 'Temmuz' -%}
+    {%- when '8' -%}{%- assign month = 'Ağustos' -%}
+    {%- when '9' -%}{%- assign month = 'Eylül' -%}
+    {%- when '10' -%}{%- assign month = 'Ekim' -%}
+    {%- when '11' -%}{%- assign month = 'Kasım' -%}
+    {%- when '12' -%}{%- assign month = 'Aralık' -%}
+  {%- endcase -%}
+  {{- include.date | date: "%-d" }} {{ month }} {{ include.date | date: "%Y" -}}
+{%- endif -%}

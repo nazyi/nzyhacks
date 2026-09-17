@@ -1,15 +1,38 @@
-$apple-blossom: #ac4142;
-$alto: #d0d0d0;
-$bouquet: #FF69B4;
-$chelsea-cucumber: #FF69B4;
-$cod-grey: #151515;
-$conifer:  #FF69B4;
-$dove-grey: #666;
-$gallery: #eaeaea;
-$grey: #888;
-$gulf-stream: #75b5aa;
-$hippie-blue: #6a9fb5;
-$potters-clay: #8f5536;
-$rajah: #f4bf75;
-$raw-sienna: #d28445;
-$silver-chalice: #aaa;
+// nzyhacks palette — açık & zarif profesyonel-girly temel, koyu tema alternatifi ile
+$font-heading: 'Poppins', 'Segoe UI', sans-serif;
+$font-body: 'Inter', 'Segoe UI', sans-serif;
+$container-max-width: 1000px;
+
+// Kod pencereleri her iki temada da sabit (koyu "terminal" panel)
+$color-code-bg: #241b28;
+$color-code-text: #f1e6ea;
+
+:root {
+  --color-bg: #fdf7fa;
+  --color-surface: #ffffff;
+  --color-text: #2e2432;
+  --color-text-muted: #7a6d7e;
+  --color-border: #f2dde8;
+
+  --color-primary: #d6336c;
+  --color-primary-strong: #a3244f;
+  --color-primary-soft: #f8c9da;
+
+  --color-accent: #a084c9;
+  --color-gold: #cf9b3f;
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #1c151f;
+  --color-surface: #2a2030;
+  --color-text: #f3e9ef;
+  --color-text-muted: #b9a8bc;
+  --color-border: #3d2f42;
+
+  --color-primary: #ff6fa5;
+  --color-primary-strong: #ffa8c8;
+  --color-primary-soft: rgba(255, 111, 165, 0.16);
+
+  --color-accent: #c9a8e6;
+  --color-gold: #e8b86d;
+}

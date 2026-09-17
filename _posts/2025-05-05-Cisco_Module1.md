@@ -3,9 +3,11 @@ categories: [modul]
 layout: post
 desc: "Cisco Ethical Hacker kursunun ilk bölümüdür. Siber güvenlikte tehdit aktörlerini, test ortamı türlerini, çevresel değerlendirmeleri ve farklı güvenlik test standartları ile metodolojilerini açıklamaktadır. Kurumların güvenlik zafiyetlerini belirlemek ve önlem almak amacıyla gerçekleştirilen sızma testlerinin kapsamı ve yaklaşımları detaylandırılmıştır. "
 logo: "/assets/images/cisco.png"
-author: Buse Naz Yılmaz
+author: nazy
 title: Cisco Ethical Hacker Modül 1 
+tags: [Cisco, Sızma Testi Temelleri]
 order: 1
+translation_url: /en/Cisco_Module1
 ---
 
 # Cisco Ethical Hacker

@@ -2,27 +2,149 @@
 layout: default
 ---
 
-<article class="post-wrapper">
-  <!-- Post Header -->
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <p class="post-meta">
-      <small>{{ page.date | date: "%-d %B %Y" }}</small> |
-      <span class="post-author">by {{ page.author | default: site.author }}</span>
-    </p>
-  </header>
+{% assign lang = page.lang | default: site.lang | default: "tr" %}
+{% assign t = site.data.i18n[lang] %}
+{% assign cat = page.categories | first %}
 
-  <!-- Post Content -->
-  <section class="post-content">
-    {{ content }}
-  </section>
+{% if lang == "en" %}
+  {% case cat %}
+    {% when 'makine' %}
+      {% assign back_url = '/en/makine-cozumler' %}
+      {% assign back_text = 'Back to Machine Write-ups' %}
+    {% when 'modul' %}
+      {% assign back_url = '/en/modul-cozumler' %}
+      {% assign back_text = 'Back to Module Write-ups' %}
+    {% when 'dokumantasyon' %}
+      {% assign back_url = '/en/dokumantasyon' %}
+      {% assign back_text = 'Back to Documentation' %}
+    {% else %}
+      {% assign back_url = '/en/bloglar' %}
+      {% assign back_text = 'Back to Blog' %}
+  {% endcase %}
+  {% assign tags_url = '/en/tags' %}
+{% else %}
+  {% case cat %}
+    {% when 'makine' %}
+      {% assign back_url = '/makine-cozumler' %}
+      {% assign back_text = "Makine Çözümleri'ne dön" %}
+    {% when 'modul' %}
+      {% assign back_url = '/modul-cozumler' %}
+      {% assign back_text = "Modül Çözümleri'ne dön" %}
+    {% when 'dokumantasyon' %}
+      {% assign back_url = '/dokumantasyon' %}
+      {% assign back_text = "Dokümantasyon'a dön" %}
+    {% else %}
+      {% assign back_url = '/bloglar' %}
+      {% assign back_text = "Bloglar'a dön" %}
+  {% endcase %}
+  {% assign tags_url = '/etiketler' %}
+{% endif %}
 
-  <!-- Tags Section -->
-  {% if page.tags %}
-    <footer class="post-tags">
-      <small><strong>Tags:</strong>
-        <em>{{ page.tags | join: "</em> – <em>" }}</em>
-      </small>
-    </footer>
-  {% endif %}
-</article>
+{% assign word_count = content | strip_html | number_of_words %}
+{% assign reading_time = word_count | divided_by: 200 | plus: 1 %}
+
+<div class="post-layout">
+  <aside class="post-toc" id="post-toc" aria-label="{{ t.toc_aria }}">
+    <p class="post-toc-title">{{ t.toc_title }}</p>
+    <ul id="post-toc-list"></ul>
+  </aside>
+
+  <article class="post-wrapper">
+    <a class="post-back" href="{{ back_url | relative_url }}">← {{ back_text }}</a>
+
+    <!-- Post Header -->
+    <header class="post-header">
+      <h1 class="post-title">{{ page.title }}</h1>
+      <p class="post-meta">
+        <small>{% include date-i18n.html date=page.date lang=lang %}</small> |
+        <span class="post-author">{{ t.by_author }} {{ page.author | default: site.author }}</span> |
+        <span class="post-reading-time">{{ reading_time }} {{ t.reading_time_suffix }}</span>
+      </p>
+    </header>
+
+    <!-- Post Content -->
+    <section class="post-content">
+      {{ content }}
+    </section>
+
+    {% if cat == 'makine' %}
+      <div class="rooted-badge">
+        <img loading="lazy" src="{{ '/assets/images/rooted-badge.png' | relative_url }}" alt="Rooted rozeti" width="150" height="175">
+      </div>
+    {% endif %}
+
+    <!-- Tags Section -->
+    {% if page.tags %}
+      <footer class="post-tags">
+        <strong>{{ t.tags_label }}</strong>
+        {% for tag in page.tags %}<a href="{{ tags_url | relative_url }}#{{ tag | slugify }}" class="tag-badge">{{ tag }}</a>{% endfor %}
+      </footer>
+    {% endif %}
+
+    <a class="post-back post-back-bottom" href="{{ back_url | relative_url }}">← {{ back_text }}</a>
+  </article>
+</div>
+
+<script>
+  (function () {
+    var toc = document.getElementById('post-toc');
+    var list = document.getElementById('post-toc-list');
+    var content = document.querySelector('.post-content');
+    if (!toc || !list || !content) return;
+
+    var headings = content.querySelectorAll('h1, h2, h3, h4');
+    if (headings.length < 2) {
+      toc.style.display = 'none';
+      return;
+    }
+
+    function slugify(text) {
+      return text
+        .toLowerCase()
+        .trim()
+        .replace(/[^\p{L}\p{N}]+/gu, '-')
+        .replace(/^-+|-+$/g, '');
+    }
+
+    var entries = [];
+
+    headings.forEach(function (heading) {
+      if (!heading.id) {
+        var base = slugify(heading.textContent) || 'baslik';
+        var slug = base;
+        var i = 1;
+        while (document.getElementById(slug)) {
+          slug = base + '-' + (i++);
+        }
+        heading.id = slug;
+      }
+
+      var level = parseInt(heading.tagName.substring(1), 10);
+      var li = document.createElement('li');
+      li.setAttribute('data-level', level);
+
+      var a = document.createElement('a');
+      a.href = '#' + heading.id;
+      a.textContent = heading.textContent;
+      a.title = heading.textContent;
+
+      li.appendChild(a);
+      list.appendChild(li);
+      entries.push({ link: a, heading: heading });
+    });
+
+    if (!('IntersectionObserver' in window)) return;
+
+    var observer = new IntersectionObserver(function (visible) {
+      visible.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var match = entries.filter(function (item) { return item.heading === entry.target; })[0];
+        if (!match) return;
+        entries.forEach(function (item) { item.link.classList.remove('active'); });
+        match.link.classList.add('active');
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    headings.forEach(function (heading) { observer.observe(heading); });
+  })();
+</script>

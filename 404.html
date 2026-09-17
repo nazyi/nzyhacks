@@ -1,0 +1,26 @@
+---
+layout: default
+title: 404
+permalink: /404.html
+---
+
+<div class="error-page" id="error-tr">
+  <h1>404</h1>
+  <p>{{ site.data.i18n.tr.error_404_text }}</p>
+  <a href="{{ site.baseurl }}/" class="btn">{{ site.data.i18n.tr.error_404_button }}</a>
+</div>
+
+<div class="error-page" id="error-en" hidden>
+  <h1>404</h1>
+  <p>{{ site.data.i18n.en.error_404_text }}</p>
+  <a href="{{ site.baseurl }}/en/" class="btn">{{ site.data.i18n.en.error_404_button }}</a>
+</div>
+
+<script>
+  (function () {
+    if (location.pathname.indexOf('/en/') !== -1) {
+      document.getElementById('error-tr').hidden = true;
+      document.getElementById('error-en').hidden = false;
+    }
+  })();
+</script>
