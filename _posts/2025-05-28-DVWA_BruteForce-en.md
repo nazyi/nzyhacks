@@ -2,7 +2,7 @@
 categories: [makine]
 layout: post
 lang: en
-desc: "In the brute force vulnerability lab on DVWA (Damn Vulnerable Web Application), we learned how to bypass authentication mechanisms in web applications by using automated tools to try username and password combinations. In this lab, we saw hands-on how to use tools like Hydra to detect weak or guessable passwords and gain unauthorized access to a system."
+description: "In the brute force vulnerability lab on DVWA (Damn Vulnerable Web Application), we learned how to bypass authentication mechanisms in web applications by using automated tools to try username and password combinations. In this lab, we saw hands-on how to use tools like Hydra to detect weak or guessable passwords and gain unauthorized access to a system."
 logo: "/assets/images/dvwa1.png"
 author: nazy
 title: DVWA Brute Force

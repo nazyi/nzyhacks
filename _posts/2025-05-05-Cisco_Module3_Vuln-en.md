@@ -2,7 +2,7 @@
 categories: [modul]
 layout: post
 lang: en
-desc: "This is the vulnerability scanning section of the third module of the Cisco Ethical Hacker course. It covers, in a hands-on way, how vulnerability scanners work, scan types (authenticated, unauthenticated, stealth, compliance, etc.), and vulnerability analyses performed with Nmap and GVM tools on Kali Linux. It also introduces points to consider when analyzing scan results, along with security resources such as CVE, CWE, and CVSS."
+description: "This is the vulnerability scanning section of the third module of the Cisco Ethical Hacker course. It covers, in a hands-on way, how vulnerability scanners work, scan types (authenticated, unauthenticated, stealth, compliance, etc.), and vulnerability analyses performed with Nmap and GVM tools on Kali Linux. It also introduces points to consider when analyzing scan results, along with security resources such as CVE, CWE, and CVSS."
 logo: "/assets/images/cisco.png"
 author: nazy
 title: Cisco Ethical Hacker Module 3 - Vulnerability Scans

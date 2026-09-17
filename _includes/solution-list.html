@@ -15,7 +15,7 @@
           {% for tag in post.tags %}<a href="{{ tags_url | relative_url }}#{{ tag | slugify }}" class="tag-badge">{{ tag }}</a>{% endfor %}
         </div>
         {% endif %}
-        <p>{{ post.desc }}</p>
+        <p>{{ post.description }}</p>
       </div>
       <div class="solution-logo">
         <img src="{{ post.logo | relative_url }}" alt="{{ post.title }} logo">

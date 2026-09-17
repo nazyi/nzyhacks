@@ -1,7 +1,7 @@
 ---
 categories: [dokumantasyon]
 layout: post
-desc: "JumpCloud University Core kursunun ilk dersi: Admin Console ve User Portal arayüzleri, organizasyon ayarları, admin rolleri/izinleri ve önerilen güvenlik/şifre politikaları."
+description: "JumpCloud University Core kursunun ilk dersi: Admin Console ve User Portal arayüzleri, organizasyon ayarları, admin rolleri/izinleri ve önerilen güvenlik/şifre politikaları."
 logo: "/assets/images/blog_icon/jumpcloud.png"
 author: nazy
 title: JumpCloud Core 1 - Admin Ayarları

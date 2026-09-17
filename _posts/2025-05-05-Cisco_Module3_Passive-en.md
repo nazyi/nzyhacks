@@ -2,7 +2,7 @@
 categories: [modul]
 layout: post
 lang: en
-desc: "The passive information gathering section of the third module of the Cisco Ethical Hacker course. It covers passive reconnaissance, a method of gathering information without directly interacting with target systems. Techniques such as OSINT tools, DNS queries, and WHOIS are used to gather information about systems without leaving a trace."
+description: "The passive information gathering section of the third module of the Cisco Ethical Hacker course. It covers passive reconnaissance, a method of gathering information without directly interacting with target systems. Techniques such as OSINT tools, DNS queries, and WHOIS are used to gather information about systems without leaving a trace."
 logo: "/assets/images/cisco.png"
 author: nazy
 title: Cisco Ethical Hacker Module 3 - Passive Recon

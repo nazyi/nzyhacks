@@ -2,7 +2,7 @@
 categories: [makine]
 layout: post
 title: TryHackMe Cheese CTF
-desc: "Cheese, sizi lezzetli ama tehlikeli bir web sunucusuna götürüyor. Amacınız? Güvenlik açıklarını kullanarak sistemdeki dijital peynir tuzaklarını aşmak ve tüm bayrakları toplamak. "
+description: "Cheese, sizi lezzetli ama tehlikeli bir web sunucusuna götürüyor. Amacınız? Güvenlik açıklarını kullanarak sistemdeki dijital peynir tuzaklarını aşmak ve tüm bayrakları toplamak. "
 logo: "/assets/images/cheese_ctf.png"
 tags: [TryHackMe, SQLi]
 order: 3

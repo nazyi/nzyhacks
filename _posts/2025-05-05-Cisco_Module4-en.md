@@ -2,7 +2,7 @@
 categories: [modul]
 layout: post
 lang: en
-desc: "This is the fourth part of the Cisco Ethical Hacker course. It covers social engineering attacks (pretexting, email phishing, tabnabbing, etc.) and hands-on examples using BeEF and DVWA."
+description: "This is the fourth part of the Cisco Ethical Hacker course. It covers social engineering attacks (pretexting, email phishing, tabnabbing, etc.) and hands-on examples using BeEF and DVWA."
 logo: "/assets/images/cisco.png"
 author: nazy
 title: Cisco Ethical Hacker Module 4

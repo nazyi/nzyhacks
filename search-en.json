@@ -8,7 +8,7 @@ layout: null
   {
     "title": {{ post.title | jsonify }},
     "url": {{ post.url | relative_url | jsonify }},
-    "desc": {{ post.desc | jsonify }},
+    "desc": {{ post.description | jsonify }},
     "date": {{ post_date | strip | jsonify }},
     "logo": {{ post.logo | relative_url | jsonify }},
     "category": {{ post.categories | first | jsonify }}

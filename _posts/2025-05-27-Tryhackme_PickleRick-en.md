@@ -2,7 +2,7 @@
 categories: [makine]
 layout: post
 lang: en
-desc: "This Rick and Morty themed challenge requires you to exploit a web server and find three ingredients that will help Rick make his potion and turn himself from a pickle back into a human."
+description: "This Rick and Morty themed challenge requires you to exploit a web server and find three ingredients that will help Rick make his potion and turn himself from a pickle back into a human."
 logo: "/assets/images/picklerick.jpeg"
 author: nazy
 title: TryHackMe Pickle Rick

@@ -2,7 +2,7 @@
 categories: [makine]
 layout: post
 lang: en
-desc: "Cheese takes you to a delicious but dangerous web server. Your goal? Exploit vulnerabilities to get past the digital cheese traps on the system and collect all the flags."
+description: "Cheese takes you to a delicious but dangerous web server. Your goal? Exploit vulnerabilities to get past the digital cheese traps on the system and collect all the flags."
 logo: "/assets/images/cheese_ctf.png"
 tags: [TryHackMe, SQLi]
 order: 3

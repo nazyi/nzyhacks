@@ -2,7 +2,7 @@
 categories: [makine]
 layout: post
 lang: en
-desc: "As part of scoping, I'm trying to find wifi networks in a wireless network penetration test. However, I discovered that some SSID values were hidden. Can you help me with this?"
+description: "As part of scoping, I'm trying to find wifi networks in a wireless network penetration test. However, I discovered that some SSID values were hidden. Can you help me with this?"
 logo: "/assets/images/hidden_wifi.png"
 author: nazy
 title: CyberExam Uncovering Hidden SSID 

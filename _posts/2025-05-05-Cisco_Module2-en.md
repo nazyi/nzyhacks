@@ -2,7 +2,7 @@
 categories: [modul]
 layout: post
 lang: en
-desc: "This is the second module of the Cisco Ethical Hacker course. It emphasizes why the planning and scoping stages are critical in the penetration testing process. It also details how to act within the framework of regulatory compliance, legal responsibilities, and ethical principles."
+description: "This is the second module of the Cisco Ethical Hacker course. It emphasizes why the planning and scoping stages are critical in the penetration testing process. It also details how to act within the framework of regulatory compliance, legal responsibilities, and ethical principles."
 logo: "/assets/images/cisco.png"
 author: nazy
 title: Cisco Ethical Hacker Module 2

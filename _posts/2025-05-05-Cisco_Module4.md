@@ -1,7 +1,7 @@
 ---
 categories: [modul]
 layout: post
-desc: "Cisco Ethical Hacker kursunun dördüncü bölümüdür. Sosyal mühendislik saldırılarını (pretexting, e-posta phishing, tabnabbing vb.) ve BeEF ile DVWA üzerinden uygulamalı örnekleri ele alır."
+description: "Cisco Ethical Hacker kursunun dördüncü bölümüdür. Sosyal mühendislik saldırılarını (pretexting, e-posta phishing, tabnabbing vb.) ve BeEF ile DVWA üzerinden uygulamalı örnekleri ele alır."
 logo: "/assets/images/cisco.png"
 author: nazy
 title: Cisco Ethical Hacker Modül 4

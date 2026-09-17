@@ -1,7 +1,7 @@
 ---
 categories: [modul]
 layout: post
-desc: "Cisco Ethical Hacker kursunun üçüncü bölümünün aktif bilgi toplama kısmıdır. aktif bilgi toplama teknikleri kapsamında Nmap tarama türleri ve numaralandırma (enumeration) yöntemleri detaylıca ele alınmıştır. Hedef sistemler hakkında daha derinlemesine bilgi edinmek amacıyla servisler, kullanıcılar, gruplar ve paylaşılan kaynaklar gibi bileşenlerin tespiti örnek araç ve komutlarla açıklanmıştır."
+description: "Cisco Ethical Hacker kursunun üçüncü bölümünün aktif bilgi toplama kısmıdır. aktif bilgi toplama teknikleri kapsamında Nmap tarama türleri ve numaralandırma (enumeration) yöntemleri detaylıca ele alınmıştır. Hedef sistemler hakkında daha derinlemesine bilgi edinmek amacıyla servisler, kullanıcılar, gruplar ve paylaşılan kaynaklar gibi bileşenlerin tespiti örnek araç ve komutlarla açıklanmıştır."
 logo: "/assets/images/cisco.png"
 author: nazy
 title: Cisco Ethical Hacker Modül 3 - Active Recon 

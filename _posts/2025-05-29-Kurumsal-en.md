@@ -2,7 +2,7 @@
 categories: [blog]
 layout: post
 lang: en
-desc: "A short introduction to breach types, APTs, the CIA triad, the NIST Cybersecurity Framework, and the Cyber Kill Chain."
+description: "A short introduction to breach types, APTs, the CIA triad, the NIST Cybersecurity Framework, and the Cyber Kill Chain."
 logo: "/assets/images/blog_icon/corporate.png"
 author: nazy
 title: Corporate Security 101

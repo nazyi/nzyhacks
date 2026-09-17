@@ -2,7 +2,7 @@
 categories: [blog]
 layout: post
 lang: en
-desc: "Installing the Python-based penetration testing tool Impacket on Kali, the services it offers, and examples from tools like wmiexec and secretsdump."
+description: "Installing the Python-based penetration testing tool Impacket on Kali, the services it offers, and examples from tools like wmiexec and secretsdump."
 logo: "/assets/images/blog_icon/impacket.png"
 author: nazy
 title: The Impacket Tool

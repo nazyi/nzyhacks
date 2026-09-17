@@ -2,7 +2,7 @@
 categories: [modul]
 layout: post
 lang: en
-desc: "This is the active information gathering section of the third module of the Cisco Ethical Hacker course. Within the scope of active information gathering techniques, Nmap scan types and enumeration methods are covered in detail. To gain deeper insight into target systems, the detection of components such as services, users, groups, and shared resources is explained with example tools and commands."
+description: "This is the active information gathering section of the third module of the Cisco Ethical Hacker course. Within the scope of active information gathering techniques, Nmap scan types and enumeration methods are covered in detail. To gain deeper insight into target systems, the detection of components such as services, users, groups, and shared resources is explained with example tools and commands."
 logo: "/assets/images/cisco.png"
 author: nazy
 title: Cisco Ethical Hacker Module 3 - Active Recon

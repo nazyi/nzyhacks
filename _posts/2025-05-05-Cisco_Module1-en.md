@@ -2,7 +2,7 @@
 categories: [modul]
 layout: post
 lang: en
-desc: "The first module of the Cisco Ethical Hacker course. It explains threat actors in cybersecurity, types of test environments, environmental considerations, and different security testing standards and methodologies. The scope and approaches of penetration tests carried out to identify and remediate organizations' security weaknesses are detailed."
+description: "The first module of the Cisco Ethical Hacker course. It explains threat actors in cybersecurity, types of test environments, environmental considerations, and different security testing standards and methodologies. The scope and approaches of penetration tests carried out to identify and remediate organizations' security weaknesses are detailed."
 logo: "/assets/images/cisco.png"
 author: nazy
 title: Cisco Ethical Hacker Module 1
