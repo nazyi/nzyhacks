@@ -11,7 +11,7 @@ order: 4
 permalink: /en/Tryhackme_PickleRick
 translation_url: /Tryhackme_PickleRick
 ---
-# Port Scan
+## Port Scan
 
 It asks us for the three ingredients needed to turn Rick back into a human.
 
@@ -46,7 +46,7 @@ Rick asks us to access his computer and find the last three hidden ingredients, 
 
 Great! Now, to learn more details, we'll scan for hidden files.
 
-# File Scanning
+## File Scanning
 
 We'll use a tool called gobuster for this process. Gobuster is a fast and powerful directory and file discovery scanner that uses brute force. We'll use the following command to use this tool.
 
@@ -71,7 +71,7 @@ This page gives us a value.
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/fif.webp' | relative_url }}" width="400" height="100" alt="The hidden password value found in the robots.txt file">
 </div>
-# First Ingredient
+## First Ingredient
 
 Let's try this value as the password when logging in. Bingo! We were able to log in. A command panel greets us.
 <div style="text-align: center;">
@@ -89,7 +89,7 @@ Bingo, we find our first hidden ingredient. Let's continue to collect more ingre
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/nin.webp' | relative_url }}" width="400" height="100" alt="The hint to look at the file system in the clue.txt file">
 </div>
-# Second Ingredient
+## Second Ingredient
 
 It tells us that we need to look at the file system.
 
@@ -110,7 +110,7 @@ Let's research cat-like commands and try our luck again. I'm able to get the out
 </div>
 Let's continue our research to find the other ingredient.
 
-# Third Ingredient
+## Third Ingredient
 
 Let's try to view the contents of the root folder. Let's try the ls /root command, but I guess we don't have access to the root folder. Let's use the sudo -l command to view our privileges. But what's this?
 <div style="text-align: center;">

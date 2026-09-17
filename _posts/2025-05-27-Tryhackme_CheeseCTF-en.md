@@ -10,7 +10,7 @@ author: nazy
 permalink: /en/Tryhackme_CheeseCTF
 translation_url: /Tryhackme_CheeseCTF
 ---
-# Port Scan
+## Port Scan
 
 Machine IP address: 10.10.87.129
 
@@ -27,7 +27,7 @@ While browsing the page, we notice there's also a login page.
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/login.webp' | relative_url }}" width="400" height="300" alt="The web application's user login page">
 </div>
 
-# SQLi
+## SQLi
 
 Let's try to log in via the login page using an SQLi attack. I wanted to do this with a wordlist through Burp Suite. Let's open Burp Suite. Let's capture the POST request from the login page.
 <div style="text-align: center;">
@@ -51,7 +51,7 @@ After logging in, we're greeted by a panel.
 </div>
 The page's URL catches my attention. This URL shows that the page accepts php files and dynamically loads content using a file parameter.
 
-# LFI
+## LFI
 
 Let's try a simple LFI payload where the file parameter is. If we specify "../../../../../../etc/passwd" as the file path after the file parameter, we might be able to get the list of users.
 <div style="text-align: center;">
@@ -61,7 +61,7 @@ Bingo, the LFI works and we're able to pull the users. We have two important use
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/shdw.webp' | relative_url }}" width="900" height="250" alt="Root and comte users visible in the /etc/passwd output">
 </div>
-# LFI to RCE
+## LFI to RCE
 
 PHP can read and process files and data in different ways using mechanisms called stream wrappers. This library makes things easier for developers. But it can also be combined with an LFI vulnerability and abused.
 
@@ -121,7 +121,7 @@ You can go back to the terminal where you're listening with Netcat to reach the 
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/shell.webp' | relative_url }}" width="400" height="360" alt="Reverse shell connection obtained via the Netcat listener">
 </div>
 
-# Privilege Escalation
+## Privilege Escalation
 
 After gaining access to the system, we were able to access the "comte" user's home folder.
 <div style="text-align: center;">
@@ -156,7 +156,7 @@ After adding it, we can log in on our own Kali machine with the ssh comte@ip\_ad
 </div>
 This way we obtain our first flag, user.txt.
 
-# Comte to Root
+## Comte to Root
 
 To reach the root user from the comte user, let's first check this user's privileges.
 <div style="text-align: center;">
@@ -194,7 +194,7 @@ The /opt/xxd tool prints the /root/root.txt file we give it to the screen in hex
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/root.webp' | relative_url }}" width="600" height="220" alt="Content of the root.txt flag obtained with the /opt/xxd tool">
 </div>
-# Notes
+## Notes
 
 Ssh-keygen
 
@@ -204,11 +204,11 @@ A tool used on Linux systems to generate an encrypted key pair.
 
 ·        **Public key**: Given to the remote server
 
-## Xxd
+### Xxd
 
 A command that displays a binary file or text in hex format. You can convert hex back to normal text with the -r parameter.
 
-## SUID
+### SUID
 
 Normally when a program runs, it has the privileges of the current user, but if the program has the SUID bit, it runs with the owner's privileges when executed.
 

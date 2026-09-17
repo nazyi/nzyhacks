@@ -10,11 +10,11 @@ order: 1
 translation_url: /en/Cisco_Module1
 ---
 
-# Cisco Ethical Hacker
+## Cisco Ethical Hacker
 
 <h2> Module 1: Inroduction to Ethical Hacking and Penetration Testing </h2>
 
-## 1.1 Threat Actors
+### 1.1 Threat Actors
 
 ·        **Organized Crime:** En son saldırı tekniklerini kullanarak paraya çevirebilecekleri her türlü siber suç yönetimini gerçekleştirirler.
 
@@ -24,7 +24,7 @@ translation_url: /en/Cisco_Module1
 
 ·        **Insider Threats:** Orgizasyonun içerisindeki ya kötü amaçlı insanlar örneğin kurumdan intikam almak isteyen insanlar ya da farkında olmadan bilgi sızıntısına sebebiyet veren insanlar olabilmektedir.
 
-## 1.2 Environmental Considerations
+### 1.2 Environmental Considerations
 
 ·        **Network Infasturcture Tests**: Switchler, routerlar, firewallar ve bunları destekleyen kaynaklar örneğin (AAA, IPS…) gibi network elemanlarının kullanımı ve test edilmesi ile sağlanır.
 
@@ -32,7 +32,7 @@ translation_url: /en/Cisco_Module1
 
 ·        **Penetration Testing in the Cloud**: Bulut güvenliği, kullanılan modele (SaaS, PaaS, IaaS) göre değişir ve hem müşteri hem de sağlayıcı sorumludur. Sızma testi yapılmadan önce, güvenlik gereksinimleri ve sözleşmelerin netleştirilmesi önemlidir. CSP'ler, bulut ortamında güvenlik değerlendirmeleri ve sızma testleri için yönergeler sunar.
 
-## 1.3 Environmental Considerations
+### 1.3 Environmental Considerations
 
 ·        **Unknown-Enviromental Test:** Testçiye az miktarda bilgi verilmiştir. Domain isimleri ve scope dahilindeki IP adresleri attacker için verilmiş olabilir. Bu black-box testinin amacı dışarıdan bir saldırganın perspektifi ile bakılmasını sağlar.
 
@@ -40,7 +40,7 @@ translation_url: /en/Cisco_Module1
 
 ·        **Partially-Known Environment Test:** Blackbox ve Whitebox testinin hibrit halidir. Testerlara belki kullanıcı bilgileri verilebilir fakat ağ yapısının iç yapısı verilmez.
 
-## 1.4 Surveying Diffrent Standarts and Methologies
+### 1.4 Surveying Diffrent Standarts and Methologies
 
 ·        **MITRE ATT&CK:** Saldırganların taktik, teknik ve prosedürlerini (TTP) öğrenmek için yapılmış bir çerçevedir.
 

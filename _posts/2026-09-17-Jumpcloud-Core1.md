@@ -18,7 +18,7 @@ JumpCloud'da iki ana UI sayfası var. Birincisi IT adminlerinin kullandığı Ad
 
 Admin Console'da çeşitli ayarlamaları yapabilirsiniz. Örneğin; kullanıcı ve cihaz yönetimi, güvenlik yönetimi, organizasyon ayarları ve hesap bilgileri vb.
 
-# Org Ayarları
+## Org Ayarları
 
 - **Settings > Organization Profile**: Buradan şirket isminizi, olası bir durumda ulaşılabilecek mail adresini ve şirketin logosu gibi özellikleri yönetebilir ve değiştirebilirsiniz. Aynı zamanda kullanıcıların User Portal'ı tarafındaki yetkisini veya portalın açık durma süresini de yönetebilirsiniz.
 - **Settings > Customize Email**: Buradan hazır olan mail taslağınızı oluşturup değiştirebilirsiniz. Örneğin kullanıcı hesabını kilitleyince JumpCloud tarafından atılacak maili düzenleyebilirsiniz.
@@ -28,7 +28,7 @@ Admin Console'da çeşitli ayarlamaları yapabilirsiniz. Örneğin; kullanıcı 
 1. **Settings > Security**: Güvenlik ayarlarından şifre zorluğunu, kompleksliğini veya hesap kilitlenmesini ayarlayabilirsiniz.
 2. **Security > Password Policies**: Yeni bir politika oluşturarak, politikayı etkilemesini istediğiniz kullanıcı grubuna bağlayabilirsiniz. Eğer kullanıcı birçok kullanıcı grubunda ise, hangi grubun şifre politikasının uygulanması gerektiğini buradan yönetebilirsiniz.
 
-# Admin Yönetimi
+## Admin Yönetimi
 
 **Settings > Administrators**
 
@@ -37,7 +37,7 @@ Konsola admin eklemek için 2 yol tercih edebilirsiniz:
 1. "+ Admin" butonuna tıklayıp halihazırdaki bir kullanıcıya adminlik yetkisi verebilirsiniz.
 2. "+ Admin" butonuna tıklayıp "yeni" seçeneğini seçerseniz yeni bir admin hesabı oluşturursunuz.
 
-# Rol İzinleri
+## Rol İzinleri
 
 - **Administrator with Billing**: Super admin diye de adlandırılır. Bütün yetkilere sahiptir; MTP (Multi-Tenant Portal) portalına erişebilir, faturalandırmayı düzenleyebilir ve API anahtarı aktive edebilir.
 - **Administrator**: API anahtarı, MTP ve faturalandırma harici her şeyi yapabilir.
@@ -48,7 +48,7 @@ Konsola admin eklemek için 2 yol tercih edebilirsiniz:
 - **Billing Only**: Yetkileri sadece okuma ile sınırlıdır. Ödeme ile ilgili bilgileri görebilirler.
 - **Read Only**: Bu yetkili adminler sadece okuyabilirler.
 
-# Notlar
+## Notlar
 
 - Yeni şifre, eski 4 şifreden farklı olsun.
 - Başarısız girilme sınırını 6 ile sınırlayın.

@@ -10,11 +10,11 @@ order: 2
 translation_url: /en/Cisco_Module2
 ---
 
-# Cisco Ethical Hacker
+## Cisco Ethical Hacker
 
 <h2> Module 2: Planning and Scoping a Penetration Testing Assesment </h2>
 
-## 2.1 Regulatory Compliance Considerations
+### 2.1 Regulatory Compliance Considerations
 
 **PCI DSS**: Kredi kartı ve diğer dijital ödemeleri koruma altına almayı amaçlamaktadır.
 
@@ -22,11 +22,11 @@ translation_url: /en/Cisco_Module2
 
 **FedRAMP:** Bulut hizmetlerinin güvenliğini sağlamayı amaçlamaktadır.
 
-### 2.1.1 Regulations in the Financial Sector
+#### 2.1.1 Regulations in the Financial Sector
 
 GLBA, finans kuruluşlarının bireylerin özel bilgileriyle başa çıkma biçimlerini kontrol eden bir yasadır ve büyük küçük bütün finans kuruluşlarına uygulanır.
 
-### 2.1.2 Regulations in the Healthcare Sector
+#### 2.1.2 Regulations in the Healthcare Sector
 
 HIPAA, elektronik olarak korunmuş sağlık bilgilerine odaklanır. HIPAA güvenlik kuralları kapsanan varlıklar ve iş ortakları için geçerlidir.
 
@@ -38,7 +38,7 @@ HIPAA, elektronik olarak korunmuş sağlık bilgilerine odaklanır. HIPAA güven
 
 ·        **Business Associates:** Kişi hizmeti alırken; bilgilerini ileten, erişen veya elinde bulunduran taraflar tanımlanmaktadır.
 
-### 2.1.3 Payment Card Industry Data Security Standard (PCI DSS)
+#### 2.1.3 Payment Card Industry Data Security Standard (PCI DSS)
 
 Kart sahiplerini kişisel bilgilerin kötüye kullanımına karşı korumak ve ödeme kartı kanalındaki kayıpları en aza indirmek amacıyla, büyük ödeme kartı markaları PCI DSS kurup geliştirmiştir.
 
@@ -64,7 +64,7 @@ PCI endüstrisinde pentest yapmak için bazı anahtarları bilmeniz gerekir:
 
 PAN bilgisi okunamaz yani encrypted formatta saklanılması beklenmektedir. Luhn algoritması, kredi kartı numarası, IMEI numaraları ve daha farklı kimlik numaralarını doğrulamak için kullanılır.
 
-### 2.1.4 Key Technical Elements in Regulations You Should Consider
+#### 2.1.4 Key Technical Elements in Regulations You Should Consider
 
 Çoğu regülasyon bazı temel unsurlar üzerinde durur ve penetrasyon testçisi değerlendirme sürecinde bunlara dikkat etmelidir.
 
@@ -74,7 +74,7 @@ PAN bilgisi okunamaz yani encrypted formatta saklanılması beklenmektedir. Luhn
 
 ·        **Key Management:** Anahtar, bir şifreleme algoritmasında hangi yerinde uygulanacağı ve hangi sırayla çalıştıralacağı gibi hususlarda rol alır. Anahtarın korunması sürecine anahtar yönetimi denir.
 
-### 2.1.5 Legal Concepts
+#### 2.1.5 Legal Concepts
 
 Penetrasyon testi gerçekleştirmeden önce bazı hukuki kavramlar vardır.
 
@@ -88,21 +88,21 @@ Penetrasyon testi gerçekleştirmeden önce bazı hukuki kavramlar vardır.
 
 ·        **Non-Disclosure Agreement (NDA):** Bir penetrasyon testi ile beni işe alan kurum arasında yapılan gizlilik sözleşmesidir.
 
-### 2.1.6 Contracts
+#### 2.1.6 Contracts
 
 Sözleşme, testin tüm detaylarını, yapılacak işleri ve ödeme koşullarını belirten belgedir. Oldukça spesifik, anlaşılır ve temiz olmalıdır.
 
-### 2.1.7 Disclaimers
+#### 2.1.7 Disclaimers
 
 Test sırasında veya öncesinde oluşabilecek bazı durumlara karşı herhangi bir garanti verilmediğinin belgesidir.
 
-## 2.2 Explaining the Importance of Scoping and Organizational or Customer Requirements
+### 2.2 Explaining the Importance of Scoping and Organizational or Customer Requirements
 
-### 2.2.1 Rules of Engagement
+#### 2.2.1 Rules of Engagement
 
 Sızma testlerinin hangi şartlar altında yapılacağını belirler. Test edilecek IP adresleri, testin yapılacağı zaman veya testin dahil olduğu domain adresleri gibi bilgileri içerir.
 
-### 2.2.2 Target Lists and In-Scope Assets
+#### 2.2.2 Target Lists and In-Scope Assets
 
 Kapsam belirleme, pentestin en önemli unsurlarından biridir. Test edilecek cihazlar, varlıkların IP adresi veya programlama arayüzleri yani API’ler bu kapsamın içindedir. Api dokümantasyonu türleri hakkında aşağıda bilgi verilmiştir. Api dokümantasyonları uygulamanın arkasında çalışan hangi endpointe cevap gidiyor hangi endpointten cevap geliyor gibi kuralları anlatan bir dökümdür. Halka açık olmaması gerekmektedir. Dokümantasyonu okuyup ona göre saldırı düzenlenebilir.
 
@@ -132,9 +132,9 @@ Pentest için diğer kullanılan kaynaklardan bazıları aşağıda verilmiştir
 
 ·        **System and Network** **Architectural Diagrams**: Sistem ve ağ iç yapısının mimarisi.
 
-## 2.3 Demonstrating an Ethical Hacking Mindset by Maintaining Professionalism and Integrity
+### 2.3 Demonstrating an Ethical Hacking Mindset by Maintaining Professionalism and Integrity
 
-### 2.3.1 Overview
+#### 2.3.1 Overview
 
 Pentesterların profesyonelliğini ve dürüstlüğünü koruması gereken birçok senaryo vardır.
 

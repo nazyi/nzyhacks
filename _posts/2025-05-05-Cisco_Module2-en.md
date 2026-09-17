@@ -12,11 +12,11 @@ permalink: /en/Cisco_Module2
 translation_url: /Cisco_Module2
 ---
 
-# Cisco Ethical Hacker
+## Cisco Ethical Hacker
 
 <h2> Module 2: Planning and Scoping a Penetration Testing Assesment </h2>
 
-## 2.1 Regulatory Compliance Considerations
+### 2.1 Regulatory Compliance Considerations
 
 **PCI DSS**: Aims to protect credit card and other digital payments.
 
@@ -24,11 +24,11 @@ translation_url: /Cisco_Module2
 
 **FedRAMP:** Aims to ensure the security of cloud services.
 
-### 2.1.1 Regulations in the Financial Sector
+#### 2.1.1 Regulations in the Financial Sector
 
 GLBA is a law that controls how financial institutions handle individuals' private information, and it applies to all financial institutions, large and small.
 
-### 2.1.2 Regulations in the Healthcare Sector
+#### 2.1.2 Regulations in the Healthcare Sector
 
 HIPAA focuses on electronically protected health information. The HIPAA security rules apply to covered entities and business associates.
 
@@ -40,7 +40,7 @@ HIPAA focuses on electronically protected health information. The HIPAA security
 
 ·        **Business Associates:** Defines the parties that transmit, access, or hold a person's information while they receive a service.
 
-### 2.1.3 Payment Card Industry Data Security Standard (PCI DSS)
+#### 2.1.3 Payment Card Industry Data Security Standard (PCI DSS)
 
 In order to protect cardholders' personal information from misuse and minimize losses in the payment card channel, the major payment card brands established and developed PCI DSS.
 
@@ -66,7 +66,7 @@ To perform a pentest in the PCI industry, you need to know some key terms:
 
 PAN information is expected to be stored in an unreadable, i.e., encrypted, format. The Luhn algorithm is used to validate credit card numbers, IMEI numbers, and various other identification numbers.
 
-### 2.1.4 Key Technical Elements in Regulations You Should Consider
+#### 2.1.4 Key Technical Elements in Regulations You Should Consider
 
 Most regulations focus on certain core elements, and a penetration tester should pay attention to these during the assessment process.
 
@@ -76,7 +76,7 @@ Most regulations focus on certain core elements, and a penetration tester should
 
 ·        **Key Management:** A key plays a role in matters such as where it will be applied within an encryption algorithm and in what order it will run. The process of protecting the key is called key management.
 
-### 2.1.5 Legal Concepts
+#### 2.1.5 Legal Concepts
 
 There are certain legal concepts to know before carrying out a penetration test.
 
@@ -90,21 +90,21 @@ There are certain legal concepts to know before carrying out a penetration test.
 
 ·        **Non-Disclosure Agreement (NDA):** A confidentiality agreement made between a penetration tester and the organization that hired them.
 
-### 2.1.6 Contracts
+#### 2.1.6 Contracts
 
 A contract is a document that specifies all the details of the test, the work to be done, and the payment terms. It should be quite specific, clear, and clean.
 
-### 2.1.7 Disclaimers
+#### 2.1.7 Disclaimers
 
 A document stating that no warranty is given against certain situations that may arise during or before the test.
 
-## 2.2 Explaining the Importance of Scoping and Organizational or Customer Requirements
+### 2.2 Explaining the Importance of Scoping and Organizational or Customer Requirements
 
-### 2.2.1 Rules of Engagement
+#### 2.2.1 Rules of Engagement
 
 Determines the conditions under which penetration tests will be carried out. It includes information such as the IP addresses to be tested, the time the test will be conducted, or the domain addresses included in the test.
 
-### 2.2.2 Target Lists and In-Scope Assets
+#### 2.2.2 Target Lists and In-Scope Assets
 
 Scoping is one of the most important elements of a pentest. The devices to be tested, the IP addresses of the assets, or the programming interfaces — i.e., APIs — fall within this scope. Information about API documentation types is given below. API documentation is a document that describes rules such as which endpoint a response goes to and which endpoint a response comes from behind the scenes of the application. It should not be publicly accessible. An attacker can read the documentation and plan an attack accordingly.
 
@@ -134,9 +134,9 @@ Some of the other resources used for pentesting are given below.
 
 ·        **System and Network** **Architectural Diagrams**: The architecture of the internal structure of the system and network.
 
-## 2.3 Demonstrating an Ethical Hacking Mindset by Maintaining Professionalism and Integrity
+### 2.3 Demonstrating an Ethical Hacking Mindset by Maintaining Professionalism and Integrity
 
-### 2.3.1 Overview
+#### 2.3.1 Overview
 
 There are many scenarios in which pentesters must maintain their professionalism and integrity.
 

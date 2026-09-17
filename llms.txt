@@ -1,0 +1,44 @@
+---
+layout: null
+---
+# nzyhacks
+
+> Naz'ın (nazy) IT ve siber güvenlik yolculuğunu belgelediği kişisel blog. Hack The Box / TryHackMe / CyberExam makine çözümleri, Cisco Ethical Hacker kurs modülü notları, kavramsal siber güvenlik yazıları ve kurumsal araç (JumpCloud, Trend Micro) dokümantasyonu içerir. Tüm içerik hem Türkçe (varsayılan) hem İngilizce (/en/ altında) olarak sunulur.
+
+## Türkçe
+
+- [Ana Sayfa]({{ '/' | absolute_url }}): Giriş sayfası ve en son yazılar
+- [Hakkımda]({{ '/hakkimda' | absolute_url }}): Yazar hakkında
+- [Bloglar]({{ '/bloglar' | absolute_url }}): Kavramsal siber güvenlik yazıları (GDPR, kimlik yönetimi, NIST çerçevesi, Impacket vb.)
+- [Çözümler]({{ '/cozumler' | absolute_url }}): Tüm teknik çözümlerin tek listesi
+- [Makine Çözümleri]({{ '/makine-cozumler' | absolute_url }}): HTB, TryHackMe, CyberExam makine çözümleri
+- [Modül Çözümleri]({{ '/modul-cozumler' | absolute_url }}): Cisco Ethical Hacker kurs modülü notları
+- [Dokümantasyon]({{ '/dokumantasyon' | absolute_url }}): Kurumsal araç (JumpCloud, Trend Micro) kullanım notları
+- [Etiketler]({{ '/etiketler' | absolute_url }}): Konuya göre tüm yazılar
+
+### Yazılar
+{% assign tr_posts = site.posts | where: "lang", "tr" | sort: "date" | reverse %}
+{% for post in tr_posts %}- [{{ post.title }}]({{ post.url | absolute_url }}): {{ post.description }}
+{% endfor %}
+
+## English
+
+- [Home]({{ '/en/' | absolute_url }})
+- [About]({{ '/en/hakkimda' | absolute_url }})
+- [Blog]({{ '/en/bloglar' | absolute_url }})
+- [Write-ups]({{ '/en/cozumler' | absolute_url }})
+- [Machine Write-ups]({{ '/en/makine-cozumler' | absolute_url }})
+- [Module Write-ups]({{ '/en/modul-cozumler' | absolute_url }})
+- [Documentation]({{ '/en/dokumantasyon' | absolute_url }})
+- [Tags]({{ '/en/tags' | absolute_url }})
+
+### Posts
+{% assign en_posts = site.posts | where: "lang", "en" | sort: "date" | reverse %}
+{% for post in en_posts %}- [{{ post.title }}]({{ post.url | absolute_url }}): {{ post.description }}
+{% endfor %}
+
+## Feeds
+
+- [RSS (Turkish)]({{ '/feed.xml' | absolute_url }})
+- [RSS (English)]({{ '/feed-en.xml' | absolute_url }})
+- [Sitemap]({{ '/sitemap.xml' | absolute_url }})

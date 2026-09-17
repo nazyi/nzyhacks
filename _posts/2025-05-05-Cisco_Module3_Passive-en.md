@@ -12,17 +12,17 @@ permalink: /en/Cisco_Module3_Passive
 translation_url: /Cisco_Module3_Passive
 ---
 
-# Cisco Ethical Hacker
+## Cisco Ethical Hacker
 
-## Module 3: Information Gathering and Vulnerability Scanning
+### Module 3: Information Gathering and Vulnerability Scanning
 
-## 3.1 Perform Passive Reconnaissance
+### 3.1 Perform Passive Reconnaissance
 
-### 3.1.1 Reconnaissance  
+#### 3.1.1 Reconnaissance  
 
 Gathering information about a target is called reconnaissance. It is the first step of the Cyber Kill Chain. This term, used in its military sense to mean scouting, covers information such as the enemy's location and capabilities.
 
-### 3.1.2 Active Reconnaissance vs Passive Reconnaissance
+#### 3.1.2 Active Reconnaissance vs Passive Reconnaissance
 
 **Active Reconnaissance** is when the tools used to gather information are more aggressive and noticeable. It performs various scans by sending requests to the target system or network.
 
@@ -45,13 +45,13 @@ Some passive information gathering tools:
 ·        Recon-ng
 
 ·        Domain Enumeration
-### 3.1.3 Lab – Using OSINT Tools
+#### 3.1.3 Lab – Using OSINT Tools
 
-#### Part 1 Examine OSINT Resources
+##### Part 1 Examine OSINT Resources
 
 You can search for a nickname using the OSINT Framework at [https://osintframework.com/](https://osintframework.com/). The site [https://whatsmyname.app/](https://whatsmyname.app/) lets you search for any nickname you want. You can find the results along with their URLs.
 
-#### Part 2 Use SpiderFoot
+##### Part 2 Use SpiderFoot
 
 To use the tool after opening SpiderFoot on Kali
 <div class="code-window">
@@ -77,7 +77,7 @@ By looking at the Scan tab, we can view previous scans or scans currently in pro
 
 Some modules require API keys to use. These API keys can be obtained free of charge for some modules. By going to the page content of the module you want to use and clicking the question mark, you can see step by step how to obtain the API key.
 
-#### Part 3 Investigate Recon-ng
+##### Part 3 Investigate Recon-ng
 
 **Step 1: Create a Workspace**
 
@@ -183,7 +183,7 @@ Let's open a new terminal and type recon-web. This starts the process of gatheri
 </div>
 
 
-#### Part 4 Find Interesting Files with Recon-ng
+##### Part 4 Find Interesting Files with Recon-ng
 
 Let's download a new module to find various files on the site.
 
@@ -217,13 +217,13 @@ You can read the saved output from the file /root/.recon-ng/workspaces/cisco/htt
 
 You can also read the results in the csv file inside the recon-ng/data folder.
 
-### 3.1.4 DNS Lookups
+#### 3.1.4 DNS Lookups
 
 DNS queries can be used to try to learn the target system's IP address or any other subdomains it uses.
 
 Tools such as dnsrecon and dig can be used.
 
-### 3.1.5 Identification of Technical and Administrative Contacts
+#### 3.1.5 Identification of Technical and Administrative Contacts
 
 We can use the whois command to look at the technical and administrative contact information for a domain. As an example, let's look at the h4cker.org site.
 <div class="code-window">
@@ -231,9 +231,9 @@ We can use the whois command to look at the technical and administrative contact
 <span class="highlight">kali@kali</span> whois h4cker.org
 </div>
 
-### 3.1.6 Lab – DNS Lookups
+#### 3.1.6 Lab – DNS Lookups
 
-#### Part 1 Use nslookup to Obtain Domain and IP Adress Information
+##### Part 1 Use nslookup to Obtain Domain and IP Adress Information
 
 Nslookup, available on both Linux and Windows machines, essentially retrieves domain name and IP address information.
 
@@ -271,7 +271,7 @@ To change the server in interactive mode;
 
 When we select "any" as the type, it shows all the information it can find about the domain.
 
-#### Part 2 Use Whois Function to Obtain Domain Information
+##### Part 2 Use Whois Function to Obtain Domain Information
 
 Whois is a tool used, instead of DNS server records, to access where and by whom a domain is registered, along with physical address and technical information.
 
@@ -284,7 +284,7 @@ Using the information we obtained from the nslookup cisco.com output, we found t
 </div>
 
 
-#### Part 3 Compare te Output of the Nslookup and Dig Functions
+##### Part 3 Compare te Output of the Nslookup and Dig Functions
 
 Dig is a tool similar to Nslookup. It resolves the target's hostname and IP address.
 <div class="code-window">
@@ -310,7 +310,7 @@ Or, using the equivalent of the set type=any command we used in nslookup, with d
 <span class="highlight">kali@kali</span> dig cisco.com any
 </div>
 
-#### Part 4 Perform Reverse DNS Lookups
+##### Part 4 Perform Reverse DNS Lookups
 
 Reverse DNS, or rDNS, tries to find the server names corresponding to an IP address by using that address.
 
@@ -345,7 +345,7 @@ We can use nslookup as we did before.
 <span class="highlight">kali@kali</span> nslookup 72.163.10.1
 </div>
 
-### 3.1.7 Cryptographic Flaws
+#### 3.1.7 Cryptographic Flaws
 
 By examining the SSL certificates of sites, various information such as weak certificates or cryptographic weaknesses can be accessed.
 
@@ -357,17 +357,17 @@ Through a site like Crt.sh, you can query the certificate of any organization or
 
 We can also see subdomain addresses we didn't know about before, here.
 
-### 3.1.8 Lab – Finding Information from SSL Certificates
+#### 3.1.8 Lab – Finding Information from SSL Certificates
 
 Some SSL certificates are stored locally on a host on the network. They ensure secure communication is established between the client and server. For the SSL certificate verification chain, the host holds both intermediate and root SSL certificates.
 
-#### Part 1 Access Detailed Certificate Information Online
+##### Part 1 Access Detailed Certificate Information Online
 
 Certificate Transparency is an open framework used to monitor and audit the issuance of both SSL and TLS certificates.
 
 Every new certificate or certificate action is logged, giving rise to the term we call CT log. Both attackers and defenders can obtain information suited to their purpose using these CT logs.
 
-#### Part 2 Use SSL Analysis Tools in Kali
+##### Part 2 Use SSL Analysis Tools in Kali
 
 Let's go over the names and purposes of some SSL tools on Kali.
 
@@ -376,7 +376,7 @@ Let's go over the names and purposes of some SSL tools on Kali.
 </div>
 
 
-#### Part 3 Use Kali Tools to Gather Certificate Information
+##### Part 3 Use Kali Tools to Gather Certificate Information
 
 Sslscan, as the name suggests, provides information about SSL certificates. Another tool we'll use is "aha". It's used to convert the output into an HTML file.
 
@@ -395,7 +395,7 @@ After finding the file's location, you can open the html file in Mozilla.
 </div>
 
 
-### 3.1.9 Company Reputation and Security Posture
+#### 3.1.9 Company Reputation and Security Posture
 
 If a company has a history of data breaches, attackers can make use of
 
@@ -409,7 +409,7 @@ If a company has a history of data breaches, attackers can make use of
 
 left over from the previous attack.
 
-#### Password Dumps
+##### Password Dumps
 
 Attackers have many tools to access previously stolen password dumps. One of these is the h8mail tool.
 
@@ -429,11 +429,11 @@ This way, we can install our h8mail tool. Some other tools similar to this one a
 *   **Scavenger:** [_https://github.com/rndinfosecguy/Scavenger_](https://github.com/rndinfosecguy/Scavenger)
 *   **PwnDB:** [_https://github.com/davidtavarez/pwndb_](https://github.com/davidtavarez/pwndb)
 
-#### File Metadata
+##### File Metadata
 
 We can learn a lot of information from the metadata of photos, Word, Excel, and similar files. There are many tools that let us see this information. One of these is the ExifTool tool.
 
-#### Strategic Search Engine Analysis/Enumeration
+##### Strategic Search Engine Analysis/Enumeration
 
 Today there are many different search engines on the market. Users can use search engines like Yandex, Bing, or DuckDuckGo depending on their preferences. However, thanks to its advanced search operators, Google allows for much more detailed and targeted searches. This method is known especially in the cybersecurity world as Google Dorking and can also be used by malicious individuals to access sensitive information.
 
@@ -453,17 +453,17 @@ An example search is below.
 
 You can find and examine dork examples on the site [https://www.exploit-db.com/google-hacking-database](https://www.exploit-db.com/google-hacking-database).
 
-#### Website Archiving/Caching
+##### Website Archiving/Caching
 
 Some sites archive and store information about sites on the internet. Through [https://web.archive.org/](https://web.archive.org/) you can go back in time and view the older state of the site you're looking at.
 
-#### Public Source Code Repositories
+##### Public Source Code Repositories
 
 Attackers can obtain valuable information or find a system's vulnerability by accessing public source code on Github or Gitlab.
 
-### 3.1.10 Lab – Finding Out About the Orginization
+#### 3.1.10 Lab – Finding Out About the Orginization
 
-#### Part 1 Find Information about Email Breaches.
+##### Part 1 Find Information about Email Breaches.
 
 If an employee's work email has been leaked before, this information can be used. Some online services can be used to find out whether an email has been leaked.
 
@@ -502,7 +502,7 @@ After running our interface with this command, we can access it. Here, we can se
 
 You can also scan by researching other modules.
 
-#### Part 2 View File Metadata
+##### Part 2 View File Metadata
 
 File metadata can contain a lot of valuable information for attackers. For example, it can give information about the device on which a photo was created. The attacker can also learn about this by researching the device's potential vulnerabilities, or, as another example, information such as the file creator's name and when the file was created can be learned.
 

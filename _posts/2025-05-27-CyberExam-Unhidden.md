@@ -9,7 +9,7 @@ order: 5
 author: nazy
 translation_url: /en/CyberExam-Unhidden
 ---
-# Giriş
+## Giriş
 Görevimiz yukarıda belirtildiği gibi gizli bir SSID’yi bulmamız. Bunun için öncelikle makinemize web üzerinden bağlanıyoruz.  Bağlandıktan sonra root kullanıcımıza “user” şifresi ile geçiyoruz.
 Kablosuz ağ ara yüzlerini görüntülemek için komutumuzu kullanıyoruz.
 ·        iwconfig
@@ -30,7 +30,7 @@ Monitor moda aldığımızı kontrol etmek için tekrardan iwconfig komutu ile g
   <img loading="lazy" src="{{ '/assets/images/cyberexam_unhidden/iw2.webp' | relative_url }}" width="600" height="200" alt="iwconfig çıktısında wlan0mon olarak değişen arayüz adı">
 </div>
 
-# Saldırı
+## Saldırı
 Ara yüzümüzün adını öğrendiğimize göre saldırı aşamasına geçebiliriz. Kullanacağımız aracın adı airodump-ng. Bu araç ile trafiği dinleyebilir ve bir pakete kaydedebiliriz. Komutumuzu girelim.
 
 ·        airodump-ng wlan0mon
@@ -51,7 +51,7 @@ Saldırının başarılı olup olmadığını çıktıda sağ üstte yer alan [W
 </div>
 Bir süre bekledikten sonra ağa bağlı olan cihazın MAC adresi aşağıdaki STATION kısmında beliriyor. Bu STATION değerini kullanarak ona bir deauth saldırısı gerçekleştireceğiz. Böylece cihaz tekrar ağa bağlanmak istediğinde ESSID değeri açık bir şekilde gönderilecek. 
 
-# Deauth
+## Deauth
 Deauth saldırısı bir cihazı zorla ağdan koparmak demektir. Bu saldıyı ise aireplay-ng aracı ile birlikte gerçekleştireceğiz. Bu aracın amacı belirli davranışlar oluşturmaya zorlamaktır.
 
 ·        aireplay-ng –deauth 10 -a 0A:F6:14:E7:8A:6B -c 6 7E:F4:4D:D9:5B:31 wlan0mon

@@ -9,7 +9,7 @@ order: 3
 author: nazy
 translation_url: /en/Tryhackme_CheeseCTF
 ---
-# Port Taraması
+## Port Taraması
 
 Makine IP adresi: 10.10.87.129
 
@@ -26,7 +26,7 @@ Sayfada dolaşırken bir de login sayfası olduğunu görüyoruz.
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/login.webp' | relative_url }}" width="400" height="300" alt="Web uygulamasının kullanıcı giriş (login) sayfası">
 </div>
 
-# SQLi
+## SQLi
 
 Login sayfası üzerinden SQLi saldırısı yaparak giriş yapmayı deneyelim. Ben bu işlemi BurpSuite üzerinden bir wordlist ile yapmak istedim. BurpSuite uygulamasını açalım. Login sayfasından POST isteğini yakalayalım.
 <div style="text-align: center;">
@@ -50,7 +50,7 @@ Giriş yaptıktan sonra bizi bir panel karşılıyor.
 </div>
 Sayfanın URL adresi dikkatimi çekiyor. Bu URL sayfanın php dosyalarını kabul ettiğini ve file parametresi ile dinamik olarak içerik yüklediğini gösteriyor.
 
-# LFI
+## LFI
 
 File parametresinin olduğu yere basit bir LFI payload’ı deneyelim. Bu değeri “../../../../../../etc/passwd”  file parametresinden sonra dosya yolu olarak belirtirsek belki kullanıcı listesini elde edebiliriz.
 <div style="text-align: center;">
@@ -60,7 +60,7 @@ Bingo LFI kodu çalışıyor ve kullanıcıları çekebildik. Elimizde iki tane 
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/shdw.webp' | relative_url }}" width="900" height="250" alt="/etc/passwd çıktısında root ve comte kullanıcılarının görülmesi">
 </div>
-# LFI to RCE
+## LFI to RCE
 
 PHP, stream wrapper adı verilen mekanizmalar kullanarak dosyaları ve verileri farklı şekillerde okuyup işleyebilir. Bu kütüphane sayesinde yazılımcılar işlerini daha kolay halledebilirler. Fakat LFI zafiyeti ile birleştirilip kullanılabilir.
 
@@ -120,7 +120,7 @@ Netcat ile dinlediğiniz terminale dönerek shell’e ulaşabilirsiniz.
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/shell.webp' | relative_url }}" width="400" height="360" alt="Netcat dinleyicisi üzerinden elde edilen ters shell bağlantısı">
 </div>
 
-# Privilege Escalation
+## Privilege Escalation
 
 Sisteme erişim sağladıktan sonra “comte” kullanıcının home klasörünü erişebildik.
 <div style="text-align: center;">
@@ -155,7 +155,7 @@ Ekledikten sonra kendi Kali makinemiz üzerinde ssh comte@ip\_adress komutu ile 
 </div>
 Böylece ilk bayrağımız olan user.txt elde ediyoruz.
 
-# Comte to Root
+## Comte to Root
 
 Comte kullanıcısı üzerinden root kullanıcısına erişmek için ilk öncelikle bu kullanıcının yetkilerine bakalım.
 <div style="text-align: center;">
@@ -193,7 +193,7 @@ Root kullanıcısının sahip olduğu root.txt dosyasını ise şu komut ile gö
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/root.webp' | relative_url }}" width="600" height="220" alt="/opt/xxd aracıyla elde edilen root.txt bayrağının içeriği">
 </div>
-# Notlar
+## Notlar
 
 Ssh-keygen
 
@@ -203,11 +203,11 @@ Linux sistemlerde şifrelenmiş anahtar çifti üretmek için kullanılan bir ar
 
 ·        **Public key**: Uzak sunucuya verilir
 
-## Xxd
+### Xxd
 
 Bir ikili dosyayı veya metni hex formatta gösteren bir komuttur. -r parametresi ile hex’i normal yazıya çevirebilirsiniz.
 
-## SUID
+### SUID
 
 Normalde bir program çalıştığında, o anki kullanıcının yetkilerine sahiptir fakat program SUID bite sahipse çalıştırıldığında sahibinin yetkileri ile çalışır.
 

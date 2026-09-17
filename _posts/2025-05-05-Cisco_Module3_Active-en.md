@@ -12,11 +12,11 @@ permalink: /en/Cisco_Module3_Active
 translation_url: /Cisco_Module3_Active
 ---
 
-# Cisco Ethical Hacker
+## Cisco Ethical Hacker
 
-## Module 3: Information Gathering and Vulnerability Scanning
+### Module 3: Information Gathering and Vulnerability Scanning
 
-## 3.2 Performing Active Reconnaissance
+### 3.2 Performing Active Reconnaissance
 
 After passive information gathering, it's time for active information gathering. In the first stage, we obtained passive information about the targets, for example host names, various email or subdomain names, etc. Next comes checking whether these detected systems are publicly accessible on the internet or sit behind a firewall. We try to gather more information about the system by performing a port scan.
 
@@ -26,7 +26,7 @@ I wanted to briefly explain the output of nmap, the most commonly used tool for 
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/1.webp' | relative_url }}" width="600" height="160" alt="Example output of a basic nmap scan">
 </div>
 
-### 3.2.1 Nmap Scan Types
+#### 3.2.1 Nmap Scan Types
 
 There are many scan types in Nmap depending on the purpose. Some of them are listed below.
 
@@ -76,7 +76,7 @@ Used to discover hosts on a network. It determines which hosts are active by sen
 
 \-T5: Insane, sends packets very quickly, may even skip open ports.
 
-### 3.2.2 Types Of Enumeration
+#### 3.2.2 Types Of Enumeration
 
 Now it's time for the enumeration techniques that need to be performed during the information gathering stage. The term enumeration refers to discovering the active resources and services on the target system in more detail.
 
@@ -84,7 +84,7 @@ In other words, it's not just checking whether the door is open, but checking wh
 
 Let's look at a few enumeration topics.
 
-#### Host Enumeration
+##### Host Enumeration
 
 Host enumeration is one of the first tasks that needs to be done during the information gathering stage. It can happen in two ways:
 
@@ -92,7 +92,7 @@ Host enumeration is one of the first tasks that needs to be done during the info
 
 ·        **Internal network:** All IP subnets used by the target are scanned.
 
-#### User Enumeration
+##### User Enumeration
 
 There are multiple tools and methods for gathering user information. The simplest example of these is the SMB (Server Message Block) protocol, which uses port 445.
 
@@ -106,7 +106,7 @@ SMB\_COM\_NEGOTIATE: This is the message asking the server which protocols or fl
 
 SMB\_COM\_SESSION\_SETUP\_ANDX: In this message, the attacker requests permission to open a session. I am the guest user. This is my password, can I connect?
 
-#### Group Enumeration
+##### Group Enumeration
 
 This process is done to understand which authority roles are used by the users in the target environment. This makes the roadmap a bit clearer. It acts as a guide for privilege escalation attempts.
 
@@ -127,7 +127,7 @@ Let's examine the RID and SID terms that appear in the output resulting from the
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/rid.webp' | relative_url }}" width="460" height="300" alt="RID and SID values seen in the nmap smb-enum-groups.nse output">
 </div>
 
-#### Network Share Enumeration
+##### Network Share Enumeration
 
 Detecting systems that share files, folders, and printers on a network is called Network Share Enumeration. An example nmap command for finding these is below.
 <div class="code-window">
@@ -135,7 +135,7 @@ Detecting systems that share files, folders, and printers on a network is called
 <span class="highlight">kali@kali</span> nmap --script smb-enum-shares.nse -p 445 host
 </div>
 
-#### Additional SMB Enumeration Examples
+##### Additional SMB Enumeration Examples
 
 To more thoroughly identify the applications and operating systems running on a system and to learn additional information;
 <div class="code-window">
@@ -167,7 +167,7 @@ Another example is the smbclient tool.
 <span class="highlight">kali@kali</span> smbclient -L target\_ip<br><span class="highlight">kali@kali</span> smbclient  //target\_ip/user
 </div> 
 
-#### Web Page Enumeration/Web Application Enumeration
+##### Web Page Enumeration/Web Application Enumeration
 
 If we determine that a web server is running on the target host, we can use the nmap script http-enum to identify the attack surface. Thanks to this script, we can find folder or file paths using brute force.
 <div class="code-window">
@@ -181,7 +181,7 @@ Another tool worth mentioning is Nikto. Nikto is a tool that scans for open-sour
 <span class="highlight">kali@kali</span> nikto -h target_ip
 </div>
 
-#### Service Enumeration
+##### Service Enumeration
 
 This is the process of identifying the services running on a remote system. With the command below, it's possible to identify in detail which services are running on a remote Windows system.
 <div class="code-window">
@@ -189,7 +189,7 @@ This is the process of identifying the services running on a remote system. With
 <span class="highlight">kali@kali</span> nmap –script smb-enum-process.nse -p 445 –script-args smbuser=user , smbpass=pass
 </div> 
 
-#### Exploring Enumeration via Packet Crafting
+##### Exploring Enumeration via Packet Crafting
 
 When gathering information by crafting packets, Scapy is among the most preferred tools. Scapy is a Python-based system used for packet crafting. Root permission is required to use Scapy, and it can be used by typing sudo scapy directly into the terminal.
 
@@ -211,9 +211,9 @@ There are many protocols that can be used in Scapy. You can use the **ls()** fun
 
 You can access the Scapy interface and examine formats and protocols with the explore() command.
 
-### 3.2.3 Lab – Enumeration with Nmap
+#### 3.2.3 Lab – Enumeration with Nmap
 
-#### Part 1 Investigate Nmap
+##### Part 1 Investigate Nmap
 
 **Step 1: Investigate Nmap Options and Features**
 
@@ -239,7 +239,7 @@ Let's look at the common NMAP settings. You can find the parameters below by typ
 
 ·        \--open: Shows only open ports
 
-#### Part 2 Perform Basic Nmap Scans
+##### Part 2 Perform Basic Nmap Scans
 
 According to our scenario, there's suspicious behavior on a host in the DMZ area. First, let's look at how many active hosts there are in the DMZ scope range.
 
@@ -306,13 +306,13 @@ Now let's again use a script to see the files shared over SMB.
 
 Here we found 2 hidden shares starting with a $ sign, and the fact that Anonymous Access: read/write is shown below is a very critical risk.
 
-### 3.2.4 Packet Inspection and Eavesdropping
+#### 3.2.4 Packet Inspection and Eavesdropping
 
 Packet captures can be performed, packets can be inspected and listened to, with tools such as Wireshark, tshark, and tcpdump. For penetration testers, such tools can be useful for performing passive reconnaissance. Of course, this kind of reconnaissance requires a physical or wireless connection to the target.
 
-### 3.2.5 Lab – Packet Crafting with Scapy
+#### 3.2.5 Lab – Packet Crafting with Scapy
 
-#### Part 1 Investigate the Scapy Tool
+##### Part 1 Investigate the Scapy Tool
 
 Before sending an IP packet, it's important to understand the contents of the IP packet. Every IP packet is accompanied by a header that provides information about the packet structure. Each binary value has a different meaning within the IP packet.
 
@@ -324,7 +324,7 @@ The table below gives the field names and their descriptions.
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/version.webp' | relative_url }}" width="600" height="600" alt="Table of IP packet field names listed with the ls(IP) command in Scapy">
 </div>
 
-#### Part 2 Use Scapy to Sniff Network Traffic
+##### Part 2 Use Scapy to Sniff Network Traffic
 
 We can use the Scapy tool to view network traffic like tcpdump or tshark.
 
@@ -413,7 +413,7 @@ We can examine the saved pcap file in Wireshark.
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/pcap.webp' | relative_url }}" width="650" height="220" alt="Wireshark view of the capture1.pcap file saved with wrpcap">
 </div>
 
-#### Part 3 Create and Send an ICMP Packet
+##### Part 3 Create and Send an ICMP Packet
 
 ICMP is a protocol designed to send control messages between network devices. There are many different types of ICMP packets.
 
@@ -450,7 +450,7 @@ Let's save this output and examine its content.
 ·        a\[2\]
 \*This type of ICMP packet is generally used to **test whether the target is reachable**.
 
-#### Part 4 Create and Send a TCP SYN Packet
+##### Part 4 Create and Send a TCP SYN Packet
 
 Now it's time to create and send a TCP SYN packet. Again, as we did at the start, let's put our interface into listening mode.
 
@@ -484,9 +484,9 @@ After sending the command, let's stop listening by pressing CTRL + C on the list
 
 Packet 2 is the packet we sent to initiate the connection, with a flags value of "S". When we examine packet 3, we see that the flags value is SA, i.e., SYN-ACK. This means port 445 is open and has confirmed our connection request.
 
-### 3.2.6 Lab – Network Sniffing with Wireshark
+#### 3.2.6 Lab – Network Sniffing with Wireshark
 
-#### Part 1 Capture and Save Network Traffic
+##### Part 1 Capture and Save Network Traffic
 
 In this part, we'll capture traffic using tcpdump from the CLI. After saving the traffic as a pcap file, we'll examine it with Wireshark or a similar application.
 
@@ -514,7 +514,7 @@ let's type this. Let's explain this command;
 
 After typing this command, tcpdump starts listening for us. We can go to the web browser and start generating traffic. After generating it, we can come back to the terminal and stop the traffic with CTRL + C. We can examine the file where the results were saved in Wireshark.
 
-#### Part 2 View and Analyze the Packet Capture
+##### Part 2 View and Analyze the Packet Capture
 
 After opening the Wireshark interface, we can open the file named packetdump.pcap from the **File>Open** tab to examine it.
 

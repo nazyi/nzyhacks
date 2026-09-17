@@ -12,11 +12,11 @@ permalink: /en/Cisco_Module1
 translation_url: /Cisco_Module1
 ---
 
-# Cisco Ethical Hacker
+## Cisco Ethical Hacker
 
 <h2> Module 1: Inroduction to Ethical Hacking and Penetration Testing </h2>
 
-## 1.1 Threat Actors
+### 1.1 Threat Actors
 
 ·        **Organized Crime:** They carry out every kind of cybercrime activity they can turn into money, using the latest attack techniques.
 
@@ -26,7 +26,7 @@ translation_url: /Cisco_Module1
 
 ·        **Insider Threats:** These can be either malicious people inside the organization, for example people wanting revenge on the company, or people who unintentionally cause an information leak.
 
-## 1.2 Environmental Considerations
+### 1.2 Environmental Considerations
 
 ·        **Network Infasturcture Tests**: Achieved through the use and testing of network elements such as switches, routers, firewalls, and the resources supporting them, for example (AAA, IPS…).
 
@@ -34,7 +34,7 @@ translation_url: /Cisco_Module1
 
 ·        **Penetration Testing in the Cloud**: Cloud security varies depending on the model used (SaaS, PaaS, IaaS), and both the customer and the provider are responsible. Before performing a penetration test, it is important to clarify the security requirements and agreements. CSPs provide guidelines for security assessments and penetration tests in the cloud environment.
 
-## 1.3 Environmental Considerations
+### 1.3 Environmental Considerations
 
 ·        **Unknown-Enviromental Test:** The tester is given a small amount of information. Domain names and IP addresses within scope may be given to the attacker. The purpose of this black-box test is to allow the assessment to be made from the perspective of an outside attacker.
 
@@ -42,7 +42,7 @@ translation_url: /Cisco_Module1
 
 ·        **Partially-Known Environment Test:** This is a hybrid of the black-box and white-box tests. Testers may be given user information, but not the internal structure of the network.
 
-## 1.4 Surveying Diffrent Standarts and Methologies
+### 1.4 Surveying Diffrent Standarts and Methologies
 
 ·        **MITRE ATT&CK:** A framework created to learn the tactics, techniques, and procedures (TTPs) of attackers.
 

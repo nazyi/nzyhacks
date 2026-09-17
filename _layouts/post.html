@@ -92,7 +92,7 @@ layout: default
     var content = document.querySelector('.post-content');
     if (!toc || !list || !content) return;
 
-    var headings = content.querySelectorAll('h1, h2, h3, h4');
+    var headings = content.querySelectorAll('h2, h3, h4, h5');
     if (headings.length < 2) {
       toc.style.display = 'none';
       return;

@@ -12,9 +12,9 @@ permalink: /en/DVWA_BruteForce
 translation_url: /DVWA_BruteForce
 ---
 
-## Low Sec
+### Low Sec
 
-### Character Set
+#### Character Set
 
 I tried a brute force attack at the low security level. First, I captured the outgoing packet in Burp and sent it to Intruder. I set the Attack Type as Spider. I set the Payload Type as Brute Force. After marking the parameters I would work with, I entered the letters, numbers, and symbols to be tried using the character set.
 
@@ -24,7 +24,7 @@ My username is admin and my password is password.
   <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/lowsec1.webp' | relative_url }}" width="850" height="270" alt="Character set brute force attack settings in Burp Suite Intruder">
 </div>
 
-### Dictionary Attack
+#### Dictionary Attack
 
 In this attack, we write the possible usernames and passwords into separate txt files and upload them to Burp as payload lists. The commands to create the txt files are below:
 
@@ -47,7 +47,7 @@ The values are marked in the output below.
   <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/adminpass.webp' | relative_url }}" width="800" height="250" alt="The correct username and password marked in the Intruder attack results">
 </div>
 
-## Wfuzz
+### Wfuzz
 
 To find all the users, let's go to [http://localhost./hackable/users/](http://localhost./hackable/users/). Let's save the usernames here into a txt file to make our job easier. Using the following wfuzz command
 
@@ -57,9 +57,9 @@ let's try all the users' passwords.
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/target.webp' | relative_url }}" width="1000" height="180" alt="Password attempt results for all users using the Wfuzz tool">
 </div>
-## Medium Sec
+### Medium Sec
 
-### Burp
+#### Burp
 
 The trick here becomes apparent when we examine the source code. In the DVWA interface, when we click view source at the bottom and select view all, we see the source code for every level. If we look at the source code differences between low and medium here, you'll notice the following:
 <div style="text-align: center;">
@@ -67,7 +67,7 @@ The trick here becomes apparent when we examine the source code. In the DVWA int
 </div>
 The sleep(2) code here means the user is made to wait 2 seconds every time they enter an incorrect login. Applying this generally, since brute-force attacks already take a long time, making each attempt wait an extra 2 seconds makes the job even harder.
 
-### Hydra
+#### Hydra
 
 Our command for brute-forcing with Hydra is as follows:
 <div class="code-window">
@@ -77,7 +77,7 @@ Our command for brute-forcing with Hydra is as follows:
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/hydra.webp' | relative_url }}" width="850" height="270" alt="Terminal output of the brute force attack carried out with the Hydra tool">
 </div>
-##  High Sec
+###  High Sec
 
 When we examine the source code at the high level, we see that an anti-CSRF token is used to prevent brute-force attacks. So what is this anti-CSRF token, and what does it do?
 

@@ -10,11 +10,11 @@ order: 6
 translation_url: /en/Cisco_Module4
 ---
 
-# Cisco Ethical Hacker
+## Cisco Ethical Hacker
 
-# Module 4: Social Engineering Attacks
+## Module 4: Social Engineering Attacks
 
-## 4.1 Pretexting for an Approach and Impersonation
+### 4.1 Pretexting for an Approach and Impersonation
 
 Sosyal mühendislikte adı geçen bazı terimleri açıklayayım.
 
@@ -24,9 +24,9 @@ Sosyal mühendislikte adı geçen bazı terimleri açıklayayım.
 
 ·        **Pharming**: Sahte siteyi gerçekmiş gibi gösterip kullanıcıyı siteye yönlendirmek.
 
-## 4.2 Social Engineering Attacks
+### 4.2 Social Engineering Attacks
 
-### 4.2.1 Email Phishing
+#### 4.2.1 Email Phishing
 
 Phishing saldırısında, saldırgan kullanıcıya güvenilir ve geçerli gibi bir site gönderip bilgilerini girmesini ister.
 
@@ -38,45 +38,45 @@ Phishing’in kişiye özel veya belirli şirket gruplarına yönelik yapılan o
 
 Temelde phishing ve spear phishing ile benzerdir fakat hedef olarak üst düzey yöneticiler veya önemli insanlardır.
 
-### 4.2.2 Vishing
+#### 4.2.2 Vishing
 
 Bir telefon görüşmesi üzerinden gerçekleştirilen sosyal mühendislik saldırısıdır. Hedefin çeşitli bilgilerini elde etmeye çalışır.
 
-### 4.2.3 Short Message Service (SMS) Phishing
+#### 4.2.3 Short Message Service (SMS) Phishing
 
 Mobil cihazlara gelen kısa mesajlar ile çeşitli phishing yöntemleri de mevcuttur. Bir ödül kazandınız, amazon siparişinizle ilgili bir sorun var vb. içeriklere sahip olabilirler.
 
-### 4.2.4 Universal Serial Bus (USB) Drop Key
+#### 4.2.4 Universal Serial Bus (USB) Drop Key
 
 Saldırganların bir başka taktiği de zararlı yazılımlar içeren USB’leri olur olmadık yerlerde bırakmaktır. İnsanlar tereddüt etmeden yerden buldukları USB’leri kendi bilgisayarlarına takmaktadırlar.
 
-### 4.2.5 Watering Hole Attacks
+#### 4.2.5 Watering Hole Attacks
 
 Saldırgan, hedef kullanıcının düzenli olarak ziyaret ettiği web sitelerini analiz eder ve kod enjekte etmeye çalışır. Böylece kurban bir sonraki ziyaretinde kod çalışır ve başka kötü amaçlı bir siteye yönlendirilir. Bu yönlendirme türü aynı zamanda **pivot saldırısı** olarak da bilinir.
 
-## 4.3 Physical Attacks
+### 4.3 Physical Attacks
 
-### 4.3.1 Tailgating
+#### 4.3.1 Tailgating
 
 Piggybacking yetkili kişinin izni dahilinde kısıtlı bir alana girmesiyle gerçekleşir. Yani örnek verecek olursak biri içeri girerken başka birinin ona kapıyı tutar mısınız demesi piggybacking’dir.
 
 Tailgating ise yetkili bir kişinin izi olmadan insanlardan gizlice içeri girmeye denir.
 
-### 4.3.2 Dumpster Diving
+#### 4.3.2 Dumpster Diving
 
 Saldırgan, hedef kişinin çöplerini karıştırarak kişi hakkında bilgi toplamaya çalışır.
 
-### 4.3.3 Shoulder Surfing
+#### 4.3.3 Shoulder Surfing
 
 Kişinin izni olmadan kişinin omzu üzerinden laptop veya telefonundan yazı yazarken bakıp kişisel bilgilerini öğrenmektir.
 
-### 4.3.4 Badge Cloning
+#### 4.3.4 Badge Cloning
 
 Kurumda çalışan kişilerin rozet veya kartlarını klonlayarak çoğaltılması işlemine denir.
 
-## 4.4 Social Enginerring Tools
+### 4.4 Social Enginerring Tools
 
-### 4.4.1 Social-Engineer Toolkit (SET)
+#### 4.4.1 Social-Engineer Toolkit (SET)
 
 SET kullanarak spear phing emailinin ne kadar kolay yapıldığını görelim.
 
@@ -159,7 +159,7 @@ Bu zararlıyı bir e-mail grubuna mı yoksa tek bir e-mail adresine mi gönderil
 
 E-mailin içeriğini oluşturduktan sonra mail gönderime hazır.
 
-### 4.4.2 Browser Exploitation Framework (BeEF)
+#### 4.4.2 Browser Exploitation Framework (BeEF)
 
 XSS saldırısını kullanarak kullanıcı farklı kötü bir siteye yönlendirilerek çerezlerini çalmaya çalışır.
 
@@ -172,7 +172,7 @@ Browser Exploitation Framework ile XSS açıklarını kullanarak çerez çalmaya
 </div>
 Cookie çalındıktan sonra kullanıcıya fake bildirim bile gönderilebilmektedir. 
 
-### 4.4.3 Call Spoofing Tools
+#### 4.4.3 Call Spoofing Tools
 
 Arayan kişi olarak görünen numarayı çok basit bir şekilde değiştirebilirsiniz. Buna birkaç örnek tool verecek olursak:
 
@@ -182,9 +182,9 @@ Arayan kişi olarak görünen numarayı çok basit bir şekilde değiştirebilir
 
 ·        **Arterisk**: Voice over IP kontrol aracıdır.
 
-### 4.4.4 Lab – Explore the Social Engineer Toolkit (SET)
+#### 4.4.4 Lab – Explore the Social Engineer Toolkit (SET)
 
-#### Part 1 Cloning a Website to Obtain User Credentials
+##### Part 1 Cloning a Website to Obtain User Credentials
 
 **Step 1: Investigate Web Attack Vectors in SET**
 
@@ -232,7 +232,7 @@ Başarılı bir şekilde dinlemeye başladık.
   <img loading="lazy" src="{{ '/assets/images/ciscomodule4/webattack.webp' | relative_url }}" width="500" height="160" alt="Klonlanmış sitede dinlemenin başarıyla başladığını gösteren çıktı">
 </div>
 
-#### Part 2 Capturing and Viewing User Credentials
+##### Part 2 Capturing and Viewing User Credentials
 
 Normal bir saldırıda bu web sitesini kurbana iletmek için link veya QR kod ile gönderilirdi. Ancak bu lab ortamında sadece bir html dokümanı oluşturarak websitesine yönlendirme yapacağız.
 
@@ -298,9 +298,9 @@ CTRL + C ile XML formatında bir rapor oluşturup kaydedebilirsiniz. Kaydedilen 
   <img loading="lazy" src="{{ '/assets/images/ciscomodule4/cat.webp' | relative_url }}" width="530" height="450" alt="Cat komutuyla görüntülenen XML formatındaki yakalama raporu">
 </div>
 
-### 4.4.5 Lab – Using the Browser Exploitation Famework (BeEF)
+#### 4.4.5 Lab – Using the Browser Exploitation Famework (BeEF)
 
-#### Part 1 Load the BeEF GUI Environment
+##### Part 1 Load the BeEF GUI Environment
 
 **Step 1: Start BeEF**
 
@@ -347,7 +347,7 @@ Online Browsers menüsüne tıklıyoruz ve bilgiler önümüze geliyor.
   <img loading="lazy" src="{{ '/assets/images/ciscomodule4/online2.webp' | relative_url }}" width="620" height="570" alt="BeEF Online Browsers menüsünde hooklanmış tarayıcı bilgileri">
 </div>
 
-#### Part 2 Investigate BeEF Exploit Capabilities
+##### Part 2 Investigate BeEF Exploit Capabilities
 
 **Step 1: Investigate the commands and network tabs**
 
@@ -451,7 +451,7 @@ Ortadaki kutucuğa “This is my secret” yazalım. Sonra Control Panel sayfas�
   <img loading="lazy" src="{{ '/assets/images/ciscomodule4/thisismy.webp' | relative_url }}" width="810" height="200" alt="BeEF Logs menüsünde yakalanan This is my secret metni">
 </div>
 
-## 4.5 Methods of Influence
+### 4.5 Methods of Influence
 
 ·        **Authority**: Sosyal mühendislikte hem özgüven hem de belki otorite gösterir.
 

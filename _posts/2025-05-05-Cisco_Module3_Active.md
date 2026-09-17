@@ -10,11 +10,11 @@ order: 4
 translation_url: /en/Cisco_Module3_Active
 ---
 
-# Cisco Ethical Hacker
+## Cisco Ethical Hacker
 
-## Module 3: Information Gathering and Vulnerability Scanning
+### Module 3: Information Gathering and Vulnerability Scanning
 
-## 3.2 Performing Active Reconnaissance
+### 3.2 Performing Active Reconnaissance
 
 Pasif bilgi toplamaktan sonra sıra aktif bilgi toplamaya geldi. İlk aşamada hedefler hakkında pasif bilgiler elde ettik örnek olarak host isimleri, çeşitli email veya subdomain isimleri vb. Sırada bu tespit edilen sistemlerin internet üzerinde herkese açık mı yoksa bir güvenli duvarı arkasında mı diye kontrol etmek geliyor. Port taraması yaparak sistem hakkında daha fazla bilgi toplamaya çalışıyoruz.
 
@@ -24,7 +24,7 @@ Port taramasında kullanılan en yaygın nmap aracının çıktılarını ufak b
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/1.webp' | relative_url }}" width="600" height="160" alt="Temel bir nmap taramasının örnek çıktısı">
 </div>
 
-### 3.2.1 Nmap Scan Types
+#### 3.2.1 Nmap Scan Types
 
 Nmap üzerinde amaca göre birçok scan türü vardır. Bazıları aşağıda yer almaktadır.
 
@@ -74,7 +74,7 @@ Bir ağ üzerindeki hostları keşfetmek için kullanılır. Ağa özel farklı 
 
 \-T5: Insane, çok hızlı paket gönderir, açık portları da atlayabilir.
 
-### 3.2.2 Types Of Enumeration
+#### 3.2.2 Types Of Enumeration
 
 Bilgi toplama aşamasında gerçekleştirilmesi gereken numaralandırma tekniklerine sıra geldi. Numaralandırma dediğimiz terim hedef sistem üzerindeki aktif kaynakları ve servisleri daha ayrıntılı şekilde keşfetmektir.
 
@@ -82,7 +82,7 @@ Yani sadece kapı açık mı? diye değil kapının arkasında ne var, kim var? 
 
 Birkaç numaralandırma başlığına bakalım.
 
-#### Host Enumeration
+##### Host Enumeration
 
 Host numaralandırması bilgi toplama aşamasında yapılması gereken ilk görevlerden biridir. İki tarzda gerçekleşebilir:
 
@@ -90,7 +90,7 @@ Host numaralandırması bilgi toplama aşamasında yapılması gereken ilk göre
 
 ·        **İç ağda:** Hedefin kullandığı tüm IP alt ağları taranır.
 
-#### User Enumeration
+##### User Enumeration
 
 Kullanıcı bilgilerini toplamak için birden fazla araç ve yöntem vardır. Bunlardan en basit örneği olarak 445 portunu kullanan SMB (Server Message Block), protokolünü verebiliriz.
 
@@ -104,7 +104,7 @@ SMB\_COM\_NEGOTIATE: Sunucuya hangi protokolleri veya bayrakları desteklediğin
 
 SMB\_COM\_SESSION\_SETUP\_ANDX: Bu mesajda saldırgan, oturum açmak için izin ister. Ben guest kullanıcısıyım. Şifrem bu bağlanabilir miyim?
 
-#### Group Enumeration
+##### Group Enumeration
 
 Bu işlem hedef ortamdaki kullanıcılarının hangi yetki rollerinin kullanıldığını anlamak için yapılır. Böylece yol haritası biraz daha belirginleşir. Yetki yükseltme denemeleri için yol gösterici olur.
 
@@ -125,7 +125,7 @@ nmap taramasının sonucunda gelen çıktada yer alan RID ve SID terimlerini inc
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/rid.webp' | relative_url }}" width="460" height="300" alt="nmap smb-enum-groups.nse çıktısında görülen RID ve SID değerleri">
 </div>
 
-#### Network Share Enumeration
+##### Network Share Enumeration
 
 Bir ağda dosya, klasör ve yazıcı paylaşan sistemleri tespit etmeye Network Share Enumeration denir. Bunları bulmaya yönelik örnek nmap komutu aşağıda yer almaktadır.
 <div class="code-window">
@@ -133,7 +133,7 @@ Bir ağda dosya, klasör ve yazıcı paylaşan sistemleri tespit etmeye Network 
 <span class="highlight">kali@kali</span> nmap --script smb-enum-shares.nse -p 445 host
 </div>
 
-#### Additional SMB Enumeration Examples
+##### Additional SMB Enumeration Examples
 
 Bir sistemde çalışan uygulamaları ve işletim sistemlerini daha detaylı tanımlamak ve ek bilgi öğrenmek için;
 <div class="code-window">
@@ -165,7 +165,7 @@ Başka bir örnek smbclient toolu.
 <span class="highlight">kali@kali</span> smbclient -L target\_ip<br><span class="highlight">kali@kali</span> smbclient  //target\_ip/user
 </div> 
 
-#### Web Page Enumeration/Web Application Enumeration
+##### Web Page Enumeration/Web Application Enumeration
 
 Hedef host üzerinde bir web server çalıştığını belirlersek, saldırı ara yüzünü belirlemek için nmap scripti olan http-enum scriptini kullanabiliriz. Bu script sayesinde klasör veya dosya pathlerini brute-force kullanarak bulabiliriz.
 <div class="code-window">
@@ -179,7 +179,7 @@ Bahsedilmesi gereken bir farklı tool ise Nikto aracıdır. Nikto, açık kaynak
 <span class="highlight">kali@kali</span> nikto -h target_ip
 </div>
 
-#### Service Enumeration
+##### Service Enumeration
 
 Uzaktaki bir sistemde çalışan servislerin (hizmetlerin) belirlenmesi işlemidir. Aşağıdaki komut ile uzaktaki bir Windows sisteminde hangi servislerin detaylı olarak tespit etmek mümkündür.
 <div class="code-window">
@@ -187,7 +187,7 @@ Uzaktaki bir sistemde çalışan servislerin (hizmetlerin) belirlenmesi işlemid
 <span class="highlight">kali@kali</span> nmap –script smb-enum-process.nse -p 445 –script-args smbuser=user , smbpass=pass
 </div> 
 
-#### Exploring Enumeration via Packet Crafting
+##### Exploring Enumeration via Packet Crafting
 
 Paket oluşturarak bilgi toplama yaparken, Scapy en çok tercih edilen toolllar arasındadır. Scapy, paket oluşturma için kullanılan Python tabanlı bir sistemdir. Scapy kullanmak için root izni gerekmektedir ve terminale direkt sudo scapy yazıldığında kullanabilmektedir.
 
@@ -209,9 +209,9 @@ Scapy üzerinde kullanılabilecek birçok protokol vardır. Bu prokolleri listel
 
 explore() komutu ile Scapy ara yüzüne erişip format ve prokollere inceleyebilirsiniz.
 
-### 3.2.3 Lab – Enumeration with Nmap
+#### 3.2.3 Lab – Enumeration with Nmap
 
-#### Part 1 Investigate Nmap
+##### Part 1 Investigate Nmap
 
 **Step 1: Investigate Nmap Options and Features**
 
@@ -237,7 +237,7 @@ Common NMAP ayarlarına bakalım. man nmap diyerek aşağıdaki parametreleri bu
 
 ·        \--open: Sadece açık portları gösterir
 
-#### Part 2 Perform Basic Nmap Scans
+##### Part 2 Perform Basic Nmap Scans
 
 Senaryomuza göre DMZ alanında bir hostta şüpheli davranış varmış. İlk olarak DMZ scope aralığında aktif kaç host olduğuna bakalım.
 
@@ -304,13 +304,13 @@ Daha önce de bahsettiğimiz gibi nmap içinde bazı scriptler sayesinde istenil
 
 Burda başında $ işareti olan 2 tane gizli paylaşım bulduk ve altta yer alan Anonymous Access: read/write olması çok kritik bir risktir.
 
-### 3.2.4 Packet Inspection and Eavesdropping
+#### 3.2.4 Packet Inspection and Eavesdropping
 
 Wireshark, tshark ve tcpdump gibi araçlarla paket yakalamaları yapılabilir, paketler incelenebilir ve dinleyebilirsiniz. Penetrasyon test uzmanları için bu tür araçlar, pasif keşif yapmak için kullanışlı olabilir. Tabii ki, bu tür bir keşif, hedefe fiziksel ya da kablosuz bir bağlantı gerektirir.
 
-### 3.2.5 Lab – Packet Crafting with Scapy
+#### 3.2.5 Lab – Packet Crafting with Scapy
 
-#### Part 1 Investigate the Scapy Tool
+##### Part 1 Investigate the Scapy Tool
 
 IP paketi göndermeden önce IP paketinin içeriğini anlamak önemlidir. Her IP paketinde, paket yapısı hakkında bilgi veren başlık eşlik eder. Her binary değeri IP paketinde farklı anlamlara gelmektedir.
 
@@ -322,7 +322,7 @@ Aşağıdaki tabloda alan adları ve açıklamaları verilmiştir.
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/version.webp' | relative_url }}" width="600" height="600" alt="Scapy'de ls(IP) komutuyla listelenen IP paketi alan adları tablosu">
 </div>
 
-#### Part 2 Use Scapy to Sniff Network Traffic
+##### Part 2 Use Scapy to Sniff Network Traffic
 
 Ağ trafiğini, tcpdump veya tshark gibi görüntülemek için Scapy aracını kullanabiliriz.
 
@@ -411,7 +411,7 @@ Kaydedilen pcap dosyasını Wireshark üzerinde inceleyebiliriz.
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/pcap.webp' | relative_url }}" width="650" height="220" alt="wrpcap ile kaydedilen capture1.pcap dosyasının Wireshark görünümü">
 </div>
 
-#### Part 3 Create and Send an ICMP Packet
+##### Part 3 Create and Send an ICMP Packet
 
 ICMP, ağ cihazları arasında kontrol mesajları göndermek amacıyla tasarlanmış bir protokoldür. Birçok farklı türde ICMP paketi vardır.
 
@@ -448,7 +448,7 @@ Bu çıktıyı kaydedip içeriğini inceleyelim.
 ·        a\[2\]
 \*Bu tür ICMP paketleri genelde hedefin **ulaşılabilir olup olmadığını test etmek** için kullanılır.
 
-#### Part 4 Create and Send a TCP SYN Packet
+##### Part 4 Create and Send a TCP SYN Packet
 
 Şimdi sırada TCP SYN paketi oluşturup göndermek var. Yine ilk başta olduğu gibi interface’imizi dinlemeye alalım.
 
@@ -482,9 +482,9 @@ Komutu gönderdikten sonra dinleme terminali üzerinden CTRL + C yaparak dinleme
 
 2\. paket bizim bağlantı başlatmak için gönderdiğimiz flags değeri “S” olan pakettir. 3. Paketi incelediğimizde ise flags değerinin SA yani SYN-ACK olduğunu görüyoruz. Bu demek oluyor ki 445 portu açık ve bağlantı isteğimizi onaylamış.
 
-### 3.2.6 Lab – Network Sniffing with Wireshark
+#### 3.2.6 Lab – Network Sniffing with Wireshark
 
-#### Part 1 Capture and Save Network Traffic
+##### Part 1 Capture and Save Network Traffic
 
 Bu partta CLI üzerinden tcpdump kullanarak trafiği yakalayacağız. Trafiği pcap dosyası olarak kaydettikten sonra Wireshark veya benzeri bir uygulama üzerinden inceleyeceğiz.
 
@@ -512,7 +512,7 @@ yazalım. Bu komutu açıklayalım;
 
 Bu komutu yazdıktan sonra tcpdump bizi dinlemeye başlıyor. Web arayıcısına giderek trafik üretmeye başlayabiliriz. Ürettikten sonra tekrardan terminale gelip trafiği CTRL + C ile durdurabiliriz. Sonuçların kaydedildiği dosyayı Wireshark üzerinde inceleyebiliriz.
 
-#### Part 2 View and Analyze the Packet Capture
+##### Part 2 View and Analyze the Packet Capture
 
 Wireshark ara yüzünü açtıktan sonra **File>Open** sekmesinden packetdump.pcap isimli dosyayı incelemek üzere açabiliriz.
 

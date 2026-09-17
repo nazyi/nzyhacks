@@ -11,7 +11,7 @@ order: 5
 permalink: /en/CyberExam-Unhidden
 translation_url: /CyberExam-Unhidden
 ---
-# Introduction
+## Introduction
 Our task, as stated above, is to find a hidden SSID. To do this, we first connect to our machine over the web. After connecting, we switch to our root user with the password "user".
 We use our command to view the wireless network interfaces.
 ·        iwconfig
@@ -32,7 +32,7 @@ To verify that we've switched to monitor mode, we can check again with the iwcon
   <img loading="lazy" src="{{ '/assets/images/cyberexam_unhidden/iw2.webp' | relative_url }}" width="600" height="200" alt="Interface name changed to wlan0mon in the iwconfig output">
 </div>
 
-# Attack
+## Attack
 Now that we know the name of our interface, we can move on to the attack stage. The tool we'll use is called airodump-ng. With this tool we can listen to traffic and save it to a packet capture. Let's enter our command.
 
 ·        airodump-ng wlan0mon
@@ -53,7 +53,7 @@ You can tell whether the attack was successful from the [WPA handshake: 0A:F6:14
 </div>
 After waiting a while, the MAC address of a device connected to the network appears in the STATION section below. We'll use this STATION value to carry out a deauth attack against it. This way, when the device tries to reconnect to the network, the ESSID value will be sent in the clear. 
 
-# Deauth
+## Deauth
 A deauth attack means forcibly disconnecting a device from the network. We'll carry out this attack using the aireplay-ng tool. The purpose of this tool is to force certain behaviors to occur.
 
 ·        aireplay-ng –deauth 10 -a 0A:F6:14:E7:8A:6B -c 6 7E:F4:4D:D9:5B:31 wlan0mon

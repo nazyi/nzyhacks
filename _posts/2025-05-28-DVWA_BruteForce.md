@@ -10,9 +10,9 @@ tags: [web, Hydra]
 translation_url: /en/DVWA_BruteForce
 ---
 
-## Low Sec
+### Low Sec
 
-### Character Set
+#### Character Set
 
 Güvenlik seviyesi düşükte brüte force saldırısı denedim. İlk önce Burp üzerinde giden paketi yakaladım ve bunu Intruder’a gönderdim. Attack Type Spider olarak girdim. Payload Type ise Brute Force olarak girdim. Oynayacağım parametreler üzerinde işaretleme yaptıktan sonra character set ile denenilecek harf, sayı ve sembolleri girdim.
 
@@ -22,7 +22,7 @@ Kullanıcı adım admin şifrem ise password.
   <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/lowsec1.webp' | relative_url }}" width="850" height="270" alt="Burp Suite Intruder'da character set brute force saldırısı ayarları">
 </div>
 
-### Dictionary Attack
+#### Dictionary Attack
 
 Bu atakta ise olası kullanıcı adlarını ve şifrelerini ayrı olarak bir txt dosyası içerisine yazıp payload list olarak Burp’e yüklüyoruz. Txt dosyası oluşturmak için kodlar aşağıdadır:
 
@@ -45,7 +45,7 @@ Aşağıdaki çıktıda değerler işaretlenmiştir.
   <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/adminpass.webp' | relative_url }}" width="800" height="250" alt="Intruder saldırı sonuçlarında doğru kullanıcı adı ve şifrenin işaretlenmesi">
 </div>
 
-## Wfuzz
+### Wfuzz
 
 Bütün user’ları bulmak için [http://localhost./hackable/users/](http://localhost./hackable/users/) adresine gidelim. Buradaki kullanıcı isimlerini bir txt dosyasına kaydedelim işimizi kolaylaştırması için. Aşağıdaki wfuzz komutunu kullanarak
 
@@ -55,9 +55,9 @@ bütün userların şifrelerini deneyelim.
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/target.webp' | relative_url }}" width="1000" height="180" alt="Wfuzz aracıyla tüm kullanıcılar için şifre deneme sonuçları">
 </div>
-## Medium Sec
+### Medium Sec
 
-### Burp
+#### Burp
 
 Burada olayın trick kısmı kaynak kodları incelediğimizde gözüküyor. DVWA arayüzünde en altta view source üstüne tıklayıp view all dediğimizde her seviyenin kaynak kodunu görmekteyiz. Burada low ile medium arasındaki kaynak kod farklılıklarına bakarsak şunu fark edeceksiniz:
 <div style="text-align: center;">
@@ -65,7 +65,7 @@ Burada olayın trick kısmı kaynak kodları incelediğimizde gözüküyor. DVWA
 </div>
 Buradaki sleep (2) kodu, kullanıcı her yanlış giriş yaptığında 2 saniye onu bekletmek demektir. Bunu genele vurduğumuzda ise brute-force atakları zaten uzun sürüyorken her denemede ekstra olarak 2 saniye bekletmek işi daha da zorlaştırır.
 
-### Hydra
+#### Hydra
 
 Hydra’da brute-force yapmak için komutumuz şu şekilde:
 <div class="code-window">
@@ -75,7 +75,7 @@ Hydra’da brute-force yapmak için komutumuz şu şekilde:
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/hydra.webp' | relative_url }}" width="850" height="270" alt="Hydra aracıyla gerçekleştirilen brute force saldırısının terminal çıktısı">
 </div>
-##  High Sec
+###  High Sec
 
 Yüksek seviyede kaynak kodu incelediğimizde brute-force atağını engellemek amaçlı anti-csrf token kullanıldığı görülmüştür. Peki nedir bu anti- csrf token, ne işe yarar?
 

@@ -9,13 +9,13 @@ tags: [Cisco, Zafiyet Taraması]
 order: 5
 translation_url: /en/Cisco_Module3_Vuln
 ---
-# Cisco Ethical Hacker
+## Cisco Ethical Hacker
 
-# Module 3: Information Gathering and Vulnerability Scanning
+## Module 3: Information Gathering and Vulnerability Scanning
 
-## 3.3 Understanding the Art of Performing Vulnerabilitiy Scans
+### 3.3 Understanding the Art of Performing Vulnerabilitiy Scans
 
-### 3.3.1 How a Typical Automated Vulnerability Scanner Works
+#### 3.3.1 How a Typical Automated Vulnerability Scanner Works
 
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_vuln/scanner.webp' | relative_url }}" width="600" height="430" alt="Otomatik zafiyet tarayıcısının çalışma sürecini gösteren adım adım şema">
@@ -39,43 +39,43 @@ Tarayıcı, bulduğu bu bilgiler ile kendi zafiyet verita-banı arasında bir k�
 
 Tarayıcı, potansiyel zafiyetleri içeren bir rapor üretir.
 
-### 3.3.2 Types of Vulnerability Scans
+#### 3.3.2 Types of Vulnerability Scans
 
 Test yapılacak ortama göre tarama yöntemleri ve türleri değişiklik gösterilebilmektedir.
 
-#### Unauthenticated Scans
+##### Unauthenticated Scans
 
 Tarayıcılar genel olarak kullanıcı bilgisi olmadan tarama yapar. Ağ üzerinde ifşa edilmiş servisleri veya açık olan portları tararlar. Eğer bağlantı güvenlik duvarı tarafından bloklanırsa portlar kapalı olarak gözükmektedir.
 
-#### Authenticated Scans
+##### Authenticated Scans
 
 Kimlik bilgilerini kullanarak tarama, tarayıcı root düzeyinde erişim sağlayan bir tarama türüdür. Tarayıcı, SSH veya farklı bir servis ile hedef sisteme gerçekten giriş yapar, sistemin içerisindeyken de netstat gibi komutları çalıştırarak bilgi öğrenmeye çalışır.
 
-#### Discovery Scans
+##### Discovery Scans
 
 Keşif taraması saldırının yüzeyini belirlemek için kullanılır. Tarayıcı hem port hem de port üstünde olan servisleri daha detaylı arayarak bilgiler toplamaya çalışır. Örnek olarak port taraması sonucunda 80, 22 ve 443 numaralı portlar açıksa, 80 ve 443 üstünde hangi web sunucusunun çalıştığı hangi sürüm olduğunu tespit edip saldırı yüzeyini ayarlayabilir.
 
-#### Full Scans
+##### Full Scans
 
 Bu zamana kadar anlatılan tarama türlerinin etkinleştirilmesi ile meydana gelir. Kullanılan işletim sistemi veya makineye göre değişim gösterebilmektedir.
 
 Popüler bir tarama aracı olan Nessus üzerinde mesela çeşitli, işletim sistemi veya makine türüne göre pluginler yer almaktadır.
 
-#### Stealth Scans
+##### Stealth Scans
 
 Hedefin farkına varmadan yapılan gizli olan tarama türüdür. Mesela daha önceden nmap tarama türlerinden hangisinin en sessiz olduğunu öğrenmiştik. Aynı bu gibi örnekler diğer zafiyet tarama araçlarından da geçerlidir. Onlar üzerinde de sessiz tarama yapma seçenekleri vardır.
 
-#### Compliance Scans
+##### Compliance Scans
 
 Bu eğitimde daha öncesinde de gördüğümüz gibi şirketlerin uyması gereken bazı yönetişimler vardır. Şirketlerin ve şirket ürünlerinin bu kurallara uyup uymadığını test etmek üzere zafiyet tarayıcısı kullanılabilir.
 
 Çoğu zafiyet tarayıcısı özel uyumluluk politikaları oluşturma yeteneğine sahiptir.
 
-### 3.3.3 Lab – Vulnerability Scanning with Kali Tools
+#### 3.3.3 Lab – Vulnerability Scanning with Kali Tools
 
 Daha önceki senaryomuzdaki gibi 10.6.6.23 IP adresli cihaz şüpheli davranışlar sergiliyor biz de onu inceliyoruz.
 
-#### Part 1 Run a Nmap Scan on a Target Computer
+##### Part 1 Run a Nmap Scan on a Target Computer
 
 **Step 1: Identify open ports and services**
 
@@ -118,7 +118,7 @@ CVE skoru 4 veya daha yüksek olan sistemde olan zafiyetleri taramak için aşa�
 
 Görüldüğü üzere sistemde birçok yüksek potansiyel zafiyet bulunmaktadır.
 
-#### Part 2 Use GVM to Scan for Vulnerabilities
+##### Part 2 Use GVM to Scan for Vulnerabilities
 
 GVM, en yaygın kullanılan açık kaynaklı güvenlik tarayıcılarından biridir. Cisco Kali üzerinde GVM yüklü olsa bile doğrulamak için aşağıdaki komutu kullanabiliriz.
 <div class="code-window">
@@ -152,7 +152,7 @@ Bizi böyle bir sayfa karşılıyor. Bu sayfada Date bilgisine tıklarsak buluna
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_vuln/tue.webp' | relative_url }}" width="700" height="250" alt="GVM tarama raporunda bulunan CVE ve host detaylarının listelendiği sayfa">
 </div>
 
-### 3.3.4 Challanges to Consider When Running a Vulnerability Scan
+#### 3.3.4 Challanges to Consider When Running a Vulnerability Scan
 
 ·        **Considering the best time to run a scan**: Lab ortamlarında değil de canlıya çıkan uygulamalar üzerinde testler yapmak çeşitli riskleri de yanında getirir.
 
@@ -166,9 +166,9 @@ Bizi böyle bir sayfa karşılıyor. Bu sayfada Date bilgisine tıklarsak buluna
 
 ·        **Fragile Systems:** Tarama yaparken oluşan trafiğe dayanamayan cihazlar vardır. Bu tür sistemleri tararken ya daha az trafik göndermeli ya da tarama kapsamından çıkartmalısınız.
 
-## 3.4 Understanding How to Analyze Vulnerability Scan Results
+### 3.4 Understanding How to Analyze Vulnerability Scan Results
 
-### 3.4.1 Sources for Further Investigation of Vulnerabilities
+#### 3.4.1 Sources for Further Investigation of Vulnerabilities
 
 ·        **US-CERT**: Kamu ve özel kuruluşlar ile birlikte zafiyet bilgi paylaşım etkinliğini artırmak amaçlarındandır.
 

@@ -9,7 +9,7 @@ order: 4
 author: nazy
 translation_url: /en/Tryhackme_PickleRick
 ---
-# Port Taraması
+## Port Taraması
 
 Bizden Rick’i tekrardan insana çevirmek için gereken üç tane malzemeyi soruyor.
 
@@ -44,7 +44,7 @@ Rick bizden bilgisayarına erişip son üç tane gizli malzemeyi bulmamızı ist
 
 Harika! Şimdi ise daha fazla detay öğrenmek için gizli dosyaları tarayacağız.
 
-# Dosya Tarama
+## Dosya Tarama
 
 Bu işlem için gobuster isimli bir aracı kullanacağız. Gobuster, hızlı ve güçlü brute-force kullanarak dizin ve dosya bulma tarayıcısıdır. Bu aracı kullanmak için aşağıdaki komutu kullancağız.
 
@@ -69,7 +69,7 @@ Bu sayfada bize bir değer veriliyor.
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/fif.webp' | relative_url }}" width="400" height="100" alt="robots.txt dosyasında bulunan gizli şifre değeri">
 </div>
-# İlk Malzeme
+## İlk Malzeme
 
 Bu değeri giriş yaparken şifre olarak deneyelim. Bingo! Giriş yapabildik. Bizi bir command panel karşılıyor.
 <div style="text-align: center;">
@@ -87,7 +87,7 @@ Bingo ilk gizli malzememizi buluyoruz. Daha fazla malzeme toplamak için devam e
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/nin.webp' | relative_url }}" width="400" height="100" alt="clue.txt dosyasındaki dosya sistemine bakma ipucu">
 </div>
-# İkinci Malzeme
+## İkinci Malzeme
 
 Dosya sistemine göz atmamız gerektiğini söylüyor.
 
@@ -108,7 +108,7 @@ Cat benzeri komutları araştırıp şansımızı tekrardan deneyelim. Aşağıd
 </div>
 Diğer malzemeyi bulmak için araştırmamıza devam edelim.
 
-# Üçüncü Malzeme
+## Üçüncü Malzeme
 
 Root klasörünün içeriğini görüntülemeye çalışalım. ls /root komutunu deneyelim fakat sanırım root klasörüne erişimimiz yok. Yetkinliğimizi görüntülemek için sudo -l komutunu kullanalım. Fakat bu da ne?
 <div style="text-align: center;">

@@ -10,17 +10,17 @@ order: 3
 translation_url: /en/Cisco_Module3_Passive
 ---
 
-# Cisco Ethical Hacker
+## Cisco Ethical Hacker
 
-## Module 3: Information Gathering and Vulnerability Scanning
+### Module 3: Information Gathering and Vulnerability Scanning
 
-## 3.1 Perform Passive Reconnaissance
+### 3.1 Perform Passive Reconnaissance
 
-### 3.1.1 Reconnaissance  
+#### 3.1.1 Reconnaissance  
 
 Hedef hakkında bilgi toplamaya reconnaisance denir. Cyber KillChain’nin ilk adımıdır. Askeri anlamında keşif anlamında kullanılan bu terim, düşmanın konumu ve yetenekleri gibi bilgileri kapsamaktadır.
 
-### 3.1.2 Active Reconnaissance vs Passive Reconnaissance
+#### 3.1.2 Active Reconnaissance vs Passive Reconnaissance
 
 **Active Reconnaissance**, bilgi toplamak için kullanılan toollar daha saldırgan ve belirgin olmasıdır. Hedef sisteme veya ağa istek atarak çeşitli taramalar yapar.
 
@@ -43,13 +43,13 @@ Bazı pasif bilgi toplama toolları:
 ·        Recon-ng
 
 ·        Domain Enumeration
-### 3.1.3 Lab – Using OSINT Tools
+#### 3.1.3 Lab – Using OSINT Tools
 
-#### Part 1 Examine OSINT Resources
+##### Part 1 Examine OSINT Resources
 
  [https://osintframework.com/](https://osintframework.com/) OSINT Frameworkünü kullanarak nickname aratabiliriz.  [https://whatsmyname.app/](https://whatsmyname.app/) sitesi ile istediğiniz nickname’i arayabilir. Çıkan sonuçların urlsi ile birlikte bulabilirsiniz.
 
-#### Part 2 Use SpiderFoot
+##### Part 2 Use SpiderFoot
 
 Kali’de spiderfootu açtıktan sonra toolu kullanmak için
 <div class="code-window">
@@ -75,7 +75,7 @@ Scan tab’ine bakarak önceki scanler veya aktif olarak devam eden scanlere bak
 
 Bazı modülleri kullanmak için API anahtarlarına ihtiyaç vardır. Bu API anahtarları bazı modülleri için ücretsiz alınabilmektedir. Kullanmak istediğiniz modülün sayfa içeriğine giderek soru işaretine tıklayarak API anahtarının nasıl alınacağı adım adım görebilirsiniz.
 
-#### Part 3 Investigate Recon-ng
+##### Part 3 Investigate Recon-ng
 
 **Step 1: Create a Workspace**
 
@@ -182,7 +182,7 @@ Yeni bir terminal açıp recon-web yazalım. Böylece databasedeki bilgilerin to
 </div>
 
 
-#### Part 4 Find Interesting Files with Recon-ng
+##### Part 4 Find Interesting Files with Recon-ng
 
 Site üzerinde değişik dosyalar bulmak için yeni bir modül indirelim.
 
@@ -216,13 +216,13 @@ Kaydedilen çıktıları /root/.recon-ng/workspaces/cisco/http\_hackxor.net\_rob
 
 recon-ng/data klasöürü içindeki csv dosyasının içinde de sonuçları okuyabilirsiniz.
 
-### 3.1.4 DNS Lookups
+#### 3.1.4 DNS Lookups
 
 DNS sorguları yapılarak hedef sistemin IP adresini veya varsa kullanılan diğer alt alan adlarını öğrenmeye çalışılabilir.
 
 dnsrecon ve dig toolları kullanılabilir.
 
-### 3.1.5 Identification of Technical and Administrative Contacts
+#### 3.1.5 Identification of Technical and Administrative Contacts
 
 Bir domain hakkında teknik ve idari iletişim bilgilerine bakmak için whois komutunu kullanabiliriz. Örnek olarak h4cker.org sitesine bakalım.
 <div class="code-window">
@@ -230,9 +230,9 @@ Bir domain hakkında teknik ve idari iletişim bilgilerine bakmak için whois ko
 <span class="highlight">kali@kali</span> whois h4cker.org
 </div>
 
-### 3.1.6 Lab – DNS Lookups
+#### 3.1.6 Lab – DNS Lookups
 
-#### Part 1 Use nslookup to Obtain Domain and IP Adress Information
+##### Part 1 Use nslookup to Obtain Domain and IP Adress Information
 
 Nslookup hem Linux hem de Windows makinelerinde, temel olarak domain ismi ve IP adres bilgilerini getirir.
 
@@ -270,7 +270,7 @@ Verilen çıktıda skillsforall.com adresini Google’un DNS sunucu ile çözüm
 
 Type olarak “any” seçtiğimiz zaman, etki alanları hakkında bütün bulabildiği bilgileri gösterir.
 
-#### Part 2 Use Whois Function to Obtain Domain Information
+##### Part 2 Use Whois Function to Obtain Domain Information
 
 Whois, DNS sunucu kayıtları yerine alan adı nerede ve kim, fiziksel adres ve teknik bilgilere erişim için kullanılan bir araçtır.
 
@@ -283,7 +283,7 @@ Nslookup cisco.com çıktısından aldığımız bilgi ile cisco.com’un name s
 </div>
 
 
-#### Part 3 Compare te Output of the Nslookup and Dig Functions
+##### Part 3 Compare te Output of the Nslookup and Dig Functions
 
 Dig, Nslookup’a benzeyen bir araçtır. Hedefin hostname’ini ve IP adresini çözümler.
 <div class="code-window">
@@ -309,7 +309,7 @@ Veya aynı nslookup’ta kullandığımız set type=any komutunu dig ile kullan�
 <span class="highlight">kali@kali</span> dig cisco.com any
 </div>
 
-#### Part 4 Perform Reverse DNS Lookups
+##### Part 4 Perform Reverse DNS Lookups
 
 Ters DNS ya da diğer ismiyle rDNS, bir IP adresini kullanarak o adrese karşılık gelen sunucu adlarını bulmaya çalışır.
 
@@ -344,7 +344,7 @@ Daha önceden de kullandığımız şekilde nslookup kullanabiliriz.
 <span class="highlight">kali@kali</span> nslookup 72.163.10.1
 </div>
 
-### 3.1.7 Cryptographic Flaws
+#### 3.1.7 Cryptographic Flaws
 
 Sitelerin SSL sertifikaları incelenerek zayıf sertifikalar veya kriptografik zayıflıklar gibi çeşitli bilgilere erişilebilir.
 
@@ -356,17 +356,17 @@ Crt.sh gibi bir site üzerinden istediğiniz kurum veya sayfanın sertifikası s
 
 Daha önceden bilmediğimiz subdomain adreslerini burada da görebiliriz.
 
-### 3.1.8 Lab – Finding Information from SSL Certificates
+#### 3.1.8 Lab – Finding Information from SSL Certificates
 
 Bazı SSL sertifikaları, ağ üzerinde yerel olarak hostta saklanır. İstemci ve sunucu arasında güvenli iletişim kurulmasını sağlar. SSL sertifika doğrulma zinciri için host hem ara hem de kök SSL sertifikalarını tutar.
 
-#### Part 1 Access Detailed Certificate Information Online
+##### Part 1 Access Detailed Certificate Information Online
 
 Certificate Transparency hem SSL hem de TLS sertifikalarının yayınlanmasını izlemek ve denetlemek için kullanılan açık bir çerçevedir.
 
 Her yeni bir sertifika veya bir sertifika hareketi log altına alınır böylece ortaya CT log dediğimiz terim ortaya çıkar. Hem saldırganlar hem de koruyanlar bu CT loglarını kullanarak kendi amacına uygun bilgi elde edebilir.
 
-#### Part 2 Use SSL Analysis Tools in Kali
+##### Part 2 Use SSL Analysis Tools in Kali
 
 Kali üzerindeki bazı SSL toollarının isimlerini ve amaçlarını anlatalım.
 
@@ -375,7 +375,7 @@ Kali üzerindeki bazı SSL toollarının isimlerini ve amaçlarını anlatalım.
 </div>
 
 
-#### Part 3 Use Kali Tools to Gather Certificate Information
+##### Part 3 Use Kali Tools to Gather Certificate Information
 
 Sslscan, bilindiği üzere SSl sertifikaları hakkında bilgi verir. Bir başka kullanacağımız araç ise “aha” aracıdır. Outputu HTML dosyasına çevirmeye yarar.
 
@@ -394,7 +394,7 @@ Dosyanın konumunu bulduktan sonra Mozilla üzerinde html dosyasını açabilirs
 </div>
 
 
-### 3.1.9 Company Reputation and Security Posture
+#### 3.1.9 Company Reputation and Security Posture
 
 Eğer şirketin daha önceden veri sızdırılma geçmişi varsa saldırganlar eski saldırıdan kalan
 
@@ -408,7 +408,7 @@ Eğer şirketin daha önceden veri sızdırılma geçmişi varsa saldırganlar e
 
 kullanabilirler.
 
-#### Password Dumps
+##### Password Dumps
 
 Saldırganların daha önceden çalınan şifre dökümlerine ulaşmak için birçok araçlara sahiptir. Bunlardan birisi h8mail aracıdır.
 
@@ -428,11 +428,11 @@ Böylelikle h8mail aracımızı kurabiliriz. Bu araca benzer olarak diğer araç
 *   **Scavenger:** [_https://github.com/rndinfosecguy/Scavenger_](https://github.com/rndinfosecguy/Scavenger)
 *   **PwnDB:** [_https://github.com/davidtavarez/pwndb_](https://github.com/davidtavarez/pwndb)
 
-#### File Metadata
+##### File Metadata
 
 Fotoğraf, Word, Excel ve benzeri dosyaların metadata bilgilerinden birçok bilgi öğrenebiliriz. Bu bilgileri görebileceğimiz birçok araç vardır. Bunlardan biri de ExifTool aracıdır.
 
-#### Strategic Search Engine Analysis/Enumeration
+##### Strategic Search Engine Analysis/Enumeration
 
 Günümüzde piyasada birçok farklı arama motoru bulunmaktadır. Kullanıcılar tercihlerine göre Yandex, Bing veya DuckDuckGo gibi arama motorlarını kullanabilirler. Ancak Google, sahip olduğu gelişmiş arama operatörleri sayesinde çok daha detaylı ve hedefli aramalar yapmaya olanak tanır. Bu yöntem, özellikle siber güvenlik dünyasında Google Dorking olarak bilinir ve hassas bilgilere erişmek amacıyla kötü niyetli kişiler tarafından da kullanılabilir.
 
@@ -452,17 +452,17 @@ Bazı özel arama operatörlerinden örnek aşağıdadır.
 
 [https://www.exploit-db.com/google-hacking-database](https://www.exploit-db.com/google-hacking-database) sitesi üzerinde dork örneklerini bulup inceleyebilirsiniz.
 
-#### Website Archiving/Caching
+##### Website Archiving/Caching
 
 Bazı siteler internet üzerindeki sitelerin bilgilerini arşivleyip depolar. [https://web.archive.org/](https://web.archive.org/) adresi üzerinden baktığınız sitenin zamanda eski haline giderek siteyi görebilirsiniz.
 
-#### Public Source Code Repositories
+##### Public Source Code Repositories
 
 Saldırganlar, Github veya Gitlab üzerinde public olan kod kaynağına ulaşarak değerli bilgiler elde edebilir veya sistemin açığını bulabilir.
 
-### 3.1.10 Lab – Finding Out About the Orginization
+#### 3.1.10 Lab – Finding Out About the Orginization
 
-#### Part 1 Find Information about Email Breaches.
+##### Part 1 Find Information about Email Breaches.
 
 Çalışanların iş maili daha önceden ifşa edildiyse bu bilgi kullanılabilir. Bazı online servisler mailin ifşa edilip edilmediğini öğrenmek için kullanılabilir.
 
@@ -501,7 +501,7 @@ Komutu ile ara yüzümüzü çalıştırdıktan sonra erişim sağlayabiliriz. B
 
 Başka modül araştırarak da scanleyebilirsiniz.
 
-#### Part 2 View File Metadata
+##### Part 2 View File Metadata
 
 File metadataları saldırganlar için birçok değerli bilgi içerebilir. Mesela fotoğrafın oluşturulduğu cihaz hakkında bilgi verebilir. Saldırgan da bu cihazın potansiyel zafiyetlerini araştırarak öğrenebilir veya bir başka örnek olarak dosyanın yapımcısının ismi, dosyanın ne zaman oluşturulduğu gibi bilgiler öğrenilebilir.
 

@@ -11,13 +11,13 @@ order: 5
 permalink: /en/Cisco_Module3_Vuln
 translation_url: /Cisco_Module3_Vuln
 ---
-# Cisco Ethical Hacker
+## Cisco Ethical Hacker
 
-# Module 3: Information Gathering and Vulnerability Scanning
+## Module 3: Information Gathering and Vulnerability Scanning
 
-## 3.3 Understanding the Art of Performing Vulnerabilitiy Scans
+### 3.3 Understanding the Art of Performing Vulnerabilitiy Scans
 
-### 3.3.1 How a Typical Automated Vulnerability Scanner Works
+#### 3.3.1 How a Typical Automated Vulnerability Scanner Works
 
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_vuln/scanner.webp' | relative_url }}" width="600" height="430" alt="Step-by-step diagram showing how an automated vulnerability scanner works">
@@ -41,43 +41,43 @@ The scanner compares the information it has found against its own vulnerability 
 
 The scanner produces a report containing the potential vulnerabilities.
 
-### 3.3.2 Types of Vulnerability Scans
+#### 3.3.2 Types of Vulnerability Scans
 
 Scanning methods and types can vary depending on the environment being tested.
 
-#### Unauthenticated Scans
+##### Unauthenticated Scans
 
 Scanners generally scan without any user credentials. They scan for services exposed on the network or open ports. If the connection is blocked by a firewall, the ports appear as closed.
 
-#### Authenticated Scans
+##### Authenticated Scans
 
 Scanning using credentials is a scan type where the scanner gains root-level access. The scanner actually logs into the target system via SSH or another service, and while inside the system it tries to gather information by running commands such as netstat.
 
-#### Discovery Scans
+##### Discovery Scans
 
 Discovery scanning is used to determine the attack surface. The scanner tries to gather information by searching in more detail for both the ports and the services running on top of them. For example, if ports 80, 22, and 443 are found open as a result of a port scan, it can determine which web server and which version is running on 80 and 443 and set the attack surface accordingly.
 
-#### Full Scans
+##### Full Scans
 
 This occurs by enabling the scan types described so far. It can vary depending on the operating system or machine being used.
 
 For example, on Nessus, a popular scanning tool, there are various plugins depending on the operating system or machine type.
 
-#### Stealth Scans
+##### Stealth Scans
 
 This is a stealthy scan type performed without the target noticing. For instance, we had previously learned which of the nmap scan types is the quietest. The same applies to other vulnerability scanning tools as well — they also have options for performing quiet scans.
 
-#### Compliance Scans
+##### Compliance Scans
 
 As we've seen earlier in this course, companies must comply with certain governance rules. A vulnerability scanner can be used to test whether companies and their products comply with these rules.
 
 Most vulnerability scanners have the ability to create custom compliance policies.
 
-### 3.3.3 Lab – Vulnerability Scanning with Kali Tools
+#### 3.3.3 Lab – Vulnerability Scanning with Kali Tools
 
 As in our previous scenario, the device with IP address 10.6.6.23 is displaying suspicious behavior, so we're investigating it.
 
-#### Part 1 Run a Nmap Scan on a Target Computer
+##### Part 1 Run a Nmap Scan on a Target Computer
 
 **Step 1: Identify open ports and services**
 
@@ -120,7 +120,7 @@ Let's enter the following command to scan for vulnerabilities on the system with
 
 As can be seen, the system has many high-potential vulnerabilities.
 
-#### Part 2 Use GVM to Scan for Vulnerabilities
+##### Part 2 Use GVM to Scan for Vulnerabilities
 
 GVM is one of the most widely used open-source security scanners. Even though GVM is installed on the Cisco Kali machine, we can use the following command to verify it.
 <div class="code-window">
@@ -154,7 +154,7 @@ We're greeted by a page like this. On this page, if we click the Date informatio
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_vuln/tue.webp' | relative_url }}" width="700" height="250" alt="The page listing the CVE and host details found in the GVM scan report">
 </div>
 
-### 3.3.4 Challanges to Consider When Running a Vulnerability Scan
+#### 3.3.4 Challanges to Consider When Running a Vulnerability Scan
 
 ·        **Considering the best time to run a scan**: Running tests on live applications instead of lab environments brings various risks along with it.
 
@@ -168,9 +168,9 @@ We're greeted by a page like this. On this page, if we click the Date informatio
 
 ·        **Fragile Systems:** There are devices that can't withstand the traffic generated during scanning. When scanning such systems, you should either send less traffic or exclude them from the scan scope.
 
-## 3.4 Understanding How to Analyze Vulnerability Scan Results
+### 3.4 Understanding How to Analyze Vulnerability Scan Results
 
-### 3.4.1 Sources for Further Investigation of Vulnerabilities
+#### 3.4.1 Sources for Further Investigation of Vulnerabilities
 
 ·        **US-CERT**: Aims to increase vulnerability information-sharing activity together with public and private organizations.
 
