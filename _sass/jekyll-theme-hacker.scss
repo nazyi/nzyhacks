@@ -93,7 +93,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  height: 96px;
+  height: 116px;
 }
 
 .header-actions {
@@ -117,10 +117,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .site-icon {
-  width: 64px;
-  height: 64px;
+  width: auto;
+  height: 92px;
   margin-right: 12px;
-  border-radius: 12px;
+  border-radius: 0;
   transition: transform 0.3s ease;
   object-fit: contain;
 }
@@ -917,13 +917,13 @@ code {
   flex: 0 0 220px;
   min-width: 0;
   position: sticky;
-  top: 116px;
+  top: 136px;
   align-self: flex-start;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 16px;
   padding: 18px;
-  max-height: calc(100vh - 156px);
+  max-height: calc(100vh - 176px);
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--color-primary-soft) transparent;
