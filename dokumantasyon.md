@@ -13,5 +13,5 @@ Kurumsal araçlarla ilgili kurulum, yapılandırma ve kullanım notlarımı bu s
 {% if dokumanlar.size == 0 %}
 <p>Yakında JumpCloud ve Trend Micro üzerine yazılar burada olacak. 🌸</p>
 {% else %}
-{% include solution-list.html posts=dokumanlar %}
+{% include solution-list.html posts=dokumanlar dark_card=true %}
 {% endif %}

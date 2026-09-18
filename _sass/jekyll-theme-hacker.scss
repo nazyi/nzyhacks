@@ -811,6 +811,10 @@ code {
   background: var(--color-primary-soft);
 }
 
+:root[data-theme="dark"] .solution-logo-card {
+  background: #fdf7fa;
+}
+
 .solution-logo img {
   max-width: 60px;
   max-height: 60px;

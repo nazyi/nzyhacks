@@ -17,7 +17,7 @@
         {% endif %}
         <p>{{ post.description }}</p>
       </div>
-      <div class="solution-logo">
+      <div class="solution-logo{% if include.dark_card %} solution-logo-card{% endif %}">
         <img src="{{ post.logo | relative_url }}" alt="{{ post.title }} logo">
       </div>
     </div>
