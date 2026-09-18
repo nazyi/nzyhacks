@@ -28,6 +28,8 @@ tr:
   latest_posts: "Son Yazılar"
   logo_alt: "site ikonu"
   back_to_top_aria: "Sayfanın başına dön"
+  linkedin_aria: "LinkedIn profilim"
+  github_aria: "GitHub profilim"
 
 en:
   nav_home: "Home"
@@ -59,3 +61,5 @@ en:
   latest_posts: "Latest Posts"
   logo_alt: "site icon"
   back_to_top_aria: "Back to top"
+  linkedin_aria: "My LinkedIn profile"
+  github_aria: "My GitHub profile"

@@ -20,6 +20,13 @@ body {
   font-family: $font-body;
   -webkit-font-smoothing: antialiased;
   transition: background 0.2s ease, color 0.2s ease;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body > .container {
+  flex: 1 0 auto;
 }
 
 .container {
@@ -564,6 +571,30 @@ code {
   opacity: 0.8;
 }
 
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: var(--color-text-muted);
+  background: var(--color-primary-soft);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+  color: var(--color-primary-strong);
+  transform: translateY(-2px);
+}
+
 /* Hero (Ana sayfa & Hakkımda)
 */
 
@@ -592,6 +623,19 @@ code {
   line-height: 1.7;
   color: var(--color-text-muted);
 }
+
+.about-text {
+  max-width: 700px;
+  margin: 56px auto 0;
+}
+
+.about-text p {
+  font-size: 1.1em;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  margin: 0 0 1.2em;
+}
+
 
 .hero-avatar {
   flex: 1;
