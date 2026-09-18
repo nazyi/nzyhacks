@@ -118,6 +118,23 @@
 
     <button id="back-to-top" class="back-to-top" type="button" aria-label="{{ t.back_to_top_aria }}">↑</button>
 
+    <div id="chat-widget" class="chat-widget">
+      <button id="chat-toggle" class="chat-toggle" type="button" aria-label="{{ t.chat_toggle_aria }}">
+        <img src="{{ '/assets/images/chat-cat-rest.png' | relative_url }}" alt="">
+      </button>
+      <div id="chat-panel" class="chat-panel" hidden>
+        <div class="chat-panel-header">
+          <span>{{ t.chat_title }}</span>
+          <button id="chat-close" class="chat-close" type="button" aria-label="{{ t.search_close_aria }}">✕</button>
+        </div>
+        <div id="chat-messages" class="chat-messages"></div>
+        <form id="chat-form" class="chat-form">
+          <input type="text" id="chat-input" class="chat-input" placeholder="{{ t.chat_placeholder }}" aria-label="{{ t.chat_placeholder }}" maxlength="400" autocomplete="off">
+          <button type="submit" class="chat-send" aria-label="{{ t.chat_send }}">➤</button>
+        </form>
+      </div>
+    </div>
+
     <footer class="site-footer">
       <div class="container">
         &copy; {{ site.time | date: "%Y" }} nzyhacks — {{ site.author | default: "nazy" }}
@@ -412,6 +429,190 @@
 
         btn.addEventListener('click', function () {
           window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var API_URL = 'https://test-nada-76b4.vercel.app/api/chat';
+        var STORAGE_KEY = 'nzy-chat-history';
+        var CAT_TALK_URL = '{{ "/assets/images/chat-cat-talk.webp" | relative_url }}';
+        var CAT_REST_URL = '{{ "/assets/images/chat-cat-rest.png" | relative_url }}';
+        var toggle = document.getElementById('chat-toggle');
+        var panel = document.getElementById('chat-panel');
+        var closeBtn = document.getElementById('chat-close');
+        var form = document.getElementById('chat-form');
+        var input = document.getElementById('chat-input');
+        var messages = document.getElementById('chat-messages');
+        if (!toggle || !panel || !form) return;
+
+        function loadHistory() {
+          try {
+            var raw = localStorage.getItem(STORAGE_KEY);
+            return raw ? JSON.parse(raw) : [];
+          } catch (e) {
+            return [];
+          }
+        }
+
+        function saveHistory() {
+          try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
+          } catch (e) {}
+        }
+
+        var history = loadHistory();
+
+        function renderUserMessage(text) {
+          var div = document.createElement('div');
+          div.className = 'chat-message chat-message-user';
+          div.textContent = text;
+          messages.appendChild(div);
+          messages.scrollTop = messages.scrollHeight;
+          return div;
+        }
+
+        function renderBotRow(text, avatarSrc) {
+          var row = document.createElement('div');
+          row.className = 'chat-row';
+          var avatar = document.createElement('img');
+          avatar.className = 'chat-avatar';
+          avatar.src = avatarSrc || CAT_REST_URL;
+          avatar.alt = '';
+          row.appendChild(avatar);
+          var bubble = null;
+          if (text !== null) {
+            bubble = document.createElement('div');
+            bubble.className = 'chat-message chat-message-bot';
+            bubble.textContent = text;
+            row.appendChild(bubble);
+          }
+          messages.appendChild(row);
+          messages.scrollTop = messages.scrollHeight;
+          return { row: row, avatar: avatar, bubble: bubble };
+        }
+
+        function renderSources(sources) {
+          if (!sources || !sources.length) return;
+          var wrap = document.createElement('div');
+          wrap.className = 'chat-message-sources';
+          sources.forEach(function (s) {
+            var a = document.createElement('a');
+            a.href = 'https://nazyi.github.io' + s.url;
+            a.target = '_blank';
+            a.rel = 'noopener';
+            a.textContent = s.title;
+            wrap.appendChild(a);
+          });
+          messages.appendChild(wrap);
+          messages.scrollTop = messages.scrollHeight;
+        }
+
+        if (history.length) {
+          history.forEach(function (entry) {
+            if (entry.role === 'sources') {
+              renderSources(entry.sources);
+            } else if (entry.role === 'bot') {
+              renderBotRow(entry.text, CAT_REST_URL);
+            } else {
+              renderUserMessage(entry.text);
+            }
+          });
+        } else {
+          renderBotRow('{{ t.chat_intro }}', CAT_REST_URL);
+        }
+
+        function addUserMessage(text) {
+          renderUserMessage(text);
+          history.push({ role: 'user', text: text });
+          saveHistory();
+        }
+
+        function typeText(el, text, onDone) {
+          var i = 0;
+          var step = Math.max(1, Math.round(text.length / 120));
+          function tick() {
+            i += step;
+            el.textContent = text.slice(0, i);
+            messages.scrollTop = messages.scrollHeight;
+            if (i < text.length) {
+              setTimeout(tick, 46);
+            } else if (onDone) {
+              onDone();
+            }
+          }
+          tick();
+        }
+
+        function finishBotRowInstant(rowRefs, text) {
+          rowRefs.avatar.src = CAT_REST_URL;
+          rowRefs.bubble.textContent = text;
+          history.push({ role: 'bot', text: text });
+          saveHistory();
+        }
+
+        function finishBotRowTyped(rowRefs, text) {
+          rowRefs.avatar.src = CAT_TALK_URL;
+          typeText(rowRefs.bubble, text, function () {
+            rowRefs.avatar.src = CAT_REST_URL;
+          });
+          history.push({ role: 'bot', text: text });
+          saveHistory();
+        }
+
+        function addSources(sources) {
+          if (!sources || !sources.length) return;
+          renderSources(sources);
+          history.push({ role: 'sources', sources: sources });
+          saveHistory();
+        }
+
+        function openPanel() {
+          panel.hidden = false;
+          input.focus();
+        }
+
+        function closePanel() {
+          panel.hidden = true;
+        }
+
+        toggle.addEventListener('click', function () {
+          if (panel.hidden) openPanel(); else closePanel();
+        });
+        closeBtn.addEventListener('click', closePanel);
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var q = input.value.trim();
+          if (!q) return;
+          addUserMessage(q);
+          input.value = '';
+          input.disabled = true;
+          var pending = renderBotRow('', CAT_REST_URL);
+          pending.bubble.innerHTML = '<span class="chat-dot"></span><span class="chat-dot"></span><span class="chat-dot"></span>';
+
+          fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ question: q, lang: '{{ lang }}' }),
+          })
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+              if (data.error) {
+                finishBotRowInstant(pending, '{{ t.chat_error }}');
+                return;
+              }
+              finishBotRowTyped(pending, data.answer);
+              addSources(data.sources);
+            })
+            .catch(function () {
+              finishBotRowInstant(pending, '{{ t.chat_error }}');
+            })
+            .finally(function () {
+              input.disabled = false;
+              input.focus();
+            });
         });
       })();
     </script>

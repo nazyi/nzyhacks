@@ -30,6 +30,12 @@ tr:
   back_to_top_aria: "Sayfanın başına dön"
   linkedin_aria: "LinkedIn profilim"
   github_aria: "GitHub profilim"
+  chat_toggle_aria: "Sohbet asistanını aç"
+  chat_title: "Yazılar Hakkında Sor"
+  chat_placeholder: "Bir şey sor…"
+  chat_send: "Gönder"
+  chat_intro: "Merhaba! Bloglardaki yazılar hakkında soru sorabilirsin. 🌸"
+  chat_error: "Şu anda cevap veremiyorum, birazdan tekrar dener misin?"
 
 en:
   nav_home: "Home"
@@ -63,3 +69,9 @@ en:
   back_to_top_aria: "Back to top"
   linkedin_aria: "My LinkedIn profile"
   github_aria: "My GitHub profile"
+  chat_toggle_aria: "Open chat assistant"
+  chat_title: "Ask About the Posts"
+  chat_placeholder: "Ask something…"
+  chat_send: "Send"
+  chat_intro: "Hi! You can ask me questions about the blog posts. 🌸"
+  chat_error: "I can't answer right now, please try again in a bit."
