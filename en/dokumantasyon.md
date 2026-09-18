@@ -15,5 +15,5 @@ I collect my setup, configuration, and usage notes on enterprise tools here.
 {% if dokumanlar.size == 0 %}
 <p>Posts about JumpCloud and Trend Micro are coming soon. 🌸</p>
 {% else %}
-{% include solution-list.html posts=dokumanlar dark_card=true %}
+{% include solution-list.html posts=dokumanlar %}
 {% endif %}

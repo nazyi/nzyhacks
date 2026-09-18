@@ -7,4 +7,4 @@ translation_url: /en/modul-cozumler
 # Modül Çözümleri
 
 {% assign moduller = site.posts | where: "lang", "tr" | where: "categories", "modul" | sort: "order" %}
-{% include solution-list.html posts=moduller dark_card=true %}
+{% include solution-list.html posts=moduller %}

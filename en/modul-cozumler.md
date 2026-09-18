@@ -9,4 +9,4 @@ translation_url: /modul-cozumler
 # Module Write-ups
 
 {% assign moduller = site.posts | where: "lang", "en" | where: "categories", "modul" | sort: "order" %}
-{% include solution-list.html posts=moduller dark_card=true %}
+{% include solution-list.html posts=moduller %}

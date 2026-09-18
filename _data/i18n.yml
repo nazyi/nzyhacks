@@ -36,6 +36,7 @@ tr:
   chat_send: "Gönder"
   chat_intro: "Merhaba! Bloglardaki yazılar hakkında soru sorabilirsin. 🌸"
   chat_error: "Şu anda cevap veremiyorum, birazdan tekrar dener misin?"
+  chat_reset_aria: "Sohbet geçmişini sıfırla"
 
 en:
   nav_home: "Home"
@@ -75,3 +76,4 @@ en:
   chat_send: "Send"
   chat_intro: "Hi! You can ask me questions about the blog posts. 🌸"
   chat_error: "I can't answer right now, please try again in a bit."
+  chat_reset_aria: "Reset chat history"
