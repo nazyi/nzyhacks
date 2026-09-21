@@ -1719,3 +1719,200 @@ code {
     grid-column: 1;
   }
 }
+
+/* Dokumantasyon sekmeleri
+*/
+
+.doc-tabs {
+  margin-top: 8px;
+}
+
+.doc-tab-buttons {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--color-border);
+  padding: 0 4px;
+}
+
+.doc-tab-btn {
+  position: relative;
+  margin-bottom: -1px;
+  padding: 12px 24px;
+  border: 1px solid var(--color-border);
+  border-bottom: none;
+  border-radius: 14px 14px 0 0;
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: 0.95em;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.doc-tab-btn:hover {
+  color: var(--color-primary-strong);
+}
+
+.doc-tab-btn.active {
+  z-index: 2;
+  background: var(--color-surface);
+  color: var(--color-primary-strong);
+  border-bottom: 1px solid var(--color-surface);
+}
+
+.doc-tab-content {
+  border: 1px solid var(--color-border);
+  border-top: none;
+  border-radius: 0 14px 14px 14px;
+  background: var(--color-surface);
+  padding: 28px;
+}
+
+.doc-tab-panel {
+  display: none;
+}
+
+.doc-tab-panel.active {
+  display: block;
+}
+
+/* Tiklanabilir durum diyagrami
+*/
+
+.state-diagram {
+  max-width: 720px;
+  margin: 32px auto;
+  padding: 28px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(46, 36, 50, 0.06);
+}
+
+.state-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.state-node {
+  padding: 12px 20px;
+  border-radius: 999px;
+  border: 2px solid var(--color-primary);
+  background: var(--color-primary-soft);
+  color: var(--color-primary-strong);
+  font-weight: 700;
+  font-size: 0.95em;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.state-node:hover {
+  transform: translateY(-2px);
+}
+
+.state-node.active {
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(214, 51, 108, 0.3);
+}
+
+.state-node-danger {
+  border-color: #c0392b;
+  background: rgba(192, 57, 43, 0.08);
+  color: #c0392b;
+}
+
+.state-node-danger.active {
+  background: #c0392b;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(192, 57, 43, 0.3);
+}
+
+.state-arrow {
+  color: var(--color-text-muted);
+  font-size: 1.2em;
+}
+
+.state-detail {
+  text-align: center;
+  min-height: 1.6em;
+  margin: 0;
+  font-size: 1.02em;
+  color: var(--color-text);
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Cevrilebilir kartlar (flip card)
+*/
+
+.flip-cards {
+  max-width: 780px;
+  margin: 32px auto;
+}
+
+.flip-cards-hint {
+  margin: 0 0 20px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--color-text);
+}
+
+.flip-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.flip-card {
+  perspective: 1000px;
+  height: 140px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+  border-radius: 16px;
+  backface-visibility: hidden;
+  box-shadow: 0 4px 12px rgba(214, 51, 108, 0.08);
+}
+
+.flip-card-front {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-strong);
+  font-weight: 700;
+  font-size: 0.95em;
+  border: 1px solid var(--color-border);
+}
+
+.flip-card-back {
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.85em;
+  line-height: 1.45;
+  transform: rotateY(180deg);
+}

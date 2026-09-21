@@ -1,0 +1,13 @@
+- key: staged
+  label: Staged
+  def: "Kullanıcı işe alındığında hesabını aktive etmeden önceki durumdur."
+- key: active
+  label: Active
+  def: "Aktivasyon mailinden sonra kullanıcı hesabını aktive ettikten sonraki durumdur."
+- key: suspended
+  label: Suspended
+  def: "Kullanıcının hesabının askıya alındığı durumdur. Kullanıcının hiçbir yetkisi yoktur."
+- key: deleted
+  label: Deleted
+  danger: true
+  def: "Kullanıcı hesabının kalıcı olarak silinip sistemden tamamen kaldırıldığı durumdur."

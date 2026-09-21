@@ -3,6 +3,7 @@ categories: [dokumantasyon]
 layout: post
 lang: en
 description: "The first lesson of the JumpCloud University Core course: the Admin Console and User Portal interfaces, organization settings, admin roles/permissions, and recommended security/password policies."
+tool: JumpCloud
 logo: "/assets/images/blog_icon/jumpcloud.png"
 author: nazy
 title: JumpCloud Core 1 - Admin Settings

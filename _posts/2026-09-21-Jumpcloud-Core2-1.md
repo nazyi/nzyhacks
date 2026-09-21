@@ -2,6 +2,7 @@
 categories: [dokumantasyon]
 layout: post
 description: "JumpCloud University Core kursunun ikinci dersinin ilk bölümü: kullanıcı oluşturma/içe aktarma yöntemleri, kullanıcı durumları, şifre durumları ve kullanıcı adı/yerel hesap eşleştirmesi."
+tool: JumpCloud
 logo: "/assets/images/blog_icon/jumpcloud.png"
 author: nazy
 title: JumpCloud Core 2.1 - Kullanıcı Oluşturma
@@ -43,9 +44,7 @@ Kullanıcının durumunu değiştirebileceğiniz birkaç seçenek var:
 - Kullanıcıyı active hale getirmeyi ya zamanlayabilirsiniz ya da manuel olarak elinizle yapabilirsiniz.
 - Aynı şekilde hesabı askıya almak için de zamanlayabilir ya da manuel olarak halledebilirsiniz.
 
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/jumpcloud_core2/user-states-flow.webp' | relative_url }}" width="700" height="173" alt="Kullanıcı durum akışı: Staged, Active, Suspended ve Deleted arasındaki geçişler">
-</div>
+{% include state-diagram.html id="jc-user-states-tr" states=site.data.jc_user_states placeholder="Bir duruma tıklayarak tanımını gör." %}
 
 ### Şifre Durumu
 

@@ -816,5 +816,56 @@
       })();
     </script>
 
+    <script>
+      (function () {
+        var buttons = document.querySelectorAll('.doc-tab-btn');
+        buttons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var tabs = btn.closest('.doc-tabs');
+            if (!tabs) return;
+            tabs.querySelectorAll('.doc-tab-btn').forEach(function (b) {
+              b.classList.remove('active');
+            });
+            tabs.querySelectorAll('.doc-tab-panel').forEach(function (p) {
+              p.classList.remove('active');
+            });
+            btn.classList.add('active');
+            var panel = document.getElementById(btn.dataset.tab);
+            if (panel) panel.classList.add('active');
+          });
+        });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var diagrams = document.querySelectorAll('.state-diagram');
+        diagrams.forEach(function (diagram) {
+          var nodes = diagram.querySelectorAll('.state-node');
+          var detail = diagram.querySelector('.state-detail');
+          nodes.forEach(function (node) {
+            node.addEventListener('click', function () {
+              nodes.forEach(function (n) {
+                n.classList.remove('active');
+              });
+              node.classList.add('active');
+              if (detail) detail.textContent = node.dataset.def;
+            });
+          });
+        });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var cards = document.querySelectorAll('.flip-card');
+        cards.forEach(function (card) {
+          card.addEventListener('click', function () {
+            card.classList.toggle('flipped');
+          });
+        });
+      })();
+    </script>
+
   </body>
 </html>

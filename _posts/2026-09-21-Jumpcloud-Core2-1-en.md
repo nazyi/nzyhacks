@@ -3,6 +3,7 @@ categories: [dokumantasyon]
 layout: post
 lang: en
 description: "The first part of the second lesson of the JumpCloud University Core course: user creation/import methods, user states, password status, and matching usernames with local user accounts."
+tool: JumpCloud
 logo: "/assets/images/blog_icon/jumpcloud.png"
 author: nazy
 title: JumpCloud Core 2.1 - Creating Users
@@ -45,9 +46,7 @@ There are a few ways to change a user's state:
 - You can either schedule when a user becomes active, or do it manually yourself.
 - Likewise, you can either schedule suspending an account or handle it manually.
 
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/jumpcloud_core2/user-states-flow.webp' | relative_url }}" width="700" height="173" alt="User state flow: transitions between Staged, Active, Suspended, and Deleted">
-</div>
+{% include state-diagram.html id="jc-user-states-en" states=site.data.jc_user_states_en placeholder="Click a state to see its definition." %}
 
 ### Password Status
 

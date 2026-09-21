@@ -1,0 +1,13 @@
+<div class="flip-cards" data-flip-id="{{ include.id }}">
+  {% if include.hint %}<p class="flip-cards-hint">{{ include.hint }}</p>{% endif %}
+  <div class="flip-cards-grid">
+    {% for item in include.items %}
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">{{ item.term }}</div>
+          <div class="flip-card-back">{{ item.def }}</div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

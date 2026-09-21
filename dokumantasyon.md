@@ -13,5 +13,19 @@ Kurumsal araçlarla ilgili kurulum, yapılandırma ve kullanım notlarımı bu s
 {% if dokumanlar.size == 0 %}
 <p>Yakında JumpCloud ve Trend Micro üzerine yazılar burada olacak. 🌸</p>
 {% else %}
-{% include solution-list.html posts=dokumanlar %}
+{% assign gruplar = dokumanlar | group_by: "tool" %}
+<div class="doc-tabs">
+  <div class="doc-tab-buttons">
+    {% for grup in gruplar %}
+      <button type="button" class="doc-tab-btn{% if forloop.first %} active{% endif %}" data-tab="doc-tab-{{ grup.name | slugify }}">{{ grup.name }}</button>
+    {% endfor %}
+  </div>
+  <div class="doc-tab-content">
+    {% for grup in gruplar %}
+      <div class="doc-tab-panel{% if forloop.first %} active{% endif %}" id="doc-tab-{{ grup.name | slugify }}">
+        {% include solution-list.html posts=grup.items %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
 {% endif %}

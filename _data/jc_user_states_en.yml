@@ -1,0 +1,13 @@
+- key: staged
+  label: Staged
+  def: "The state before a newly hired user's account is activated."
+- key: active
+  label: Active
+  def: "The state after the user activates their account via the activation email."
+- key: suspended
+  label: Suspended
+  def: "The state where the user's account is suspended. The user has no permissions at all."
+- key: deleted
+  label: Deleted
+  danger: true
+  def: "The state where the user's account has been permanently removed from the system."

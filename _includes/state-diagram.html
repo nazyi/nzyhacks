@@ -1,0 +1,9 @@
+<div class="state-diagram" data-diagram-id="{{ include.id }}">
+  <div class="state-flow">
+    {% for s in include.states %}
+      {% unless forloop.first %}<span class="state-arrow" aria-hidden="true">&rarr;</span>{% endunless %}
+      <button type="button" class="state-node{% if s.danger %} state-node-danger{% endif %}" data-def="{{ s.def }}">{{ s.label }}</button>
+    {% endfor %}
+  </div>
+  <p class="state-detail">{{ include.placeholder | default: "Bir duruma tıklayarak tanımını gör." }}</p>
+</div>
