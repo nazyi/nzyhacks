@@ -118,6 +118,11 @@
 
     <button id="back-to-top" class="back-to-top" type="button" aria-label="{{ t.back_to_top_aria }}">↑</button>
 
+    <div id="lightbox" class="lightbox" hidden>
+      <button id="lightbox-close" class="lightbox-close" type="button" aria-label="{{ t.search_close_aria }}">✕</button>
+      <img id="lightbox-img" src="" alt="">
+    </div>
+
     <div id="chat-widget" class="chat-widget">
       <button id="chat-toggle" class="chat-toggle" type="button" aria-label="{{ t.chat_toggle_aria }}">
         <img src="{{ '/assets/images/chat-cat-rest.png' | relative_url }}" alt="">
@@ -863,6 +868,42 @@
           card.addEventListener('click', function () {
             card.classList.toggle('flipped');
           });
+        });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImg = document.getElementById('lightbox-img');
+        var closeBtn = document.getElementById('lightbox-close');
+        var images = document.querySelectorAll('.post-content img');
+        if (!lightbox || !lightboxImg || !images.length) return;
+
+        function openLightbox(img) {
+          lightboxImg.src = img.currentSrc || img.src;
+          lightboxImg.alt = img.alt || '';
+          lightbox.hidden = false;
+        }
+
+        function closeLightbox() {
+          lightbox.hidden = true;
+          lightboxImg.src = '';
+        }
+
+        images.forEach(function (img) {
+          img.addEventListener('click', function () {
+            openLightbox(img);
+          });
+        });
+
+        lightbox.addEventListener('click', closeLightbox);
+        closeBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          closeLightbox();
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && !lightbox.hidden) closeLightbox();
         });
       })();
     </script>
