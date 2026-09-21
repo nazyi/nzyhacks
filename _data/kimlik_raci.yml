@@ -1,0 +1,12 @@
+- key: responsible
+  term: "Responsible (Sorumlusu)"
+  def: "İşin sorumlusu kim?"
+- key: accountable
+  term: "Accountable (Yapan kişi)"
+  def: "İşi yöneten kim?"
+- key: consulted
+  term: "Consulted (Danışılan)"
+  def: "İşi nasıl yapılacağını kime soruyoruz?"
+- key: informed
+  term: "Informed (Bilgilendirilen kişi)"
+  def: "Kime bilgi veriyoruz?"

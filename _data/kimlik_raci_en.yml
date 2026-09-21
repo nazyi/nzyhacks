@@ -1,0 +1,12 @@
+- key: responsible
+  term: "Responsible"
+  def: "Who is responsible for the work?"
+- key: accountable
+  term: "Accountable"
+  def: "Who manages the work?"
+- key: consulted
+  term: "Consulted"
+  def: "Who do we ask about how the work should be done?"
+- key: informed
+  term: "Informed"
+  def: "Who do we give information to?"
