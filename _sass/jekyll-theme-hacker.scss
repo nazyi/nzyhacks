@@ -1990,3 +1990,149 @@ code {
 .lightbox-close:hover {
   background: rgba(255, 255, 255, 0.25);
 }
+
+/* Akordiyon (tikla-genislet)
+*/
+
+.accordion {
+  max-width: 760px;
+  margin: 24px auto;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--color-surface);
+  box-shadow: 0 6px 18px rgba(214, 51, 108, 0.06);
+}
+
+.accordion-item + .accordion-item {
+  border-top: 1px solid var(--color-border);
+}
+
+.accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-weight: 700;
+  font-size: 1em;
+  color: var(--color-primary-strong);
+  cursor: pointer;
+  font-family: $font-heading;
+  transition: background 0.15s ease;
+}
+
+.accordion-trigger:hover {
+  background: var(--color-primary-soft);
+}
+
+.accordion-icon {
+  flex-shrink: 0;
+  font-size: 1.3em;
+  line-height: 1;
+  transition: transform 0.25s ease;
+  color: var(--color-primary);
+}
+
+.accordion-item.open .accordion-icon {
+  transform: rotate(45deg);
+}
+
+.accordion-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.accordion-item.open .accordion-panel {
+  max-height: 600px;
+}
+
+.accordion-panel-inner {
+  padding: 0 20px 18px;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.accordion-panel-inner p {
+  margin: 0;
+}
+
+/* Cok secmeli mini quiz
+*/
+
+.mc-quiz {
+  max-width: 620px;
+  margin: 28px auto;
+  padding: 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(214, 51, 108, 0.06);
+}
+
+.mc-quiz-question {
+  margin: 0 0 18px;
+  font-weight: 700;
+  font-family: $font-heading;
+  color: var(--color-primary-strong);
+}
+
+.mc-quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mc-option {
+  text-align: left;
+  padding: 12px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: 0.95em;
+  font-family: $font-body;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.mc-option:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-soft);
+}
+
+.mc-option.correct {
+  border-color: #4caf82;
+  background: rgba(76, 175, 130, 0.12);
+  color: #2f8f63;
+  font-weight: 600;
+}
+
+.mc-option.wrong {
+  border-color: #e06666;
+  background: rgba(224, 102, 102, 0.1);
+  color: #b23b3b;
+}
+
+.mc-quiz-feedback {
+  margin: 16px 0 0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 0.92em;
+  line-height: 1.5;
+}
+
+.mc-quiz-feedback-correct {
+  background: rgba(76, 175, 130, 0.1);
+  color: #2f8f63;
+}
+
+.mc-quiz-feedback-wrong {
+  background: rgba(224, 102, 102, 0.08);
+  color: #b23b3b;
+}

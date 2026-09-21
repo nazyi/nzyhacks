@@ -1,0 +1,6 @@
+- title: "GDPR (General Data Protection Regulation)"
+  content: "_GDPR_, Avrupa Birliği tarafından kişisel verilerin korunmasına yönelik hazırlanmış bir veri güvenliği regülasyonudur. Bireylerin kişisel verilerinin işlenmesi, saklanması ve paylaşılması süreçlerinde gizlilik haklarını korumayı amaçlar. GDPR, yalnızca AB sınırları içerisindeki şirketleri değil, AB vatandaşlarının verilerini işleyen tüm dünya çapındaki kuruluşları da kapsar. Türkiye'deki KVKK gibidir."
+- title: "NIS (Network and Information Systems) Direktifi"
+  content: "Ağ ve bilgi sistemlerinin güvenliğini artırmayı amaçlayan bir siber güvenlik regülasyonudur. Kritik altyapıların (enerji, ulaşım, sağlık, finans gibi) ve dijital hizmet sağlayıcılarının siber saldırılara karşı güvenliğini sağlamak için gerekli önlemleri almasını zorunlu kılar."
+- title: "PCI DSS (Payment Card Industry Data Security Standard)"
+  content: "Kartlı ödeme sistemlerinde kullanılan **kredi kartı bilgilerini korumak** amacıyla oluşturulmuş küresel bir güvenlik standardıdır. Visa, Mastercard, American Express gibi kart sağlayıcıları tarafından geliştirilmiştir. Bu standart, kart sahibi bilgilerini işleyen, depolayan veya ileten tüm kuruluşların belirli güvenlik önlemlerine uymasını zorunlu kılar."

@@ -1,0 +1,11 @@
+question: "Bir çalışan, işten çıkarılacağını öğrenince şirketin müşteri veritabanını dışarı sızdırıyor. Bu hangi tehdit aktörü türüne girer?"
+options:
+  - text: "Organized Crime"
+    correct: false
+  - text: "Hacktivist"
+    correct: false
+  - text: "State-Sponsored"
+    correct: false
+  - text: "Insider Threat"
+    correct: true
+    explain: "Kurum içinden, kötü niyetli bir çalışan tarafından gerçekleştirildiği için bu bir Insider Threat örneğidir."

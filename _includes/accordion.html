@@ -1,0 +1,13 @@
+<div class="accordion" data-accordion-id="{{ include.id }}">
+  {% for item in include.items %}
+    <div class="accordion-item">
+      <button type="button" class="accordion-trigger">
+        <span>{{ item.title }}</span>
+        <span class="accordion-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="accordion-panel">
+        <div class="accordion-panel-inner">{{ item.content | markdownify }}</div>
+      </div>
+    </div>
+  {% endfor %}
+</div>

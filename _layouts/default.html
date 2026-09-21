@@ -908,5 +908,47 @@
       })();
     </script>
 
+    <script>
+      (function () {
+        var triggers = document.querySelectorAll('.accordion-trigger');
+        triggers.forEach(function (trigger) {
+          trigger.addEventListener('click', function () {
+            var item = trigger.closest('.accordion-item');
+            if (item) item.classList.toggle('open');
+          });
+        });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var quizzes = document.querySelectorAll('.mc-quiz');
+        quizzes.forEach(function (quiz) {
+          var options = quiz.querySelectorAll('.mc-option');
+          var feedback = quiz.querySelector('.mc-quiz-feedback');
+          var answered = false;
+          options.forEach(function (opt) {
+            opt.addEventListener('click', function () {
+              if (answered) return;
+              answered = true;
+              var isCorrect = opt.dataset.correct === 'true';
+              var correctOpt = quiz.querySelector('.mc-option[data-correct="true"]');
+              if (correctOpt) correctOpt.classList.add('correct');
+              if (!isCorrect) opt.classList.add('wrong');
+              if (feedback) {
+                var explain = correctOpt ? correctOpt.dataset.explain : '';
+                var prefix = isCorrect
+                  ? '✅ ' + quiz.dataset.correctLabel + ' '
+                  : '❌ ' + quiz.dataset.wrongLabel + ' ' + (correctOpt ? correctOpt.textContent : '') + '. ';
+                feedback.textContent = prefix + explain;
+                feedback.hidden = false;
+                feedback.classList.add(isCorrect ? 'mc-quiz-feedback-correct' : 'mc-quiz-feedback-wrong');
+              }
+            });
+          });
+        });
+      })();
+    </script>
+
   </body>
 </html>

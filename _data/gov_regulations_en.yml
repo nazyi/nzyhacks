@@ -1,0 +1,6 @@
+- title: "GDPR (General Data Protection Regulation)"
+  content: "_GDPR_ is a data security regulation prepared by the European Union to protect personal data. It aims to protect individuals' privacy rights in the processes of processing, storing, and sharing their personal data. GDPR covers not only companies within EU borders, but also organizations worldwide that process the data of EU citizens. It is similar to Turkey's KVKK."
+- title: "The NIS (Network and Information Systems) Directive"
+  content: "A cybersecurity regulation aimed at improving the security of network and information systems. It requires critical infrastructures (such as energy, transportation, healthcare, and finance) and digital service providers to take the necessary measures to secure themselves against cyberattacks."
+- title: "PCI DSS (Payment Card Industry Data Security Standard)"
+  content: "A global security standard created to **protect credit card information** used in card payment systems. It was developed by card providers such as Visa, Mastercard, and American Express. This standard requires all organizations that process, store, or transmit cardholder information to comply with certain security measures."

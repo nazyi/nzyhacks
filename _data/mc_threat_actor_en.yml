@@ -1,0 +1,11 @@
+question: "An employee, upon learning they're about to be fired, leaks the company's customer database. Which threat actor type is this?"
+options:
+  - text: "Organized Crime"
+    correct: false
+  - text: "Hacktivist"
+    correct: false
+  - text: "State-Sponsored"
+    correct: false
+  - text: "Insider Threat"
+    correct: true
+    explain: "Since it was carried out by a malicious employee from within the organization, this is an example of an Insider Threat."

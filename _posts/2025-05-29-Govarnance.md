@@ -19,11 +19,7 @@ Bilgi yönetişiminin temel kavramlarına, veri koruma regülasyonlarına ve en 
 
 ## Regülasyon
 
-_GDPR (General Data Protection Regulation)_, Avrupa Birliği tarafından kişisel verilerin korunmasına yönelik hazırlanmış bir veri güvenliği regülasyonudur. Bireylerin kişisel verilerinin işlenmesi, saklanması ve paylaşılması süreçlerinde gizlilik haklarını korumayı amaçlar. GDPR, yalnızca AB sınırları içerisindeki şirketleri değil, AB vatandaşlarının verilerini işleyen tüm dünya çapındaki kuruluşları da kapsar. Türkiye'deki KVKK gibidir.
-
-_NIS (Network and Information Systems) Direktifi_, ağ ve bilgi sistemlerinin güvenliğini artırmayı amaçlayan bir siber güvenlik regülasyonudur. Kritik altyapıların (enerji, ulaşım, sağlık, finans gibi) ve dijital hizmet sağlayıcılarının siber saldırılara karşı güvenliğini sağlamak için gerekli önlemleri almasını zorunlu kılar.
-
-_PCI DSS (Payment Card Industry Data Security Standard)_, kartlı ödeme sistemlerinde kullanılan **kredi kartı bilgilerini korumak** amacıyla oluşturulmuş küresel bir güvenlik standardıdır. Visa, Mastercard, American Express gibi kart sağlayıcıları tarafından geliştirilmiştir. Bu standart, kart sahibi bilgilerini işleyen, depolayan veya ileten tüm kuruluşların belirli güvenlik önlemlerine uymasını zorunlu kılar.
+{% include accordion.html id="gov-regulations-tr" items=site.data.gov_regulations %}
 
 ## Bilgi Türleri
 

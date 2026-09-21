@@ -1,0 +1,9 @@
+<div class="mc-quiz" data-mc-id="{{ include.id }}" data-correct-label="{{ include.correct_label | default: 'Doğru!' }}" data-wrong-label="{{ include.wrong_label | default: 'Yanlış, doğru cevap:' }}">
+  <p class="mc-quiz-question">{{ include.question }}</p>
+  <div class="mc-quiz-options">
+    {% for opt in include.options %}
+      <button type="button" class="mc-option" data-correct="{{ opt.correct }}" data-explain="{{ opt.explain }}">{{ opt.text }}</button>
+    {% endfor %}
+  </div>
+  <p class="mc-quiz-feedback" hidden></p>
+</div>
