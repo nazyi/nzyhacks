@@ -1,0 +1,24 @@
+- key: admin_billing
+  term: "Administrator with Billing"
+  def: "Also called a super admin; has every permission, including MTP access, billing, and API keys."
+- key: administrator
+  term: "Administrator"
+  def: "Can do everything except API keys, MTP, and billing."
+- key: manager
+  term: "Manager"
+  def: "Can manage users, devices, and groups."
+- key: command_runner
+  term: "Command Runner"
+  def: "Can only run commands."
+- key: command_runner_billing
+  term: "Command Runner with Billing"
+  def: "Can run commands and also update billing."
+- key: help_desk
+  term: "Help Desk"
+  def: "Can create, delete, or reset users."
+- key: billing_only
+  term: "Billing Only"
+  def: "Permissions are read-only; can only view payment-related information."
+- key: read_only
+  term: "Read Only"
+  def: "Has read-only access."

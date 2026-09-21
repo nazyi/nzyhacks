@@ -23,12 +23,25 @@ In the Admin Console you can make various configurations — for example, user a
 ## Organization Settings
 
 - **Settings > Organization Profile**: From here you can manage and change things like your company name, a contact email address for emergencies, and the company's logo. You can also manage users' permissions within the User Portal and how long the portal stays open (session timeout).
+
+<div style="text-align: center;">
+  <img loading="lazy" src="{{ '/assets/images/jumpcloud_core1/org-profile.webp' | relative_url }}" width="1000" height="538" alt="Settings > Organization Profile page showing organization name, contact info, organization ID, and logo customization">
+</div>
+
 - **Settings > Customize Email**: From here you can create and edit your ready-made email templates. For example, you can customize the email JumpCloud sends when a user's account gets locked.
+
+<div style="text-align: center;">
+  <img loading="lazy" src="{{ '/assets/images/jumpcloud_core1/customize-email.webp' | relative_url }}" width="1000" height="538" alt="Settings > Customize Email page showing the template preview for the password expiration warning email">
+</div>
 
 You can configure your company's password settings using two options:
 
 1. **Settings > Security**: From the security settings, you can configure password strength, complexity, or account lockout.
 2. **Security > Password Policies**: You can create a new policy and attach it to the user group you want it to affect. If a user belongs to multiple user groups, you can manage which group's password policy should apply from here.
+
+<div style="text-align: center;">
+  <img loading="lazy" src="{{ '/assets/images/jumpcloud_core1/password-policies.webp' | relative_url }}" width="1000" height="319" alt="Security > Password Policies page showing the prioritized list of password policies">
+</div>
 
 ## Admin Management
 
@@ -49,6 +62,8 @@ You can choose one of two ways to add an admin to the console:
 - **Help Desk**: Can create, delete, or reset users.
 - **Billing Only**: Permissions are limited to read-only. Can view payment-related information.
 - **Read Only**: These admins can only view/read.
+
+{% include match-quiz.html id="jc-roles-en" items=site.data.jc_roles_en hint="Drag each role onto its correct permission description." success_text="🎉 You matched them all!" reset_text="Reset" %}
 
 ## Notes
 

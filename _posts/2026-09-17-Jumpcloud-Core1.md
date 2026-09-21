@@ -21,12 +21,25 @@ Admin Console'da çeşitli ayarlamaları yapabilirsiniz. Örneğin; kullanıcı 
 ## Org Ayarları
 
 - **Settings > Organization Profile**: Buradan şirket isminizi, olası bir durumda ulaşılabilecek mail adresini ve şirketin logosu gibi özellikleri yönetebilir ve değiştirebilirsiniz. Aynı zamanda kullanıcıların User Portal'ı tarafındaki yetkisini veya portalın açık durma süresini de yönetebilirsiniz.
+
+<div style="text-align: center;">
+  <img loading="lazy" src="{{ '/assets/images/jumpcloud_core1/org-profile.webp' | relative_url }}" width="1000" height="538" alt="Settings > Organization Profile sayfasında organizasyon adı, iletişim bilgileri, organizasyon ID'si ve logo özelleştirme ayarları">
+</div>
+
 - **Settings > Customize Email**: Buradan hazır olan mail taslağınızı oluşturup değiştirebilirsiniz. Örneğin kullanıcı hesabını kilitleyince JumpCloud tarafından atılacak maili düzenleyebilirsiniz.
+
+<div style="text-align: center;">
+  <img loading="lazy" src="{{ '/assets/images/jumpcloud_core1/customize-email.webp' | relative_url }}" width="1000" height="538" alt="Settings > Customize Email sayfasında şifre son kullanma uyarı mailinin şablon önizlemesi">
+</div>
 
 Şirketinizin şifre ayarlarını 2 seçenek ile düzenleyebilirsiniz:
 
 1. **Settings > Security**: Güvenlik ayarlarından şifre zorluğunu, kompleksliğini veya hesap kilitlenmesini ayarlayabilirsiniz.
 2. **Security > Password Policies**: Yeni bir politika oluşturarak, politikayı etkilemesini istediğiniz kullanıcı grubuna bağlayabilirsiniz. Eğer kullanıcı birçok kullanıcı grubunda ise, hangi grubun şifre politikasının uygulanması gerektiğini buradan yönetebilirsiniz.
+
+<div style="text-align: center;">
+  <img loading="lazy" src="{{ '/assets/images/jumpcloud_core1/password-policies.webp' | relative_url }}" width="1000" height="319" alt="Security > Password Policies sayfasında önceliklendirilmiş şifre politikaları listesi">
+</div>
 
 ## Admin Yönetimi
 
@@ -47,6 +60,8 @@ Konsola admin eklemek için 2 yol tercih edebilirsiniz:
 - **Help Desk**: Kullanıcıları oluşturabilir, silebilir veya resetleyebilir.
 - **Billing Only**: Yetkileri sadece okuma ile sınırlıdır. Ödeme ile ilgili bilgileri görebilirler.
 - **Read Only**: Bu yetkili adminler sadece okuyabilirler.
+
+{% include match-quiz.html id="jc-roles-tr" items=site.data.jc_roles hint="Rolü, doğru yetki açıklamasıyla sürükleyip eşle." success_text="🎉 Hepsini doğru eşleştirdin!" reset_text="Sıfırla" %}
 
 ## Notlar
 

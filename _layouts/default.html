@@ -640,5 +640,170 @@
       })();
     </script>
 
+    <script>
+      (function () {
+        var quizzes = document.querySelectorAll('.match-quiz');
+
+        function shuffleChildren(container) {
+          if (!container) return;
+          var items = Array.prototype.slice.call(container.children);
+          for (var i = items.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            container.insertBefore(items[j], items[i]);
+            var tmp = items[i];
+            items[i] = items[j];
+            items[j] = tmp;
+          }
+        }
+
+        function spawnConfetti() {
+          var colors = ['#d6336c', '#ff6fa5', '#f8c9da', '#ffd166', '#4caf82'];
+          var count = 28;
+          var centerX = window.innerWidth / 2;
+          var topY = window.innerHeight * 0.3;
+          for (var i = 0; i < count; i++) {
+            var piece = document.createElement('span');
+            piece.className = 'mq-confetti';
+            piece.style.left = centerX + (Math.random() * 280 - 140) + 'px';
+            piece.style.top = topY + 'px';
+            piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+            piece.style.animationDelay = Math.random() * 0.25 + 's';
+            piece.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+            document.body.appendChild(piece);
+            (function (el) {
+              setTimeout(function () {
+                el.remove();
+              }, 1500);
+            })(piece);
+          }
+        }
+
+        quizzes.forEach(function (quiz) {
+          var cards = quiz.querySelectorAll('.mq-card');
+          var drops = quiz.querySelectorAll('.mq-drop');
+          var successEl = quiz.querySelector('.match-quiz-success');
+          var resetBtn = quiz.querySelector('.match-quiz-reset');
+          var total = cards.length;
+          var matchedCount = 0;
+
+          shuffleChildren(quiz.querySelector('.match-quiz-terms'));
+          shuffleChildren(quiz.querySelector('.match-quiz-defs'));
+
+          var activeCard = null;
+          var ghost = null;
+          var offsetX, offsetY;
+
+          var autoScrollSpeed = 0;
+
+          function autoScrollStep() {
+            if (!ghost || !autoScrollSpeed) return;
+            window.scrollBy(0, autoScrollSpeed);
+            requestAnimationFrame(autoScrollStep);
+          }
+
+          function updateAutoScroll(clientY) {
+            var edge = 90;
+            var maxSpeed = 16;
+            var prevSpeed = autoScrollSpeed;
+            if (clientY < edge) {
+              autoScrollSpeed = -maxSpeed * ((edge - clientY) / edge);
+            } else if (clientY > window.innerHeight - edge) {
+              autoScrollSpeed = maxSpeed * ((clientY - (window.innerHeight - edge)) / edge);
+            } else {
+              autoScrollSpeed = 0;
+            }
+            if (autoScrollSpeed && !prevSpeed) {
+              requestAnimationFrame(autoScrollStep);
+            }
+          }
+
+          function onMove(e) {
+            if (!ghost) return;
+            ghost.style.left = e.clientX - offsetX + 'px';
+            ghost.style.top = e.clientY - offsetY + 'px';
+            updateAutoScroll(e.clientY);
+            drops.forEach(function (d) {
+              d.classList.remove('mq-hover');
+            });
+            var target = document.elementFromPoint(e.clientX, e.clientY);
+            var dropTarget = target ? target.closest('.mq-drop') : null;
+            if (dropTarget && !dropTarget.classList.contains('mq-correct')) {
+              dropTarget.classList.add('mq-hover');
+            }
+          }
+
+          function onUp(e) {
+            if (!ghost) return;
+            var card = activeCard;
+            var g = ghost;
+            ghost = null;
+            activeCard = null;
+            autoScrollSpeed = 0;
+
+            var target = document.elementFromPoint(e.clientX, e.clientY);
+            var dropTarget = target ? target.closest('.mq-drop') : null;
+            drops.forEach(function (d) {
+              d.classList.remove('mq-hover');
+            });
+
+            if (dropTarget && !dropTarget.classList.contains('mq-correct') && dropTarget.dataset.key === card.dataset.key) {
+              dropTarget.classList.add('mq-correct');
+              card.classList.remove('mq-placeholder');
+              card.classList.add('mq-matched');
+              dropTarget.appendChild(card);
+              matchedCount++;
+              if (matchedCount === total) {
+                if (successEl) successEl.hidden = false;
+                if (resetBtn) resetBtn.hidden = false;
+                if (successEl && successEl.scrollIntoView) {
+                  successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                spawnConfetti();
+              }
+            } else {
+              if (dropTarget) {
+                dropTarget.classList.add('mq-shake');
+                setTimeout(function () {
+                  dropTarget.classList.remove('mq-shake');
+                }, 300);
+              }
+              card.classList.remove('mq-placeholder');
+            }
+            g.remove();
+          }
+
+          cards.forEach(function (card) {
+            card.addEventListener('pointerdown', function (e) {
+              if (card.classList.contains('mq-matched') || ghost) return;
+              e.preventDefault();
+              activeCard = card;
+              var rect = card.getBoundingClientRect();
+              offsetX = e.clientX - rect.left;
+              offsetY = e.clientY - rect.top;
+
+              var g = card.cloneNode(true);
+              g.classList.add('mq-ghost');
+              g.style.width = rect.width + 'px';
+              g.style.left = rect.left + 'px';
+              g.style.top = rect.top + 'px';
+              document.body.appendChild(g);
+              ghost = g;
+
+              card.classList.add('mq-placeholder');
+            });
+          });
+
+          document.addEventListener('pointermove', onMove);
+          document.addEventListener('pointerup', onUp);
+
+          if (resetBtn) {
+            resetBtn.addEventListener('click', function () {
+              location.reload();
+            });
+          }
+        });
+      })();
+    </script>
+
   </body>
 </html>
