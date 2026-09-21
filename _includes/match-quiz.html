@@ -1,16 +1,15 @@
 <div class="match-quiz" data-quiz-id="{{ include.id }}">
-  {% if include.hint %}<p class="match-quiz-hint">{{ include.hint }}</p>{% endif %}
+  <div class="match-quiz-topbar">
+    {% if include.hint %}<p class="match-quiz-hint">{{ include.hint }}</p>{% endif %}
+    <p class="match-quiz-progress" data-total="{{ include.items | size }}">0 / {{ include.items | size }}</p>
+  </div>
   <div class="match-quiz-board">
-    <div class="match-quiz-col match-quiz-terms">
-      {% for item in include.items %}
-        <div class="mq-card" data-key="{{ item.key }}">{{ item.term }}</div>
-      {% endfor %}
-    </div>
-    <div class="match-quiz-col match-quiz-defs">
-      {% for item in include.items %}
-        <div class="mq-drop" data-key="{{ item.key }}"><span class="mq-drop-text">{{ item.def }}</span></div>
-      {% endfor %}
-    </div>
+    {% if include.left_label %}<p class="match-quiz-col-label mq-label-left">{{ include.left_label }}</p>{% endif %}
+    {% if include.right_label %}<p class="match-quiz-col-label mq-label-right">{{ include.right_label }}</p>{% endif %}
+    {% for item in include.items %}
+      <div class="mq-card" data-key="{{ item.key }}">{{ item.term }}</div>
+      <div class="mq-drop" data-key="{{ item.key }}"><span class="mq-drop-text">{{ item.def }}</span></div>
+    {% endfor %}
   </div>
   <p class="match-quiz-success" hidden>{{ include.success_text | default: "🎉" }}</p>
   <button type="button" class="match-quiz-reset" hidden aria-label="{{ include.reset_text | default: 'Reset' }}">↺</button>

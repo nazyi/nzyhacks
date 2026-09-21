@@ -644,15 +644,22 @@
       (function () {
         var quizzes = document.querySelectorAll('.match-quiz');
 
-        function shuffleChildren(container) {
-          if (!container) return;
-          var items = Array.prototype.slice.call(container.children);
-          for (var i = items.length - 1; i > 0; i--) {
+        function shuffleArray(arr) {
+          for (var i = arr.length - 1; i > 0; i--) {
             var j = Math.floor(Math.random() * (i + 1));
-            container.insertBefore(items[j], items[i]);
-            var tmp = items[i];
-            items[i] = items[j];
-            items[j] = tmp;
+            var tmp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = tmp;
+          }
+          return arr;
+        }
+
+        function shuffleBoard(board) {
+          var cardArr = shuffleArray(Array.prototype.slice.call(board.querySelectorAll('.mq-card')));
+          var dropArr = shuffleArray(Array.prototype.slice.call(board.querySelectorAll('.mq-drop')));
+          for (var i = 0; i < cardArr.length; i++) {
+            board.appendChild(cardArr[i]);
+            board.appendChild(dropArr[i]);
           }
         }
 
@@ -683,11 +690,11 @@
           var drops = quiz.querySelectorAll('.mq-drop');
           var successEl = quiz.querySelector('.match-quiz-success');
           var resetBtn = quiz.querySelector('.match-quiz-reset');
+          var progressEl = quiz.querySelector('.match-quiz-progress');
           var total = cards.length;
           var matchedCount = 0;
 
-          shuffleChildren(quiz.querySelector('.match-quiz-terms'));
-          shuffleChildren(quiz.querySelector('.match-quiz-defs'));
+          shuffleBoard(quiz.querySelector('.match-quiz-board'));
 
           var activeCard = null;
           var ghost = null;
@@ -750,8 +757,12 @@
               dropTarget.classList.add('mq-correct');
               card.classList.remove('mq-placeholder');
               card.classList.add('mq-matched');
-              dropTarget.appendChild(card);
+              var tag = document.createElement('span');
+              tag.className = 'mq-drop-match';
+              tag.textContent = '✓ ' + card.textContent;
+              dropTarget.appendChild(tag);
               matchedCount++;
+              if (progressEl) progressEl.textContent = matchedCount + ' / ' + total;
               if (matchedCount === total) {
                 if (successEl) successEl.hidden = false;
                 if (resetBtn) resetBtn.hidden = false;

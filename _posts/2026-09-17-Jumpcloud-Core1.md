@@ -61,7 +61,7 @@ Konsola admin eklemek için 2 yol tercih edebilirsiniz:
 - **Billing Only**: Yetkileri sadece okuma ile sınırlıdır. Ödeme ile ilgili bilgileri görebilirler.
 - **Read Only**: Bu yetkili adminler sadece okuyabilirler.
 
-{% include match-quiz.html id="jc-roles-tr" items=site.data.jc_roles hint="Rolü, doğru yetki açıklamasıyla sürükleyip eşle." success_text="🎉 Hepsini doğru eşleştirdin!" reset_text="Sıfırla" %}
+{% include match-quiz.html id="jc-roles-tr" items=site.data.jc_roles hint="Rolü, doğru yetki açıklamasıyla sürükleyip eşle." left_label="Rol" right_label="Yetki Açıklaması" success_text="🎉 Hepsini doğru eşleştirdin!" reset_text="Sıfırla" %}
 
 ## Notlar
 

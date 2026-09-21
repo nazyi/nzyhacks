@@ -63,7 +63,7 @@ You can choose one of two ways to add an admin to the console:
 - **Billing Only**: Permissions are limited to read-only. Can view payment-related information.
 - **Read Only**: These admins can only view/read.
 
-{% include match-quiz.html id="jc-roles-en" items=site.data.jc_roles_en hint="Drag each role onto its correct permission description." success_text="🎉 You matched them all!" reset_text="Reset" %}
+{% include match-quiz.html id="jc-roles-en" items=site.data.jc_roles_en hint="Drag each role onto its correct permission description." left_label="Role" right_label="Permission Description" success_text="🎉 You matched them all!" reset_text="Reset" %}
 
 ## Notes
 
