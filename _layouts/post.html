@@ -43,6 +43,24 @@ layout: default
 {% assign word_count = content | strip_html | number_of_words %}
 {% assign reading_time = word_count | divided_by: 200 | plus: 1 %}
 
+{% if cat == 'modul' %}
+  {% assign lesson_posts = site.posts | where: "lang", lang | where: "categories", "modul" | sort: "order" %}
+  {% for lesson_post in lesson_posts %}
+    {% if lesson_post.url == page.url %}
+      {% assign lesson_index = forloop.index0 %}
+    {% endif %}
+  {% endfor %}
+  {% assign prev_lesson_index = lesson_index | minus: 1 %}
+  {% if lesson_index > 0 %}
+    {% assign prev_lesson = lesson_posts[prev_lesson_index] %}
+  {% endif %}
+  {% assign next_lesson_index = lesson_index | plus: 1 %}
+  {% assign lesson_count = lesson_posts | size %}
+  {% if next_lesson_index < lesson_count %}
+    {% assign next_lesson = lesson_posts[next_lesson_index] %}
+  {% endif %}
+{% endif %}
+
 <div class="post-layout">
   <aside class="post-toc" id="post-toc" aria-label="{{ t.toc_aria }}">
     <p class="post-toc-title">{{ t.toc_title }}</p>
@@ -79,6 +97,33 @@ layout: default
         <strong>{{ t.tags_label }}</strong>
         {% for tag in page.tags %}<a href="{{ tags_url | relative_url }}#{{ tag | slugify }}" class="tag-badge">{{ tag }}</a>{% endfor %}
       </footer>
+    {% endif %}
+
+    {% if prev_lesson or next_lesson %}
+      <nav class="post-lesson-nav" aria-label="{{ t.lesson_nav_aria }}">
+        {% if prev_lesson %}
+          <a class="post-lesson-link post-lesson-prev" href="{{ prev_lesson.url | relative_url }}">
+            <span class="post-lesson-arrow">←</span>
+            <span class="post-lesson-text">
+              <span class="post-lesson-label">{{ t.lesson_prev }}</span>
+              <span class="post-lesson-title">{{ prev_lesson.title }}</span>
+            </span>
+          </a>
+        {% else %}
+          <span class="post-lesson-link post-lesson-spacer"></span>
+        {% endif %}
+        {% if next_lesson %}
+          <a class="post-lesson-link post-lesson-next" href="{{ next_lesson.url | relative_url }}">
+            <span class="post-lesson-text">
+              <span class="post-lesson-label">{{ t.lesson_next }}</span>
+              <span class="post-lesson-title">{{ next_lesson.title }}</span>
+            </span>
+            <span class="post-lesson-arrow">→</span>
+          </a>
+        {% else %}
+          <span class="post-lesson-link post-lesson-spacer"></span>
+        {% endif %}
+      </nav>
     {% endif %}
 
     <a class="post-back post-back-bottom" href="{{ back_url | relative_url }}">← {{ back_text }}</a>
