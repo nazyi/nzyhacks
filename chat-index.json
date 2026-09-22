@@ -1,0 +1,14 @@
+---
+layout: null
+---
+[
+{% assign tr_posts = site.posts | where: "lang", "tr" %}
+{% for post in tr_posts %}
+  {
+    "title": {{ post.title | jsonify }},
+    "url": {{ post.url | relative_url | jsonify }},
+    "desc": {{ post.description | jsonify }},
+    "content": {{ post.content | strip_html | strip_newlines | truncate: 4000 | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]

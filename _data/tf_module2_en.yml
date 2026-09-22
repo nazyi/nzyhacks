@@ -1,0 +1,16 @@
+items:
+  - statement: "PAN is the 19-digit number on a payment card."
+    answer: true
+    explain: "PAN (Primary Account Number) is the 19-digit number on the card."
+  - statement: "An ASV is an organization approved by the PCI SSC to run internal vulnerability scans."
+    answer: false
+    explain: "An ASV is approved to carry out external vulnerability scans, not internal ones."
+  - statement: "A Statement of Work (SOW) includes the engagement dates, location, scope, and payment schedule."
+    answer: true
+    explain: "That's exactly what an SOW contains."
+  - statement: "An NDA is a confidentiality agreement between a pentester and the organization that hired them."
+    answer: true
+    explain: "That's exactly what an NDA (Non-Disclosure Agreement) is."
+  - statement: "An \"allow list\" is the list of systems that must NOT be tested."
+    answer: false
+    explain: "The allow list is the list of systems permitted to be tested; the disallow list is the one that must not be tested."

@@ -1,0 +1,16 @@
+items:
+  - statement: "PAN, ödeme kartı üzerindeki 19 haneli kart numarasıdır."
+    answer: true
+    explain: "PAN (Primary Account Number), kart üzerindeki 19 haneli numaradır."
+  - statement: "ASV, PCI SSC tarafından iç (kurum içi) güvenlik açığı taramaları yapmak için onaylanmış bir kurumdur."
+    answer: false
+    explain: "ASV, harici (dışarıdan) güvenlik açığı taramalarını yürütmek için onaylanır, iç değil."
+  - statement: "Statement of Work (SOW), testin çalışma tarihlerini, konumunu, kapsamını ve ödeme planını içeren belgedir."
+    answer: true
+    explain: "SOW tam olarak bu detayları içeren belgedir."
+  - statement: "NDA, pentester ile onu işe alan kurum arasında yapılan bir gizlilik sözleşmesidir."
+    answer: true
+    explain: "NDA (Non-Disclosure Agreement) tam olarak bunu tanımlar."
+  - statement: "\"Allow list\", test yapılması istenmeyen sistemlerin listesidir."
+    answer: false
+    explain: "Allow list, test yapılmasına izin verilen sistemleri; disallow list ise test yapılmaması gereken sistemleri belirtir."

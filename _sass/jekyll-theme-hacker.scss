@@ -2136,3 +2136,83 @@ code {
   background: rgba(224, 102, 102, 0.08);
   color: #b23b3b;
 }
+
+/* Doğru/Yanlış hızlı kontrol kartları
+*/
+
+.tf-quiz {
+  max-width: 620px;
+  margin: 28px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tf-card {
+  padding: 18px 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(214, 51, 108, 0.06);
+}
+
+.tf-statement {
+  margin: 0 0 14px;
+  font-weight: 600;
+  font-family: $font-heading;
+  color: var(--color-text);
+}
+
+.tf-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.tf-btn {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: 0.95em;
+  font-family: $font-body;
+  font-weight: 600;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.tf-btn:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-soft);
+}
+
+.tf-btn.correct {
+  border-color: #4caf82;
+  background: rgba(76, 175, 130, 0.12);
+  color: #2f8f63;
+}
+
+.tf-btn.wrong {
+  border-color: #e06666;
+  background: rgba(224, 102, 102, 0.1);
+  color: #b23b3b;
+}
+
+.tf-feedback {
+  margin: 14px 0 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.92em;
+  line-height: 1.5;
+}
+
+.tf-feedback-correct {
+  background: rgba(76, 175, 130, 0.1);
+  color: #2f8f63;
+}
+
+.tf-feedback-wrong {
+  background: rgba(224, 102, 102, 0.08);
+  color: #b23b3b;
+}

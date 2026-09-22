@@ -1,0 +1,12 @@
+<div class="tf-quiz" data-tf-id="{{ include.id }}" data-correct-label="{{ include.correct_label | default: 'Doğru bildin!' }}" data-wrong-label="{{ include.wrong_label | default: 'Yanlış tahmin, bu ifade aslında' }}" data-true-word="{{ include.true_word | default: 'doğru' }}" data-false-word="{{ include.false_word | default: 'yanlış' }}">
+  {% for item in include.items %}
+    <div class="tf-card" data-answer="{{ item.answer }}">
+      <p class="tf-statement">{{ item.statement }}</p>
+      <div class="tf-buttons">
+        <button type="button" class="tf-btn tf-true">{{ include.true_label | default: "✓ Doğru" }}</button>
+        <button type="button" class="tf-btn tf-false">{{ include.false_label | default: "✗ Yanlış" }}</button>
+      </div>
+      <p class="tf-feedback" hidden data-explain="{{ item.explain }}"></p>
+    </div>
+  {% endfor %}
+</div>

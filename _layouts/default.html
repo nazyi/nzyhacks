@@ -950,5 +950,45 @@
       })();
     </script>
 
+    <script>
+      (function () {
+        var quizzes = document.querySelectorAll('.tf-quiz');
+        quizzes.forEach(function (quiz) {
+          var correctLabel = quiz.dataset.correctLabel;
+          var wrongLabel = quiz.dataset.wrongLabel;
+          var trueWord = quiz.dataset.trueWord;
+          var falseWord = quiz.dataset.falseWord;
+          var cards = quiz.querySelectorAll('.tf-card');
+          cards.forEach(function (card) {
+            var answer = card.dataset.answer === 'true';
+            var trueBtn = card.querySelector('.tf-true');
+            var falseBtn = card.querySelector('.tf-false');
+            var feedback = card.querySelector('.tf-feedback');
+            var answered = false;
+            function handle(guessTrue) {
+              if (answered) return;
+              answered = true;
+              var isCorrect = guessTrue === answer;
+              var correctBtn = answer ? trueBtn : falseBtn;
+              var chosenBtn = guessTrue ? trueBtn : falseBtn;
+              correctBtn.classList.add('correct');
+              if (!isCorrect) chosenBtn.classList.add('wrong');
+              if (feedback) {
+                var explain = feedback.dataset.explain || '';
+                var prefix = isCorrect
+                  ? '✅ ' + correctLabel + ' '
+                  : '❌ ' + wrongLabel + ' ' + (answer ? trueWord : falseWord) + '. ';
+                feedback.textContent = prefix + explain;
+                feedback.hidden = false;
+                feedback.classList.add(isCorrect ? 'tf-feedback-correct' : 'tf-feedback-wrong');
+              }
+            }
+            trueBtn.addEventListener('click', function () { handle(true); });
+            falseBtn.addEventListener('click', function () { handle(false); });
+          });
+        });
+      })();
+    </script>
+
   </body>
 </html>

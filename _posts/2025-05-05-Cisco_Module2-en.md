@@ -12,17 +12,13 @@ permalink: /en/Cisco_Module2
 translation_url: /Cisco_Module2
 ---
 
-## Cisco Ethical Hacker
-
-<h2> Module 2: Planning and Scoping a Penetration Testing Assesment </h2>
+## Module 2: Planning and Scoping a Penetration Testing Assesment
 
 ### 2.1 Regulatory Compliance Considerations
 
-**PCI DSS**: Aims to protect credit card and other digital payments.
-
-**HIPAA:** Aims to protect people's health information.
-
-**FedRAMP:** Aims to ensure the security of cloud services.
+- **PCI DSS**: Aims to protect credit card and other digital payments.
+- **HIPAA:** Aims to protect people's health information.
+- **FedRAMP:** Aims to ensure the security of cloud services.
 
 #### 2.1.1 Regulations in the Financial Sector
 
@@ -32,13 +28,10 @@ GLBA is a law that controls how financial institutions handle individuals' priva
 
 HIPAA focuses on electronically protected health information. The HIPAA security rules apply to covered entities and business associates.
 
-·        **Healthcare Provider**: Defines the people or institutions that provide treatment.
-
-·        **Health Plan:** Defines the insurance entities or government health plans that cover treatment.
-
-·        **Healthcare Clearinghouse:** Defines those that convert non-standard health information into a standard format.
-
-·        **Business Associates:** Defines the parties that transmit, access, or hold a person's information while they receive a service.
+- **Healthcare Provider**: Defines the people or institutions that provide treatment.
+- **Health Plan:** Defines the insurance entities or government health plans that cover treatment.
+- **Healthcare Clearinghouse:** Defines those that convert non-standard health information into a standard format.
+- **Business Associates:** Defines the parties that transmit, access, or hold a person's information while they receive a service.
 
 #### 2.1.3 Payment Card Industry Data Security Standard (PCI DSS)
 
@@ -48,21 +41,14 @@ PCI DSS applies to all organizations that process or store users' card informati
 
 To perform a pentest in the PCI industry, you need to know some key terms:
 
-·        **Acquirer:** The institution, referred to as the acquiring bank, that accepts payment cards.
-
-·        **ASV (Approved Scanning Vendor):** An organization approved by the PCI SSC to carry out external vulnerability scans.
-
-·        **Merchant:** Merchants or individuals who accept card payments in exchange for a product or service.
-
-·        **PAN:** A 19-digit card number
-
-·        **Payment Brand:** Card brands such as Visa and MasterCard
-
-·        **PCI Forensic Investigator (PFI):** Certified individuals who investigate incidents involving card information.
-
-·        **Qualified Security Assessor (QSA):** Individuals certified to carry out PCI DSS compliance assessments.
-
-·        **Service Provider:** Companies that are not a card brand but process cardholder information and provide services.
+- **Acquirer:** The institution, referred to as the acquiring bank, that accepts payment cards.
+- **ASV (Approved Scanning Vendor):** An organization approved by the PCI SSC to carry out external vulnerability scans.
+- **Merchant:** Merchants or individuals who accept card payments in exchange for a product or service.
+- **PAN:** A 19-digit card number
+- **Payment Brand:** Card brands such as Visa and MasterCard
+- **PCI Forensic Investigator (PFI):** Certified individuals who investigate incidents involving card information.
+- **Qualified Security Assessor (QSA):** Individuals certified to carry out PCI DSS compliance assessments.
+- **Service Provider:** Companies that are not a card brand but process cardholder information and provide services.
 
 PAN information is expected to be stored in an unreadable, i.e., encrypted, format. The Luhn algorithm is used to validate credit card numbers, IMEI numbers, and various other identification numbers.
 
@@ -70,25 +56,19 @@ PAN information is expected to be stored in an unreadable, i.e., encrypted, form
 
 Most regulations focus on certain core elements, and a penetration tester should pay attention to these during the assessment process.
 
-·        **Data Isolation**: A fully isolated network should be applied to the systems involved in card payment transactions.
-
-·        **Password Management:** Regulations set certain requirements for strong passwords. These include password length, complexity, or multi-factor authentication.
-
-·        **Key Management:** A key plays a role in matters such as where it will be applied within an encryption algorithm and in what order it will run. The process of protecting the key is called key management.
+- **Data Isolation**: A fully isolated network should be applied to the systems involved in card payment transactions.
+- **Password Management:** Regulations set certain requirements for strong passwords. These include password length, complexity, or multi-factor authentication.
+- **Key Management:** A key plays a role in matters such as where it will be applied within an encryption algorithm and in what order it will run. The process of protecting the key is called key management.
 
 #### 2.1.5 Legal Concepts
 
 There are certain legal concepts to know before carrying out a penetration test.
 
-·        **Service-level Agreement**: An SLA is an agreement about service quality that defines the rights and responsibilities of both you and the customer's side.
-
-·        **Confidentiality:** You need to control who can access the information. After the penetration test, you must delete the information you found from your own system.
-
-·        **Statement of Work:** A document that specifies in detail the activities to be carried out during a penetration testing engagement. For example, the engagement dates, engagement location, engagement scope, and payment schedule, etc.
-
-·        **Master Service Agreement:** Establishing a framework to negotiate work with the customer more quickly and easily.
-
-·        **Non-Disclosure Agreement (NDA):** A confidentiality agreement made between a penetration tester and the organization that hired them.
+- **Service-level Agreement**: An SLA is an agreement about service quality that defines the rights and responsibilities of both you and the customer's side.
+- **Confidentiality:** You need to control who can access the information. After the penetration test, you must delete the information you found from your own system.
+- **Statement of Work:** A document that specifies in detail the activities to be carried out during a penetration testing engagement. For example, the engagement dates, engagement location, engagement scope, and payment schedule, etc.
+- **Master Service Agreement:** Establishing a framework to negotiate work with the customer more quickly and easily.
+- **Non-Disclosure Agreement (NDA):** A confidentiality agreement made between a penetration tester and the organization that hired them.
 
 #### 2.1.6 Contracts
 
@@ -108,31 +88,30 @@ Determines the conditions under which penetration tests will be carried out. It 
 
 Scoping is one of the most important elements of a pentest. The devices to be tested, the IP addresses of the assets, or the programming interfaces — i.e., APIs — fall within this scope. Information about API documentation types is given below. API documentation is a document that describes rules such as which endpoint a response goes to and which endpoint a response comes from behind the scenes of the application. It should not be publicly accessible. An attacker can read the documentation and plan an attack accordingly.
 
-·        **SOAP:** Uses the XML format; there are XSD files that define what the messages will look like.
-
-·        **Swagger**: A structured document that describes how APIs work. Used for RESTful APIs.
-
-·        **WDSL**: An XML-based language used to document the functionality of web services. Used for the older SOAP API type. It clearly defines how to interact with a web service, which methods (functions) will be used, which parameters are required, and how the web service will respond.
-
-·        **GraphQl:** A query language for APIs, and a structure used to determine how data is fetched, updated, or deleted.
-
-·        **WADL:** An XML-based language used to describe web applications.
+- **SOAP:** Uses the XML format; there are XSD files that define what the messages will look like.
+- **Swagger**: A structured document that describes how APIs work. Used for RESTful APIs.
+- **WDSL**: An XML-based language used to document the functionality of web services. Used for the older SOAP API type. It clearly defines how to interact with a web service, which methods (functions) will be used, which parameters are required, and how the web service will respond.
+- **GraphQl:** A query language for APIs, and a structure used to determine how data is fetched, updated, or deleted.
+- **WADL:** An XML-based language used to describe web applications.
 
 **WADL vs WSDL?**
 
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule2/wadl.jpg' | relative_url }}" width="770" height="340" alt="Table comparing the WADL and WSDL API documentation types">
-</div>
+| Feature | WADL | WSDL |
+|---|---|---|
+| Full name | Web Application Description Language | Web Services Description Language |
+| Scope | For RESTful web services | For SOAP-based web services |
+| Data format | XML | XML |
+| Protocol | HTTP (REST API) | SOAP (Simple Object Access Protocol) |
+| Usage style | Lightweight, describes URL-based services | More complex, operation-oriented (like RPC) |
+| Developer-friendly | More modern and easier to understand (compatible with REST architecture) | Older style, strict rules |
+| Tool support | Postman, Curl, modern API tools | Better suited to SOAP-focused tools like SoapUI |
 
 Some of the other resources used for pentesting are given below.
 
-·        **Software Development Kit**: A collection of tools used to interact with an operating system, software framework, or hardware.
-
-·        **Source Code Acces**: Being granted permission to access the application's source code.
-
-·        **Example of Application Request**: Some web-based applications, such as OWASP ZAP or Burp Suite, can be used to access content.
-
-·        **System and Network** **Architectural Diagrams**: The architecture of the internal structure of the system and network.
+- **Software Development Kit**: A collection of tools used to interact with an operating system, software framework, or hardware.
+- **Source Code Access**: Being granted permission to access the application's source code.
+- **Example of Application Request**: Some web-based applications, such as OWASP ZAP or Burp Suite, can be used to access content.
+- **System and Network Architectural Diagrams**: The architecture of the internal structure of the system and network.
 
 ### 2.3 Demonstrating an Ethical Hacking Mindset by Maintaining Professionalism and Integrity
 
@@ -140,16 +119,14 @@ Some of the other resources used for pentesting are given below.
 
 There are many scenarios in which pentesters must maintain their professionalism and integrity.
 
-·        **Background Checks of Penetration Testing Teams**: The contracted firm may run a background check to be able to trust the pentesters. It wants to be able to trust the people who will see its information.
+- **Background Checks of Penetration Testing Teams**: The contracted firm may run a background check to be able to trust the pentesters. It wants to be able to trust the people who will see its information.
+- **Adherence to The Specific Scope of Engagement**: The list of systems that are permitted to be tested is called the "allow list," and the list of systems that must not be tested is called the "disallow list."
+- **Identification of Criminal Activity and Immediate Reporting of Breaches/Criminal Activities**: Sometimes during a test you find that a real hacker has already compromised the customer's system before you. You must report such activity immediately.
+- **Limiting the Use of Tools to A Particular Engagement**: Since it could crash the system, customers may request that certain tools not be used.
+- **Limiting Invasiveness Based on Scope**: The information obtained from the systems, the vulnerability scan outputs, and how to exploit them based on these outputs can be provided with the help of certain tools. However, you must configure the aggressiveness of these tools so that they don't damage the customer's system.
+- **Confidentiality of Data/Information**: The information you find while testing must remain strictly confidential and must not be shared with anyone.
+- **Risk to the Professional**: If you don't comply with the terms of the agreement, you may face criminal charges or fines.
 
-·        **Adherence to The Specific Scope of Engagement**: The list of systems that are permitted to be tested is called the "allow list," and the list of systems that must not be tested is called the "disallow list."
+Let's do a quick check of how much of this stuck:
 
-·        **Identification of Criminal Activity and İmmediate Reporting of Breaches/Criminal Activities**: Sometimes during a test you find that a real hacker has already compromised the customer's system before you. You must report such activity immediately.
-
-·        **Limiting the Use of Tools to A Particular Engagement**: Since it could crash the system, customers may request that certain tools not be used.
-
-·        **Limiting İnvasiveness Based on Scope**: The information obtained from the systems, the vulnerability scan outputs, and how to exploit them based on these outputs can be provided with the help of certain tools. However, you must configure the aggressiveness of these tools so that they don't damage the customer's system.
-
-·        **Confidentiality of Data/İnformation**: The information you find while testing must remain strictly confidential and must not be shared with anyone.
-
-·        **Risk to the Professional**: If you don't comply with the terms of the agreement, you may face criminal charges or fines.
+{% include tf-quiz.html id="tf-module2-en" items=site.data.tf_module2_en.items true_label="✓ True" false_label="✗ False" correct_label="Correct!" wrong_label="Not quite — this statement is actually" true_word="true" false_word="false" %}
