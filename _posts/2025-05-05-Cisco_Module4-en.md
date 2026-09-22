@@ -2,17 +2,15 @@
 categories: [modul]
 layout: post
 lang: en
-description: "This is the fourth part of the Cisco Ethical Hacker course. It covers social engineering attacks (pretexting, email phishing, tabnabbing, etc.) and hands-on examples using BeEF and DVWA."
+description: "The first part of the fourth module of the Cisco Ethical Hacker course. Covers social engineering attack types (pretexting, phishing, vishing, physical attacks, etc.) and a hands-on phishing example using the Social-Engineer Toolkit (SET)."
 logo: "/assets/images/cisco.png"
 author: nazy
-title: Cisco Ethical Hacker Module 4
+title: Cisco Ethical Hacker Module 4 (1/2)
 tags: [Cisco, Social Engineering]
 order: 6
 permalink: /en/Cisco_Module4
 translation_url: /Cisco_Module4
 ---
-
-## Cisco Ethical Hacker
 
 ## Module 4: Social Engineering Attacks
 
@@ -20,11 +18,9 @@ translation_url: /Cisco_Module4
 
 Let me explain some of the terms that come up in social engineering.
 
-·        **Pretexting**: Creating a false pretext
-
-·        **Impersonation**: Assuming an identity, for example acting like an IT staff member.
-
-·        **Pharming**: Making a fake site look real and redirecting the user to it.
+- **Pretexting**: Creating a false pretext
+- **Impersonation**: Assuming an identity, for example acting like an IT staff member.
+- **Pharming**: Making a fake site look real and redirecting the user to it.
 
 ### 4.2 Social Engineering Attacks
 
@@ -76,7 +72,7 @@ This is learning a person's personal information by looking over their shoulder 
 
 This refers to the process of cloning and duplicating the badges or cards of people working at an organization.
 
-### 4.4 Social Enginerring Tools
+### 4.4 Social Engineering Tools
 
 #### 4.4.1 Social-Engineer Toolkit (SET)
 
@@ -172,17 +168,16 @@ Below is a sample view of the stolen cookies.
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/ciscomodule4/cookie1.webp' | relative_url }}" width="650" height="600" alt="Screenshot of cookies stolen via XSS using BeEF">
 </div>
+
 After the cookie is stolen, a fake notification can even be sent to the user.
 
 #### 4.4.3 Call Spoofing Tools
 
 You can very easily change the number that appears as the caller. A few example tools for this:
 
-·        **SpoofApp**: An application used to spoof numbers on both Android and iOS.
-
-·        **SpoofCard**: This tool is also an application used to spoof numbers, change your voice, and create different background noise on both Android and iOS.
-
-·        **Arterisk**: A Voice over IP control tool.
+- **SpoofApp**: An application used to spoof numbers on both Android and iOS.
+- **SpoofCard**: This tool is also an application used to spoof numbers, change your voice, and create different background noise on both Android and iOS.
+- **Arterisk**: A Voice over IP control tool.
 
 #### 4.4.4 Lab – Explore the Social Engineer Toolkit (SET)
 
@@ -195,6 +190,7 @@ From the Setoolkit tool's menu, we first select the "Social-Engineering Attacks"
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/ciscomodule4/social2.webp' | relative_url }}" width="420" height="180" alt="Selecting the Social-Engineering Attacks option in the SET menu">
 </div>
+
 After this menu, we select option 2, "Website Attack Vectors".
 
 <div style="text-align: center;">
@@ -216,6 +212,7 @@ Let's select the Site Cloner option from the menu below.
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/ciscomodule4/site.webp' | relative_url }}" width="300" height="120" alt="Selecting the Site Cloner option from the menu">
 </div>
+
 It asks us for the web attacker's IP address; since our Kali machine is on the 10.6.6.0/24 block, we enter the address 10.6.6.1.
 
 <div style="text-align: center;">
@@ -270,9 +267,8 @@ Below is the original page; let's pay attention to the page's extensions.
 
 Now let's test it by entering our information. Let's enter the following information.
 
-·        Username: [some.user@gmail.com](mailto:some.user@gmail.com)
-
-·        Password: Pa55w0rdd!
+- Username: [some.user@gmail.com](mailto:some.user@gmail.com)
+- Password: Pa55w0rdd!
 
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/ciscomodule4/dvwa3.webp' | relative_url }}" width="530" height="450" alt="Entering a username and password on the fake DVWA page">
@@ -299,168 +295,3 @@ You can create and save a report in XML format with CTRL + C. You can access the
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/ciscomodule4/cat.webp' | relative_url }}" width="530" height="450" alt="XML-format capture report viewed with the cat command">
 </div>
-
-#### 4.4.5 Lab – Using the Browser Exploitation Famework (BeEF)
-
-##### Part 1 Load the BeEF GUI Environment
-
-**Step 1: Start BeEF**
-
-Let's run our tool from the Application> All Application> beef start menu. The first time we run it, it will ask us to change the password. Change the password and don't forget it.
-
-After the GUI opens, we log in with our information.
-
-·        Username: beef
-
-·        Password: your password
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule4/beef1.webp' | relative_url }}" width="450" height="370" alt="BeEF control panel login screen">
-</div>
-
-**Step 2: Hook the local browser to simulate a client-side attack**
-
-Before exploitation, you first need to "hook" the target browser. For this lab we'll use the local system. If this were a real test, we would identify the websites the victim visits frequently and place the BeEF hook JavaScript code into them to carry out the process. In this lab we'll go with the demo version.
-
-A website has been created for us for the demo version.
-
-[http://127.0.0.1:3000/demos/butcher/index.html](http://127.0.0.1:3000/demos/butcher/index.html)
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule4/beef2.webp' | relative_url }}" width="720" height="370" alt="View of the BeEF hook demo site's butcher page">
-</div>
-
-We can access the site via this address. Let's take a closer look after accessing the site. We know a JS code runs in the background to create the hook. Let's view the source code with CTRL + U.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule4/script.webp' | relative_url }}" width="950" height="100" alt="View of the hook.js script reference in the page source code">
-</div>
-
-We can see here that the hook.js file is what creates the beef hook.
-Let's go back to the page with the control panel. We see that new information has been added in the Hooked Browsers menu on the left.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule4/online.webp' | relative_url }}" width="300" height="200" alt="New target appearing in the Hooked Browsers menu in the BeEF panel">
-</div>
-
-We click on the Online Browsers menu and the information appears in front of us.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule4/online2.webp' | relative_url }}" width="620" height="570" alt="Hooked browser information in the BeEF Online Browsers menu">
-</div>
-
-##### Part 2 Investigate BeEF Exploit Capabilities
-
-**Step 1: Investigate the commands and network tabs**
-
-Let's also get familiar with the other menus. Let's start examining by clicking on the Commands menu.
-
-The Module Tree found here shows all the attacks, information gathering, and social engineering capabilities that can be carried out against the browser, categorized.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule4/browser.webp' | relative_url }}" width="500" height="330" alt="List of Module Tree categories in the BeEF Commands tab">
-</div>
-
-If we expand the items in this menu, you'll notice the color codes next to each function. Each color code has a different meaning.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule4/renkkod.webp' | relative_url }}" width="200" height="600" alt="View of BeEF modules listed by color code">
-</div>
-
-·        **Green**: This command module works against the target and is invisible to the user.
-
-·        **Orange**: This command module works against the target but may be visible to the user.
-
-·        **White**: This command module has not been verified against the target.
-
-·        **Red:** This command module cannot be used against the user.
-
-**Note**: The Module Tree is also used like a filter, and you can search here.
-
-Let's go to the Network menu. Here you can see the network topology with the victim. Since we're working locally, it will only show one network and one host.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule4/hooked.webp' | relative_url }}" width="400" height="240" alt="Network topology view with the victim in the BeEF Network tab">
-</div>
-
-**Step 2: Use BeEF to iniate a social enginerring attack**
-
-In this step, we'll send a fake notification to the hooked web page to get the user to install a malicious plugin.
-
-Let's click on the Commands menu. Let's scroll down to the Social Engineering category. Let's select the Fake Notification Bar (Firefox) option found here.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule4/fake.webp' | relative_url }}" width="350" height="340" alt="Selecting the Fake Notification Bar module in the Social Engineering category">
-</div>
-
-After selecting it, the URL the module will run on and the message the notification will send are displayed in the menu on the right side.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule4/fake2.webp' | relative_url }}" width="460" height="240" alt="URL and message settings panel for the Fake Notification Bar module">
-</div>
-
-Change the URL to http://10.6.6.13. This URL redirects to the login screen of the DVWA virtual server. The URL can point to any web page, whether local or on the network. In a live environment, this could also be a cloned site or a page containing a malicious script.
-Let's also change the message to be sent to "AdBlocker Security Extension is out of date. Install the new version now."
-We can run the module by pressing the Execute button. When you go back to the butcher page, you can see the warning.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule4/plugin.webp' | relative_url }}" width="660" height="100" alt="Fake extension update warning displayed on the target browser">
-</div>
-
-When you click the Install plug-in button, you're redirected to our cloned malicious DVWA login page, as shown in the screenshot below.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule4/login.webp' | relative_url }}" width="360" height="330" alt="Cloned DVWA login page redirected to after the fake extension warning">
-</div>
-
-**Step 3: Use TabNabbing to display malicious website**
-
-This is a function that, if a hooked browser tab stays idle for too long, redirects to a different URL address.
-
-Let's repeat the steps we did above.
-
-·        Open a new Mozilla page.
-
-·        Open [http://127.0.0.1:3000/ui/authentication](http://127.0.0.1:3000/ui/authentication) on a new page.
-
-·        Log in to the system with your credentials.
-
-**·**        **Access** [http://127.0.0.1:3000/demos/butcher/index.html](http://127.0.0.1:3000/demos/butcher/index.html) **via Mozilla.**
-
-**·**        **Open the** **Command** **tab from the Online Browsers menu in the BeEF control panel.**
-
-**·**        **Select** **TabNabbing** **from the** **Social Engineering** **category.**
-
-Here you can again see the module's general settings.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule4/tabnab.webp' | relative_url }}" width="430" height="240" alt="General settings screen for the TabNabbing module">
-</div>
-
-Type 1 instead of 15 minutes and don't touch your browser for 1 minute. The site normally open in the browser
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule4/butcher.webp' | relative_url }}" width="750" height="440" alt="The original butcher demo page open in the browser">
-</div>
-is this, while below is the site it redirects to once left idle for 1 minute.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule4/secret.webp' | relative_url }}" width="510" height="480" alt="Fake page redirected to after one minute via TabNabbing">
-</div>
-
-Let's type "This is my secret" into the box in the middle. Then you can see the value written in the box in the Logs menu on the Control Panel page.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule4/thisismy.webp' | relative_url }}" width="810" height="200" alt="The captured This is my secret text in the BeEF Logs menu">
-</div>
-
-### 4.5 Methods of Influence
-
-·        **Authority**: In social engineering, this shows both confidence and perhaps authority.
-
-·        **Scarcity and Urgency**: A method used to manipulate the victim by increasing their sense of urgency.
-
-·        **Social Proof**: When people don't know how to behave in a situation, they take others' behavior as an example.
-
-·        **Likeness**: Since people are more easily influenced by people they like, using someone attractive and likeable works better.
-
-·        **Fear**: People may act thoughtlessly out of anxiety over the thought that something bad will happen to them.
