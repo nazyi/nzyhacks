@@ -60,6 +60,7 @@ Bingo LFI kodu çalışıyor ve kullanıcıları çekebildik. Elimizde iki tane 
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/shdw.webp' | relative_url }}" width="900" height="250" alt="/etc/passwd çıktısında root ve comte kullanıcılarının görülmesi">
 </div>
+
 ## LFI to RCE
 
 PHP, stream wrapper adı verilen mekanizmalar kullanarak dosyaları ve verileri farklı şekillerde okuyup işleyebilir. Bu kütüphane sayesinde yazılımcılar işlerini daha kolay halledebilirler. Fakat LFI zafiyeti ile birleştirilip kullanılabilir.
@@ -109,10 +110,11 @@ Dinleyicimizi başlatalım.
 
 **Step 5**
 
-3\. adımda kopyaladığımız çıktıyı şimdi tarayıca yerine yerleştirme vakti. Kırmızıyla işaretli yere kendi çıktımızı yazalım.
+3\. adımda kopyaladığımız çıktıyı şimdi tarayıcıya yerleştirme vakti. Kırmızıyla işaretli yere kendi çıktımızı yazalım.
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/url.webp' | relative_url }}" width="1000" height="60" alt="PHP filter chain çıktısının tarayıcı URL'sine yerleştirilmesi">
 </div>
+
 **Step 6**
 
 Netcat ile dinlediğiniz terminale dönerek shell’e ulaşabilirsiniz.
@@ -147,7 +149,10 @@ Kopyaladığımız değeri kurbanın sistemi üzerindeki .ssh/authorized\_keys d
 
 Shell terminale geri dönelim ve ssh anahtarını dosyaya ekleyelim.
 
-·        echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINoaiZgti9CA7VtKc8G6LUaUIP9QJL/mO4GT/KSWI1Sg root@kali" > /home/comte/.ssh/authorized\_keys
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINoaiZgti9CA7VtKc8G6LUaUIP9QJL/mO4GT/KSWI1Sg root@kali" > /home/comte/.ssh/authorized\_keys
+</div>
 
 Ekledikten sonra kendi Kali makinemiz üzerinde ssh comte@ip\_adress komutu ile giriş yapabiliriz.
 <div style="text-align: center;">
@@ -163,23 +168,32 @@ Comte kullanıcısı üzerinden root kullanıcısına erişmek için ilk önceli
 </div>
 Burada gördüğümüz dosyalar ile ne yapabileceğimize baktım. Exploit.timer dosyası exploit.server isimli dosyayı triggerlayarak başlatabiliyor. Peki bu exploit.service isimli dosyanın içeriği ne ki bize root yetkisi kazandırabilsin?
 
-·        nano /etc/systemd/system/exploit.service
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> nano /etc/systemd/system/exploit.service
+</div>
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/service.webp' | relative_url }}" width="700" height="130" alt="exploit.service dosyasının nano ile görüntülenen içeriği">
 </div>
-Bu kod, xxd programının kopyasını /opt klasörüne taşıyor. Sonrasında ile ona +sx özelliği veriyor yani artık kim çalıştırırsa çalıştırsın Root gibi davranabiliyor. Bu service dosyasının çalıştırılmasının tetiklenmesi için bir de exploit.timer dosyamız var. Bu dosyayı da düzenleyerek çalıştırabiliriz.
+Bu kod, xxd programının kopyasını /opt klasörüne taşıyor. Sonrasında ona +sx özelliği veriyor yani artık kim çalıştırırsa çalıştırsın Root gibi davranabiliyor. Bu service dosyasının çalıştırılmasının tetiklenmesi için bir de exploit.timer dosyamız var. Bu dosyayı da düzenleyerek çalıştırabiliriz.
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/unit.webp' | relative_url }}" width="330" height="260" alt="exploit.timer dosyasının OnBootSec ayarıyla düzenlenmiş içeriği">
 </div>
 OnBootSec ile çalıştırılma süresini ayarlıyoruz. Ayarladıktan sonra yeni dosyayı sisteme okutmak için bu komutu:
 
-·        sudo systemctl daemon-reload
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> sudo systemctl daemon-reload
+</div>
 
 exploit.timer zamanlayıcısını başlatmak için ise bu komutu kullandık:
 
-·        sudo systemctl start exploit.timer
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> sudo systemctl start exploit.timer
+</div>
 
-Böylece zamanlayıcı başladıktan 4 saniye sonra exploit.service dosyası çalışacak. Dosyanın çalıştığını doğrulamak için ls -l /opt/xxd komutu ile dosyanı yetkilerini görüntüleyebiliriz.
+Böylece zamanlayıcı başladıktan 4 saniye sonra exploit.service dosyası çalışacak. Dosyanın çalıştığını doğrulamak için ls -l /opt/xxd komutu ile dosyanın yetkilerini görüntüleyebiliriz.
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/opt.webp' | relative_url }}" width="600" height="60" alt="ls -l /opt/xxd komutunun SUID bitini gösteren çıktısı">
 </div>
@@ -187,21 +201,24 @@ Buradaki -s yani SUID, bir kullanıcı onu çalıştırdığında o dosya çalı
 
 Root kullanıcısının sahip olduğu root.txt dosyasını ise şu komut ile görüntüleyebiliriz.
 
-·        /opt/xxd /root/root.txt | xxd -r
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> /opt/xxd /root/root.txt | xxd -r
+</div>
 
 /opt/xxd aracı verdiğimiz /root/root.txt dosyasını hex şeklinde ekrana yazdırır. Ancak bu format bizim için okunabilirliği olmadığı için bunu da | xxd -r komutu ile normal yazıya çeviririz. Bu komut hakkında daha fazla bilgiyi [bu](https://gtfobins.github.io/gtfobins/xxd/) adres üzerinden okuyabilirsiniz.
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/root.webp' | relative_url }}" width="600" height="220" alt="/opt/xxd aracıyla elde edilen root.txt bayrağının içeriği">
 </div>
+
 ## Notlar
 
-Ssh-keygen
+### Ssh-keygen
 
 Linux sistemlerde şifrelenmiş anahtar çifti üretmek için kullanılan bir araçtır.
 
-·        **Private key**: Gizlidir, kimseyle paylaşılmaz.
-
-·        **Public key**: Uzak sunucuya verilir
+- **Private key**: Gizlidir, kimseyle paylaşılmaz.
+- **Public key**: Uzak sunucuya verilir
 
 ### Xxd
 
@@ -211,6 +228,9 @@ Bir ikili dosyayı veya metni hex formatta gösteren bir komuttur. -r parametres
 
 Normalde bir program çalıştığında, o anki kullanıcının yetkilerine sahiptir fakat program SUID bite sahipse çalıştırıldığında sahibinin yetkileri ile çalışır.
 
-·        ls -l /usr/bin/passwd
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> ls -l /usr/bin/passwd
+</div>
 
 gibi komutlarla programın yetkileri kontrol edilebilir.

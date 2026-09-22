@@ -26,9 +26,15 @@ Kullanıcı adım admin şifrem ise password.
 
 Bu atakta ise olası kullanıcı adlarını ve şifrelerini ayrı olarak bir txt dosyası içerisine yazıp payload list olarak Burp’e yüklüyoruz. Txt dosyası oluşturmak için kodlar aşağıdadır:
 
-·        nano olasinick.txt
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> nano olasinick.txt
+</div>
 
-·        nano olasisifre.txt
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> nano olasisifre.txt
+</div>
 
 Bu sefer Attack Type Cluster Bomb seçtim. Yine deneme yapacağım parametreler üzerinde işaretlemeler yaptım. 2 tane parametremiz olduğu için hangi parametrede hangi payload dosyasını kullanacaksam Payload List kısmından ona göre seçtim. Örnek olarak ilk parametrem username ise Payload List 1 seçip Load butonundan olasinick.txt seçtim. Payload Type Simple list’te kaldı. Settings ayarlarına gelip Grep - Match bölümünde olan listeyi clear ile temizledikten sonra incorrect ekledim. Bunu eklememin sebebi doğru giriş yaptığımda anlamam için bir işaret olması gerekiyordu. Her denemede gelen password is incorrect hatasını burp algılayıp olanları 1 olmayanları 0 olarak sınıflandırdığı için doğru girişimdeki değerleri direkt seçebilecektim.
 
@@ -49,12 +55,16 @@ Aşağıdaki çıktıda değerler işaretlenmiştir.
 
 Bütün user’ları bulmak için [http://localhost./hackable/users/](http://localhost./hackable/users/) adresine gidelim. Buradaki kullanıcı isimlerini bir txt dosyasına kaydedelim işimizi kolaylaştırması için. Aşağıdaki wfuzz komutunu kullanarak
 
-·        wfuzz --hs "Username and/or password incorrect." -c -z file,olasinick.txt -z file,rockyou.txt -b 'security=low; PHPSESSID=0gdtua47fc647dgjj7sitbqaa1' 'http://localhost./vulnerabilities/brute/index.php?username=FUZZ&password=FUZ2Z&Login=Login' | grep -v '250'
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> wfuzz --hs "Username and/or password incorrect." -c -z file,olasinick.txt -z file,rockyou.txt -b 'security=low; PHPSESSID=0gdtua47fc647dgjj7sitbqaa1' 'http://localhost./vulnerabilities/brute/index.php?username=FUZZ&password=FUZ2Z&Login=Login' | grep -v '250'
+</div>
 
 bütün userların şifrelerini deneyelim.
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/target.webp' | relative_url }}" width="1000" height="180" alt="Wfuzz aracıyla tüm kullanıcılar için şifre deneme sonuçları">
 </div>
+
 ### Medium Sec
 
 #### Burp
@@ -75,7 +85,8 @@ Hydra’da brute-force yapmak için komutumuz şu şekilde:
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/hydra.webp' | relative_url }}" width="850" height="270" alt="Hydra aracıyla gerçekleştirilen brute force saldırısının terminal çıktısı">
 </div>
-###  High Sec
+
+### High Sec
 
 Yüksek seviyede kaynak kodu incelediğimizde brute-force atağını engellemek amaçlı anti-csrf token kullanıldığı görülmüştür. Peki nedir bu anti- csrf token, ne işe yarar?
 

@@ -28,9 +28,15 @@ My username is admin and my password is password.
 
 In this attack, we write the possible usernames and passwords into separate txt files and upload them to Burp as payload lists. The commands to create the txt files are below:
 
-·        nano olasinick.txt
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> nano olasinick.txt
+</div>
 
-·        nano olasisifre.txt
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> nano olasisifre.txt
+</div>
 
 This time I selected the Cluster Bomb Attack Type. Again, I marked the parameters I would test. Since we have 2 parameters, I selected the appropriate payload file for each parameter from the Payload List section. For example, since my first parameter is username, I selected Payload List 1 and chose olasinick.txt from the Load button. The Payload Type stayed as Simple list. I went to the Settings tab, cleared the list in the Grep - Match section, and added incorrect. The reason I added this was that I needed a marker to know when I logged in correctly. Since Burp detects the "password is incorrect" error that comes back on every attempt and classifies the ones that have it as 1 and the ones that don't as 0, I would be able to directly pick out the values for the correct login attempt.
 
@@ -51,12 +57,16 @@ The values are marked in the output below.
 
 To find all the users, let's go to [http://localhost./hackable/users/](http://localhost./hackable/users/). Let's save the usernames here into a txt file to make our job easier. Using the following wfuzz command
 
-·        wfuzz --hs "Username and/or password incorrect." -c -z file,olasinick.txt -z file,rockyou.txt -b 'security=low; PHPSESSID=0gdtua47fc647dgjj7sitbqaa1' 'http://localhost./vulnerabilities/brute/index.php?username=FUZZ&password=FUZ2Z&Login=Login' | grep -v '250'
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> wfuzz --hs "Username and/or password incorrect." -c -z file,olasinick.txt -z file,rockyou.txt -b 'security=low; PHPSESSID=0gdtua47fc647dgjj7sitbqaa1' 'http://localhost./vulnerabilities/brute/index.php?username=FUZZ&password=FUZ2Z&Login=Login' | grep -v '250'
+</div>
 
 let's try all the users' passwords.
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/target.webp' | relative_url }}" width="1000" height="180" alt="Password attempt results for all users using the Wfuzz tool">
 </div>
+
 ### Medium Sec
 
 #### Burp
@@ -77,7 +87,8 @@ Our command for brute-forcing with Hydra is as follows:
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/hydra.webp' | relative_url }}" width="850" height="270" alt="Terminal output of the brute force attack carried out with the Hydra tool">
 </div>
-###  High Sec
+
+### High Sec
 
 When we examine the source code at the high level, we see that an anti-CSRF token is used to prevent brute-force attacks. So what is this anti-CSRF token, and what does it do?
 

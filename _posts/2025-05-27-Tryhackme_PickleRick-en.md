@@ -52,7 +52,7 @@ We'll use a tool called gobuster for this process. Gobuster is a fast and powerf
 
 <div class="code-window">
 <br>
-<span class="highlight">nzy@kali$</span> gobuster dir -u http//10.10.246.186 -w /root/Desktop/SecLists-master/Discovery/Web-Content/directory-list-2.3-medium.txt -x php,sh,txt,cgi,html,css,js,py
+<span class="highlight">nzy@kali$</span> gobuster dir -u http://10.10.246.186 -w /root/Desktop/SecLists-master/Discovery/Web-Content/directory-list-2.3-medium.txt -x php,sh,txt,cgi,html,css,js,py
 </div>
 This command will let us find hidden files by trying the wordlist items we specified with the -w parameter. In the command's output, we see that we're able to find a few hidden files. 
 
@@ -71,6 +71,7 @@ This page gives us a value.
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/fif.webp' | relative_url }}" width="400" height="100" alt="The hidden password value found in the robots.txt file">
 </div>
+
 ## First Ingredient
 
 Let's try this value as the password when logging in. Bingo! We were able to log in. A command panel greets us.
@@ -89,22 +90,32 @@ Bingo, we find our first hidden ingredient. Let's continue to collect more ingre
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/nin.webp' | relative_url }}" width="400" height="100" alt="The hint to look at the file system in the clue.txt file">
 </div>
+
 ## Second Ingredient
 
 It tells us that we need to look at the file system.
 
-·        ls /home
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> ls /home
+</div>
 
 Let's use this to view the contents of our home folder. In the output, we see two different folders named rick and ubuntu. Let's view the rick one.
 
-·        ls /home/rick
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> ls /home/rick
+</div>
 
 We see there's a file here called second ingredients. However, we can't view the content of this file with commands like cat, nano, or vim.
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/ten.webp' | relative_url }}" width="300" height="180" alt="The error showing the 'second ingredients' file cannot be opened with cat">
 </div>
 Let's research cat-like commands and try our luck again. I'm able to get the output with the following command.  
-·        less ‘/home/rick/second ingredients’
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> less ‘/home/rick/second ingredients’
+</div>
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/el.webp' | relative_url }}" width="150" height="50" alt="The second ingredient content viewed with the less command">
 </div>
@@ -118,13 +129,19 @@ Let's try to view the contents of the root folder. Let's try the ls /root comman
 </div>
 What the output indicates is that the www-data user can run any command without a password. So we can view the contents of the root folder.
 
-·        sudo ls /root
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> sudo ls /root
+</div>
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/13.webp' | relative_url }}" width="75" height="60" alt="The 3rd.txt file seen with the 'sudo ls /root' command">
 </div>
 And we see the txt file containing our third ingredient. Let's use the less command to view its content and grab our final flag too.
 
-·        less /root/3rd.txt
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> less /root/3rd.txt
+</div>
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/14.webp' | relative_url }}" width="250" height="50" alt="The third ingredient flag obtained with less /root/3rd.txt">
 </div>

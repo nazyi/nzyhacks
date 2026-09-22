@@ -61,6 +61,7 @@ Bingo, the LFI works and we're able to pull the users. We have two important use
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/shdw.webp' | relative_url }}" width="900" height="250" alt="Root and comte users visible in the /etc/passwd output">
 </div>
+
 ## LFI to RCE
 
 PHP can read and process files and data in different ways using mechanisms called stream wrappers. This library makes things easier for developers. But it can also be combined with an LFI vulnerability and abused.
@@ -114,6 +115,7 @@ Now it's time to place the output we copied in Step 3 into the browser instead. 
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/url.webp' | relative_url }}" width="1000" height="60" alt="Placing the PHP filter chain output into the browser URL">
 </div>
+
 **Step 6**
 
 You can go back to the terminal where you're listening with Netcat to reach the shell.
@@ -148,7 +150,10 @@ We'll make the system trust us by adding the value we copied to the .ssh/authori
 
 Let's go back to the shell terminal and add the ssh key to the file.
 
-·        echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINoaiZgti9CA7VtKc8G6LUaUIP9QJL/mO4GT/KSWI1Sg root@kali" > /home/comte/.ssh/authorized\_keys
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINoaiZgti9CA7VtKc8G6LUaUIP9QJL/mO4GT/KSWI1Sg root@kali" > /home/comte/.ssh/authorized\_keys
+</div>
 
 After adding it, we can log in on our own Kali machine with the ssh comte@ip\_adress command.
 <div style="text-align: center;">
@@ -164,7 +169,10 @@ To reach the root user from the comte user, let's first check this user's privil
 </div>
 I looked at what we could do with the files we see here. The exploit.timer file can trigger and start a file named exploit.service. So what does the content of this file named exploit.service contain that could give us root privileges?
 
-·        nano /etc/systemd/system/exploit.service
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> nano /etc/systemd/system/exploit.service
+</div>
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/service.webp' | relative_url }}" width="700" height="130" alt="Content of the exploit.service file viewed with nano">
 </div>
@@ -174,11 +182,17 @@ This code moves a copy of the xxd program to the /opt folder. Afterwards it give
 </div>
 We set the run time with OnBootSec. After setting it, we used this command to make the system read the new file:
 
-·        sudo systemctl daemon-reload
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> sudo systemctl daemon-reload
+</div>
 
 To start the exploit.timer timer, we used this command:
 
-·        sudo systemctl start exploit.timer
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> sudo systemctl start exploit.timer
+</div>
 
 This way, 4 seconds after the timer starts, the exploit.service file will run. To verify that the file has run, we can view the file's permissions with the ls -l /opt/xxd command.
 <div style="text-align: center;">
@@ -188,21 +202,25 @@ The -s here, i.e. SUID, means that when a user runs it, that file runs not with 
 
 We can view the root.txt file owned by the root user with this command:
 
-·        /opt/xxd /root/root.txt | xxd -r
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> /opt/xxd /root/root.txt | xxd -r
+</div>
 
 The /opt/xxd tool prints the /root/root.txt file we give it to the screen in hex form. But since this format isn't readable for us, we convert it into normal text with the | xxd -r command as well. You can read more about this command at [this](https://gtfobins.github.io/gtfobins/xxd/) address.
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/root.webp' | relative_url }}" width="600" height="220" alt="Content of the root.txt flag obtained with the /opt/xxd tool">
 </div>
+
 ## Notes
 
-Ssh-keygen
+### Ssh-keygen
 
 A tool used on Linux systems to generate an encrypted key pair.
 
-·        **Private key**: Secret, never shared with anyone.
+- **Private key**: Secret, never shared with anyone.
 
-·        **Public key**: Given to the remote server
+- **Public key**: Given to the remote server
 
 ### Xxd
 
@@ -212,6 +230,9 @@ A command that displays a binary file or text in hex format. You can convert hex
 
 Normally when a program runs, it has the privileges of the current user, but if the program has the SUID bit, it runs with the owner's privileges when executed.
 
-·        ls -l /usr/bin/passwd
+<div class="code-window">
+<br>
+<span class="highlight">nzy@kali$</span> ls -l /usr/bin/passwd
+</div>
 
 Commands like this can be used to check the program's permissions.
