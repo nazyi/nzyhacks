@@ -164,9 +164,13 @@ Her yeni bir sertifika veya bir sertifika hareketi log altına alınır böylece
 
 Kali üzerindeki bazı SSL toollarının isimlerini ve amaçlarını anlatalım.
 
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_passive/arac.webp' | relative_url }}" width="630" height="340" alt="Kali Linux'taki SSL analiz araçlarının isim ve açıklama listesi">
-</div>
+| Araç Adı | Açıklama / Kullanım Amacı |
+|---|---|
+| sslscan | Bir sunucunun desteklediği SSL/TLS protokollerini, şifreleme algoritmalarını (cipher) ve zayıf konfigürasyonlarını hızlıca listeler. Özellikle zayıf SSL versiyonlarını ve cipher'ları tespit etmek için kullanılır. |
+| ssldump | Canlı SSL/TLS trafiğini analiz eder. Ağ üzerinden geçen şifrelenmiş trafiği çözümlemeye çalışır (özellikle SSLv2/3 gibi eski sürümler varsa işe yarar). Wireshark gibi çalışır ama özellikle SSL için özelleştirilmiştir. |
+| sslh | Aynı port üzerinden (genellikle 443) gelen farklı protokolleri (SSH, HTTPS, OpenVPN vs.) ayırt ederek uygun arka uca yönlendirir. Port paylaşımı sağlar. Örn: hem SSH hem HTTPS 443 üzerinden çalışabilir. |
+| sslyze | Güçlü bir SSL güvenlik analiz aracıdır. Bir sunucunun TLS yapılandırmasını detaylı şekilde test eder (cipher desteği, sertifika doğruluğu, Heartbleed, session resumption vs.). Otomasyon dostudur. |
+| sslsplit | SSL/TLS trafiğini "ortada adam" (MITM) gibi araya girerek şifre çözme (decrypt) için kullanılır. Trafiği ikiye ayırır: istemciye sunucu gibi, sunucuya istemci gibi davranır. Genellikle pentest ve kırmızı takım faaliyetlerinde kullanılır. |
 
 
 ##### Part 3 Use Kali Tools to Gather Certificate Information

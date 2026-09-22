@@ -1522,6 +1522,20 @@ a.post-lesson-link:hover {
   white-space: nowrap;
 }
 
+.ascii-diagram {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.2em 1.4em;
+  margin: 2em 0;
+  color: var(--color-text);
+  font-family: "SF Mono", Monaco, Consolas, monospace;
+  font-size: 0.85em;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre;
+}
+
 .code-window::before {
   content: '';
   display: block;

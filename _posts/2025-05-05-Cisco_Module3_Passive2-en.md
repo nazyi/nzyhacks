@@ -166,9 +166,13 @@ Every new certificate or certificate action is logged, giving rise to the term w
 
 Let's go over the names and purposes of some SSL tools on Kali.
 
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_passive/arac.webp' | relative_url }}" width="630" height="340" alt="List of names and descriptions of SSL analysis tools on Kali Linux">
-</div>
+| Tool Name | Description / Purpose |
+|---|---|
+| sslscan | Quickly lists the SSL/TLS protocols, ciphers, and weak configurations a server supports. Particularly useful for detecting weak SSL versions and ciphers. |
+| ssldump | Analyzes live SSL/TLS traffic. Tries to decode encrypted traffic passing over the network (useful especially if older versions like SSLv2/3 are in use). Works like Wireshark but is specialized for SSL. |
+| sslh | Distinguishes between different protocols (SSH, HTTPS, OpenVPN, etc.) arriving on the same port (usually 443) and forwards them to the right backend. Enables port sharing, e.g. both SSH and HTTPS can run over port 443. |
+| sslyze | A powerful SSL security analysis tool. Tests a server's TLS configuration in detail (cipher support, certificate validity, Heartbleed, session resumption, etc.). Automation-friendly. |
+| sslsplit | Used to decrypt SSL/TLS traffic by acting as a "man-in-the-middle" (MITM). Splits the traffic in two: it behaves like the server to the client, and like the client to the server. Commonly used in pentest and red team activities. |
 
 
 ##### Part 3 Use Kali Tools to Gather Certificate Information

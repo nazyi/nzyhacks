@@ -1,28 +1,28 @@
 ---
 categories: [modul]
 layout: post
-description: "Cisco Ethical Hacker kursunun üçüncü bölümünün aktif bilgi toplama kısmıdır. aktif bilgi toplama teknikleri kapsamında Nmap tarama türleri ve numaralandırma (enumeration) yöntemleri detaylıca ele alınmıştır. Hedef sistemler hakkında daha derinlemesine bilgi edinmek amacıyla servisler, kullanıcılar, gruplar ve paylaşılan kaynaklar gibi bileşenlerin tespiti örnek araç ve komutlarla açıklanmıştır."
+description: "Cisco Ethical Hacker kursunun üçüncü bölümünün aktif bilgi toplama kısmının ilk parçasıdır. Nmap tarama türleri ve numaralandırma (enumeration) yöntemleri, örnek araç ve komutlarla açıklanmıştır."
 logo: "/assets/images/cisco.png"
 author: nazy
-title: Cisco Ethical Hacker Modül 3 - Active Recon 
+title: Cisco Ethical Hacker Modül 3 - Active Recon (1/2)
 tags: [Cisco, Aktif Keşif]
 order: 4
 translation_url: /en/Cisco_Module3_Active
 ---
 
-## Cisco Ethical Hacker
-
-### Module 3: Information Gathering and Vulnerability Scanning
+## Module 3: Information Gathering and Vulnerability Scanning
 
 ### 3.2 Performing Active Reconnaissance
 
-Pasif bilgi toplamaktan sonra sıra aktif bilgi toplamaya geldi. İlk aşamada hedefler hakkında pasif bilgiler elde ettik örnek olarak host isimleri, çeşitli email veya subdomain isimleri vb. Sırada bu tespit edilen sistemlerin internet üzerinde herkese açık mı yoksa bir güvenli duvarı arkasında mı diye kontrol etmek geliyor. Port taraması yaparak sistem hakkında daha fazla bilgi toplamaya çalışıyoruz.
+Pasif bilgi toplamaktan sonra sıra aktif bilgi toplamaya geldi. İlk aşamada hedefler hakkında pasif bilgiler elde ettik örnek olarak host isimleri, çeşitli email veya subdomain isimleri vb. Sırada bu tespit edilen sistemlerin internet üzerinde herkese açık mı yoksa bir güvenlik duvarı arkasında mı diye kontrol etmek geliyor. Port taraması yaparak sistem hakkında daha fazla bilgi toplamaya çalışıyoruz.
 
 Port taramasında kullanılan en yaygın nmap aracının çıktılarını ufak bir açıklamak istedim.
 
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/1.webp' | relative_url }}" width="600" height="160" alt="Temel bir nmap taramasının örnek çıktısı">
-</div>
+| Durum | Nmap'taki Gösterim | Örnek |
+|---|---|---|
+| open | `80/tcp open http` | Web sunucusu aktif |
+| closed | `22/tcp closed ssh` | SSH servisi çalışmıyor |
+| filtered | `443/tcp filtered https` | Firewall var, yanıt engelleniyor olabilir |
 
 #### 3.2.1 Nmap Scan Types
 
@@ -32,17 +32,21 @@ Nmap üzerinde amaca göre birçok scan türü vardır. Bazıları aşağıda ye
 
 Nmap default olarak farklı belirtilmedikçe hedef sistemle TCP bağlantısı kurmaya çalışır. Her porta TCP paketi atılarak gelen cevaba göre portun durumu belirlenir. Yani bu scan türü kapı açık mı diye bakmak için cidden kapıdan içeri girer veya kapıyı çalar. Böyle olduğu için de hedef sistemler üzerinde log tutuluyorsa loglar üstünde attacker IP bilgisi yer alabilir.
 
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/stopen.webp' | relative_url }}" width="680" height="160" alt="TCP Connect Scan (-sT) ile yapılan taramanın örnek çıktısı">
-</div>
+| Durum | Açıklama |
+|---|---|
+| Open (Açık) | Hedef port açık ve bir uygulama dinliyor. Genellikle TCP 3-way handshake başarılı olur. |
+| Closed (Kapalı) | Port aktif ama üzerinde dinleyen bir servis yok. Hedef RST (Reset) paketiyle yanıt verir. |
+| Filtered (Filtrelenmiş) | Paket hedefe ulaşamıyor veya engelleniyor. Güvenlik duvarı tarafından filtrelenmiş olabilir. |
 
 **UDP Scan (-sU)**
 
 Genellikle TCP portları aranır fakat örneğin DNS, SNMP ve DHCP gibi sunucular UDP kullandıkları için amaca göre UDP portlarını da taramanız gerekebilmektedir.
 
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/suopen.webp' | relative_url }}" width="680" height="160" alt="UDP Scan (-sU) ile yapılan taramanın örnek çıktısı">
-</div>
+| Durum | Açıklama |
+|---|---|
+| Open (Açık) | Port açık ve uygulama katmanından geçerli bir yanıt döndü (örneğin DNS cevabı). |
+| Closed (Kapalı) | Hedef ICMP "Port Unreachable" mesajı gönderdi (Tip 3, Kod 3). |
+| Filtered (Filtrelenmiş) | Hiç yanıt alınamadı, ya paket filtrelendi ya da ICMP yanıtı engellendi. |
 
 **TCP FIN Scan (-sF)**
 
@@ -50,9 +54,11 @@ Bazen SYN taraması ağ filtresi veya firewall tarafından seçildiği için eng
 
 \*Windows makinelerini bu tarama ile taramak doğru sonuçlar vermeyebilir. Çünkü Windows makineler portların durumuna bakmaksızın pakete cevap vermektedir.
 
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/sfopen.webp' | relative_url }}" width="680" height="160" alt="TCP FIN Scan (-sF) ile yapılan taramanın örnek çıktısı">
-</div>
+| Durum | Açıklama |
+|---|---|
+| Open (Açık) | Port açıksa, hedef hiçbir yanıt göndermez (bağlantı kurmaya çalışılmaz, çünkü FIN paketi alındığında port yanıt vermez). |
+| Closed (Kapalı) | Port kapalıysa, hedef RST (Reset) paketi gönderir. |
+| Filtered (Filtrelenmiş) | Hiç yanıt alınamaz veya yanıt bir güvenlik duvarı tarafından engellenmiş olabilir. |
 
 **Host Discovery Scan (-sn)**
 
@@ -66,7 +72,7 @@ Bir ağ üzerindeki hostları keşfetmek için kullanılır. Ağa özel farklı 
 
 \-T1: Sneaky, yavaş paket gönderir.
 
-\-T2: Polite, daha az bant genilşiği için yavaşlar.
+\-T2: Polite, daha az bant genişliği için yavaşlar.
 
 \-T3: Default, hedefin cevabına göre dinamik olarak paket gönderir.
 
@@ -86,9 +92,8 @@ Birkaç numaralandırma başlığına bakalım.
 
 Host numaralandırması bilgi toplama aşamasında yapılması gereken ilk görevlerden biridir. İki tarzda gerçekleşebilir:
 
-·        **Dış ağda**: Sadece test kapsamındaki IP adreslerini taramaya özen gösterin.
-
-·        **İç ağda:** Hedefin kullandığı tüm IP alt ağları taranır.
+- **Dış ağda**: Sadece test kapsamındaki IP adreslerini taramaya özen gösterin.
+- **İç ağda:** Hedefin kullandığı tüm IP alt ağları taranır.
 
 ##### User Enumeration
 
@@ -96,9 +101,28 @@ Kullanıcı bilgilerini toplamak için birden fazla araç ve yöntem vardır. Bu
 
 Aşağıda SMB mesaj illüstrasyonunu inceleyelim.
 
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/smbenum.webp' | relative_url }}" width="460" height="460" alt="SMB protokolündeki mesajlaşma sürecini gösteren illüstrasyon">
-</div>
+<pre class="ascii-diagram">
+[Attacker]                              [Target SMB Server]
+    |                                            |
+    | -----> TCP bağlantısı (port 445) -------->|
+    |                                            |
+    | -----> Negotiate Protocol Request ------->|
+    | <----- Negotiate Protocol Response -------|
+    |                                            |
+    | -----> Session Setup Request ------------>|
+    |        (anonim veya boş kullanıcı ile)     |
+    | <----- Session Setup Response ------------|
+    |                                            |
+    | -----> Tree Connect Request (IPC$) ------>|
+    | <----- Tree Connect Response --------------|
+    |                                            |
+    | -----> NetShareEnum / NetUserEnum -------- |
+    |        (kullanıcı, paylaşım veya grup sorgusu)
+    | <----- Listeleme Cevabı (varsa) -----------|
+    |                                            |
+    | -----> TCP bağlantısını kapat ------------|
+    |                                            |
+</pre>
 
 SMB\_COM\_NEGOTIATE: Sunucuya hangi protokolleri veya bayrakları desteklediğini sorduğu mesajdır. Sunucu da desteklediği protokoller ve bayrakları söyleyerek geri mesaj atar.
 
@@ -117,13 +141,16 @@ Bu işlem hedef ortamdaki kullanıcılarının hangi yetki rollerinin kullanıld
 
 nmap taramasının sonucunda gelen çıktada yer alan RID ve SID terimlerini inceleyelim.
 
-·        **SID:** Bir gruba ya da kullanıcıya ait benzersiz kimlik numarasıdır.
+- **SID:** Bir gruba ya da kullanıcıya ait benzersiz kimlik numarasıdır.
+- **RID:** SID’nin sonundaki kısımdır ve kullanıcı veya grubu Windows bazında tanımlar.
 
-·        **RID:** SID’nin sonundaki kısımdır ve kullanıcı veya grubu Windows bazında tanımlar.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/rid.webp' | relative_url }}" width="460" height="300" alt="nmap smb-enum-groups.nse çıktısında görülen RID ve SID değerleri">
-</div>
+| RID | Açıklama |
+|---|---|
+| 500 | Administrator |
+| 501 | Guest |
+| 512 | Domain Admins (Grup) |
+| 513 | Domain Users (Grup) |
+| 1000+ | Genellikle normal kullanıcı |
 
 ##### Network Share Enumeration
 
@@ -138,20 +165,28 @@ Bir ağda dosya, klasör ve yazıcı paylaşan sistemleri tespit etmeye Network 
 Bir sistemde çalışan uygulamaları ve işletim sistemlerini daha detaylı tanımlamak ve ek bilgi öğrenmek için;
 <div class="code-window">
 <br>
-<span class="highlight">kali@kali</span> nmap -sC  target\_ip
+<span class="highlight">kali@kali</span> nmap -sC  target\_ip
 </div> 
   
 Eğer hem daha detaylı bilgi hem de işletim sistemi tespiti de istersen;
 <div class="code-window">
 <br>
-<span class="highlight">kali@kali</span> nmap -sC -sV -0  target\_ip
+<span class="highlight">kali@kali</span> nmap -sC -sV -0  target\_ip
 </div> 
 
 Ve tablo ile nmap smb enum scriptleri hakkında bilgi vermek istedim.
 
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/smbnmap.webp' | relative_url }}" width="650" height="400" alt="Nmap SMB numaralandırma scriptlerini özetleyen tablo">
-</div>
+| Script Adı | Açıklama |
+|---|---|
+| `smb-enum-shares.nse` | Hedef sistemdeki paylaşıma açık dosya ve klasörleri listeler. |
+| `smb-enum-users.nse` | Sistemdeki kullanıcı hesaplarını listeler (varsa). |
+| `smb-enum-groups.nse` | Hedef sistemdeki kullanıcı gruplarını listeler. |
+| `smb-enum-processes.nse` | SMB üzerinden çalışan işlemleri listeler (yetki gerektirir). |
+| `smb-enum-sessions.nse` | Aktif SMB oturumlarını listeler (bağlı kullanıcılar vs.). |
+| `smb-enum-domains.nse` | Etki alanı (domain) isimlerini listeler. |
+| `smb-enum-services.nse` | Servis bilgilerini toplar (başlatılmış servisler gibi). |
+| `smb-enum-lsa.nse` | Local Security Authority (LSA) bilgilerini listeler (detaylı güvenlik bilgisi). |
+| `smb-enum-servers.nse` | SMB sunucu bilgisini ve özelliklerini tanımlar. |
 
 SMB üzerinden bilgi çekmek için bir farklı tool olan enum4linux da vardır.
 <div class="code-window">
@@ -162,7 +197,7 @@ SMB üzerinden bilgi çekmek için bir farklı tool olan enum4linux da vardır.
 Başka bir örnek smbclient toolu.
 <div class="code-window">
 <br>
-<span class="highlight">kali@kali</span> smbclient -L target\_ip<br><span class="highlight">kali@kali</span> smbclient  //target\_ip/user
+<span class="highlight">kali@kali</span> smbclient -L target\_ip<br><span class="highlight">kali@kali</span> smbclient  //target\_ip/user
 </div> 
 
 ##### Web Page Enumeration/Web Application Enumeration
@@ -205,9 +240,9 @@ Bu paketi gönderirken aynı sırada tshark ile kendi ağımızı dinlersek ICMP
 
 \*tshark, Wireshark’ın terminal sürümüdür.
 
-Scapy üzerinde kullanılabilecek birçok protokol vardır. Bu prokolleri listelemek için **ls()** fonksiyonunu kullanabilirsiniz. Mesela TCP protokolünü destekleyen formatları görmek için **ls(TCP)** komutunu kullanabilirsiniz.
+Scapy üzerinde kullanılabilecek birçok protokol vardır. Bu protokolleri listelemek için **ls()** fonksiyonunu kullanabilirsiniz. Mesela TCP protokolünü destekleyen formatları görmek için **ls(TCP)** komutunu kullanabilirsiniz.
 
-explore() komutu ile Scapy ara yüzüne erişip format ve prokollere inceleyebilirsiniz.
+explore() komutu ile Scapy ara yüzüne erişip format ve protokollere inceleyebilirsiniz.
 
 #### 3.2.3 Lab – Enumeration with Nmap
 
@@ -217,25 +252,16 @@ explore() komutu ile Scapy ara yüzüne erişip format ve prokollere inceleyebil
 
 Common NMAP ayarlarına bakalım. man nmap diyerek aşağıdaki parametreleri bulabilirsiniz.
 
-·        \-A: OS detection
-
-·        \-O: OS detection
-
-·        \-p: Port scope
-
-·        \-sF: TCP FIN scan
-
-·        \-ss: TCP SYN scan
-
-·        \-sT: TCP scan
-
-·        \-sV: Açık portların servis ve versiyon bilgisini bulma
-
-·        \-T<0-5>: Tarama hızını ayarlama
-
-·        \-v: Çıktının ayrıntısını artırır
-
-·        \--open: Sadece açık portları gösterir
+- **-A:** Aggressive scan (OS keşfi, versiyon keşfi, script taraması ve traceroute'u kapsar)
+- **-O:** OS detection
+- **-p:** Port scope
+- **-sF:** TCP FIN scan
+- **-sS:** TCP SYN scan
+- **-sT:** TCP scan
+- **-sV:** Açık portların servis ve versiyon bilgisini bulma
+- **-T<0-5>:** Tarama hızını ayarlama
+- **-v:** Çıktının ayrıntısını artırır
+- **--open:** Sadece açık portları gösterir
 
 ##### Part 2 Perform Basic Nmap Scans
 
@@ -275,7 +301,7 @@ Hostun 21 numaralı portu olan FTP servisi hakkında daha fazla bilgi alalım.
 
 Çıktıda gözüktüğü gibi anon girişi kabul edilmektedir ve birkaç tane txt dosyası yer almaktadır.
 
-**Step3: Investigate SMB services with scripts**
+**Step 3: Investigate SMB services with scripts**
 
 Server Message Block yani SMB hem Windows hem de Linux makinelerde dosya paylaşımı desteklemektedir. 139 ve 445 numaralı portlarda çalışmaktadır. Bu portlar hakkında nmap ile daha fazla şey öğrenelim.
 
@@ -303,279 +329,3 @@ Daha önce de bahsettiğimiz gibi nmap içinde bazı scriptler sayesinde istenil
 </div>
 
 Burda başında $ işareti olan 2 tane gizli paylaşım bulduk ve altta yer alan Anonymous Access: read/write olması çok kritik bir risktir.
-
-#### 3.2.4 Packet Inspection and Eavesdropping
-
-Wireshark, tshark ve tcpdump gibi araçlarla paket yakalamaları yapılabilir, paketler incelenebilir ve dinleyebilirsiniz. Penetrasyon test uzmanları için bu tür araçlar, pasif keşif yapmak için kullanışlı olabilir. Tabii ki, bu tür bir keşif, hedefe fiziksel ya da kablosuz bir bağlantı gerektirir.
-
-#### 3.2.5 Lab – Packet Crafting with Scapy
-
-##### Part 1 Investigate the Scapy Tool
-
-IP paketi göndermeden önce IP paketinin içeriğini anlamak önemlidir. Her IP paketinde, paket yapısı hakkında bilgi veren başlık eşlik eder. Her binary değeri IP paketinde farklı anlamlara gelmektedir.
-
-ls() fonksiyonu ile alanlar hakkında detayları inceleyebilirsiniz. Scapy içerisinde fonksiyon kullanmanın genel mantığı function\_name (arguments) şeklindedir. Alanlar hakkında daha fazla bilgi almak için ise ls(IP) komutunu çalıştırabilirsiniz.
-
-Aşağıdaki tabloda alan adları ve açıklamaları verilmiştir. 
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/version.webp' | relative_url }}" width="600" height="600" alt="Scapy'de ls(IP) komutuyla listelenen IP paketi alan adları tablosu">
-</div>
-
-##### Part 2 Use Scapy to Sniff Network Traffic
-
-Ağ trafiğini, tcpdump veya tshark gibi görüntülemek için Scapy aracını kullanabiliriz.
-
-**Step 1: Use the sniff() function**
-
-Default olarak eth0 ağını dinlemek için direkt olarak;
-
-·        sniff()
-
-Sniff ile ağımızı dinliyorken yan terminal üzerinden pingleyerek gönderilen paket sayısını görüntüleyelim.
-
-Scapy komut terminalinde dinlemeyi açtık. Yanda başka bir terminal üzerinde ping komutumuzu gönderelim.
-
-
-<div class="code-window">
-<br>
-<span class="highlight">kali@kali</span> ping -c 5 www.cisco.com
-</div>
-
-Scapy terminalinde Ctrl + C yaptıktan sonra gelen çıktıda gelen paketlerin sayısı yer almaktadır.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/sniffed.webp' | relative_url }}" width="600" height="80" alt="Scapy sniff() sonrası yakalanan ping paketlerinin sayısını gösteren çıktı">
-</div>
-
-**Step 2: Capture and save traffic on a spesific interface**
-
-ifconfig üzerinde 10.6.6.1 ip adresinin interface ismini bir kenara not alalım. Scapy aracının terminale gelip aşağıdaki komutu yazalım;
-
-·        sniff(iface=”br-internal”)
-
-Yukarıda yaptığımız gibi sniff fonksiyonu ağı dinlemeye yaramaktadır. Fakat default olarak eth0 interface’ini dinlediğinden bahsetmiştik. Bu sefer bu komutta belirli bir interface üzerinden dinleme yapıyoruz. Br-internal ise virtual makineler için köprü interface idir.
-
-Komutu girdikten sonra bu sefer Mozilla üzerinden 10.6.6.23 adresini açıyoruz.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/gravemind.webp' | relative_url }}" width="650" height="330" alt="Tarayıcıda 10.6.6.23 adresinde açılan Gravemind web sayfası">
-</div>
-
-Gravemind sayfası geldikten sonra Scapy terminalinden dinlemeyi durdurabiliriz Ctrl + C yaparak çıktıyı görüntüleyebilirsiniz.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/sniffed2.webp' | relative_url }}" width="600" height="80" alt="br-internal arayüzünde yakalanan trafiğin Scapy çıktısı">
-</div>
-
-Trafiği görüntülemek için ilk öncelikle bir değişkene kaydedip sonrasında görüntüleyebiliriz.
-
-·        a=\_
-
-·        a.summary()
-
-**Step 3: Examine the collected packets**
-
-Scapy üzerinden yine br-internal isimli interface’imizi dinlemeye alalım. Fakat bu sefer sadece ICMP protokolünün paketlerini ve toplamda 10 paket yakalamasını isteyelim.
-
-·        sniff(iface=”br-internal”,filter=”ICMP”,count=10)
-Farklı bir sekmeye giderek 10.6.6.23 IP adresine ping atalım.
-
-·        ping -c 10 10.6.6.23
-
-Scapy terminaline gelerek kaç tane ICMP paketinin yakalandığını görebilirsiniz. Örnek yukarıdaki çıktıda verilmiştir. Yakalanan paketleri kaydedip görüntülemek için;
-
-·        a=\_
-
-·        a.nsummary()
-\*nsummary() ve summary() benzer fakat farklı komutlardır. nsummary() komutu birden fazla paketi görüntülemeye yararken summary() komutu yalnızca tek paketi görüntülemeye yarar.
-
-Eğer paket hakkında daha fazla bilgi istersiniz paket numaralarının başındaki sıfırları almadan paketin numarasını yazarak bilgi alabilirsiniz. Aşağıda örneği verilmiştir;
-
-·        a\[2\]
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/ether.webp' | relative_url }}" width="900" height="80" alt="Scapy'de a[2] komutuyla görüntülenen paket detay bilgisi">
-</div>
-
-Bu çıktıları pcap dosyası olarak kaydedip Wireshark üzerinde de inceleyebiliriz. Bunu yapmak için aşağıdaki komutları kullanabiliriz.
-
-<div class="code-window">
-<br>
-<span class="highlight">kali@kali</span> wrpcap(“capture1.pcap”, a)
-</div> 
-
-Kaydedilen pcap dosyasını Wireshark üzerinde inceleyebiliriz.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/pcap.webp' | relative_url }}" width="650" height="220" alt="wrpcap ile kaydedilen capture1.pcap dosyasının Wireshark görünümü">
-</div>
-
-##### Part 3 Create and Send an ICMP Packet
-
-ICMP, ağ cihazları arasında kontrol mesajları göndermek amacıyla tasarlanmış bir protokoldür. Birçok farklı türde ICMP paketi vardır.
-
-**Step 1: Use interactive mode to create and send a custom ICMP packet.**
-
-Scapy terminali üzerinde “br-internal” isimli interface’i dinlemeye başlayalım.
-
-·        sniff(iface=”br-internal”)
-
-Dinlemeye başladıktan sonra yeni bir terminal açıp sudo izniyle birlikte tekrardan bir Scapy terminali açalım. Burada kendi ICMP paketimizi oluşturup 10.6.6.23 IP adresine göndereceğiz.
-
-·        send(IP(dst="10.6.6.23")/ICMP()/"This is a test")
-
-Bu komutumuzu bölümleriyle birlikte inceleyelim.
-
-·        **IP(dst="10.6.6.23")** : Bu kısım IP katmanını oluşturur. dst ile paketin nereye gideceğini belirtiyoruz.
-
-·        **/ICMP()** : IP katmanının üstüne ICMP katmanı eklenir. Default olarak echo-request mesajı oluşturulur g eğer farklı bir tipte ICMP mesajı oluşturmak istiyorsanız type fonksiyonunu kullanabilirsiniz örneğin type=0.
-
-·        **/”This is a test”** : Bu kısım pakete ham veri ekler.
-
-Bu mesajı gönderdikten sonra dinleme yaptığımız Scapy terminaline dönüp CTRL + C yapabiliriz. Aldığımız çıktı aşağıdaki gibidir;
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/sniffed3.webp' | relative_url }}" width="600" height="80" alt="Özel oluşturulan ICMP paketinin gönderimi sonrası Scapy sniff çıktısı">
-</div>
-
-Bu çıktıyı kaydedip içeriğini inceleyelim.
-
-·        a=\_
-
-·        a.nsummary()
-
-·        a\[2\]
-\*Bu tür ICMP paketleri genelde hedefin **ulaşılabilir olup olmadığını test etmek** için kullanılır.
-
-##### Part 4 Create and Send a TCP SYN Packet
-
-Şimdi sırada TCP SYN paketi oluşturup göndermek var. Yine ilk başta olduğu gibi interface’imizi dinlemeye alalım.
-
-·        sniff(iface=”br-internal”)
-
-Diğer Scapy terminaline geçelim ve paketi oluşturmaya başlayalım.
-
-·        send(IP(dst="10.6.6.23")/TCP(dport=445, flags="S"))
-
-Önceki oluşturduğumuz ICMP paketimiz ile benzerlik olduğunu görebiliyoruz. Bu paketi de bölümlere ayırıp inceleyelim.
-
-·        **IP(dst="10.6.6.23")** : Bu kısım IP katmanını tanımlar. Paketin gideceği hedefi işaret eder.
-
-·        **TCP(dport=445, flags="S")** : Bu kısım TCP katmanını tanımlar. Hedef TCP portunu ve bayrağı işaret eder. Bayrak değeri S olduğu için bu bir TCP SYN yani bağlantı başlatma işlemidir.
-
-Bu aslında kabaca bir port tarama işlemidir, nmap gibi araçlar bunu otomatikleştirirken el ile de böyle port taraması gerçekleştirebiliriz. Portun açık olup olmadığını anlamak için ise akıştaki paketleri incelemek gerekmektedir. Eğer gelen cevap paketinde flags değer “SA” yani SYN-ACK ise port açık anlamında gelmektedir.
-
-Komutu gönderdikten sonra dinleme terminali üzerinden CTRL + C yaparak dinlemeyi durduralım. Trafiği kaydedip inceleyelim.
-
-·        a=\_
-
-·        a.nsummary()
-
-·        a\[2\]
-
-·        a\[3\]
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/sniffed4.webp' | relative_url }}" width="1000" height="300" alt="TCP SYN paketi gönderimi sonrası yakalanan SYN ve SYN-ACK paketleri">
-</div>
-
-2\. paket bizim bağlantı başlatmak için gönderdiğimiz flags değeri “S” olan pakettir. 3. Paketi incelediğimizde ise flags değerinin SA yani SYN-ACK olduğunu görüyoruz. Bu demek oluyor ki 445 portu açık ve bağlantı isteğimizi onaylamış.
-
-#### 3.2.6 Lab – Network Sniffing with Wireshark
-
-##### Part 1 Capture and Save Network Traffic
-
-Bu partta CLI üzerinden tcpdump kullanarak trafiği yakalayacağız. Trafiği pcap dosyası olarak kaydettikten sonra Wireshark veya benzeri bir uygulama üzerinden inceleyeceğiz.
-
-Terminali açıp aşağıdaki komutu girelim;
-
-<div class="code-window">
-<br>
-<span class="highlight">kali@kali</span> ifconfig
-</div> 
-
-Burada Ethernet adaptörünün (genelde eth0) adını kopyalayın. Sonrasında tcpdump aracını kullanmak için terminale;
-
-<div class="code-window">
-<br>
-<span class="highlight">kali@kali</span> sudo tcpdump -i eth0 -s 0 -w packetdump.pcap
-</div> 
-
-yazalım. Bu komutu açıklayalım;
-
-·        **\-i eth0 :** Hangi  ara yüzü üzerinden trafiğin dinleneceğini belirtir.
-
-·        **\-s 0 :** Paketi tamamen al hiçbir kısmını atlama demektir.
-
-·        **\-w packetdump.pcap :** Yakalanan paketleri ekrana yazdırmak yerine dosyaya kaydet.
-
-Bu komutu yazdıktan sonra tcpdump bizi dinlemeye başlıyor. Web arayıcısına giderek trafik üretmeye başlayabiliriz. Ürettikten sonra tekrardan terminale gelip trafiği CTRL + C ile durdurabiliriz. Sonuçların kaydedildiği dosyayı Wireshark üzerinde inceleyebiliriz.
-
-##### Part 2 View and Analyze the Packet Capture
-
-Wireshark ara yüzünü açtıktan sonra **File>Open** sekmesinden packetdump.pcap isimli dosyayı incelemek üzere açabiliriz.
-
-Tarayıcada bir web sitesine erişmek istediğinizde bilgisayar DNS sunucu IP adresine bir DNS sorgusu gönderir. DNS kayıtlarını yakaladığımız pcap dosyasında incelersek de kullanıcının ziyaret ettiği site alan adlarını ve IP adreslerini görebliriz.
-
-Web trafiği oluştururken ziyaret ettiğimiz skillsforall.com sitesini Wireshark üzerinde filtreleyelim.
-
-**Step 1: Analyze DNS traffic**
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/skillsforall.webp' | relative_url }}" width="880" height="120" alt="Wireshark'ta skillsforall.com için filtrelenmiş DNS trafiği">
-</div>
-
-Search iconuna skillsforall.com yazdıktan sonra çıkan alttaki menüden “String” değerini ve skillsforall kelimesini yazalım. Yukarıdaki ekran görüntüsünde yaptıklarımızı görebilirsiniz. İlk çıkan paketi incelemek için üzerine tıklayalım.
-
-Burada yer alan Ethernet II kısmında hem destination hem de source MAC adreslerini görebilirsiniz. Teyit etmek için terminal üzerinden ifconfig komutunu yazıp eth0 ara yüzünün MAC adresine bakabilirsiniz.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/destination.webp' | relative_url }}" width="1000" height="180" alt="Wireshark'ta Ethernet II katmanındaki kaynak ve hedef MAC adresleri">
-</div>
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/eth0.webp' | relative_url }}" width="950" height="200" alt="ifconfig komutu ile görüntülenen eth0 arayüzünün MAC adresi">
-</div>
-
-Paket bilgileri kısmında Domain Name System query bölümünü inceleyim. Burada DNS server’ına ne gönderildiğinin detayını bulabilirsiniz. Ayrıca DNS server’ının cevabın Wireshark’ta hangi paket olduğunu belirten bir Response In kısmı da vardır.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/response.webp' | relative_url }}" width="600" height="450" alt="Wireshark'ta DNS sorgu paketinin detay ve Response In bilgisi">
-</div>
-
-**Step 2: Analyze an HTTP session**
-
-Kali makinemiz üzerinde hazır halde yüklü olan DVWA sayfasına erişip login olmayı deneyeceğiz. Bunu da Wireshark üzerinde görüntüleyerek kullanıcı bilgilerini elde etmeye çalışacağız. Bunun için ilk öncelikle DVWA sunucusunun IP bloğunun ara yüz adını öğrenmemiz gerekiyor. DVWA 10.6.6.13 adresinde yer almaktadır.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/br-inter.webp' | relative_url }}" width="890" height="200" alt="DVWA sunucusunun bulunduğu br-internal ağ arayüzünün tespiti">
-</div>
-
-Burada görüldüğü gibi br-internal ara yüzümüzün ismidir. Wireshark’ı açtıktan sonra aşağıda yer alan ara yüz isimlerinden br-internal ara yüzünü seçiyoruz. Böylece Wireshark br-internal ara yüzünü dinlemeye başlıyor. 
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/capture.webp' | relative_url }}" width="800" height="270" alt="Wireshark arayüz listesinde seçilen br-internal dinleme arayüzü">
-</div>
-
-Dinlemeye başladıktan sonra tarayıcı üzerinden 10.6.6.13 adresine yani DVWA sayfasına erişiyoruz. Giriş yapmak için **admin** ve **password** değerlerini giriyoruz. Değerleri girdikten sonra tarayıcı kapatıp Wireshark’ta yukarıdaki kırmızı kareye basarak dinlemeyi durduruyoruz. Arama menüsüne String değerini, arama yerine ise POST yazıyoruz.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/postt.webp' | relative_url }}" width="1200" height="70" alt="Wireshark'ta String POST araması ile bulunan login isteği paketi">
-</div>
-
-Çıkan pakette login.php üzerinden bilgi gönderildiği görülüyor. Paketin HTML Form URL Encoded kısmında login bilgilerini görebilirsiniz. 
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/hypertext.webp' | relative_url }}" width="830" height="250" alt="HTML Form URL Encoded alanında görülen DVWA giriş bilgileri">
-</div>
-
-Cookieler birçok farklı amaç için kullanılır. En yaygın olarak, bir kullanıcının oturum bilgilerini saklamak için kullanılırlar. Çerezler ele geçirilebilir ve kullanıcının oturumu çalınabilir. İlk çerez, Set-Cookie değeri ile HTTP yanıtı içinde gönderilir.
-
-Wireshark üzerinde 302 Found diye aratarak ilk çerezi bulabiliriz.
-
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/set.webp' | relative_url }}" width="880" height="620" alt="302 Found yanıtında Set-Cookie ile atanan PHPSESSID çerezi">
-</div>
-
-Çıktıda görüldüğü gibi PHPSESSID çerezi atanmıştır.
