@@ -1,0 +1,18 @@
+- key: unauthenticated
+  term: "Unauthenticated Scan"
+  def: "A scan done without user credentials, seeing only exposed services and open ports."
+- key: authenticated
+  term: "Authenticated Scan"
+  def: "A scan that actually logs into the system with credentials and gathers internal info with commands like netstat."
+- key: discovery
+  term: "Discovery Scan"
+  def: "A scan that searches ports and the services on top of them in detail to determine the attack surface."
+- key: full
+  term: "Full Scan"
+  def: "A comprehensive scan done by enabling all the other scan types together."
+- key: stealth
+  term: "Stealth Scan"
+  def: "A quiet, covert scan performed without the target noticing."
+- key: compliance
+  term: "Compliance Scan"
+  def: "A scan that tests whether companies comply with the regulations and policies they must follow."

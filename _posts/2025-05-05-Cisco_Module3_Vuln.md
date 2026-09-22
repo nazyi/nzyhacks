@@ -9,11 +9,10 @@ tags: [Cisco, Zafiyet Taraması]
 order: 5
 translation_url: /en/Cisco_Module3_Vuln
 ---
-## Cisco Ethical Hacker
 
 ## Module 3: Information Gathering and Vulnerability Scanning
 
-### 3.3 Understanding the Art of Performing Vulnerabilitiy Scans
+### 3.3 Understanding the Art of Performing Vulnerability Scans
 
 #### 3.3.1 How a Typical Automated Vulnerability Scanner Works
 
@@ -33,7 +32,7 @@ Tarayıcı portu açık gördüğü zaman üzerinde daha fazla bilgi edinmeye ç
 
 **Step 3: Zafiyet Karşılaştırılması**
 
-Tarayıcı, bulduğu bu bilgiler ile kendi zafiyet verita-banı arasında bir kıyaslama yaparak, bilinen zafiyetlere karşı savunmasız olup olmadığını kontrol eder.
+Tarayıcı, bulduğu bu bilgiler ile kendi zafiyet veritabanı arasında bir kıyaslama yaparak, bilinen zafiyetlere karşı savunmasız olup olmadığını kontrol eder.
 
 **Step 4: Rapor Oluşturma**
 
@@ -71,6 +70,8 @@ Bu eğitimde daha öncesinde de gördüğümüz gibi şirketlerin uyması gereke
 
 Çoğu zafiyet tarayıcısı özel uyumluluk politikaları oluşturma yeteneğine sahiptir.
 
+{% include match-quiz.html id="vuln-scan-types-tr" items=site.data.vuln_scan_types hint="Tarama türünü, doğru tanımıyla sürükleyip eşle." left_label="Tarama Türü" right_label="Tanım" success_text="🎉 Hepsini doğru eşleştirdin!" reset_text="Sıfırla" %}
+
 #### 3.3.3 Lab – Vulnerability Scanning with Kali Tools
 
 Daha önceki senaryomuzdaki gibi 10.6.6.23 IP adresli cihaz şüpheli davranışlar sergiliyor biz de onu inceliyoruz.
@@ -101,7 +102,7 @@ Portları ve servislerin sürümlerini öğrenmek için bir nmap taraması gerç
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_vuln/running.webp' | relative_url }}" width="760" height="90" alt="nmap -O komutu ile tespit edilen hedef işletim sistemi bilgisi">
 </div>
 
-**Step 2: Use the nmap Vulners script tos can for vulnerabilities**
+**Step 2: Use the nmap Vulners script to scan for vulnerabilities**
 
 Vulners scripti açık port ve yazılım versiyon bilgisini tutarak CPE veritabanı ile kıyaslama yapar. Böylece sistemin, bilinen zafiyetlere karşı açıklığı olup olmadığını kontrol eder.
 
@@ -140,7 +141,7 @@ Ara yüze eriştikten sonra tarama başlatmak için Scans > Tasks sayfasına gel
 
 **Step 3: Scan the target host for vulnerabilities**
 
-Yukarıdaki çıktıda da görüldüğü üzere IP adress yerine hedefimiz olan 10.6.6.23 veya gravemind.vm adresini yazabilirsiniz Yazdıktan sonra Start Scan butonuna tıklayın. Taramanın bitmesi biraz sürebilir.
+Yukarıdaki çıktıda da görüldüğü üzere IP address yerine hedefimiz olan 10.6.6.23 veya gravemind.vm adresini yazabilirsiniz Yazdıktan sonra Start Scan butonuna tıklayın. Taramanın bitmesi biraz sürebilir.
 
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_vuln/reports.webp' | relative_url }}" width="700" height="350" alt="GVM'de hedef IP adresi girilip taramanın başlatıldığı Start Scan ekranı">
@@ -152,38 +153,24 @@ Bizi böyle bir sayfa karşılıyor. Bu sayfada Date bilgisine tıklarsak buluna
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_vuln/tue.webp' | relative_url }}" width="700" height="250" alt="GVM tarama raporunda bulunan CVE ve host detaylarının listelendiği sayfa">
 </div>
 
-#### 3.3.4 Challanges to Consider When Running a Vulnerability Scan
+#### 3.3.4 Challenges to Consider When Running a Vulnerability Scan
 
-·        **Considering the best time to run a scan**: Lab ortamlarında değil de canlıya çıkan uygulamalar üzerinde testler yapmak çeşitli riskleri de yanında getirir.
-
-·        **Determing what protocols are in use:** Tarama yapmaya başlamdan önce ilk yapılacaklar arasında hedef sistemin hangi protokolleri kullandığını belirlemek vardır.
-
-·        **Network Topology:** Ağ tpolojisi saldırı planını yapmak için çok önemlidir. WAN gibi ağlar üzerinde test yapılması önerilmez. Hedefe en yakın konumda bulunarak tarama yapılması önerilir.
-
-·        **Bandwith Limitations:** Tarama yapılan ağın bant genişliği göz önünde bulundurulmalıdır. Örneğin VPN ya da WAN gibi düşük bant genişliğine sahip ağlar üzerinden tarama yapıyorsanız tarama seçeneklerini bu duruma göre ayarlamalısınız.
-
-·        **Query Throttling:** Bant genişliği sınırlı olan bir ağda tarayıcının trafiğini yavaşlatmaya denir. Örneğin Linux bir makinede Windows makine zafiyetlerini taramaya gerek yoktur.
-
-·        **Fragile Systems:** Tarama yaparken oluşan trafiğe dayanamayan cihazlar vardır. Bu tür sistemleri tararken ya daha az trafik göndermeli ya da tarama kapsamından çıkartmalısınız.
+- **Considering the best time to run a scan**: Lab ortamlarında değil de canlıya çıkan uygulamalar üzerinde testler yapmak çeşitli riskleri de yanında getirir.
+- **Determining what protocols are in use:** Tarama yapmaya başlamadan önce ilk yapılacaklar arasında hedef sistemin hangi protokolleri kullandığını belirlemek vardır.
+- **Network Topology:** Ağ topolojisi saldırı planını yapmak için çok önemlidir. WAN gibi ağlar üzerinde test yapılması önerilmez. Hedefe en yakın konumda bulunarak tarama yapılması önerilir.
+- **Bandwidth Limitations:** Tarama yapılan ağın bant genişliği göz önünde bulundurulmalıdır. Örneğin VPN ya da WAN gibi düşük bant genişliğine sahip ağlar üzerinden tarama yapıyorsanız tarama seçeneklerini bu duruma göre ayarlamalısınız.
+- **Query Throttling:** Bant genişliği sınırlı olan bir ağda tarayıcının trafiğini yavaşlatmaya denir. Örneğin Linux bir makinede Windows makine zafiyetlerini taramaya gerek yoktur.
+- **Fragile Systems:** Tarama yaparken oluşan trafiğe dayanamayan cihazlar vardır. Bu tür sistemleri tararken ya daha az trafik göndermeli ya da tarama kapsamından çıkartmalısınız.
 
 ### 3.4 Understanding How to Analyze Vulnerability Scan Results
 
 #### 3.4.1 Sources for Further Investigation of Vulnerabilities
 
-·        **US-CERT**: Kamu ve özel kuruluşlar ile birlikte zafiyet bilgi paylaşım etkinliğini artırmak amaçlarındandır.
-
-·        **The CERT Division of Carneige Mellon University**: Güvenlik açıkları üzerine araştırma yapar ve siber güvenlik alanındaki çalışmalara katkıda bulunur.
-
-·        **NIST**: Organizasyonların siber güvenlik duruşlarını iyileştirmek için kullanılabilecek standartları ve endüstri en iyi uygulamalarını özetlemektedir.
-
-·        **JPCERT**: Aynı US-CERT gibi fakat Japonya’nın siber güvenlik birliğidir.
-
-·        **CAPEC**: Bilinen saldırıların sözlüğüdür.
-
-·        **CVE**: Bir CVE Kimliği (ID), "CVE" harfleri ile başlayıp, yayım yılı ve kimlik numarasının sıralama kısmında dört veya daha fazla haneli bir sayı içerir (örneğin, CVE-YYYY-NNNN, dört haneli bir sıralama numarasıyla; CVE-YYYY-NNNNN, beş haneli sıralama numarasıyla; CVE-YYYY-NNNNNNN, yedi haneli sıralama numarasıyla vb.).
-
-·        **CWE**: Zafiyetlerin temel nedenleri olan yazılım güvenliği zayıflıklarını tanımlamak için ortak bir dil oluşturmak
-
-**CVSS**: Bir zafiyetin ciddiyetini hesaplamak için en yaygın kullanılan standartlardan biri, Ortak Zafiyet Skorlama Sistemi (CVSS)'dir.
-
-
+- **US-CERT**: Kamu ve özel kuruluşlar ile birlikte zafiyet bilgi paylaşım etkinliğini artırmak amaçlarındandır.
+- **The CERT Division of Carnegie Mellon University**: Güvenlik açıkları üzerine araştırma yapar ve siber güvenlik alanındaki çalışmalara katkıda bulunur.
+- **NIST**: Organizasyonların siber güvenlik duruşlarını iyileştirmek için kullanılabilecek standartları ve endüstri en iyi uygulamalarını özetlemektedir.
+- **JPCERT**: Aynı US-CERT gibi fakat Japonya’nın siber güvenlik birliğidir.
+- **CAPEC**: Bilinen saldırıların sözlüğüdür.
+- **CVE**: Bir CVE Kimliği (ID), "CVE" harfleri ile başlayıp, yayım yılı ve kimlik numarasının sıralama kısmında dört veya daha fazla haneli bir sayı içerir (örneğin, CVE-YYYY-NNNN, dört haneli bir sıralama numarasıyla; CVE-YYYY-NNNNN, beş haneli sıralama numarasıyla; CVE-YYYY-NNNNNNN, yedi haneli sıralama numarasıyla vb.).
+- **CWE**: Zafiyetlerin temel nedenleri olan yazılım güvenliği zayıflıklarını tanımlamak için ortak bir dil oluşturmak
+- **CVSS**: Bir zafiyetin ciddiyetini hesaplamak için en yaygın kullanılan standartlardan biri, Ortak Zafiyet Skorlama Sistemi (CVSS)'dir.

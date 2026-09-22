@@ -1,0 +1,18 @@
+- key: unauthenticated
+  term: "Unauthenticated Scan"
+  def: "Kullanıcı bilgisi olmadan yapılan, sadece ifşa edilmiş servis ve açık portları gören tarama."
+- key: authenticated
+  term: "Authenticated Scan"
+  def: "Kimlik bilgileriyle sisteme gerçekten giriş yaparak netstat gibi komutlarla iç bilgi toplayan tarama."
+- key: discovery
+  term: "Discovery Scan"
+  def: "Saldırı yüzeyini belirlemek için port ve üstündeki servisleri detaylı arayan tarama."
+- key: full
+  term: "Full Scan"
+  def: "Diğer tüm tarama türlerinin birlikte etkinleştirilmesiyle yapılan kapsamlı tarama."
+- key: stealth
+  term: "Stealth Scan"
+  def: "Hedefin fark etmeyeceği şekilde sessizce yapılan gizli tarama."
+- key: compliance
+  term: "Compliance Scan"
+  def: "Şirketlerin uyması gereken regülasyon ve politikalara uygunluğu test eden tarama."

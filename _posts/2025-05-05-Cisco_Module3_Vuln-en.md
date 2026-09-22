@@ -11,11 +11,10 @@ order: 5
 permalink: /en/Cisco_Module3_Vuln
 translation_url: /Cisco_Module3_Vuln
 ---
-## Cisco Ethical Hacker
 
 ## Module 3: Information Gathering and Vulnerability Scanning
 
-### 3.3 Understanding the Art of Performing Vulnerabilitiy Scans
+### 3.3 Understanding the Art of Performing Vulnerability Scans
 
 #### 3.3.1 How a Typical Automated Vulnerability Scanner Works
 
@@ -73,6 +72,8 @@ As we've seen earlier in this course, companies must comply with certain governa
 
 Most vulnerability scanners have the ability to create custom compliance policies.
 
+{% include match-quiz.html id="vuln-scan-types-en" items=site.data.vuln_scan_types_en hint="Drag each scan type onto its matching definition." left_label="Scan Type" right_label="Definition" success_text="🎉 You matched them all!" reset_text="Reset" %}
+
 #### 3.3.3 Lab – Vulnerability Scanning with Kali Tools
 
 As in our previous scenario, the device with IP address 10.6.6.23 is displaying suspicious behavior, so we're investigating it.
@@ -103,7 +104,7 @@ And the following command is used to find the operating system;
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_vuln/running.webp' | relative_url }}" width="760" height="90" alt="Target operating system information detected with the nmap -O command">
 </div>
 
-**Step 2: Use the nmap Vulners script tos can for vulnerabilities**
+**Step 2: Use the nmap Vulners script to scan for vulnerabilities**
 
 The Vulners script keeps the open port and software version information and compares it against the CPE database. This way, it checks whether the system is exposed to known vulnerabilities.
 
@@ -154,37 +155,24 @@ We're greeted by a page like this. On this page, if we click the Date informatio
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_vuln/tue.webp' | relative_url }}" width="700" height="250" alt="The page listing the CVE and host details found in the GVM scan report">
 </div>
 
-#### 3.3.4 Challanges to Consider When Running a Vulnerability Scan
+#### 3.3.4 Challenges to Consider When Running a Vulnerability Scan
 
-·        **Considering the best time to run a scan**: Running tests on live applications instead of lab environments brings various risks along with it.
-
-·        **Determing what protocols are in use:** Among the first things to do before starting a scan is to determine which protocols the target system uses.
-
-·        **Network Topology:** Network topology is very important for planning an attack. It is not recommended to test over networks like a WAN. It is recommended to perform the scan while positioned as close to the target as possible.
-
-·        **Bandwith Limitations:** The bandwidth of the network being scanned must be taken into account. For example, if you're scanning over low-bandwidth networks such as a VPN or a WAN, you should adjust your scan options accordingly.
-
-·        **Query Throttling:** This refers to slowing down the scanner's traffic on a network with limited bandwidth. For example, there's no need to scan for Windows machine vulnerabilities on a Linux machine.
-
-·        **Fragile Systems:** There are devices that can't withstand the traffic generated during scanning. When scanning such systems, you should either send less traffic or exclude them from the scan scope.
+- **Considering the best time to run a scan**: Running tests on live applications instead of lab environments brings various risks along with it.
+- **Determining what protocols are in use:** Among the first things to do before starting a scan is to determine which protocols the target system uses.
+- **Network Topology:** Network topology is very important for planning an attack. It is not recommended to test over networks like a WAN. It is recommended to perform the scan while positioned as close to the target as possible.
+- **Bandwidth Limitations:** The bandwidth of the network being scanned must be taken into account. For example, if you're scanning over low-bandwidth networks such as a VPN or a WAN, you should adjust your scan options accordingly.
+- **Query Throttling:** This refers to slowing down the scanner's traffic on a network with limited bandwidth. For example, there's no need to scan for Windows machine vulnerabilities on a Linux machine.
+- **Fragile Systems:** There are devices that can't withstand the traffic generated during scanning. When scanning such systems, you should either send less traffic or exclude them from the scan scope.
 
 ### 3.4 Understanding How to Analyze Vulnerability Scan Results
 
 #### 3.4.1 Sources for Further Investigation of Vulnerabilities
 
-·        **US-CERT**: Aims to increase vulnerability information-sharing activity together with public and private organizations.
-
-·        **The CERT Division of Carneige Mellon University**: Conducts research on security vulnerabilities and contributes to work in the field of cybersecurity.
-
-·        **NIST**: Summarizes standards and industry best practices that organizations can use to improve their cybersecurity posture.
-
-·        **JPCERT**: Like US-CERT, but it is Japan's cybersecurity union.
-
-·        **CAPEC**: A dictionary of known attacks.
-
-·        **CVE**: A CVE Identifier (ID) begins with the letters "CVE" and contains the publication year followed by a sequence number of four or more digits (for example, CVE-YYYY-NNNN with a four-digit sequence number; CVE-YYYY-NNNNN with a five-digit sequence number; CVE-YYYY-NNNNNNN with a seven-digit sequence number, etc.).
-
-·        **CWE**: Creating a common language for describing the software security weaknesses that are the root causes of vulnerabilities
-
-**CVSS**: One of the most widely used standards for calculating the severity of a vulnerability is the Common Vulnerability Scoring System (CVSS).
-
+- **US-CERT**: Aims to increase vulnerability information-sharing activity together with public and private organizations.
+- **The CERT Division of Carnegie Mellon University**: Conducts research on security vulnerabilities and contributes to work in the field of cybersecurity.
+- **NIST**: Summarizes standards and industry best practices that organizations can use to improve their cybersecurity posture.
+- **JPCERT**: Like US-CERT, but it is Japan's cybersecurity union.
+- **CAPEC**: A dictionary of known attacks.
+- **CVE**: A CVE Identifier (ID) begins with the letters "CVE" and contains the publication year followed by a sequence number of four or more digits (for example, CVE-YYYY-NNNN with a four-digit sequence number; CVE-YYYY-NNNNN with a five-digit sequence number; CVE-YYYY-NNNNNNN with a seven-digit sequence number, etc.).
+- **CWE**: Creating a common language for describing the software security weaknesses that are the root causes of vulnerabilities
+- **CVSS**: One of the most widely used standards for calculating the severity of a vulnerability is the Common Vulnerability Scoring System (CVSS).
