@@ -75,8 +75,71 @@ Grafiğin üstüne gelerek skorunuzun neden arttığını/azaldığını detayla
 
 Grafiğin aşağısında kategorilere ayrılmış güvenlik problemlerini bulabilirsiniz. Üzerlerine tıklayarak detayları inceleyebilirsiniz.
 
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/risk-overview-categories.webp' | relative_url }}" width="1000" height="49" alt="Devices, Internet-Facing Assets, Accounts, Applications, Cloud Assets kategorilerinin risk seviyeleri">
+<div class="doc-tabs">
+  <div class="doc-tab-buttons">
+    <button type="button" class="doc-tab-btn cat-tab-btn active" data-tab="cat-devices-tr"><span class="cat-icon">🖥️</span> Devices <span class="cat-risk-dot cat-risk-high" title="Risk level: High"></span></button>
+    <button type="button" class="doc-tab-btn cat-tab-btn" data-tab="cat-internet-tr"><span class="cat-icon">🌐</span> Internet Facing <span class="cat-risk-dot cat-risk-medium" title="Risk level: Medium"></span></button>
+    <button type="button" class="doc-tab-btn cat-tab-btn" data-tab="cat-accounts-tr"><span class="cat-icon">👤</span> Accounts <span class="cat-risk-dot cat-risk-high" title="Risk level: High"></span></button>
+    <button type="button" class="doc-tab-btn cat-tab-btn" data-tab="cat-apps-tr"><span class="cat-icon">🧩</span> Applications <span class="cat-risk-dot cat-risk-medium" title="Risk level: Medium"></span></button>
+    <button type="button" class="doc-tab-btn cat-tab-btn" data-tab="cat-cloud-tr"><span class="cat-icon">☁️</span> Cloud Assets <span class="cat-risk-dot cat-risk-high" title="Risk level: High"></span></button>
+  </div>
+  <div class="doc-tab-content">
+    <div class="doc-tab-panel active" id="cat-devices-tr">
+      <table>
+        <thead><tr><th>Başlık</th><th>Açıklama</th></tr></thead>
+        <tbody>
+          <tr><td>Risk Summary</td><td>İlgili başlık ile aylık güvenliğinizi gösteren grafik</td></tr>
+          <tr><td>Risk Factors</td><td>Üstüne basarak diğer sayfalarda daha detaylı inceleyebilirsiniz</td></tr>
+          <tr><td>Attack Surface</td><td><strong>Discovered Devices:</strong> TrendAI'ın cihazlara olan erişim düzeyi<br><strong>Devices Can Be Assessed for Risk:</strong> Riskte olan cihazların risk düzeyi<br><strong>Devices with Managed Agents:</strong> TrendAI tarafından yönetilen cihazların risk düzeyi</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="doc-tab-panel" id="cat-internet-tr">
+      <table>
+        <thead><tr><th>Başlık</th><th>Açıklama</th></tr></thead>
+        <tbody>
+          <tr><td>Risk Summary</td><td>İlgili başlık ile aylık güvenliğinizi gösteren grafik</td></tr>
+          <tr><td>Risk Factors</td><td>Üstüne basarak diğer sayfalarda daha detaylı inceleyebilirsiniz</td></tr>
+          <tr><td>Attack Surface</td><td><strong>Domains:</strong> Internet taraması ile bulunmuş domain adresleri<br><strong>IPs:</strong> Internet taraması ile bulunmuş IP adresleri</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="doc-tab-panel" id="cat-accounts-tr">
+      <table>
+        <thead><tr><th>Başlık</th><th>Açıklama</th></tr></thead>
+        <tbody>
+          <tr><td>Risk Summary</td><td>İlgili başlık ile aylık güvenliğinizi gösteren grafik</td></tr>
+          <tr><td>Risk Factors</td><td>Üstüne basarak diğer sayfalarda daha detaylı inceleyebilirsiniz</td></tr>
+          <tr><td>Attack Surface</td><td><strong>Domain Accounts:</strong> AD ve ajanlardan gelen domain hesap sayısı<br><strong>Service Accounts:</strong> Entra ID/Active Directory tarafından tamamlanan servis hesap sayısı</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="doc-tab-panel" id="cat-apps-tr">
+      <table>
+        <thead><tr><th>Başlık</th><th>Açıklama</th></tr></thead>
+        <tbody>
+          <tr><td>Risk Summary</td><td>İlgili başlık ile aylık güvenliğinizi gösteren grafik</td></tr>
+          <tr><td>Risk Factors</td><td>Üstüne basarak diğer sayfalarda daha detaylı inceleyebilirsiniz</td></tr>
+          <tr><td>Attack Surface</td><td><strong>Public Cloud Apps:</strong> TrendAI tarafından tanımlanan bulut tabanlı uygulamalar<br><strong>Local Apps:</strong> TrendAI tarafından keşfedilen yerel uygulamalar<br><strong>Connected SaaS apps:</strong> TrendAI ve şirketiniz tarafından yönetilen SaaS uygulamaları</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="doc-tab-panel" id="cat-cloud-tr">
+      <table>
+        <thead><tr><th>Başlık</th><th>Açıklama</th></tr></thead>
+        <tbody>
+          <tr><td>Risk Summary</td><td>İlgili başlık ile aylık güvenliğinizi gösteren grafik</td></tr>
+          <tr><td>Risk Factors</td><td>Üstüne basarak diğer sayfalarda daha detaylı inceleyebilirsiniz</td></tr>
+          <tr><td>Attack Surface</td><td><strong>Cloud Assets:</strong> Bulut tabanlı sistemlerden keşfedilen bulut tabanlı varlıklar</td></tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
 </div>
 
   </div>

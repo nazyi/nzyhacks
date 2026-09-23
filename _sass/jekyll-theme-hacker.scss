@@ -2067,6 +2067,46 @@ a.post-lesson-link:hover {
   box-shadow: none;
 }
 
+.app-frame-content .doc-step-body table {
+  border-color: #3d2f42;
+  box-shadow: none;
+}
+
+.app-frame-content .doc-step-body td {
+  color: #cfc9d6;
+  border-bottom-color: #3d2f42;
+}
+
+.app-frame-content .doc-step-body tbody tr:hover td {
+  background: rgba(255, 92, 138, 0.1);
+}
+
+.cat-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cat-icon {
+  font-size: 1.05em;
+  line-height: 1;
+}
+
+.cat-risk-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cat-risk-dot.cat-risk-high {
+  background: #ff5c5c;
+}
+
+.cat-risk-dot.cat-risk-medium {
+  background: #ffc861;
+}
+
 @media (max-width: 640px) {
   .app-frame {
     flex-direction: column;

@@ -77,8 +77,71 @@ Hovering over the chart shows the details of why your score went up or down.
 
 Below the chart you'll find security issues broken down by category. Click on them to see the details.
 
-<div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/risk-overview-categories.webp' | relative_url }}" width="1000" height="49" alt="Risk levels for the Devices, Internet-Facing Assets, Accounts, Applications, and Cloud Assets categories">
+<div class="doc-tabs">
+  <div class="doc-tab-buttons">
+    <button type="button" class="doc-tab-btn cat-tab-btn active" data-tab="cat-devices-en"><span class="cat-icon">🖥️</span> Devices <span class="cat-risk-dot cat-risk-high" title="Risk level: High"></span></button>
+    <button type="button" class="doc-tab-btn cat-tab-btn" data-tab="cat-internet-en"><span class="cat-icon">🌐</span> Internet Facing <span class="cat-risk-dot cat-risk-medium" title="Risk level: Medium"></span></button>
+    <button type="button" class="doc-tab-btn cat-tab-btn" data-tab="cat-accounts-en"><span class="cat-icon">👤</span> Accounts <span class="cat-risk-dot cat-risk-high" title="Risk level: High"></span></button>
+    <button type="button" class="doc-tab-btn cat-tab-btn" data-tab="cat-apps-en"><span class="cat-icon">🧩</span> Applications <span class="cat-risk-dot cat-risk-medium" title="Risk level: Medium"></span></button>
+    <button type="button" class="doc-tab-btn cat-tab-btn" data-tab="cat-cloud-en"><span class="cat-icon">☁️</span> Cloud Assets <span class="cat-risk-dot cat-risk-high" title="Risk level: High"></span></button>
+  </div>
+  <div class="doc-tab-content">
+    <div class="doc-tab-panel active" id="cat-devices-en">
+      <table>
+        <thead><tr><th>Heading</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Risk Summary</td><td>A chart showing your monthly security for this category</td></tr>
+          <tr><td>Risk Factors</td><td>Click through to review these in more detail on other pages</td></tr>
+          <tr><td>Attack Surface</td><td><strong>Discovered Devices:</strong> TrendAI's level of access to devices<br><strong>Devices Can Be Assessed for Risk:</strong> Risk level of devices at risk<br><strong>Devices with Managed Agents:</strong> Risk level of devices managed by TrendAI</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="doc-tab-panel" id="cat-internet-en">
+      <table>
+        <thead><tr><th>Heading</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Risk Summary</td><td>A chart showing your monthly security for this category</td></tr>
+          <tr><td>Risk Factors</td><td>Click through to review these in more detail on other pages</td></tr>
+          <tr><td>Attack Surface</td><td><strong>Domains:</strong> Domain addresses found via internet scanning<br><strong>IPs:</strong> IP addresses found via internet scanning</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="doc-tab-panel" id="cat-accounts-en">
+      <table>
+        <thead><tr><th>Heading</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Risk Summary</td><td>A chart showing your monthly security for this category</td></tr>
+          <tr><td>Risk Factors</td><td>Click through to review these in more detail on other pages</td></tr>
+          <tr><td>Attack Surface</td><td><strong>Domain Accounts:</strong> Number of domain accounts from AD and agents<br><strong>Service Accounts:</strong> Number of service accounts completed by Entra ID/Active Directory</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="doc-tab-panel" id="cat-apps-en">
+      <table>
+        <thead><tr><th>Heading</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Risk Summary</td><td>A chart showing your monthly security for this category</td></tr>
+          <tr><td>Risk Factors</td><td>Click through to review these in more detail on other pages</td></tr>
+          <tr><td>Attack Surface</td><td><strong>Public Cloud Apps:</strong> Cloud-based applications identified by TrendAI<br><strong>Local Apps:</strong> Local applications discovered by TrendAI<br><strong>Connected SaaS apps:</strong> SaaS applications managed by TrendAI and your company</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="doc-tab-panel" id="cat-cloud-en">
+      <table>
+        <thead><tr><th>Heading</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Risk Summary</td><td>A chart showing your monthly security for this category</td></tr>
+          <tr><td>Risk Factors</td><td>Click through to review these in more detail on other pages</td></tr>
+          <tr><td>Attack Surface</td><td><strong>Cloud Assets:</strong> Cloud-based assets discovered from cloud-based systems</td></tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
 </div>
 
   </div>
