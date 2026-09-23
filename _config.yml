@@ -18,6 +18,11 @@ defaults:
     values:
       image: /assets/images/favicon/android-chrome-512x512.png
       lang: tr
+  - scope:
+      path: ""
+      type: posts
+    values:
+      wide_content: true
 
 # GitHub Pages'in native derleyicisi Gemfile'ı okumaz; eklentilerin
 # gerçekten devreye girmesi için burada açıkça listelenmeleri gerekir.

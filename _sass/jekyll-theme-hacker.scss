@@ -1219,6 +1219,18 @@ code {
   box-shadow: 0 10px 30px rgba(214, 51, 108, 0.08);
 }
 
+.post-layout-wide {
+  max-width: 1240px;
+}
+
+.post-layout-wide .post-wrapper {
+  max-width: 1000px;
+}
+
+.container:has(.post-layout-wide) {
+  max-width: 1240px;
+}
+
 /* İçindekiler (sadece geniş ekranlarda)
 */
 
@@ -1881,7 +1893,7 @@ a.post-lesson-link:hover {
   border-top: none;
   border-radius: 0 14px 14px 14px;
   background: var(--color-surface);
-  padding: 28px;
+  padding: 16px;
 }
 
 .doc-tab-panel {
@@ -1890,6 +1902,182 @@ a.post-lesson-link:hover {
 
 .doc-tab-panel.active {
   display: block;
+}
+
+/* Numarali adim kartlari (dokumantasyon icerigi icin)
+*/
+
+.doc-step {
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 20px 24px 24px;
+  margin: 0 0 20px;
+  background: var(--color-bg);
+}
+
+.doc-step:last-child {
+  margin-bottom: 0;
+}
+
+.doc-step-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.doc-step-number {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.doc-step-title {
+  margin: 0;
+  font-size: 1.05em;
+  padding-bottom: 0;
+  border-bottom: none;
+  color: var(--color-primary-strong);
+}
+
+.doc-step-body {
+  color: var(--color-text);
+}
+
+.doc-step-body p:last-child {
+  margin-bottom: 0;
+}
+
+.doc-step-body img {
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+/* Gercek uygulama gorunumu (sol menu + sekmeler bir arada)
+*/
+
+.app-frame {
+  display: flex;
+  align-items: stretch;
+  background: #14101a;
+  border: 1px solid #2c2434;
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 28px 0;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+
+.app-frame-nav {
+  flex: 0 0 180px;
+  padding: 20px 16px;
+  border-right: 1px solid #2c2434;
+}
+
+.app-frame-nav-group {
+  margin: 0 0 10px;
+  font-size: 0.72em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #766f82;
+}
+
+.app-frame-nav-item {
+  margin: 0;
+  padding: 9px 10px;
+  border-radius: 8px;
+  font-size: 0.88em;
+  font-weight: 600;
+  color: #9d96a8;
+}
+
+.app-frame-nav-item.active {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-left: 3px solid #ff5c8a;
+  padding-left: 7px;
+}
+
+.app-frame-content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.app-frame-content .doc-tabs {
+  margin: 0;
+  padding: 16px 16px 0;
+}
+
+.app-frame-content .doc-tab-buttons {
+  border-bottom-color: #2c2434;
+}
+
+.app-frame-content .doc-tab-btn {
+  background: transparent;
+  border-color: #2c2434;
+  color: #9d96a8;
+}
+
+.app-frame-content .doc-tab-btn:hover {
+  color: #fff;
+}
+
+.app-frame-content .doc-tab-btn.active {
+  background: #1e1826;
+  color: #fff;
+  border-bottom-color: #1e1826;
+}
+
+.app-frame-content .doc-tab-content {
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  background: #1e1826;
+}
+
+.app-frame-content .doc-step {
+  background: #241d2d;
+  border-color: #35293f;
+}
+
+.app-frame-content .doc-step-title {
+  color: #ff5c8a;
+}
+
+.app-frame-content .doc-step-number {
+  background: #ff5c8a;
+}
+
+.app-frame-content .doc-step-body,
+.app-frame-content .doc-step-body p,
+.app-frame-content .doc-step-body strong {
+  color: #cfc9d6;
+}
+
+@media (max-width: 640px) {
+  .app-frame {
+    flex-direction: column;
+  }
+
+  .app-frame-nav {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+  }
+
+  .app-frame-nav-group {
+    margin: 0;
+  }
 }
 
 /* Tiklanabilir durum diyagrami

@@ -61,7 +61,7 @@ layout: default
   {% endif %}
 {% endif %}
 
-<div class="post-layout">
+<div class="post-layout{% if page.wide_content %} post-layout-wide{% endif %}">
   <aside class="post-toc" id="post-toc" aria-label="{{ t.toc_aria }}">
     <p class="post-toc-title">{{ t.toc_title }}</p>
     <ul id="post-toc-list"></ul>
