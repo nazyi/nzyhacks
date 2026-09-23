@@ -2062,6 +2062,11 @@ a.post-lesson-link:hover {
   color: #cfc9d6;
 }
 
+.app-frame-content .doc-step-body img {
+  border-color: #3d2f42;
+  box-shadow: none;
+}
+
 @media (max-width: 640px) {
   .app-frame {
     flex-direction: column;
