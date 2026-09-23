@@ -20,8 +20,8 @@ Selam, bu seride Trend Micro'nun TrendAI Vision One platformunu size anlatmaya Ã
 
 <div class="app-frame">
   <div class="app-frame-nav">
-    <p class="app-frame-nav-group">Cyber Risk Exposure Management</p>
-    <p class="app-frame-nav-item active">Cyber Risk Overview</p>
+    <p class="app-frame-nav-group" lang="en">Cyber Risk Exposure Management</p>
+    <p class="app-frame-nav-item active" lang="en">Cyber Risk Overview</p>
   </div>
   <div class="app-frame-content">
   <div class="doc-tabs">
