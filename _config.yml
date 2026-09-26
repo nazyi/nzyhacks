@@ -16,7 +16,10 @@ defaults:
   - scope:
       path: ""
     values:
-      image: /assets/images/favicon/android-chrome-512x512.png
+      image:
+        path: /assets/images/favicon/android-chrome-512x512.png
+        width: 512
+        height: 512
       lang: tr
   - scope:
       path: ""
