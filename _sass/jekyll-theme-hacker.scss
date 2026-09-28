@@ -2006,6 +2006,38 @@ a.post-lesson-link:hover {
   padding-left: 7px;
 }
 
+.app-frame-nav-item.doc-tab-btn {
+  display: block;
+  width: 100%;
+  margin: 0 0 2px;
+  padding: 9px 10px;
+  border: none;
+  border-left: 3px solid transparent;
+  border-radius: 8px;
+  background: none;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.app-frame-nav-item.doc-tab-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.app-frame-nav-item.doc-tab-btn.active {
+  border-left-color: #ff5c8a;
+  padding-left: 7px;
+}
+
+.app-frame > .doc-tabs {
+  display: flex;
+  align-items: stretch;
+  flex: 1 1 auto;
+  width: 100%;
+  margin-top: 0;
+}
+
 .app-frame-content {
   flex: 1 1 auto;
   min-width: 0;
@@ -2112,12 +2144,25 @@ a.post-lesson-link:hover {
     flex-direction: column;
   }
 
+  .app-frame > .doc-tabs {
+    flex-direction: column;
+  }
+
   .app-frame-nav {
     flex: 0 0 auto;
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 12px 16px;
+  }
+
+  .app-frame-nav-tabs {
+    display: block;
+    padding: 14px 16px;
+  }
+
+  .app-frame-nav-tabs .app-frame-nav-group {
+    margin-bottom: 8px;
   }
 
   .app-frame-nav-group {
