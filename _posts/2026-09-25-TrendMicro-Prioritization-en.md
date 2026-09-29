@@ -6,7 +6,7 @@ description: "The Prioritization section of the TrendAI Vision One platform: wha
 tool: Trend Micro
 logo: "/assets/images/blog_icon/trendmicro.png"
 author: nazy
-title: TrendAI Vision One - Prioritization
+title: TrendAI Vision One Platform - Prioritization
 tags: [Trend Micro, Cyber Risk]
 order: 20
 wide_content: true

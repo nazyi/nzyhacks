@@ -823,22 +823,34 @@
 
     <script>
       (function () {
+        function activateTab(btn) {
+          var tabs = btn.closest('.doc-tabs');
+          if (!tabs) return;
+          tabs.querySelectorAll('.doc-tab-btn').forEach(function (b) {
+            b.classList.remove('active');
+          });
+          tabs.querySelectorAll('.doc-tab-panel').forEach(function (p) {
+            p.classList.remove('active');
+          });
+          btn.classList.add('active');
+          var panel = document.getElementById(btn.dataset.tab);
+          if (panel) panel.classList.add('active');
+        }
+
         var buttons = document.querySelectorAll('.doc-tab-btn');
         buttons.forEach(function (btn) {
           btn.addEventListener('click', function () {
-            var tabs = btn.closest('.doc-tabs');
-            if (!tabs) return;
-            tabs.querySelectorAll('.doc-tab-btn').forEach(function (b) {
-              b.classList.remove('active');
-            });
-            tabs.querySelectorAll('.doc-tab-panel').forEach(function (p) {
-              p.classList.remove('active');
-            });
-            btn.classList.add('active');
-            var panel = document.getElementById(btn.dataset.tab);
-            if (panel) panel.classList.add('active');
+            activateTab(btn);
           });
         });
+
+        if (window.location.hash) {
+          var targetBtn = document.querySelector('.doc-tab-btn[data-tab="' + window.location.hash.slice(1) + '"]');
+          if (targetBtn) {
+            activateTab(targetBtn);
+            targetBtn.scrollIntoView({ block: 'center' });
+          }
+        }
       })();
     </script>
 

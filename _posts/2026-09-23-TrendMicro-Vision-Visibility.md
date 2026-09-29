@@ -5,7 +5,7 @@ description: "TrendAI Vision One platformunun Visibility bölümü: Cyber Risk O
 tool: Trend Micro
 logo: "/assets/images/blog_icon/trendmicro.png"
 author: nazy
-title: TrendAI Vision One - Visibility
+title: TrendAI Vision One Platform - Visibility
 tags: [Trend Micro, Cyber Risk]
 order: 10
 wide_content: true
