@@ -46,7 +46,7 @@ The first page I want to cover is **Cyber Risk Overview**, found under **Cyber R
 The chart shows your overall score, and with the **Compare with other orgs** option you can compare your company against other organizations.
 
 <div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/risk-overview-score.webp' | relative_url }}" width="1000" height="176" alt="The Cyber Risk Index chart and the Compare with other orgs option">
+  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/risk-overview-score.webp' | relative_url }}" width="2439" height="437" alt="The Cyber Risk Index chart and the Compare with other orgs option">
 </div>
 
   </div>
@@ -160,7 +160,7 @@ Below the chart you'll find security issues broken down by category. Click on th
 You can view the factors affecting your score here.
 
 <div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/exposure-overview-factors.webp' | relative_url }}" width="1000" height="492" alt="The Exposure Overview page, with Vulnerabilities and System Configuration as contributing factors">
+  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/exposure-overview-factors.webp' | relative_url }}" width="2560" height="1260" alt="The Exposure Overview page, with Vulnerabilities and System Configuration as contributing factors">
 </div>
 
   </div>
@@ -176,7 +176,7 @@ You can view the factors affecting your score here.
 On the vulnerabilities page you can see the Vulnerability Assessment Coverage.
 
 <div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/exposure-vuln-assessment-scope.webp' | relative_url }}" width="1000" height="492" alt="Vulnerability Assessment Coverage: the percentage of assessed assets">
+  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/exposure-vuln-assessment-scope.webp' | relative_url }}" width="2560" height="1260" alt="Vulnerability Assessment Coverage: the percentage of assessed assets">
 </div>
 
   </div>
@@ -192,7 +192,7 @@ On the vulnerabilities page you can see the Vulnerability Assessment Coverage.
 You can also view the vulnerabilities detected in your company.
 
 <div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/exposure-detected-vulns.webp' | relative_url }}" width="1000" height="492" alt="Detected Vulnerabilities and Mean Time to Patch metrics">
+  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/exposure-detected-vulns.webp' | relative_url }}" width="2560" height="1260" alt="Detected Vulnerabilities and Mean Time to Patch metrics">
 </div>
 
   </div>
@@ -208,7 +208,7 @@ You can also view the vulnerabilities detected in your company.
 Going to the system configuration section, you can check for misconfigured settings.
 
 <div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/exposure-misconfigurations.webp' | relative_url }}" width="1000" height="492" alt="Cloud Asset Misconfigurations and the number of Compliance Violations">
+  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/exposure-misconfigurations.webp' | relative_url }}" width="2560" height="1260" alt="Cloud Asset Misconfigurations and the number of Compliance Violations">
 </div>
 
   </div>
@@ -227,7 +227,7 @@ Going to the system configuration section, you can check for misconfigured setti
 Here you can review the attacks detected in your company.
 
 <div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/attack-overview-list.webp' | relative_url }}" width="1000" height="492" alt="The Attack Overview chart and the Attack Phase Overview heat map">
+  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/attack-overview-list.webp' | relative_url }}" width="2560" height="1260" alt="The Attack Overview chart and the Attack Phase Overview heat map">
 </div>
 
   </div>
@@ -243,7 +243,7 @@ Here you can review the attacks detected in your company.
 Below, you can see information about cyber threats, along with the remediation actions available for each attack.
 
 <div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/attack-threat-detail.webp' | relative_url }}" width="1000" height="492" alt="The cyber threats table and the number of available remediation actions for each threat">
+  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/attack-threat-detail.webp' | relative_url }}" width="2560" height="1260" alt="The cyber threats table and the number of available remediation actions for each threat">
 </div>
 
   </div>
@@ -259,7 +259,7 @@ Below, you can see information about cyber threats, along with the remediation a
 If you click on a cyber threat to inspect it, you'll find recommended actions for lowering your overall risk score.
 
 <div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/attack-remediation-actions.webp' | relative_url }}" width="1000" height="492" alt="The Phishing threat detail page and the recommended actions to reduce risk">
+  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/attack-remediation-actions.webp' | relative_url }}" width="2560" height="1260" alt="The Phishing threat detail page and the recommended actions to reduce risk">
 </div>
 
   </div>
@@ -278,7 +278,7 @@ If you click on a cyber threat to inspect it, you'll find recommended actions fo
 Here you can review end-user security configurations, email security, and network security elements.
 
 <div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/security-configuration-overview.webp' | relative_url }}" width="1000" height="492" alt="Security Configuration Overview: risk levels for Endpoint, Email, and Network Security">
+  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/security-configuration-overview.webp' | relative_url }}" width="2560" height="1260" alt="Security Configuration Overview: risk levels for Endpoint, Email, and Network Security">
 </div>
 
   </div>

@@ -44,7 +44,7 @@ Selam, bu seride Trend Micro'nun TrendAI Vision One platformunu size anlatmaya �
 Grafikte genel skorunuzu görebilmekle beraber **Compare with other orgs** seçeneği ile şirketinizi diğer kurumlarla karşılaştırabilirsiniz.
 
 <div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/risk-overview-score.webp' | relative_url }}" width="1000" height="176" alt="Cyber Risk Index grafiği ve Compare with other orgs seçeneği">
+  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/risk-overview-score.webp' | relative_url }}" width="2439" height="437" alt="Cyber Risk Index grafiği ve Compare with other orgs seçeneği">
 </div>
 
   </div>
@@ -158,7 +158,7 @@ Grafiğin aşağısında kategorilere ayrılmış güvenlik problemlerini bulabi
 Skorunuzu etkileyen faktörleri buradan görüntüleyebilirsiniz.
 
 <div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/exposure-overview-factors.webp' | relative_url }}" width="1000" height="492" alt="Exposure Overview sayfası, Vulnerabilities ve System Configuration katkı faktörleri">
+  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/exposure-overview-factors.webp' | relative_url }}" width="2560" height="1260" alt="Exposure Overview sayfası, Vulnerabilities ve System Configuration katkı faktörleri">
 </div>
 
   </div>
@@ -174,7 +174,7 @@ Skorunuzu etkileyen faktörleri buradan görüntüleyebilirsiniz.
 Güvenlik açıkları sayfasında Güvenlik Açıkları Değerlendirme Kapsamını görebilirsiniz.
 
 <div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/exposure-vuln-assessment-scope.webp' | relative_url }}" width="1000" height="492" alt="Vulnerability Assessment Coverage: değerlendirilen varlıkların kapsam yüzdesi">
+  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/exposure-vuln-assessment-scope.webp' | relative_url }}" width="2560" height="1260" alt="Vulnerability Assessment Coverage: değerlendirilen varlıkların kapsam yüzdesi">
 </div>
 
   </div>
@@ -190,7 +190,7 @@ Güvenlik açıkları sayfasında Güvenlik Açıkları Değerlendirme Kapsamın
 Aynı zamanda şirkette tespit edilen güvenlik açıklarını da görüntüleyebilirsiniz.
 
 <div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/exposure-detected-vulns.webp' | relative_url }}" width="1000" height="492" alt="Detected Vulnerabilities ve Mean Time to Patch metrikleri">
+  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/exposure-detected-vulns.webp' | relative_url }}" width="2560" height="1260" alt="Detected Vulnerabilities ve Mean Time to Patch metrikleri">
 </div>
 
   </div>
@@ -206,7 +206,7 @@ Aynı zamanda şirkette tespit edilen güvenlik açıklarını da görüntüleye
 Sistem ayarlarına gelerek yanlış yapılandırılmış ayarlara bakabilirsiniz.
 
 <div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/exposure-misconfigurations.webp' | relative_url }}" width="1000" height="492" alt="Cloud Asset Misconfigurations ve Compliance Violations sayısı">
+  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/exposure-misconfigurations.webp' | relative_url }}" width="2560" height="1260" alt="Cloud Asset Misconfigurations ve Compliance Violations sayısı">
 </div>
 
   </div>
@@ -225,7 +225,7 @@ Sistem ayarlarına gelerek yanlış yapılandırılmış ayarlara bakabilirsiniz
 Burada şirketinizde tespit edilen saldırıları inceleyebilirsiniz.
 
 <div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/attack-overview-list.webp' | relative_url }}" width="1000" height="492" alt="Attack Overview grafiği ve Attack Phase Overview ısı haritası">
+  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/attack-overview-list.webp' | relative_url }}" width="2560" height="1260" alt="Attack Overview grafiği ve Attack Phase Overview ısı haritası">
 </div>
 
   </div>
@@ -241,7 +241,7 @@ Burada şirketinizde tespit edilen saldırıları inceleyebilirsiniz.
 Aşağıda siber tehditler hakkında bilgi ve bu saldırılar için yapabileceğiniz iyileştirme aksiyonlarını görebilirsiniz.
 
 <div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/attack-threat-detail.webp' | relative_url }}" width="1000" height="492" alt="Cyber threats tablosu ve her tehdit için mevcut Remediation Action sayısı">
+  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/attack-threat-detail.webp' | relative_url }}" width="2560" height="1260" alt="Cyber threats tablosu ve her tehdit için mevcut Remediation Action sayısı">
 </div>
 
   </div>
@@ -257,7 +257,7 @@ Aşağıda siber tehditler hakkında bilgi ve bu saldırılar için yapabileceğ
 Bir siber tehdide tıklayıp incelediğinizde, genel risk skorunuzu nasıl düşürebileceğinize dair aksiyon önerileri karşınıza çıkar.
 
 <div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/attack-remediation-actions.webp' | relative_url }}" width="1000" height="492" alt="Phishing tehdidi detay sayfası ve risk azaltmak için önerilen aksiyonlar">
+  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/attack-remediation-actions.webp' | relative_url }}" width="2560" height="1260" alt="Phishing tehdidi detay sayfası ve risk azaltmak için önerilen aksiyonlar">
 </div>
 
   </div>
@@ -276,7 +276,7 @@ Bir siber tehdide tıklayıp incelediğinizde, genel risk skorunuzu nasıl düş
 Burada son kullanıcı güvenlik yapılandırmalarını, e-posta güvenliğini ve ağ güvenliği unsurlarını inceleyebilirsiniz.
 
 <div style="text-align: center;">
-  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/security-configuration-overview.webp' | relative_url }}" width="1000" height="492" alt="Security Configuration Overview: Endpoint, Email ve Network Security risk seviyeleri">
+  <img loading="lazy" src="{{ '/assets/images/trendmicro_vision1/security-configuration-overview.webp' | relative_url }}" width="2560" height="1260" alt="Security Configuration Overview: Endpoint, Email ve Network Security risk seviyeleri">
 </div>
 
   </div>
