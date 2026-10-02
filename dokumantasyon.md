@@ -26,8 +26,28 @@ Kurumsal araçlarla ilgili kurulum, yapılandırma ve kullanım notlarımı bu s
   </div>
   <div class="doc-tab-content">
     {% for grup in gruplar %}
-      <div class="doc-tab-panel{% if forloop.first %} active{% endif %}" id="doc-tab-{{ grup.name | slugify }}">
-        {% include solution-list.html posts=grup.items %}
+      {% assign tool_slug = grup.name | slugify %}
+      <div class="doc-tab-panel{% if forloop.first %} active{% endif %}" id="doc-tab-{{ tool_slug }}">
+        {% assign walkthrough_items = grup.items | where_exp: "item", "item.doc_type != 'troubleshooting'" %}
+        {% assign troubleshooting_items = grup.items | where: "doc_type", "troubleshooting" %}
+        {% if troubleshooting_items.size > 0 %}
+          <div class="doc-tabs doc-tabs-sub">
+            <div class="doc-tab-buttons">
+              <button type="button" class="doc-tab-btn active" data-tab="doc-subtab-{{ tool_slug }}-walkthrough">Dokümantasyon</button>
+              <button type="button" class="doc-tab-btn" data-tab="doc-subtab-{{ tool_slug }}-troubleshooting">Sorun Giderme</button>
+            </div>
+            <div class="doc-tab-content">
+              <div class="doc-tab-panel active" id="doc-subtab-{{ tool_slug }}-walkthrough">
+                {% include solution-list.html posts=walkthrough_items %}
+              </div>
+              <div class="doc-tab-panel" id="doc-subtab-{{ tool_slug }}-troubleshooting">
+                {% include solution-list.html posts=troubleshooting_items %}
+              </div>
+            </div>
+          </div>
+        {% else %}
+          {% include solution-list.html posts=walkthrough_items %}
+        {% endif %}
       </div>
     {% endfor %}
     {% unless grup_isimleri contains "Trend Micro" %}

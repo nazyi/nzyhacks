@@ -841,14 +841,27 @@
         buttons.forEach(function (btn) {
           btn.addEventListener('click', function () {
             activateTab(btn);
+            var panel = document.getElementById(btn.dataset.tab);
+            if (panel) {
+              panel.querySelectorAll('.doc-tabs-sub .doc-tab-btn:first-child').forEach(function (firstBtn) {
+                activateTab(firstBtn);
+              });
+            }
           });
         });
 
         if (window.location.hash) {
-          var targetBtn = document.querySelector('.doc-tab-btn[data-tab="' + window.location.hash.slice(1) + '"]');
-          if (targetBtn) {
-            activateTab(targetBtn);
-            targetBtn.scrollIntoView({ block: 'center' });
+          var targetEl = document.getElementById(window.location.hash.slice(1));
+          if (targetEl) {
+            var node = targetEl;
+            while (node) {
+              var tabs = node.closest('.doc-tabs');
+              if (!tabs) break;
+              var btn = tabs.querySelector('.doc-tab-btn[data-tab="' + node.id + '"]');
+              if (btn) activateTab(btn);
+              node = tabs.closest('.doc-tab-panel');
+            }
+            targetEl.scrollIntoView({ block: 'center' });
           }
         }
       })();

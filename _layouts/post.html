@@ -15,7 +15,10 @@ layout: default
       {% assign back_url = '/en/modul-cozumler' %}
       {% assign back_text = 'Back to Module Write-ups' %}
     {% when 'dokumantasyon' %}
-      {% if page.tool %}
+      {% if page.tool and page.doc_type == 'troubleshooting' %}
+        {% assign tool_slug = page.tool | slugify %}
+        {% assign back_url = '/en/dokumantasyon#doc-subtab-' | append: tool_slug | append: '-troubleshooting' %}
+      {% elsif page.tool %}
         {% assign tool_slug = page.tool | slugify %}
         {% assign back_url = '/en/dokumantasyon#doc-tab-' | append: tool_slug %}
       {% else %}
@@ -36,7 +39,10 @@ layout: default
       {% assign back_url = '/modul-cozumler' %}
       {% assign back_text = "Modül Çözümleri'ne dön" %}
     {% when 'dokumantasyon' %}
-      {% if page.tool %}
+      {% if page.tool and page.doc_type == 'troubleshooting' %}
+        {% assign tool_slug = page.tool | slugify %}
+        {% assign back_url = '/dokumantasyon#doc-subtab-' | append: tool_slug | append: '-troubleshooting' %}
+      {% elsif page.tool %}
         {% assign tool_slug = page.tool | slugify %}
         {% assign back_url = '/dokumantasyon#doc-tab-' | append: tool_slug %}
       {% else %}

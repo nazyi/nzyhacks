@@ -1854,6 +1854,22 @@ a.post-lesson-link:hover {
   margin-top: 8px;
 }
 
+.doc-tabs-sub {
+  margin-top: 0;
+}
+
+.doc-tabs-sub .doc-tab-btn {
+  padding: 8px 16px;
+  font-size: 0.85em;
+}
+
+.doc-tabs-sub .doc-tab-content {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  padding: 16px 0 0;
+}
+
 .doc-tab-buttons {
   display: flex;
   gap: 4px;
