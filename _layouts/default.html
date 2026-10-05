@@ -826,11 +826,8 @@
         function activateTab(btn) {
           var tabs = btn.closest('.doc-tabs');
           if (!tabs) return;
-          tabs.querySelectorAll('.doc-tab-btn').forEach(function (b) {
-            b.classList.remove('active');
-          });
-          tabs.querySelectorAll('.doc-tab-panel').forEach(function (p) {
-            p.classList.remove('active');
+          tabs.querySelectorAll('.doc-tab-btn, .doc-tab-panel').forEach(function (el) {
+            if (el.closest('.doc-tabs') === tabs) el.classList.remove('active');
           });
           btn.classList.add('active');
           var panel = document.getElementById(btn.dataset.tab);

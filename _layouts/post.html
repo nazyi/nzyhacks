@@ -59,8 +59,20 @@ layout: default
 {% assign word_count = content | strip_html | number_of_words %}
 {% assign reading_time = word_count | divided_by: 200 | plus: 1 %}
 
-{% if cat == 'modul' %}
-  {% assign lesson_posts = site.posts | where: "lang", lang | where: "categories", "modul" | sort: "order" %}
+{% if cat == 'modul' or cat == 'dokumantasyon' %}
+  {% if cat == 'modul' %}
+    {% assign lesson_posts = site.posts | where: "lang", lang | where: "categories", "modul" | sort: "order" %}
+    {% assign nav_prev_label = t.lesson_prev %}
+    {% assign nav_next_label = t.lesson_next %}
+  {% elsif page.doc_type == 'troubleshooting' %}
+    {% assign lesson_posts = site.posts | where: "lang", lang | where: "categories", "dokumantasyon" | where: "tool", page.tool | where: "doc_type", "troubleshooting" | sort: "order" %}
+    {% assign nav_prev_label = t.part_prev %}
+    {% assign nav_next_label = t.part_next %}
+  {% else %}
+    {% assign lesson_posts = site.posts | where: "lang", lang | where: "categories", "dokumantasyon" | where: "tool", page.tool | where_exp: "p", "p.doc_type != 'troubleshooting'" | sort: "order" %}
+    {% assign nav_prev_label = t.part_prev %}
+    {% assign nav_next_label = t.part_next %}
+  {% endif %}
   {% for lesson_post in lesson_posts %}
     {% if lesson_post.url == page.url %}
       {% assign lesson_index = forloop.index0 %}
@@ -121,7 +133,7 @@ layout: default
           <a class="post-lesson-link post-lesson-prev" href="{{ prev_lesson.url | relative_url }}">
             <span class="post-lesson-arrow">←</span>
             <span class="post-lesson-text">
-              <span class="post-lesson-label">{{ t.lesson_prev }}</span>
+              <span class="post-lesson-label">{{ nav_prev_label }}</span>
               <span class="post-lesson-title">{{ prev_lesson.title }}</span>
             </span>
           </a>
@@ -131,7 +143,7 @@ layout: default
         {% if next_lesson %}
           <a class="post-lesson-link post-lesson-next" href="{{ next_lesson.url | relative_url }}">
             <span class="post-lesson-text">
-              <span class="post-lesson-label">{{ t.lesson_next }}</span>
+              <span class="post-lesson-label">{{ nav_next_label }}</span>
               <span class="post-lesson-title">{{ next_lesson.title }}</span>
             </span>
             <span class="post-lesson-arrow">→</span>
