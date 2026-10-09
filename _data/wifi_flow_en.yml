@@ -1,0 +1,28 @@
+nodes:
+  - label: "Your Device"
+    icon: device
+  - label: "Access Point"
+    icon: ap
+  - label: "RADIUS Server"
+    icon: server
+steps:
+  - from: 0
+    to: 1
+    packet: "Credentials"
+    text: "You enter your credentials to connect to the office network."
+  - from: 1
+    to: 2
+    packet: "Credentials"
+    text: "The access point doesn't check these credentials itself; it forwards them to the RADIUS server where user information is stored."
+  - at: 2
+    packet: "Checking"
+    text: "The RADIUS server checks the credentials against its user directory. This server can be a cloud-based service like JumpCloud, or a server the company manages itself (for example, Microsoft NPS working with Active Directory)."
+  - from: 2
+    to: 1
+    packet: "Accept / Reject"
+    text: "The RADIUS server sends an \"accept\" or \"reject\" response back to the access point."
+  - from: 1
+    to: 0
+    packet: "Connected"
+    tone: ok
+    text: "If the response is accept, the access point lets the device onto the network; if it is reject, the connection is refused."

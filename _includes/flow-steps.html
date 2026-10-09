@@ -1,0 +1,37 @@
+<div class="flow-steps" data-step-label="{{ include.step_label | default: 'Adım' }}" data-next-label="{{ include.next_label | default: 'İleri →' }}" data-restart-label="{{ include.restart_label | default: 'Baştan başla ↺' }}">
+  <div class="flow-stage" hidden>
+    <div class="flow-track"></div>
+    <div class="flow-nodes">
+      {% for node in include.data.nodes %}
+        <div class="flow-node">
+          <span class="flow-icon" aria-hidden="true">
+            {% case node.icon %}
+              {% when 'device' %}
+                <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg>
+              {% when 'ap' %}
+                <svg viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8 15.5a5.5 5.5 0 0 1 8 0"/><circle cx="12" cy="18.5" r="1.2"/><path d="M2 9.5a14.5 14.5 0 0 1 20 0"/></svg>
+              {% else %}
+                <svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="7" rx="1.5"/><rect x="4" y="14" width="16" height="7" rx="1.5"/><path d="M8 6.5h.01M8 17.5h.01"/></svg>
+            {% endcase %}
+          </span>
+          <span class="flow-label">{{ node.label }}</span>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="flow-packet"><span class="flow-packet-label"></span></div>
+  </div>
+  <ol class="flow-step-list">
+    {% for step in include.data.steps %}
+      <li data-from="{{ step.from }}" data-to="{{ step.to }}" data-at="{{ step.at }}" data-packet="{{ step.packet }}" data-tone="{{ step.tone }}">{{ step.text }}</li>
+    {% endfor %}
+  </ol>
+  <div class="flow-panel" hidden>
+    <p class="flow-counter"></p>
+    <p class="flow-text" aria-live="polite"></p>
+    <div class="flow-controls">
+      <button type="button" class="flow-btn flow-prev" aria-label="{{ include.prev_label | default: 'Geri' }}">←</button>
+      <span class="flow-dots"></span>
+      <button type="button" class="flow-btn flow-next"></button>
+    </div>
+  </div>
+</div>

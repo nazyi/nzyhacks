@@ -866,6 +866,90 @@
 
     <script>
       (function () {
+        document.querySelectorAll('.flow-steps').forEach(function (root) {
+          var stage = root.querySelector('.flow-stage');
+          var list = root.querySelector('.flow-step-list');
+          var panel = root.querySelector('.flow-panel');
+          var nodes = root.querySelectorAll('.flow-node');
+          var packet = root.querySelector('.flow-packet');
+          var packetLabel = root.querySelector('.flow-packet-label');
+          var counter = root.querySelector('.flow-counter');
+          var text = root.querySelector('.flow-text');
+          var prev = root.querySelector('.flow-prev');
+          var next = root.querySelector('.flow-next');
+          var dotsWrap = root.querySelector('.flow-dots');
+          var num = function (v) { return v === '' ? null : Number(v); };
+          var steps = Array.prototype.map.call(list.querySelectorAll('li'), function (li) {
+            return { from: num(li.dataset.from), to: num(li.dataset.to), at: num(li.dataset.at), packet: li.dataset.packet, tone: li.dataset.tone, text: li.textContent.trim() };
+          });
+          var current = 0;
+
+          list.hidden = true;
+          stage.hidden = false;
+          panel.hidden = false;
+
+          var dots = steps.map(function (_, i) {
+            var dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'flow-dot';
+            dot.setAttribute('aria-label', root.dataset.stepLabel + ' ' + (i + 1));
+            dot.addEventListener('click', function () { show(i); });
+            dotsWrap.appendChild(dot);
+            return dot;
+          });
+
+          function centerOf(i) {
+            var node = nodes[i].querySelector('.flow-icon');
+            return node.offsetLeft + node.offsetWidth / 2;
+          }
+
+          function place(x, animate) {
+            packet.classList.toggle('is-moving', animate);
+            packet.style.left = x + 'px';
+          }
+
+          function show(i) {
+            current = i;
+            var step = steps[i];
+            var end = step.at !== null ? step.at : step.to;
+
+            nodes.forEach(function (n, idx) {
+              n.classList.toggle('is-active', idx === end || idx === step.from);
+              n.classList.toggle('is-checking', step.at !== null && idx === step.at);
+              n.classList.toggle('is-ok', step.tone === 'ok' && idx === end);
+            });
+            packet.classList.toggle('is-ok', step.tone === 'ok');
+            packetLabel.textContent = step.packet;
+
+            if (step.at !== null) {
+              place(centerOf(step.at), false);
+            } else {
+              place(centerOf(step.from), false);
+              void packet.offsetWidth;
+              place(centerOf(step.to), true);
+            }
+
+            counter.textContent = root.dataset.stepLabel + ' ' + (i + 1) + ' / ' + steps.length;
+            text.textContent = step.text;
+            prev.disabled = i === 0;
+            next.textContent = i === steps.length - 1 ? root.dataset.restartLabel : root.dataset.nextLabel;
+            dots.forEach(function (d, idx) { d.classList.toggle('active', idx === i); });
+          }
+
+          prev.addEventListener('click', function () { if (current > 0) show(current - 1); });
+          next.addEventListener('click', function () { show(current === steps.length - 1 ? 0 : current + 1); });
+          window.addEventListener('resize', function () {
+            var step = steps[current];
+            place(centerOf(step.at !== null ? step.at : step.to), false);
+          });
+
+          show(0);
+        });
+      })();
+    </script>
+
+    <script>
+      (function () {
         var diagrams = document.querySelectorAll('.state-diagram');
         diagrams.forEach(function (diagram) {
           var nodes = diagram.querySelectorAll('.state-node');

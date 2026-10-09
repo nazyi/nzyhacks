@@ -1,0 +1,28 @@
+nodes:
+  - label: "Cihazınız"
+    icon: device
+  - label: "Erişim Noktası"
+    icon: ap
+  - label: "RADIUS Sunucusu"
+    icon: server
+steps:
+  - from: 0
+    to: 1
+    packet: "Kullanıcı bilgileri"
+    text: "Ofisteki ağa bağlanmak için kullanıcı bilgilerinizi girersiniz."
+  - from: 1
+    to: 2
+    packet: "Kullanıcı bilgileri"
+    text: "Erişim noktası bu bilgileri kendisi kontrol etmez, kullanıcı bilgilerinin tutulduğu RADIUS sunucusuna iletir."
+  - at: 2
+    packet: "Kontrol ediliyor"
+    text: "RADIUS sunucusu bilgileri kendi kullanıcı dizininde kontrol eder. Bu sunucu JumpCloud gibi bulut tabanlı bir servis olabileceği gibi şirketin kendi yönettiği bir sunucu da olabilir (örneğin Active Directory ile çalışan Microsoft NPS)."
+  - from: 2
+    to: 1
+    packet: "Kabul / Ret"
+    text: "RADIUS sunucusu erişim noktasına \"kabul\" ya da \"ret\" cevabı döner."
+  - from: 1
+    to: 0
+    packet: "Bağlandınız"
+    tone: ok
+    text: "Cevap kabulse erişim noktası cihazı ağa alır, retse bağlantıya izin vermez."
