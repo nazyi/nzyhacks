@@ -59,3 +59,9 @@ You can check whether SIP is enabled on the target device:
 <br>
 <span class="highlight">%</span> csrutil status
 </div>
+
+## Quick Diagnosis
+
+You can check whether this issue applies to your device with a few questions:
+
+{% include decision-tree.html data=site.data.sysext_tree_en title="Quick diagnosis" back_label="← Back" restart_label="Start over ↺" %}

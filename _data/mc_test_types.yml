@@ -1,0 +1,9 @@
+question: "Testçiye ağ diyagramları, IP adresleri ve uygulamanın kaynak kodu veriliyor. Bu hangi test türüdür?"
+options:
+  - text: "Unknown-Environment Test"
+    correct: false
+  - text: "Known-Environment Test"
+    correct: true
+    explain: "Kurumun iç yapısı hakkında bilgi ve uygulamanın kaynak kodu paylaşıldığı için bu bir Known-Environment (white-box) testidir."
+  - text: "Partially-Known Environment Test"
+    correct: false

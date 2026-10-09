@@ -39,7 +39,7 @@ A brief look at the fundamentals of information governance, data protection regu
 
 The most common attack types and their short definitions:
 
-{% include flip-cards.html id="gov-attacks-en" items=site.data.gov_attacks_en hint="14 attack types — click the cards to see their definitions." %}
+{% include flip-cards.html id="gov-attacks-en" items=site.data.gov_attacks_en hint="Click the cards to see their definitions." seen_label="viewed" flip_all_label="Flip all" unflip_all_label="Flip all back" %}
 
 ## ISMS (Information Security Management System) Steps
 

@@ -9,6 +9,10 @@ order: 3
 author: nazy
 permalink: /en/Tryhackme_CheeseCTF
 translation_url: /Tryhackme_CheeseCTF
+platform: TryHackMe
+difficulty: Easy
+topic: "SQL Injection"
+topic_desc: "User input is added directly into a database query, which lets the query itself be altered."
 ---
 ## Port Scan
 

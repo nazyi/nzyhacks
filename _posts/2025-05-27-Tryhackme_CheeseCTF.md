@@ -8,6 +8,10 @@ tags: [TryHackMe, SQLi]
 order: 3
 author: nazy
 translation_url: /en/Tryhackme_CheeseCTF
+platform: TryHackMe
+difficulty: Easy
+topic: "SQL Injection"
+topic_desc: "Kullanıcıdan gelen girdinin veritabanı sorgusuna doğrudan eklenmesi sonucu sorgunun değiştirilebilmesi."
 ---
 ## Port Taraması
 

@@ -21,7 +21,7 @@ translation_url: /Cisco_Module1
 - **State-Sponsored:** These are people used by countries to attack a rival country.
 - **Insider Threats:** These can be either malicious people inside the organization, for example people wanting revenge on the company, or people who unintentionally cause an information leak.
 
-{% include mc-quiz.html id="ta-scenario-en" question=site.data.mc_threat_actor_en.question options=site.data.mc_threat_actor_en.options correct_label="Correct!" wrong_label="Wrong, the correct answer is:" %}
+{% include mc-quiz.html id="ta-scenario-en" question=site.data.mc_threat_actor_en.question options=site.data.mc_threat_actor_en.options correct_label="Correct!" wrong_label="Wrong, the correct answer is:" retry_label="Try again ↺" %}
 
 ### 1.2 Environmental Considerations
 
@@ -35,6 +35,8 @@ translation_url: /Cisco_Module1
 - **Known-Environment Test:** This time the attacker has at least some information about the organization and its internal structure. Network diagrams, IP addresses, configurations, and some user information may be given to the tester. If there is an application, its source code is shared with the tester as part of the test.
 - **Partially-Known Environment Test:** This is a hybrid of the black-box and white-box tests. Testers may be given user information, but not the internal structure of the network.
 
+{% include mc-quiz.html id="test-types-en" question=site.data.mc_test_types_en.question options=site.data.mc_test_types_en.options correct_label="Correct!" wrong_label="Wrong, the correct answer is:" retry_label="Try again ↺" %}
+
 ### 1.4 Surveying Different Standards and Methodologies
 
 - **MITRE ATT&CK:** A framework created to learn the tactics, techniques, and procedures (TTPs) of attackers.
@@ -42,3 +44,5 @@ translation_url: /Cisco_Module1
 - **NIST SP 800-115:** Provides organizations with guidance on planning and conducting information security testing.
 - **OSSTMM:** A guide describing repeatable and consistent security tests.
 - **PTES:** A guide describing attack types and methods, as well as the most up-to-date tools used to carry out the specified attack types.
+
+{% include mc-quiz.html id="standards-en" question=site.data.mc_standards_en.question options=site.data.mc_standards_en.options correct_label="Correct!" wrong_label="Wrong, the correct answer is:" retry_label="Try again ↺" %}

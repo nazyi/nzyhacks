@@ -33,6 +33,8 @@ translation_url: /en/Cisco_Module1
 - **Known-Environment Test:** Bu sefer saldırgan kurum hakkında ve kurumun iç yapısı hakkında az da olsa bilgi sahibi olur. Network diyagramları, IP adresleri, ayarlamalar ve bazı kullanıcı bilgileri tester için verilebilir. Eğer bir uygulama varsa testin içinde uygulamanın kaynak kodu tester ile paylaşılır.
 - **Partially-Known Environment Test:** Black-box ve white-box testinin hibrit halidir. Testerlara belki kullanıcı bilgileri verilebilir fakat ağ yapısının iç yapısı verilmez.
 
+{% include mc-quiz.html id="test-types-tr" question=site.data.mc_test_types.question options=site.data.mc_test_types.options correct_label="Doğru!" wrong_label="Yanlış, doğru cevap:" %}
+
 ### 1.4 Surveying Different Standards and Methodologies
 
 - **MITRE ATT&CK:** Saldırganların taktik, teknik ve prosedürlerini (TTP) öğrenmek için yapılmış bir çerçevedir.
@@ -40,3 +42,5 @@ translation_url: /en/Cisco_Module1
 - **NIST SP 800-115:** Organizasyonlara bilgi güvenliği testi planlama ve yürütme konusunda rehberlik sağlar.
 - **OSSTMM:** Tekrarlanabilen ve istikrarlı güvenlik testlerini anlatan bir rehberdir.
 - **PTES:** Saldırı türleri ve metodları ve belirtilen saldırı türlerini gerçekleştirebilmek için kullanılan en güncel toolları anlatan bir rehberdir.
+
+{% include mc-quiz.html id="standards-tr" question=site.data.mc_standards.question options=site.data.mc_standards.options correct_label="Doğru!" wrong_label="Yanlış, doğru cevap:" %}

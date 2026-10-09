@@ -1,0 +1,11 @@
+question: "Web uygulaması güvenlik testleri için geliştirilmiş rehber hangisidir?"
+options:
+  - text: "MITRE ATT&CK"
+    correct: false
+  - text: "OWASP WSTG"
+    correct: true
+    explain: "OWASP WSTG, web uygulaması testleri için geliştirilmiş ve test yöntemlerine derinlemesine inen bir rehberdir."
+  - text: "NIST SP 800-115"
+    correct: false
+  - text: "OSSTMM"
+    correct: false

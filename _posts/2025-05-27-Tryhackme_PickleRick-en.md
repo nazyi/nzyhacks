@@ -10,6 +10,10 @@ tags: [TryHackMe, Command Injection]
 order: 4
 permalink: /en/Tryhackme_PickleRick
 translation_url: /Tryhackme_PickleRick
+platform: TryHackMe
+difficulty: Easy
+topic: "Command Injection"
+topic_desc: "The application runs input it receives from the user as an operating system command."
 ---
 ## Port Scan
 

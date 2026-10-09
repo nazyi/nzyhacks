@@ -1,0 +1,20 @@
+<div class="dtree" data-start="{{ include.data.start }}">
+  <p class="dtree-eyebrow">{{ include.title | default: 'Hızlı teşhis' }}</p>
+  <div class="dtree-path" hidden></div>
+  {% for node in include.data.nodes %}
+    <div class="dtree-node{% if node.result %} dtree-result dtree-result-{{ node.tone }}{% endif %}" data-id="{{ node.id }}">
+      <div class="dtree-text">{{ node.text | markdownify }}</div>
+      {% if node.options %}
+        <div class="dtree-options">
+          {% for option in node.options %}
+            <button type="button" class="dtree-option" data-next="{{ option.next }}">{{ option.label }}</button>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  {% endfor %}
+  <div class="dtree-controls" hidden>
+    <button type="button" class="dtree-btn dtree-back">{{ include.back_label | default: '← Geri' }}</button>
+    <button type="button" class="dtree-btn dtree-restart">{{ include.restart_label | default: 'Baştan başla ↺' }}</button>
+  </div>
+</div>

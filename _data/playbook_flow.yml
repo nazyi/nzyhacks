@@ -1,0 +1,26 @@
+nodes:
+  - label: "Trigger"
+    icon: trigger
+  - label: "Target"
+    icon: target
+  - label: "Action"
+    icon: action
+steps:
+  - at: 0
+    packet: "Saat başı"
+    text: "Playbook her saat başı (UTC) kendiliğinden çalışır. Bunu Trigger kutusundaki zamanlama belirliyor."
+  - from: 0
+    to: 1
+    packet: "Çalıştır"
+    text: "Tetiklenen playbook, hangi kayıtlar üzerinde çalışacağını belirlemek için Target adımına geçer."
+  - at: 1
+    packet: "Sızdırılmış hesaplar"
+    text: "Target, Account compromise risk faktörü altındaki \"Leaked Account Identification\" risk olaylarını seçer. Yani sızdırıldığı tespit edilen hesaplar bulunur."
+  - from: 1
+    to: 2
+    packet: "Bulunan hesaplar"
+    text: "Eşleşen hesaplar Action adımına iletilir."
+  - at: 2
+    packet: "Hesap devre dışı"
+    tone: ok
+    text: "Action, bu hesaplara \"Disable User Account\" uygular. Sızdırılmış hesaplar kimse müdahale etmeden devre dışı kalır."

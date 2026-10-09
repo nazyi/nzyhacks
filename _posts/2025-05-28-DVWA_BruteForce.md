@@ -8,6 +8,10 @@ title: DVWA Brute Force
 order: 6
 tags: [web, Hydra]
 translation_url: /en/DVWA_BruteForce
+platform: DVWA
+difficulty: Medium
+topic: "Brute Force"
+topic_desc: "Bir giriş formunda olası kullanıcı adı ve şifre kombinasyonlarının otomatik olarak denenmesi."
 ---
 
 ### Low Sec

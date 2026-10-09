@@ -1,0 +1,9 @@
+question: "The tester is given network diagrams, IP addresses, and the application's source code. Which test type is this?"
+options:
+  - text: "Unknown-Environment Test"
+    correct: false
+  - text: "Known-Environment Test"
+    correct: true
+    explain: "Since information about the organization's internal structure and the application's source code are shared, this is a Known-Environment (white-box) test."
+  - text: "Partially-Known Environment Test"
+    correct: false

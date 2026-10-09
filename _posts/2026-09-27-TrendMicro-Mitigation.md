@@ -55,6 +55,10 @@ Buradan tetiklenmeyi ayarlayabilirsiniz. Bu senaryoda örnek olarak görev saat 
   <img loading="lazy" src="{{ '/assets/images/trendmicro_mitigation/leaked-account-playbook-flow.webp' | relative_url }}" width="2560" height="860" alt="Leaked account playbook'unun Trigger, Target ve Action akış şeması">
 </div>
 
+Bu playbook çalıştığında neler olduğunu adım adım görebilirsiniz:
+
+{% include flow-steps.html data=site.data.playbook_flow %}
+
   </div>
 </div>
 

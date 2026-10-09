@@ -1,0 +1,35 @@
+nodes:
+  - label: "Uygulama (SP)"
+    icon: app
+  - label: "Kullanıcı (tarayıcı)"
+    icon: user
+  - label: "Kimlik Sağlayıcı (IdP)"
+    icon: idp
+steps:
+  - from: 1
+    to: 0
+    packet: "Erişim isteği"
+    text: "Kullanıcı, örneğin Salesforce gibi bir uygulamaya girmek ister."
+  - from: 0
+    to: 1
+    packet: "SAML isteği"
+    text: "Uygulama kullanıcıyı henüz tanımıyor. Kendisi şifre sormak yerine bir SAML isteği oluşturur ve tarayıcıyı kimlik sağlayıcıya yönlendirir."
+  - from: 1
+    to: 2
+    packet: "SAML isteği"
+    text: "Tarayıcı bu isteği kimlik sağlayıcıya (örneğin Microsoft AD FS) taşır."
+  - at: 2
+    packet: "Kimlik doğrulanıyor"
+    text: "Kimlik sağlayıcı kullanıcının kim olduğunu doğrular (şifre, MFA vb.). Kullanıcının burada zaten açık bir oturumu varsa tekrar sormaz; SSO'nun \"bir kez giriş yap\" kısmı tam olarak budur."
+  - from: 2
+    to: 1
+    packet: "SAML Assertion (XML)"
+    text: "Kimlik sağlayıcı, kullanıcının doğrulandığını söyleyen ve dijital olarak imzaladığı bir SAML Assertion üretip tarayıcıya verir."
+  - from: 1
+    to: 0
+    packet: "SAML Assertion"
+    text: "Tarayıcı bu assertion'ı uygulamaya iletir."
+  - at: 0
+    packet: "Giriş yapıldı"
+    tone: ok
+    text: "Uygulama imzayı kontrol eder. Assertion güvendiği kimlik sağlayıcıdan geliyorsa kullanıcıyı içeri alır. Uygulama kullanıcının şifresini hiç görmemiş olur."

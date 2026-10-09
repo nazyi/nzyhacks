@@ -57,3 +57,9 @@ SIP'in hedef cihazda açık olup olmadığını kontrol edebilirsiniz:
 <br>
 <span class="highlight">%</span> csrutil status
 </div>
+
+## Hızlı Teşhis
+
+Kendi cihazınızda bu sorunun yaşanıp yaşanmadığını birkaç soruyla kontrol edebilirsiniz:
+
+{% include decision-tree.html data=site.data.sysext_tree %}

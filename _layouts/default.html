@@ -341,81 +341,135 @@
         var windows = document.querySelectorAll('.code-window');
         if (!windows.length) return;
 
-        function getCodeText(el) {
-          var clone = el.cloneNode(true);
-          var copyBtn = clone.querySelector('.code-copy');
-          if (copyBtn) copyBtn.remove();
+        var COPY_LABEL = '{{ t.code_copy_aria }}';
+        var COPY_ICON = '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
+        var CHECK_ICON = '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></svg>';
+        var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-          // Group nodes into lines at each <br>; for each line, take the
-          // text after the last prompt (.highlight) marker as the command,
-          // and skip lines with no prompt marker at all (pure output).
-          var lines = [[]];
-          Array.prototype.forEach.call(clone.childNodes, function (node) {
-            if (node.nodeName === 'BR') {
-              lines.push([]);
-            } else {
-              lines[lines.length - 1].push(node);
-            }
-          });
-
-          var commands = [];
-          lines.forEach(function (lineNodes) {
-            var highlightIndex = -1;
-            lineNodes.forEach(function (node, i) {
-              if (node.nodeType === 1 && node.classList && node.classList.contains('highlight')) {
-                highlightIndex = i;
-              }
-            });
-            if (highlightIndex === -1) return;
-
-            var text = '';
-            for (var i = highlightIndex + 1; i < lineNodes.length; i++) {
-              text += lineNodes[i].textContent;
-            }
-            text = text.replace(/^[\s>]+/, '').trim();
-            if (text) commands.push(text);
-          });
-
-          if (commands.length) return commands.join('\n');
-
-          // No prompt markers at all (some posts forgot them) — fall back
-          // to copying the whole block rather than nothing.
-          clone.querySelectorAll('br').forEach(function (br) {
-            br.replaceWith('\n');
-          });
-          return clone.textContent.replace(/^\s+|\s+$/g, '');
+        function copyText(text, done) {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done).catch(done);
+            return;
+          }
+          var textarea = document.createElement('textarea');
+          textarea.value = text;
+          textarea.style.position = 'fixed';
+          textarea.style.opacity = '0';
+          document.body.appendChild(textarea);
+          textarea.select();
+          try { document.execCommand('copy'); } catch (e) {}
+          document.body.removeChild(textarea);
+          done();
         }
 
-        windows.forEach(function (win) {
+        function addCopyButton(span, command) {
           var btn = document.createElement('button');
           btn.type = 'button';
-          btn.className = 'code-copy';
-          btn.setAttribute('aria-label', '{{ t.code_copy_aria }}');
-          btn.textContent = '📋';
-          win.appendChild(btn);
-
+          btn.className = 'tw-line-copy';
+          btn.title = COPY_LABEL;
+          btn.setAttribute('aria-label', COPY_LABEL);
+          btn.innerHTML = COPY_ICON;
           btn.addEventListener('click', function () {
-            var text = getCodeText(win);
-            var done = function () {
-              btn.textContent = '✅';
-              setTimeout(function () { btn.textContent = '📋'; }, 1500);
-            };
+            copyText(command, function () {
+              btn.classList.add('is-copied');
+              btn.innerHTML = CHECK_ICON;
+              setTimeout(function () {
+                btn.classList.remove('is-copied');
+                btn.innerHTML = COPY_ICON;
+              }, 1400);
+            });
+          });
+          span.parentNode.insertBefore(btn, span.nextSibling);
+        }
 
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-              navigator.clipboard.writeText(text).then(done).catch(done);
+        // Wraps each <br>-separated line in a span; lines with a prompt
+        // (.highlight) become typed commands with their own copy button.
+        function setup(win) {
+          while (win.firstChild && (win.firstChild.nodeName === 'BR' || (win.firstChild.nodeType === 3 && !win.firstChild.textContent.trim()))) {
+            win.removeChild(win.firstChild);
+          }
+          var first = win.querySelector('.highlight');
+          var match = first && first.textContent.match(/[\w.-]+@[\w.-]+/);
+          win.setAttribute('data-title', match ? match[0] : 'terminal');
+
+          var lines = [];
+          var current = [];
+          Array.prototype.slice.call(win.childNodes).forEach(function (node) {
+            if (node.nodeName === 'BR') {
+              lines.push(current);
+              current = [];
             } else {
-              var textarea = document.createElement('textarea');
-              textarea.value = text;
-              textarea.style.position = 'fixed';
-              textarea.style.opacity = '0';
-              document.body.appendChild(textarea);
-              textarea.select();
-              try { document.execCommand('copy'); } catch (e) {}
-              document.body.removeChild(textarea);
-              done();
+              current.push(node);
             }
           });
-        });
+          lines.push(current);
+
+          lines.forEach(function (nodes) {
+            var text = nodes.map(function (n) { return n.textContent; }).join('').trim();
+            if (!text) return;
+            var span = document.createElement('span');
+            span.className = 'tw-line';
+            win.insertBefore(span, nodes[0]);
+            nodes.forEach(function (n, i) {
+              if (n.nodeType === 3 && i === 0) n.textContent = n.textContent.replace(/^\s+/, '');
+              if (n.nodeType === 3 && i === nodes.length - 1) n.textContent = n.textContent.replace(/\s+$/, '');
+              span.appendChild(n);
+            });
+
+            var promptIndex = -1;
+            nodes.forEach(function (n, i) {
+              if (n.nodeType === 1 && n.classList.contains('highlight')) promptIndex = i;
+            });
+            if (promptIndex === -1) {
+              span.classList.add('tw-out');
+              return;
+            }
+            span.classList.add('tw-cmd');
+            span.style.setProperty('--tw-steps', text.length);
+            var command = nodes.slice(promptIndex + 1).map(function (n) { return n.textContent; }).join('').replace(/^[\s>]+/, '').trim();
+            if (command) addCopyButton(span, command);
+          });
+        }
+
+        function play(win) {
+          var lines = win.querySelectorAll('.tw-line');
+          win.classList.add('tw-ready');
+          var delay = 300;
+          lines.forEach(function (line) {
+            if (line.classList.contains('tw-cmd')) {
+              var dur = Math.min(Number(line.style.getPropertyValue('--tw-steps')) * 45, 1600);
+              line.style.setProperty('--tw-width', line.scrollWidth + 'px');
+              line.style.setProperty('--tw-dur', dur + 'ms');
+              setTimeout(function () { line.classList.add('tw-typing'); }, delay);
+              delay += dur + 250;
+              setTimeout(function () {
+                line.classList.remove('tw-typing');
+                line.classList.add('tw-done');
+              }, delay);
+            } else {
+              setTimeout(function () { line.classList.add('tw-shown'); }, delay);
+              delay += 90;
+            }
+          });
+          setTimeout(function () {
+            var caret = document.createElement('span');
+            caret.className = 'tw-caret';
+            win.appendChild(caret);
+          }, delay);
+        }
+
+        windows.forEach(setup);
+        if (reduced || !('IntersectionObserver' in window)) return;
+
+        windows.forEach(function (win) { win.classList.add('tw-ready'); });
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            observer.unobserve(entry.target);
+            play(entry.target);
+          });
+        }, { rootMargin: '0px 0px -15% 0px' });
+        windows.forEach(function (win) { observer.observe(win); });
       })();
     </script>
 
@@ -827,15 +881,24 @@
           var tabs = btn.closest('.doc-tabs');
           if (!tabs) return;
           tabs.querySelectorAll('.doc-tab-btn, .doc-tab-panel').forEach(function (el) {
-            if (el.closest('.doc-tabs') === tabs) el.classList.remove('active');
+            if (el.closest('.doc-tabs') !== tabs) return;
+            el.classList.remove('active');
+            if (el.classList.contains('doc-tab-btn')) el.setAttribute('aria-selected', 'false');
           });
           btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
           var panel = document.getElementById(btn.dataset.tab);
           if (panel) panel.classList.add('active');
         }
 
         var buttons = document.querySelectorAll('.doc-tab-btn');
         buttons.forEach(function (btn) {
+          btn.setAttribute('role', 'tab');
+          btn.setAttribute('aria-selected', btn.classList.contains('active') ? 'true' : 'false');
+          if (btn.dataset.tab) btn.setAttribute('aria-controls', btn.dataset.tab);
+          if (btn.parentElement) btn.parentElement.setAttribute('role', 'tablist');
+          var panel = document.getElementById(btn.dataset.tab);
+          if (panel) panel.setAttribute('role', 'tabpanel');
           btn.addEventListener('click', function () {
             activateTab(btn);
             var panel = document.getElementById(btn.dataset.tab);
@@ -950,30 +1013,124 @@
 
     <script>
       (function () {
-        var diagrams = document.querySelectorAll('.state-diagram');
-        diagrams.forEach(function (diagram) {
-          var nodes = diagram.querySelectorAll('.state-node');
-          var detail = diagram.querySelector('.state-detail');
-          nodes.forEach(function (node) {
-            node.addEventListener('click', function () {
-              nodes.forEach(function (n) {
-                n.classList.remove('active');
-              });
-              node.classList.add('active');
-              if (detail) detail.textContent = node.dataset.def;
+        document.querySelectorAll('.dtree').forEach(function (root) {
+          var nodes = {};
+          root.querySelectorAll('.dtree-node').forEach(function (n) { nodes[n.dataset.id] = n; });
+          var path = root.querySelector('.dtree-path');
+          var controls = root.querySelector('.dtree-controls');
+          var back = root.querySelector('.dtree-back');
+          var history = [];
+
+          function render() {
+            var current = history.length ? history[history.length - 1].next : root.dataset.start;
+            Object.keys(nodes).forEach(function (id) { nodes[id].hidden = id !== current; });
+            path.innerHTML = '';
+            history.forEach(function (h) {
+              var chip = document.createElement('span');
+              chip.className = 'dtree-chip';
+              chip.textContent = h.label;
+              path.appendChild(chip);
+            });
+            path.hidden = history.length === 0;
+            controls.hidden = history.length === 0;
+          }
+
+          root.querySelectorAll('.dtree-option').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              history.push({ label: btn.textContent.trim(), next: btn.dataset.next });
+              render();
             });
           });
+          back.addEventListener('click', function () { history.pop(); render(); });
+          root.querySelector('.dtree-restart').addEventListener('click', function () { history = []; render(); });
+
+          render();
         });
       })();
     </script>
 
     <script>
       (function () {
-        var cards = document.querySelectorAll('.flip-card');
-        cards.forEach(function (card) {
-          card.addEventListener('click', function () {
-            card.classList.toggle('flipped');
+        var diagrams = document.querySelectorAll('.state-diagram');
+        diagrams.forEach(function (diagram) {
+          var nodes = diagram.querySelectorAll('.state-node');
+          var detail = diagram.querySelector('.state-detail');
+          function select(node) {
+            nodes.forEach(function (n) {
+              n.classList.remove('active');
+              n.setAttribute('aria-pressed', 'false');
+            });
+            node.classList.add('active');
+            node.setAttribute('aria-pressed', 'true');
+            if (detail) detail.textContent = node.dataset.def;
+          }
+          nodes.forEach(function (node) {
+            node.addEventListener('click', function () { select(node); });
           });
+          if (nodes.length) select(nodes[0]);
+        });
+      })();
+    </script>
+
+    <script>
+      (function () {
+        document.querySelectorAll('.flip-cards').forEach(function (deck) {
+          var cards = deck.querySelectorAll('.flip-card');
+          var seenEl = deck.querySelector('.flip-cards-seen');
+          var allBtn = deck.querySelector('.flip-cards-all');
+
+          // Every card gets the height of the tallest face in the deck so the
+          // grid stays even and long definitions never overflow.
+          function equalize() {
+            deck.style.removeProperty('--flip-h');
+            var tallest = 0;
+            deck.querySelectorAll('.flip-card-front, .flip-card-back').forEach(function (face) {
+              tallest = Math.max(tallest, face.offsetHeight);
+            });
+            if (tallest) deck.style.setProperty('--flip-h', tallest + 'px');
+          }
+          equalize();
+          var resizeTimer;
+          window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(equalize, 150);
+          });
+          if (document.fonts && document.fonts.ready) document.fonts.ready.then(equalize);
+
+          function refresh() {
+            if (seenEl) seenEl.textContent = deck.querySelectorAll('.flip-card.seen').length;
+            if (allBtn) {
+              var allFlipped = deck.querySelectorAll('.flip-card.flipped').length === cards.length;
+              allBtn.textContent = allFlipped ? deck.dataset.unflipAll : deck.dataset.flipAll;
+            }
+          }
+
+          function setFlipped(card, flipped) {
+            card.classList.toggle('flipped', flipped);
+            card.setAttribute('aria-pressed', flipped ? 'true' : 'false');
+            if (flipped) card.classList.add('seen');
+          }
+
+          cards.forEach(function (card) {
+            card.addEventListener('click', function () {
+              setFlipped(card, !card.classList.contains('flipped'));
+              refresh();
+            });
+            card.addEventListener('keydown', function (e) {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.click();
+              }
+            });
+          });
+
+          if (allBtn) {
+            allBtn.addEventListener('click', function () {
+              var flip = deck.querySelectorAll('.flip-card.flipped').length !== cards.length;
+              cards.forEach(function (card) { setFlipped(card, flip); });
+              refresh();
+            });
+          }
         });
       })();
     </script>
@@ -1018,9 +1175,12 @@
       (function () {
         var triggers = document.querySelectorAll('.accordion-trigger');
         triggers.forEach(function (trigger) {
+          var item = trigger.closest('.accordion-item');
+          trigger.setAttribute('aria-expanded', item && item.classList.contains('open') ? 'true' : 'false');
           trigger.addEventListener('click', function () {
-            var item = trigger.closest('.accordion-item');
-            if (item) item.classList.toggle('open');
+            if (!item) return;
+            item.classList.toggle('open');
+            trigger.setAttribute('aria-expanded', item.classList.contains('open') ? 'true' : 'false');
           });
         });
       })();
@@ -1032,7 +1192,17 @@
         quizzes.forEach(function (quiz) {
           var options = quiz.querySelectorAll('.mc-option');
           var feedback = quiz.querySelector('.mc-quiz-feedback');
+          var retry = quiz.querySelector('.mc-quiz-retry');
           var answered = false;
+          if (retry) {
+            retry.addEventListener('click', function () {
+              answered = false;
+              options.forEach(function (o) { o.classList.remove('correct', 'wrong'); });
+              feedback.hidden = true;
+              feedback.classList.remove('mc-quiz-feedback-correct', 'mc-quiz-feedback-wrong');
+              retry.hidden = true;
+            });
+          }
           options.forEach(function (opt) {
             opt.addEventListener('click', function () {
               if (answered) return;
@@ -1050,6 +1220,7 @@
                 feedback.hidden = false;
                 feedback.classList.add(isCorrect ? 'mc-quiz-feedback-correct' : 'mc-quiz-feedback-wrong');
               }
+              if (retry) retry.hidden = false;
             });
           });
         });

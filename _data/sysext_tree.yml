@@ -1,0 +1,35 @@
+start: access
+nodes:
+  - id: access
+    text: "Cihaza nasıl erişiyorsunuz?"
+    options:
+      - label: "Cihazın başındayım"
+        next: local
+      - label: "Uzaktan, terminal üzerinden"
+        next: remote
+  - id: local
+    text: "**System Settings > Network > Filters** altında Bitdefender DCI filtreleri ya da **System Settings > General > Login Items & Extensions > Network Extensions** altında `dci-net-ext` aktif görünüyor mu?"
+    options:
+      - label: "Evet, aktif"
+        next: fix
+      - label: "Hayır, ikisi de kapalı"
+        next: other
+  - id: remote
+    text: "`systemextensionsctl list` çıktısında `com.bitdefender.cst.net.dci.dci-network-extension` satırı `[activated enabled]` olarak görünüyor mu?"
+    options:
+      - label: "Evet, görünüyor"
+        next: fix-remote
+      - label: "Hayır, yok"
+        next: other
+  - id: fix
+    result: true
+    tone: fix
+    text: "Hatanın kaynağı büyük ihtimalle eski Bitdefender network extension'ının Trend Micro'nunkiyle çakışması. Eski Bitdefender'ı deaktive edip cihazı yeniden başlatın."
+  - id: fix-remote
+    result: true
+    tone: fix
+    text: "Bitdefender eklentisi hâlâ çalışıyor, çakışma bu. Eski Bitdefender'ı deaktive edip cihazı yeniden başlatın. Eklentiyi `systemextensionsctl uninstall` ile kaldırmayı denemeyin: SIP açıkken bu komut çalışmaz. SIP'in durumunu `csrutil status` ile görebilirsiniz."
+  - id: other
+    result: true
+    tone: neutral
+    text: "Bitdefender kaynaklı bir çakışma görünmüyor, yani bu yazıdaki çözüm sizin durumunuza uymuyor. Hatanın başka bir sebebi olabilir."

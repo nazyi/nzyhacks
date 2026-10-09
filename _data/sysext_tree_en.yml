@@ -1,0 +1,35 @@
+start: access
+nodes:
+  - id: access
+    text: "How are you accessing the device?"
+    options:
+      - label: "I'm at the device"
+        next: local
+      - label: "Remotely, via terminal"
+        next: remote
+  - id: local
+    text: "Do the Bitdefender DCI filters under **System Settings > Network > Filters**, or `dci-net-ext` under **System Settings > General > Login Items & Extensions > Network Extensions**, show as active?"
+    options:
+      - label: "Yes, active"
+        next: fix
+      - label: "No, both are off"
+        next: other
+  - id: remote
+    text: "Does the `com.bitdefender.cst.net.dci.dci-network-extension` line show up as `[activated enabled]` in the `systemextensionsctl list` output?"
+    options:
+      - label: "Yes, it's there"
+        next: fix-remote
+      - label: "No, it's not"
+        next: other
+  - id: fix
+    result: true
+    tone: fix
+    text: "The error is most likely caused by the old Bitdefender network extension conflicting with Trend Micro's. Deactivate the old Bitdefender and restart the device."
+  - id: fix-remote
+    result: true
+    tone: fix
+    text: "The Bitdefender extension is still running, and that's the conflict. Deactivate the old Bitdefender and restart the device. Don't try to remove the extension with `systemextensionsctl uninstall`: this command doesn't work while SIP is enabled. You can check SIP's status with `csrutil status`."
+  - id: other
+    result: true
+    tone: neutral
+    text: "There's no sign of a Bitdefender conflict, so the fix in this post doesn't apply to your case. The error may have another cause."

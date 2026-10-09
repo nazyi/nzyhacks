@@ -1,0 +1,26 @@
+nodes:
+  - label: "Trigger"
+    icon: trigger
+  - label: "Target"
+    icon: target
+  - label: "Action"
+    icon: action
+steps:
+  - at: 0
+    packet: "Every hour"
+    text: "The playbook runs on its own every hour (UTC). This is set by the schedule in the Trigger box."
+  - from: 0
+    to: 1
+    packet: "Run"
+    text: "Once triggered, the playbook moves to the Target step to decide which records it will work on."
+  - at: 1
+    packet: "Leaked accounts"
+    text: "Target selects the \"Leaked Account Identification\" risk events under the Account compromise risk factor. In other words, it finds accounts detected as leaked."
+  - from: 1
+    to: 2
+    packet: "Matched accounts"
+    text: "The matching accounts are passed on to the Action step."
+  - at: 2
+    packet: "Account disabled"
+    tone: ok
+    text: "Action applies \"Disable User Account\" to these accounts. Leaked accounts get disabled without anyone having to step in."

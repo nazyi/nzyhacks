@@ -99,13 +99,35 @@ layout: default
     <a class="post-back" href="{{ back_url | relative_url }}">← {{ back_text }}</a>
 
     <!-- Post Header -->
-    <header class="post-header">
-      <h1 class="post-title">{{ page.title }}</h1>
-      <p class="post-meta">
-        <small>{% include date-i18n.html date=page.date lang=lang %}</small> |
-        <span class="post-author">{{ t.by_author }} {{ page.author | default: site.author }}</span> |
-        <span class="post-reading-time">{{ reading_time }} {{ t.reading_time_suffix }}</span>
-      </p>
+    {% if cat == 'makine' and page.difficulty %}{% assign show_card = true %}{% else %}{% assign show_card = false %}{% endif %}
+    <header class="post-header{% if show_card %} post-header-with-card{% endif %}">
+      <div class="post-header-main">
+        <h1 class="post-title">{{ page.title }}</h1>
+        <p class="post-meta">
+          <small>{% include date-i18n.html date=page.date lang=lang %}</small> |
+          <span class="post-author">{{ t.by_author }} {{ page.author | default: site.author }}</span> |
+          <span class="post-reading-time">{{ reading_time }} {{ t.reading_time_suffix }}</span>
+        </p>
+      </div>
+      {% if show_card %}
+        <aside class="machine-card">
+          <div class="machine-card-meta">
+            <div class="machine-card-field">
+              <span class="machine-card-label">{{ t.card_platform }}</span>
+              <span class="machine-card-value">{{ page.platform }}</span>
+            </div>
+            <div class="machine-card-field">
+              <span class="machine-card-label">{{ t.card_difficulty }}</span>
+              <span class="machine-card-badge machine-card-badge-{{ page.difficulty | slugify }}">{{ page.difficulty }}</span>
+            </div>
+          </div>
+          <div class="machine-card-topic">
+            <span class="machine-card-label">{{ t.card_topic }}</span>
+            <p class="machine-card-topic-name">{{ page.topic }}</p>
+            <p class="machine-card-topic-desc">{{ page.topic_desc }}</p>
+          </div>
+        </aside>
+      {% endif %}
     </header>
 
     <!-- Post Content -->

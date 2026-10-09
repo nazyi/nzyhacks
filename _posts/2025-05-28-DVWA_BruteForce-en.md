@@ -10,6 +10,10 @@ order: 6
 tags: [web, Hydra]
 permalink: /en/DVWA_BruteForce
 translation_url: /DVWA_BruteForce
+platform: DVWA
+difficulty: Medium
+topic: "Brute Force"
+topic_desc: "Automatically trying possible username and password combinations against a login form."
 ---
 
 ### Low Sec

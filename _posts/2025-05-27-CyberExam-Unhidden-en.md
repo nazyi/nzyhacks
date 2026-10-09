@@ -10,6 +10,10 @@ tags: [CyberExam, WiFi]
 order: 5
 permalink: /en/CyberExam-Unhidden
 translation_url: /CyberExam-Unhidden
+platform: CyberExam
+difficulty: Easy
+topic: "Hidden SSID"
+topic_desc: "Hiding the SSID doesn't make a network invisible; the network name is still sent over the air when devices connect."
 ---
 
 ## Introduction

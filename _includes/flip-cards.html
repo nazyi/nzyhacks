@@ -1,8 +1,12 @@
-<div class="flip-cards" data-flip-id="{{ include.id }}">
+<div class="flip-cards" data-flip-id="{{ include.id }}" data-flip-all="{{ include.flip_all_label | default: 'Hepsini çevir' }}" data-unflip-all="{{ include.unflip_all_label | default: 'Hepsini geri çevir' }}">
   {% if include.hint %}<p class="flip-cards-hint">{{ include.hint }}</p>{% endif %}
+  <div class="flip-cards-toolbar">
+    <p class="flip-cards-progress"><span class="flip-cards-seen">0</span> / {{ include.items | size }} {{ include.seen_label | default: 'incelendi' }}</p>
+    <button type="button" class="flip-cards-all">{{ include.flip_all_label | default: 'Hepsini çevir' }}</button>
+  </div>
   <div class="flip-cards-grid">
     {% for item in include.items %}
-      <div class="flip-card">
+      <div class="flip-card" role="button" tabindex="0" aria-pressed="false">
         <div class="flip-card-inner">
           <div class="flip-card-front">{{ item.term }}</div>
           <div class="flip-card-back">{{ item.def }}</div>

@@ -1520,18 +1520,165 @@ a.post-lesson-link:hover {
 */
 
 .code-window {
-  background: $color-code-bg;
-  border-radius: 12px;
-  padding: 1.4em 1.4em 1.2em;
-  margin: 2em 0;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-  color: $color-code-text;
   position: relative;
-  font-family: "SF Mono", Monaco, Consolas, monospace;
-  font-size: 0.9em;
-  line-height: 1.6;
+  margin: 2em 0;
+  padding: 50px 22px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: #17141c;
+  box-shadow: 0 18px 40px -12px rgba(23, 20, 28, 0.55);
+  color: #f4eef7;
+  font-family: "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.86em;
+  line-height: 1.75;
   overflow-x: auto;
   white-space: nowrap;
+}
+
+.code-window::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 36px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px 12px 0 0;
+  background:
+    radial-gradient(circle at 20px 18px, #ff5f56 5.5px, transparent 6px),
+    radial-gradient(circle at 40px 18px, #ffbd2e 5.5px, transparent 6px),
+    radial-gradient(circle at 60px 18px, #27c93f 5.5px, transparent 6px),
+    #221e28;
+}
+
+.code-window::after {
+  content: attr(data-title);
+  position: absolute;
+  top: 0;
+  left: 80px;
+  right: 80px;
+  height: 36px;
+  overflow: hidden;
+  color: #8d8497;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 36px;
+  text-align: center;
+  text-overflow: ellipsis;
+}
+
+.code-window .highlight {
+  color: #ff6fa5;
+  font-weight: 600;
+}
+
+.code-window .tw-line {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.code-window .tw-out {
+  color: #b3a9bb;
+}
+
+.code-window.tw-ready .tw-line {
+  opacity: 0;
+}
+
+.code-window.tw-ready .tw-line.tw-cmd {
+  opacity: 1;
+  overflow: hidden;
+  width: 0;
+}
+
+.code-window .tw-line.tw-shown {
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+.code-window .tw-line.tw-cmd.tw-typing {
+  animation: tw-type var(--tw-dur) steps(var(--tw-steps)) forwards;
+}
+
+.code-window .tw-line.tw-cmd.tw-done {
+  width: auto;
+}
+
+.code-window .tw-caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: currentColor;
+  animation: tw-blink 1s steps(1) infinite;
+}
+
+@keyframes tw-type {
+  from { width: 0; }
+  to { width: var(--tw-width); }
+}
+
+@keyframes tw-blink {
+  50% { opacity: 0; }
+}
+
+.code-window .tw-line-copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin-left: 10px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #b3a9bb;
+  vertical-align: middle;
+  cursor: pointer;
+  opacity: 0.45;
+  transition: opacity 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.code-window .tw-line-copy svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.code-window .tw-cmd:hover + .tw-line-copy,
+.code-window .tw-line-copy:hover,
+.code-window .tw-line-copy:focus-visible,
+.code-window .tw-line-copy.is-copied {
+  opacity: 1;
+}
+
+.code-window .tw-line-copy:hover {
+  border-color: #ff6fa5;
+  color: #ff6fa5;
+}
+
+.code-window .tw-line-copy.is-copied {
+  border-color: #27c93f;
+  color: #27c93f;
+}
+
+.code-window.tw-ready .tw-cmd:not(.tw-done) + .tw-line-copy {
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .code-window.tw-ready .tw-line {
+    width: auto !important;
+    opacity: 1 !important;
+    animation: none !important;
+  }
 }
 
 .ascii-diagram {
@@ -1548,41 +1695,8 @@ a.post-lesson-link:hover {
   white-space: pre;
 }
 
-.code-window::before {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0.8em;
-  left: 1.2em;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #ff5f56;
-  box-shadow: 16px 0 #ffbd2e, 32px 0 #27c93f;
-}
 
-.code-copy {
-  position: absolute;
-  top: 0.6em;
-  right: 0.8em;
-  width: 28px;
-  height: 28px;
-  border: none;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  color: $color-code-text;
-  cursor: pointer;
-  font-size: 13px;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s ease;
-}
 
-.code-copy:hover {
-  background: rgba(255, 255, 255, 0.18);
-}
 
 .highlight {
   color: var(--color-gold);
@@ -2274,18 +2388,20 @@ a.post-lesson-link:hover {
 
 .flip-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 16px;
 }
 
 .flip-card {
   perspective: 1000px;
-  height: 140px;
+  height: var(--flip-h, auto);
+  min-height: 140px;
   cursor: pointer;
 }
 
 .flip-card-inner {
-  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
   width: 100%;
   height: 100%;
   transition: transform 0.5s;
@@ -2298,8 +2414,10 @@ a.post-lesson-link:hover {
 
 .flip-card-front,
 .flip-card-back {
-  position: absolute;
-  inset: 0;
+  grid-area: 1 / 1;
+  min-width: 0;
+  min-height: 140px;
+  overflow-wrap: anywhere;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2845,4 +2963,299 @@ a.post-lesson-link:hover {
   .flow-node.is-checking .flow-icon {
     animation: none;
   }
+}
+
+.app-frame-content .flow-steps {
+  --color-surface: #1e1826;
+  --color-bg: #14101a;
+  --color-border: #3d2f42;
+  --color-text: #f3e9ef;
+  --color-text-muted: #9d96a8;
+  --color-primary: #ff5c8a;
+  --color-primary-strong: #ffa8c8;
+  --color-primary-soft: rgba(255, 92, 138, 0.18);
+}
+
+.app-frame-content .doc-step-body .flow-steps .flow-counter {
+  color: #ff5c8a;
+}
+
+/* Karar agaci / teshis sihirbazi (dtree)
+*/
+
+.dtree {
+  margin: 28px 0;
+  padding: 22px 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background: var(--color-surface);
+}
+
+.dtree-eyebrow {
+  margin: 0 0 12px;
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.dtree-path {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.dtree-chip {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--color-primary-soft);
+  color: var(--color-primary-strong);
+  font-size: 0.78em;
+  font-weight: 600;
+}
+
+.dtree-chip + .dtree-chip::before {
+  content: '→ ';
+  opacity: 0.6;
+}
+
+.dtree-text p {
+  margin: 0 0 16px;
+  font-size: 1.02em;
+}
+
+.dtree-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.dtree-option {
+  padding: 10px 18px;
+  border: 1px solid var(--color-primary);
+  border-radius: 12px;
+  background: var(--color-bg);
+  color: var(--color-primary-strong);
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.dtree-option:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.dtree-result {
+  padding: 16px 18px 2px;
+  border-left: 4px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-bg);
+}
+
+.dtree-result-fix {
+  border-left-color: #2f9e6a;
+}
+
+.dtree-result-neutral {
+  border-left-color: var(--color-text-muted);
+}
+
+.dtree-controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border);
+}
+
+.dtree-btn {
+  padding: 7px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: none;
+  color: var(--color-text-muted);
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dtree-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary-strong);
+}
+
+/* Makine cozumu ozet karti (baslik dahil tek kart)
+*/
+
+.post-header-with-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 22px 26px;
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 16px;
+  background: var(--color-surface);
+}
+
+.post-header-with-card .post-title {
+  margin-top: 0;
+}
+
+.post-header-with-card .post-meta {
+  margin-bottom: 0;
+}
+
+.machine-card {
+  display: flex;
+  gap: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+}
+
+.machine-card-meta {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 28px;
+}
+
+.machine-card-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.machine-card-label {
+  font-size: 0.7em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.machine-card-value {
+  font-size: 0.95em;
+  font-weight: 600;
+}
+
+.machine-card-badge {
+  align-self: flex-start;
+  padding: 1px 12px;
+  border-radius: 999px;
+  font-size: 0.85em;
+  font-weight: 700;
+}
+
+.machine-card-badge-easy {
+  background: rgba(47, 158, 106, 0.15);
+  color: #2f9e6a;
+}
+
+.machine-card-badge-medium {
+  background: rgba(214, 140, 30, 0.15);
+  color: #c47f12;
+}
+
+.machine-card-topic {
+  flex: 1 1 auto;
+  padding-left: 24px;
+  border-left: 1px solid var(--color-border);
+}
+
+.machine-card-topic-name {
+  margin: 4px 0 2px;
+  font-size: 0.95em;
+  font-weight: 700;
+}
+
+.machine-card-topic-desc {
+  margin: 0;
+  font-size: 0.88em;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 640px) {
+  .post-header-with-card {
+    padding: 18px;
+  }
+
+  .machine-card {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .machine-card-topic {
+    padding: 14px 0 0;
+    border-left: none;
+    border-top: 1px solid var(--color-border);
+  }
+}
+
+/* Mevcut interaktif bilesenler: iyilestirmeler
+*/
+
+.mc-quiz-retry {
+  margin-top: 12px;
+  padding: 7px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: none;
+  color: var(--color-text-muted);
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mc-quiz-retry:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary-strong);
+}
+
+.flip-cards-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  margin: -8px 0 18px;
+}
+
+.flip-cards-progress {
+  margin: 0;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.flip-cards-seen {
+  color: var(--color-primary-strong);
+}
+
+.flip-cards-all {
+  padding: 6px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 0.85em;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.flip-cards-all:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary-strong);
+}
+
+.flip-card:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 14px;
 }

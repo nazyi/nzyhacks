@@ -1,0 +1,11 @@
+question: "Which guide was developed specifically for web application security testing?"
+options:
+  - text: "MITRE ATT&CK"
+    correct: false
+  - text: "OWASP WSTG"
+    correct: true
+    explain: "OWASP WSTG is a guide developed for web application testing that goes into depth on the test methods used."
+  - text: "NIST SP 800-115"
+    correct: false
+  - text: "OSSTMM"
+    correct: false

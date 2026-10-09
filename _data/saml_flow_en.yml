@@ -1,0 +1,35 @@
+nodes:
+  - label: "Application (SP)"
+    icon: app
+  - label: "User (browser)"
+    icon: user
+  - label: "Identity Provider (IdP)"
+    icon: idp
+steps:
+  - from: 1
+    to: 0
+    packet: "Access request"
+    text: "The user wants to sign in to an application, for example Salesforce."
+  - from: 0
+    to: 1
+    packet: "SAML request"
+    text: "The application doesn't know the user yet. Instead of asking for a password itself, it creates a SAML request and redirects the browser to the identity provider."
+  - from: 1
+    to: 2
+    packet: "SAML request"
+    text: "The browser carries this request to the identity provider (for example, Microsoft AD FS)."
+  - at: 2
+    packet: "Verifying identity"
+    text: "The identity provider verifies who the user is (password, MFA, etc.). If the user already has an active session there, it doesn't ask again; that's exactly the \"sign in once\" part of SSO."
+  - from: 2
+    to: 1
+    packet: "SAML Assertion (XML)"
+    text: "The identity provider creates a digitally signed SAML Assertion stating that the user has been verified, and hands it to the browser."
+  - from: 1
+    to: 0
+    packet: "SAML Assertion"
+    text: "The browser passes this assertion on to the application."
+  - at: 0
+    packet: "Signed in"
+    tone: ok
+    text: "The application checks the signature. If the assertion comes from an identity provider it trusts, it lets the user in. The application never sees the user's password."

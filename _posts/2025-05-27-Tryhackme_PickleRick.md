@@ -8,6 +8,10 @@ tags: [TryHackMe, Command Injection]
 order: 4 
 author: nazy
 translation_url: /en/Tryhackme_PickleRick
+platform: TryHackMe
+difficulty: Easy
+topic: "Command Injection"
+topic_desc: "Uygulamanın kullanıcıdan aldığı girdiyi işletim sistemi komutu olarak çalıştırması."
 ---
 ## Port Taraması
 

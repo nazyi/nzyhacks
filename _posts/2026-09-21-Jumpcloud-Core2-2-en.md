@@ -66,4 +66,4 @@ Let's go over the actions available in the **Actions** menu at the top right aft
   <img loading="lazy" src="{{ '/assets/images/jumpcloud_core2/actions-menu.webp' | relative_url }}" width="1000" height="537" alt="The Actions menu opened for a selected user on the Users page">
 </div>
 
-{% include flip-cards.html id="jc-actions-en" items=site.data.jc_actions_en hint="Click the cards to test yourself on what each one does." %}
+{% include flip-cards.html id="jc-actions-en" items=site.data.jc_actions_en hint="Click the cards to test yourself on what each one does." seen_label="viewed" flip_all_label="Flip all" unflip_all_label="Flip all back" %}

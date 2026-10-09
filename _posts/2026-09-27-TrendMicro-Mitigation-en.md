@@ -57,6 +57,10 @@ From here you can configure the trigger. In this scenario, the task runs hourly.
   <img loading="lazy" src="{{ '/assets/images/trendmicro_mitigation/leaked-account-playbook-flow.webp' | relative_url }}" width="2560" height="860" alt="The Leaked account playbook's Trigger, Target, and Action flow diagram">
 </div>
 
+You can step through what happens when this playbook runs:
+
+{% include flow-steps.html data=site.data.playbook_flow_en step_label="Step" next_label="Next →" restart_label="Start over ↺" prev_label="Back" %}
+
   </div>
 </div>
 

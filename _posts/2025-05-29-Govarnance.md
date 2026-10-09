@@ -37,7 +37,7 @@ Bilgi yönetişiminin temel kavramlarına, veri koruma regülasyonlarına ve en 
 
 En yaygın saldırı türleri ve kısa tanımları:
 
-{% include flip-cards.html id="gov-attacks-tr" items=site.data.gov_attacks hint="14 saldırı türü — kartlara tıklayıp tanımlarını gör." %}
+{% include flip-cards.html id="gov-attacks-tr" items=site.data.gov_attacks hint="Kartlara tıklayıp tanımlarını gör." %}
 
 ## BGYS (Bilgi Güvenliği Yönetim Sistemi) Adımları
 

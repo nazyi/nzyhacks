@@ -8,6 +8,10 @@ tags: [CyberExam, WiFi]
 order: 5
 author: nazy
 translation_url: /en/CyberExam-Unhidden
+platform: CyberExam
+difficulty: Easy
+topic: "Gizli SSID"
+topic_desc: "SSID'yi gizlemek ağı görünmez yapmaz; ağ adı, cihazlar ağa bağlanırken yine de havada iletilir."
 ---
 
 ## Giriş
