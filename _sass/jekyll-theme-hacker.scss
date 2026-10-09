@@ -725,6 +725,39 @@ code {
   transform: translate(0, 0);
 }
 
+a.feature-card {
+  display: block;
+  text-decoration: none;
+}
+
+a.feature-card:hover,
+a.feature-card:focus-visible {
+  border-color: var(--color-primary);
+  text-decoration: none;
+}
+
+a.feature-card.visible:hover {
+  transform: translateY(-4px);
+}
+
+.feature-card-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  color: var(--color-primary-strong);
+  font-size: 0.9em;
+  font-weight: 700;
+}
+
+.feature-card-arrow {
+  transition: transform 0.2s ease;
+}
+
+a.feature-card:hover .feature-card-arrow {
+  transform: translateX(4px);
+}
+
 /* Split section (oda fotoğrafı vb.)
 */
 
@@ -3121,7 +3154,16 @@ a.post-lesson-link:hover {
 .machine-card-meta {
   display: flex;
   flex: 0 0 auto;
+  align-items: center;
   gap: 28px;
+}
+
+.machine-card-logo {
+  width: auto;
+  max-width: 72px;
+  height: 40px;
+  object-fit: contain;
+  cursor: default;
 }
 
 .machine-card-field {
@@ -3258,4 +3300,115 @@ a.post-lesson-link:hover {
   outline: 3px solid var(--color-primary);
   outline-offset: 3px;
   border-radius: 14px;
+}
+
+/* Okuma ilerleme cubugu
+*/
+
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  height: 3px;
+  pointer-events: none;
+}
+
+.reading-progress-bar {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+/* Icindekiler: kayan aktif baslik isaretcisi
+*/
+
+.post-toc ul.has-indicator {
+  position: relative;
+}
+
+.post-toc ul.has-indicator::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: var(--color-border);
+}
+
+.post-toc ul.has-indicator a.active {
+  border-left-color: transparent;
+}
+
+.post-toc-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--color-primary);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+}
+
+.post-toc-indicator.is-visible {
+  opacity: 1;
+}
+
+/* Liste sayfalarinda sirayla beliren kartlar
+*/
+
+.solution-item.reveal-ready {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease, box-shadow 0.25s ease;
+}
+
+.solution-item.reveal-ready.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Sayfalar arasi yumusak gecis
+*/
+
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+
+  .site-header {
+    view-transition-name: site-header;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .post-toc-indicator {
+    transition: none;
+  }
+
+  .solution-item.reveal-ready {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Basliklara atlarken sabit ust menunun altinda kalmasin
+*/
+
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5 {
+  scroll-margin-top: 136px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }

@@ -18,20 +18,36 @@ translation_url: /
 </div>
 
 <div class="feature-grid">
-  <div class="feature-card fade-in-left">
+
+  {% assign home_posts = site.posts | where: "lang", "en" %}
+
+  {% assign n = home_posts | where_exp: "p", "p.categories contains 'makine'" | size %}
+  <a class="feature-card fade-in-left" href="{{ '/en/makine-cozumler' | relative_url }}">
     <h3>CTF Adventures</h3>
     <p>You can find the machines I've solved on platforms like Hack The Box, TryHackMe, and CyberExam, along with the notes I took along the way.</p>
-  </div>
+    <span class="feature-card-meta">{{ n }} machine write-ups <span class="feature-card-arrow" aria-hidden="true">→</span></span>
+  </a>
 
-  <div class="feature-card fade-in-right">
+  {% assign n = home_posts | where_exp: "p", "p.categories contains 'modul'" | size %}
+  <a class="feature-card fade-in-right" href="{{ '/en/modul-cozumler' | relative_url }}">
     <h3>What I'm Learning</h3>
     <p>I deepen my knowledge by working through different modules; you can find my notes and examples on this page.</p>
-  </div>
+    <span class="feature-card-meta">{{ n }} module notes <span class="feature-card-arrow" aria-hidden="true">→</span></span>
+  </a>
 
-  <div class="feature-card fade-in-left">
+  {% assign n = home_posts | where_exp: "p", "p.categories contains 'dokumantasyon'" | size %}
+  <a class="feature-card fade-in-left" href="{{ '/en/dokumantasyon' | relative_url }}">
+    <h3>Documentation</h3>
+    <p>Setup, configuration, and usage notes for enterprise tools like JumpCloud and Trend Micro.</p>
+    <span class="feature-card-meta">{{ n }} docs <span class="feature-card-arrow" aria-hidden="true">→</span></span>
+  </a>
+
+  {% assign n = home_posts | where_exp: "p", "p.categories contains 'blog'" | size %}
+  <a class="feature-card fade-in-right" href="{{ '/en/bloglar' | relative_url }}">
     <h3>Scratchpad</h3>
     <p>Sometimes small tips, sometimes command-line notes… This is where I jot down what I learn, try out, and discover.</p>
-  </div>
+    <span class="feature-card-meta">{{ n }} posts <span class="feature-card-arrow" aria-hidden="true">→</span></span>
+  </a>
 </div>
 
 <div class="page-section page-section-spaced">

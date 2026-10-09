@@ -89,6 +89,8 @@ layout: default
   {% endif %}
 {% endif %}
 
+<div class="reading-progress" aria-hidden="true"><span class="reading-progress-bar"></span></div>
+
 <div class="post-layout{% if page.wide_content %} post-layout-wide{% endif %}">
   <aside class="post-toc" id="post-toc" aria-label="{{ t.toc_aria }}">
     <p class="post-toc-title">{{ t.toc_title }}</p>
@@ -99,7 +101,9 @@ layout: default
     <a class="post-back" href="{{ back_url | relative_url }}">← {{ back_text }}</a>
 
     <!-- Post Header -->
-    {% if cat == 'makine' and page.difficulty %}{% assign show_card = true %}{% else %}{% assign show_card = false %}{% endif %}
+    {% assign show_card = false %}
+    {% if cat == 'makine' and page.difficulty %}{% assign show_card = true %}{% endif %}
+    {% if cat == 'modul' or cat == 'dokumantasyon' %}{% assign show_card = true %}{% endif %}
     <header class="post-header{% if show_card %} post-header-with-card{% endif %}">
       <div class="post-header-main">
         <h1 class="post-title">{{ page.title }}</h1>
@@ -112,20 +116,52 @@ layout: default
       {% if show_card %}
         <aside class="machine-card">
           <div class="machine-card-meta">
-            <div class="machine-card-field">
-              <span class="machine-card-label">{{ t.card_platform }}</span>
-              <span class="machine-card-value">{{ page.platform }}</span>
-            </div>
-            <div class="machine-card-field">
-              <span class="machine-card-label">{{ t.card_difficulty }}</span>
-              <span class="machine-card-badge machine-card-badge-{{ page.difficulty | slugify }}">{{ page.difficulty }}</span>
-            </div>
+            {% if page.logo %}
+              <img class="machine-card-logo" src="{{ page.logo | relative_url }}" alt="" aria-hidden="true">
+            {% endif %}
+            {% if cat == 'makine' %}
+              <div class="machine-card-field">
+                <span class="machine-card-label">{{ t.card_platform }}</span>
+                <span class="machine-card-value">{{ page.platform }}</span>
+              </div>
+              <div class="machine-card-field">
+                <span class="machine-card-label">{{ t.card_difficulty }}</span>
+                <span class="machine-card-badge machine-card-badge-{{ page.difficulty | slugify }}">{{ page.difficulty }}</span>
+              </div>
+            {% elsif cat == 'modul' %}
+              <div class="machine-card-field">
+                <span class="machine-card-label">{{ t.card_series }}</span>
+                <span class="machine-card-value">{{ page.title | split: ' Mod' | first }}</span>
+              </div>
+              <div class="machine-card-field">
+                <span class="machine-card-label">{{ t.card_lesson }}</span>
+                <span class="machine-card-value">{{ lesson_index | plus: 1 }} / {{ lesson_count }}</span>
+              </div>
+            {% else %}
+              <div class="machine-card-field">
+                <span class="machine-card-label">{{ t.card_tool }}</span>
+                <span class="machine-card-value">{{ page.tool }}</span>
+              </div>
+              {% if page.doc_type == 'troubleshooting' %}
+                <div class="machine-card-field">
+                  <span class="machine-card-label">{{ t.card_type }}</span>
+                  <span class="machine-card-value">{{ t.card_troubleshooting }}</span>
+                </div>
+              {% else %}
+                <div class="machine-card-field">
+                  <span class="machine-card-label">{{ t.card_part }}</span>
+                  <span class="machine-card-value">{{ lesson_index | plus: 1 }} / {{ lesson_count }}</span>
+                </div>
+              {% endif %}
+            {% endif %}
           </div>
-          <div class="machine-card-topic">
-            <span class="machine-card-label">{{ t.card_topic }}</span>
-            <p class="machine-card-topic-name">{{ page.topic }}</p>
-            <p class="machine-card-topic-desc">{{ page.topic_desc }}</p>
-          </div>
+          {% if cat == 'makine' %}
+            <div class="machine-card-topic">
+              <span class="machine-card-label">{{ t.card_topic }}</span>
+              <p class="machine-card-topic-name">{{ page.topic }}</p>
+              <p class="machine-card-topic-desc">{{ page.topic_desc }}</p>
+            </div>
+          {% endif %}
         </aside>
       {% endif %}
     </header>
@@ -228,18 +264,80 @@ layout: default
       entries.push({ link: a, heading: heading });
     });
 
-    if (!('IntersectionObserver' in window)) return;
+    var indicator = document.createElement('span');
+    indicator.className = 'post-toc-indicator';
+    indicator.setAttribute('aria-hidden', 'true');
+    list.appendChild(indicator);
+    list.classList.add('has-indicator');
 
-    var observer = new IntersectionObserver(function (visible) {
-      visible.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        var match = entries.filter(function (item) { return item.heading === entry.target; })[0];
-        if (!match) return;
-        entries.forEach(function (item) { item.link.classList.remove('active'); });
-        match.link.classList.add('active');
+    var activeItem = null;
+    var clickedItem = null;
+    var SPY_OFFSET = 160;
+
+    function setActive(item) {
+      if (!item || item === activeItem) return;
+      activeItem = item;
+      entries.forEach(function (e) { e.link.classList.remove('active'); });
+      item.link.classList.add('active');
+      indicator.style.transform = 'translateY(' + item.link.offsetTop + 'px)';
+      indicator.style.height = item.link.offsetHeight + 'px';
+      indicator.classList.add('is-visible');
+    }
+
+    // The active heading is the last one that has scrolled past the top
+    // area; near the page bottom, a heading picked from the TOC stays active
+    // since the last sections can never reach the top.
+    function spy() {
+      var atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+      if (atBottom && clickedItem) {
+        setActive(clickedItem);
+        return;
+      }
+      var current = entries[0];
+      entries.forEach(function (e) {
+        if (e.heading.getBoundingClientRect().top - SPY_OFFSET <= 0) current = e;
       });
-    }, { rootMargin: '-20% 0px -70% 0px' });
+      setActive(current);
+    }
 
-    headings.forEach(function (heading) { observer.observe(heading); });
+    entries.forEach(function (e) {
+      e.link.addEventListener('click', function () {
+        clickedItem = e;
+        setActive(e);
+      });
+    });
+    ['wheel', 'touchstart', 'keydown'].forEach(function (type) {
+      window.addEventListener(type, function () { clickedItem = null; }, { passive: true });
+    });
+
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(function () { ticking = false; spy(); });
+      }
+    }, { passive: true });
+    spy();
+  })();
+</script>
+
+<script>
+  (function () {
+    var bar = document.querySelector('.reading-progress-bar');
+    var content = document.querySelector('.post-content');
+    if (!bar || !content) return;
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var rect = content.getBoundingClientRect();
+      var total = rect.height - window.innerHeight;
+      var progress = total > 0 ? -rect.top / total : (rect.top <= 0 ? 1 : 0);
+      bar.style.transform = 'scaleX(' + Math.min(Math.max(progress, 0), 1) + ')';
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
   })();
 </script>

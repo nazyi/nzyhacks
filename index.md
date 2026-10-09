@@ -16,20 +16,36 @@ translation_url: /en/
 </div>
 
 <div class="feature-grid">
-  <div class="feature-card fade-in-left">
+
+  {% assign home_posts = site.posts | where: "lang", "tr" %}
+
+  {% assign n = home_posts | where_exp: "p", "p.categories contains 'makine'" | size %}
+  <a class="feature-card fade-in-left" href="{{ '/makine-cozumler' | relative_url }}">
     <h3>CTF Maceralarım</h3>
     <p>Hack The Box, TryHackMe, CyberExam gibi platformlarda çözdüğüm makineleri ve edindiğim notları buradan görebilirsin.</p>
-  </div>
+    <span class="feature-card-meta">{{ n }} makine çözümü <span class="feature-card-arrow" aria-hidden="true">→</span></span>
+  </a>
 
-  <div class="feature-card fade-in-right">
+  {% assign n = home_posts | where_exp: "p", "p.categories contains 'modul'" | size %}
+  <a class="feature-card fade-in-right" href="{{ '/modul-cozumler' | relative_url }}">
     <h3>Öğrendiklerim</h3>
     <p>Farklı modüller üzerinde çalışarak bilgimi derinleştiriyorum; bu sayfada notlarımı ve örnekleri bulabilirsin.</p>
-  </div>
+    <span class="feature-card-meta">{{ n }} modül notu <span class="feature-card-arrow" aria-hidden="true">→</span></span>
+  </a>
 
-  <div class="feature-card fade-in-left">
+  {% assign n = home_posts | where_exp: "p", "p.categories contains 'dokumantasyon'" | size %}
+  <a class="feature-card fade-in-left" href="{{ '/dokumantasyon' | relative_url }}">
+    <h3>Dokümantasyon</h3>
+    <p>JumpCloud ve Trend Micro gibi kurumsal araçların kurulum, yapılandırma ve kullanım notlarını burada topluyorum.</p>
+    <span class="feature-card-meta">{{ n }} doküman <span class="feature-card-arrow" aria-hidden="true">→</span></span>
+  </a>
+
+  {% assign n = home_posts | where_exp: "p", "p.categories contains 'blog'" | size %}
+  <a class="feature-card fade-in-right" href="{{ '/bloglar' | relative_url }}">
     <h3>Karalama Defteri</h3>
     <p>Bazen küçük ipuçları, bazen komut satırı notları… Burada öğrendiklerimi, denediklerimi ve bulduklarımı karalıyorum.</p>
-  </div>
+    <span class="feature-card-meta">{{ n }} yazı <span class="feature-card-arrow" aria-hidden="true">→</span></span>
+  </a>
 </div>
 
 <div class="page-section page-section-spaced">

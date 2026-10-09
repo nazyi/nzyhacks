@@ -929,6 +929,31 @@
 
     <script>
       (function () {
+        var items = document.querySelectorAll('.solution-item');
+        if (!items.length || !('IntersectionObserver' in window)) return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        items.forEach(function (item) { item.classList.add('reveal-ready'); });
+        var observer = new IntersectionObserver(function (entries) {
+          var visible = entries.filter(function (e) { return e.isIntersecting; });
+          visible.forEach(function (entry, i) {
+            var item = entry.target;
+            var delay = i * 80;
+            observer.unobserve(item);
+            item.style.transitionDelay = delay + 'ms';
+            item.classList.add('is-revealed');
+            setTimeout(function () {
+              item.classList.remove('reveal-ready', 'is-revealed');
+              item.style.transitionDelay = '';
+            }, delay + 650);
+          });
+        }, { rootMargin: '0px 0px -8% 0px' });
+        items.forEach(function (item) { observer.observe(item); });
+      })();
+    </script>
+
+    <script>
+      (function () {
         document.querySelectorAll('.flow-steps').forEach(function (root) {
           var stage = root.querySelector('.flow-stage');
           var list = root.querySelector('.flow-step-list');
