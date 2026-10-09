@@ -17,15 +17,15 @@ translation_url: /en/Cisco_Module3_Passive
 
 #### 3.1.1 Reconnaissance  
 
-Hedef hakkında bilgi toplamaya reconnaissance denir. Cyber Kill Chain'in ilk adımıdır. Askeri anlamında keşif anlamında kullanılan bu terim, düşmanın konumu ve yetenekleri gibi bilgileri kapsamaktadır.
+Hedef hakkında bilgi toplamaya reconnaissance denir. Cyber Kill Chain'in ilk adımıdır. Askeri alanda keşif anlamında kullanılan bu terim, düşmanın konumu ve yetenekleri gibi bilgileri kapsamaktadır.
 
 #### 3.1.2 Active Reconnaissance vs Passive Reconnaissance
 
-**Active Reconnaissance**, bilgi toplamak için kullanılan toollar daha saldırgan ve belirgin olmasıdır. Hedef sisteme veya ağa istek atarak çeşitli taramalar yapar.
+**Active Reconnaissance**, bilgi toplamak için kullanılan toolların daha saldırgan ve belirgin olduğu yöntemdir. Hedef sisteme veya ağa istek atarak çeşitli taramalar yapar.
 
 **Passive Reconnaissance**, kullanılan toolların hedef sistem veya ağ ile doğrudan etkileşime girmediği durumdur. Hedefe kendini fark ettirmeden pasif bir yol izleyerek bilgi toplanmaya çalışılır.
 
-Bazı aktif bilgi toplama tooları:
+Bazı aktif bilgi toplama toolları:
 
 - Host Enumeration
 - Network Enumeration
@@ -42,7 +42,7 @@ Bazı pasif bilgi toplama toolları:
 
 ##### Part 1 Examine OSINT Resources
 
- [https://osintframework.com/](https://osintframework.com/) OSINT Frameworkünü kullanarak nickname aratabiliriz.  [https://whatsmyname.app/](https://whatsmyname.app/) sitesi ile istediğiniz nickname’i arayabilir. Çıkan sonuçların urlsi ile birlikte bulabilirsiniz.
+ [https://osintframework.com/](https://osintframework.com/) OSINT Frameworkünü kullanarak nickname aratabiliriz.  [https://whatsmyname.app/](https://whatsmyname.app/) sitesi ile istediğiniz nickname’i arayabilir, çıkan sonuçları URL’leriyle birlikte görebilirsiniz.
 
 ##### Part 2 Use SpiderFoot
 
@@ -68,7 +68,7 @@ Scan tab’ine bakarak önceki scanler veya aktif olarak devam eden scanlere bak
 
 **Step 3: Register for API Keys**
 
-Bazı modülleri kullanmak için API anahtarlarına ihtiyaç vardır. Bu API anahtarları bazı modülleri için ücretsiz alınabilmektedir. Kullanmak istediğiniz modülün sayfa içeriğine giderek soru işaretine tıklayarak API anahtarının nasıl alınacağı adım adım görebilirsiniz.
+Bazı modülleri kullanmak için API anahtarlarına ihtiyaç vardır. Bu API anahtarları bazı modüller için ücretsiz alınabilmektedir. Kullanmak istediğiniz modülün sayfa içeriğine giderek soru işaretine tıklayarak API anahtarının nasıl alınacağını adım adım görebilirsiniz.
 
 ##### Part 3 Investigate Recon-ng
 
@@ -78,11 +78,11 @@ Kali üzerinde recon-ng toolumuzu açıyoruz. Bunu gerek terminal üzerinden ger
 
 Yapılan her sorgunun kendine ayrı çalışma alanı vardır. Böylece sorgular birbirine karışmaz iş kolaylaşır.
 
-Workspace oluşturmak için “workspaces create”” komutunu kullanıyoruz.
+Workspace oluşturmak için “workspaces create” komutunu kullanıyoruz.
 
 **Step 2: Investigate Modules**
 
-Recon-ng toollu modüler bir çerçevedir. Yani bir sürü modülden oluşmaktadır. Bu modülleri dışarı bir marketpace üzerinden indirip kullanabilirsiniz. “modules search” komutunu kullanarak modüllere bakabiliriz.
+Recon-ng modüler bir çerçevedir. Yani bir sürü modülden oluşmaktadır. Bu modülleri dışarıdaki bir marketplace üzerinden indirip kullanabilirsiniz. “marketplace search” komutunu kullanarak bu modüllere bakabiliriz.
 <div class="code-window">
 <br>
 <span class="highlight">[recon-ng][default]</span> > marketplace search
@@ -94,7 +94,7 @@ Modüllere Github reposundan ulaşılabilir. Modüller hakkında detaylı bilgiy
 
 **Step 4: Install a new module**
 
-Yeni modül indirmek için ilk öncelikle modüle search ile modülleri görüntüleyelim.
+Yeni modül indirmek için önce modules search ile modülleri görüntüleyelim.
 
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_passive/search.webp' | relative_url }}" width="700" height="300" alt="Recon-ng'de 'modules search' komutunun modül listesi çıktısı">
@@ -111,7 +111,7 @@ Aynı işlemi hackertarget modülü için de uygulayıp modülü indirin.
 
 **Step 5: Run the New Modules**
 
-Yeni bir workspace oluşturalım.  Modül ile çalışmak için aşağıdaki komutunu kullanalım.
+Yeni bir workspace oluşturalım.  Modül ile çalışmak için aşağıdaki komutu kullanalım.
 <div class="code-window">
 <br>
 <span class="highlight">[recon-ng][cisco]</span> > modules load hackertarget 
@@ -123,7 +123,7 @@ Modül hakkında daha fazla bilgi almak isterseniz aşağıdaki komutu kullanabi
 <span class="highlight">[recon-ng][cisco][hackertarget]</span> > info 
 </div>
 
-Info çıktısındaki gibi biz gereken tek ayar source yani kaynağın ayarlanmasıymış.
+Info çıktısında görüldüğü gibi bizim için gereken tek ayar source yani kaynağın ayarlanmasıymış.
 <div class="code-window">
 <br>
 <span class="highlight">[recon-ng][cisco][hackertarget]</span> > options set source hackxor.net<br>SOURCE -> hackxor.net
@@ -170,7 +170,7 @@ Dashboard üzerinden aldığımız görüntüdeki başlıklara bakmak için ise 
 
 Recon-ng’nin veritabanındaki sonuçları daha iyi görüntüleyebilmek için web ara yüzü vardır.
 
-Yeni bir terminal açıp recon-web yazalım. Böylece databasedeki bilgilerin toplanma süreci başlar. Outputta çıkan URL üzerine tıklayarak ara yüze erişebilirsiniz. Ara yüzde ilk başta default workspace’in sonuçları gelir yukarıdaki turuncu yazan default yazısına tıklayarak kendi workspace’inizi seçebilirsiniz.
+Yeni bir terminal açıp recon-web yazalım. Böylece databasedeki bilgilerin toplanma süreci başlar. Outputta çıkan URL üzerine tıklayarak ara yüze erişebilirsiniz. Ara yüzde ilk başta default workspace’in sonuçları gelir; yukarıdaki turuncu yazan default yazısına tıklayarak kendi workspace’inizi seçebilirsiniz.
 
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_passive/recon.webp' | relative_url }}" width="600" height="400" alt="Recon-ng'nin recon-web arayüzünde workspace sonuçlarının görüntülenmesi">
@@ -196,7 +196,7 @@ Modülü indirmek ve kullanmak için;
 </div>
 
 
-Gerekli ayarlara baktıktan sonra source yine hackxor.net olarak ayarlayalım.
+Gerekli ayarlara baktıktan sonra source’u yine hackxor.net olarak ayarlayalım.
 <div class="code-window">
 <br>
 <span class="highlight">[recon-ng][cisco][interesting_files]</span> > options set source hackxor.net<br><span class="highlight">[recon-ng][cisco][interesting_files]</span> > run

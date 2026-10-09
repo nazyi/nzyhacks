@@ -108,7 +108,7 @@ And the following command is used to find the operating system;
 
 The Vulners script keeps the open port and software version information and compares it against the CPE database. This way, it checks whether the system is exposed to known vulnerabilities.
 
-Let's enter the following command to scan for vulnerabilities on the system with a CVE score of 4 or higher.
+Let's enter the following command to scan for vulnerabilities on the system with a CVSS score of 4 or higher.
 
 <div class="code-window">
 <br>
@@ -161,7 +161,7 @@ We're greeted by a page like this. On this page, if we click the Date informatio
 - **Determining what protocols are in use:** Among the first things to do before starting a scan is to determine which protocols the target system uses.
 - **Network Topology:** Network topology is very important for planning an attack. It is not recommended to test over networks like a WAN. It is recommended to perform the scan while positioned as close to the target as possible.
 - **Bandwidth Limitations:** The bandwidth of the network being scanned must be taken into account. For example, if you're scanning over low-bandwidth networks such as a VPN or a WAN, you should adjust your scan options accordingly.
-- **Query Throttling:** This refers to slowing down the scanner's traffic on a network with limited bandwidth. For example, there's no need to scan for Windows machine vulnerabilities on a Linux machine.
+- **Query Throttling:** This refers to slowing down the scanner's traffic on a network with limited bandwidth. For example, reducing the number of requests the scanner sends at the same time falls under this.
 - **Fragile Systems:** There are devices that can't withstand the traffic generated during scanning. When scanning such systems, you should either send less traffic or exclude them from the scan scope.
 
 ### 3.4 Understanding How to Analyze Vulnerability Scan Results

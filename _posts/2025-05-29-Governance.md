@@ -2,11 +2,11 @@
 categories: [blog]
 layout: post
 description: "Veri sınıflandırma, GDPR gibi regülasyonlar, yaygın siber saldırı türleri ve Bilgi Güvenliği Yönetim Sistemi'nin (BGYS) temellerine kısa bir bakış."
-logo: "/assets/images/blog_icon/govarnance.png"
+logo: "/assets/images/blog_icon/governance.png"
 author: nazy
 title: Bilgi Yönetişimi 202 
 tags: [Bilgi Yönetişimi, GDPR]
-translation_url: /en/Govarnance
+translation_url: /en/Governance
 ---
 
 Bilgi yönetişiminin temel kavramlarına, veri koruma regülasyonlarına ve en yaygın siber saldırı türlerine kısa bir bakış.

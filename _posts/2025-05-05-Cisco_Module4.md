@@ -74,7 +74,7 @@ Kurumda çalışan kişilerin rozet veya kartlarını klonlayarak çoğaltılmas
 
 #### 4.4.1 Social-Engineer Toolkit (SET)
 
-SET kullanarak spear phing emailinin ne kadar kolay yapıldığını görelim.
+SET kullanarak spear phishing emailinin ne kadar kolay yapıldığını görelim.
 
 **Step 1**
 
@@ -175,7 +175,7 @@ Arayan kişi olarak görünen numarayı çok basit bir şekilde değiştirebilir
 
 - **SpoofApp**: Hem Android hem iOS üzerinde numara spooflamak için kullanılan bir uygulamadır.
 - **SpoofCard**: Bu tool da hem Android hem de iOS üzerinde numara spooflamak, ses değiştirmek, farklı arka plan sesi oluşturmak için kullanılan bir uygulamadır.
-- **Arterisk**: Voice over IP kontrol aracıdır.
+- **Asterisk**: Voice over IP kontrol aracıdır.
 
 #### 4.4.4 Lab – Explore the Social Engineer Toolkit (SET)
 
@@ -203,7 +203,7 @@ Buradaki atakların açıklamasını okuduktan sonra bizim yapacağımız atak i
 
 **Step 2: Clone the DVWA.vm login screen**
 
-Bu adımda DVWA.vm oturum açma web sitesini kopyalacağız. SET bilgisayarda barındılan bir web sitesi oluşturur. Kurbanlar buraya bilgilerini girerse istismar edilecek.
+Bu adımda DVWA.vm oturum açma web sitesini kopyalayacağız. SET bilgisayarda barındırılan bir web sitesi oluşturur. Kurbanlar buraya bilgilerini girerse istismar edilecek.
 
 Aşağıdaki menüden Site Cloner seçeneğini seçiyoruz.
 

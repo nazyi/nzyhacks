@@ -12,7 +12,7 @@ permalink: /en/Cisco_Module2
 translation_url: /Cisco_Module2
 ---
 
-## Module 2: Planning and Scoping a Penetration Testing Assesment
+## Module 2: Planning and Scoping a Penetration Testing Assessment
 
 ### 2.1 Regulatory Compliance Considerations
 
@@ -90,8 +90,8 @@ Scoping is one of the most important elements of a pentest. The devices to be te
 
 - **SOAP:** Uses the XML format; there are XSD files that define what the messages will look like.
 - **Swagger**: A structured document that describes how APIs work. Used for RESTful APIs.
-- **WDSL**: An XML-based language used to document the functionality of web services. Used for the older SOAP API type. It clearly defines how to interact with a web service, which methods (functions) will be used, which parameters are required, and how the web service will respond.
-- **GraphQl:** A query language for APIs, and a structure used to determine how data is fetched, updated, or deleted.
+- **WSDL**: An XML-based language used to document the functionality of web services. Used for the older SOAP API type. It clearly defines how to interact with a web service, which methods (functions) will be used, which parameters are required, and how the web service will respond.
+- **GraphQL:** A query language for APIs, and a structure used to determine how data is fetched, updated, or deleted.
 - **WADL:** An XML-based language used to describe web applications.
 
 **WADL vs WSDL?**

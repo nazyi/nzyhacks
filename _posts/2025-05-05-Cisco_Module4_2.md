@@ -29,7 +29,7 @@ GUI açıldıktan sonra bilgilerimizle giriş yapıyoruz.
 
 **Step 2: Hook the local browser to simulate a client-side attack**
 
-Sömürmeden önce ilk olarak hedef tarayıcıyı “hook” etmeniz gerekir. Bu lab için yerel sistemi kullanacağız. Eğer gerçek bir test olsaydı kurbanın sık ziyaret ettiğin web istelerini belirleyip içine BeEF hook JavaScript kodu yerleştirip işlemi gerçekleştirirdik. Bu labda demo sürüm üzerinden gideceğiz.
+Sömürmeden önce ilk olarak hedef tarayıcıyı “hook” etmeniz gerekir. Bu lab için yerel sistemi kullanacağız. Eğer gerçek bir test olsaydı kurbanın sık ziyaret ettiği web sitelerini belirleyip içine BeEF hook JavaScript kodu yerleştirip işlemi gerçekleştirirdik. Bu labda demo sürüm üzerinden gideceğiz.
 
 Demo sürüm için bir websitesi oluşturulmuş bize.
 
@@ -39,7 +39,7 @@ Demo sürüm için bir websitesi oluşturulmuş bize.
   <img loading="lazy" src="{{ '/assets/images/ciscomodule4/beef2.webp' | relative_url }}" width="720" height="370" alt="BeEF hook demo sitesi butcher sayfasının görünümü">
 </div>
 
-Adresi üzerinden siteye erişebiliriz. Siteye eriştikten sonra biraz inceleyelim. Hook oluşturmak için arkda bir JS kodu çalıştığını biliyoruz. CTRL + U yaparak source code inceleyelim. 
+Adresi üzerinden siteye erişebiliriz. Siteye eriştikten sonra biraz inceleyelim. Hook oluşturmak için arkada bir JS kodu çalıştığını biliyoruz. CTRL + U yaparak source code inceleyelim. 
 
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/ciscomodule4/script.webp' | relative_url }}" width="950" height="100" alt="Sayfa kaynak kodunda hook.js script referansının görünümü">

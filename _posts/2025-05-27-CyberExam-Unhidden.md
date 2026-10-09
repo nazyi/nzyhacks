@@ -18,20 +18,20 @@ topic_desc: "SSID'yi gizlemek ağı görünmez yapmaz; ağ adı, cihazlar ağa b
 
 Görevimiz yukarıda belirtildiği gibi gizli bir SSID’yi bulmamız. Bunun için öncelikle makinemize web üzerinden bağlanıyoruz. Bağlandıktan sonra root kullanıcımıza “user” şifresi ile geçiyoruz.
 
-Kablosuz ağ ara yüzlerini görüntülemek için komutumuzu kullanıyoruz.
+Kablosuz ağ arayüzlerini görüntülemek için komutumuzu kullanıyoruz.
 
 <div class="code-window">
 <br>
 <span class="highlight">nzy@kali$</span> iwconfig
 </div>
 
-Bu komutun çıktısında wlan0 ara yüzünü görüntülüyoruz. Wlan0 ara yüzünün mode ise manuel olarak managed şeklinde ayarlanmış.
+Bu komutun çıktısında wlan0 arayüzünü görüntülüyoruz. Wlan0 arayüzünün mode ise manuel olarak managed şeklinde ayarlanmış.
 
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/cyberexam_unhidden/iwconfig.webp' | relative_url }}" width="600" height="200" alt="iwconfig komutunun wlan0 arayüzü managed mod çıktısı">
 </div>
 
-Ara yüzümüzün adını öğrendiğimize göre ara yüzü monitör moduna alabiliriz.
+Arayüzümüzün adını öğrendiğimize göre arayüzü monitör moduna alabiliriz.
 
 <div class="code-window">
 <br>
@@ -42,7 +42,7 @@ Ara yüzümüzün adını öğrendiğimize göre ara yüzü monitör moduna alab
   <img loading="lazy" src="{{ '/assets/images/cyberexam_unhidden/airmon.webp' | relative_url }}" width="600" height="200" alt="airmon-ng start wlan0 komutunun monitör modu çıktısı">
 </div>
 
-Monitor moda aldığımızı kontrol etmek için tekrardan iwconfig komutu ile görüntüleyebiliriz ve dikkat ederseniz monitör moduna aldığımız ara yüzün sonuna “mon” eklenerek yeni ismi wlan0mon oldu.
+Monitör moduna aldığımızı kontrol etmek için tekrardan iwconfig komutu ile görüntüleyebiliriz ve dikkat ederseniz monitör moduna aldığımız arayüzün sonuna “mon” eklenerek yeni ismi wlan0mon oldu.
 
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/cyberexam_unhidden/iw2.webp' | relative_url }}" width="600" height="200" alt="iwconfig çıktısında wlan0mon olarak değişen arayüz adı">
@@ -50,7 +50,7 @@ Monitor moda aldığımızı kontrol etmek için tekrardan iwconfig komutu ile g
 
 ## Saldırı
 
-Ara yüzümüzün adını öğrendiğimize göre saldırı aşamasına geçebiliriz. Kullanacağımız aracın adı airodump-ng. Bu araç ile trafiği dinleyebilir ve bir pakete kaydedebiliriz. Komutumuzu girelim.
+Arayüzümüzün adını öğrendiğimize göre saldırı aşamasına geçebiliriz. Kullanacağımız aracın adı airodump-ng. Bu araç ile trafiği dinleyebilir ve bir pakete kaydedebiliriz. Komutumuzu girelim.
 
 <div class="code-window">
 <br>
@@ -63,7 +63,7 @@ Komutu girdikten sonra bir süre bekliyoruz ki paketler aksın, biz de BSSID gib
   <img loading="lazy" src="{{ '/assets/images/cyberexam_unhidden/air2.webp' | relative_url }}" width="600" height="200" alt="airodump-ng wlan0mon komutunun yakaladığı BSSID listesi">
 </div>
 
-Komut bir süre çalıştıktan sonra bir BSSID değer yakalıyoruz. Bu değer etraftaki bir kablosuz erişimine ait olan MAC adresidir. Bu adresimizi şimdi dinlemeye alacağız. Bulduğumuz BSSID değerini komuta vermek için –bssid parametresi, hangi kanal üzerindeyse o kanalı belirtmek için -c parametresini, çıktıyı bir dosyaya kaydetmek için -w parametresini kullanacağız.
+Komut bir süre çalıştıktan sonra bir BSSID değer yakalıyoruz. Bu değer etraftaki bir kablosuz erişim noktasına ait olan MAC adresidir. Bu adresimizi şimdi dinlemeye alacağız. Bulduğumuz BSSID değerini komuta vermek için –bssid parametresi, hangi kanal üzerindeyse o kanalı belirtmek için -c parametresini, çıktıyı bir dosyaya kaydetmek için -w parametresini kullanacağız.
 
 <div class="code-window">
 <br>
@@ -84,7 +84,7 @@ Bir süre bekledikten sonra ağa bağlı olan cihazın MAC adresi aşağıdaki S
 
 ## Deauth
 
-Deauth saldırısı bir cihazı zorla ağdan koparmak demektir. Bu saldıyı ise aireplay-ng aracı ile birlikte gerçekleştireceğiz. Bu aracın amacı belirli davranışlar oluşturmaya zorlamaktır.
+Deauth saldırısı bir cihazı zorla ağdan koparmak demektir. Bu saldırıyı ise aireplay-ng aracı ile birlikte gerçekleştireceğiz. Bu aracın amacı belirli davranışlar oluşturmaya zorlamaktır.
 
 <div class="code-window">
 <br>
@@ -95,7 +95,7 @@ Deauth saldırısı bir cihazı zorla ağdan koparmak demektir. Bu saldıyı ise
   <img loading="lazy" src="{{ '/assets/images/cyberexam_unhidden/aireplay.webp' | relative_url }}" width="600" height="200" alt="aireplay-ng ile gerçekleştirilen deauth saldırısının çıktısı">
 </div>
 
-Airedump-ng ile dinlemeye devam ettiğimiz terminale döndüğümüzde en sağda ağın normalde gizli fakat bizim bulduğumuz ESSID değerini göreceksiniz. 
+Airodump-ng ile dinlemeye devam ettiğimiz terminale döndüğümüzde en sağda ağın normalde gizli fakat bizim bulduğumuz ESSID değerini göreceksiniz. 
 
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/cyberexam_unhidden/cyberexa.webp' | relative_url }}" width="600" height="200" alt="Deauth sonrası airodump-ng'de ortaya çıkan gizli ESSID değeri">

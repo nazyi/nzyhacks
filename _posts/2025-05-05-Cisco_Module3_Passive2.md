@@ -47,9 +47,9 @@ Domain adresinin name server bilgilerini görmek içinse;
 
 **Step 2: Change the server used to perform lookups**
 
-Bazen DNS sunucusunun bir adresi çözümleyememesi veya cevap bulunamamasına çözüm olarak farklı bir DNS sunucu kullanabiliriz.
+Bazen DNS sunucusu bir adresi çözümleyemeyebilir ya da cevap alınamayabilir. Bu durumda farklı bir DNS sunucusu kullanabiliriz.
 
-Verilen çıktıda skillsforall.com adresini Google’un DNS sunucu ile çözümlemeye çalışıyoruz. Google DNS sunucusunun IP adresi 8.8.8.8.
+Verilen çıktıda skillsforall.com adresini Google’un DNS sunucusu ile çözümlemeye çalışıyoruz. Google DNS sunucusunun IP adresi 8.8.8.8.
 <div class="code-window">
 <br>
 <span class="highlight">kali@kali</span> nslookup skillsforall.com 8.8.8.8
@@ -66,7 +66,7 @@ Type olarak “any” seçtiğimiz zaman, etki alanları hakkında bütün bulab
 
 ##### Part 2 Use Whois Function to Obtain Domain Information
 
-Whois, DNS sunucu kayıtları yerine alan adı nerede ve kim, fiziksel adres ve teknik bilgilere erişim için kullanılan bir araçtır.
+Whois, DNS sunucu kayıtları yerine alan adının kime ait olduğu, fiziksel adres ve teknik bilgilerine erişmek için kullanılan bir araçtır.
 
  **Step 1: Use whois to determine IP address registration information**
 
@@ -152,13 +152,13 @@ Daha önceden bilmediğimiz subdomain adreslerini burada da görebiliriz.
 
 #### 3.1.8 Lab – Finding Information from SSL Certificates
 
-Bazı SSL sertifikaları, ağ üzerinde yerel olarak hostta saklanır. İstemci ve sunucu arasında güvenli iletişim kurulmasını sağlar. SSL sertifika doğrulma zinciri için host hem ara hem de kök SSL sertifikalarını tutar.
+Bazı SSL sertifikaları, ağ üzerinde yerel olarak hostta saklanır. İstemci ve sunucu arasında güvenli iletişim kurulmasını sağlar. SSL sertifika doğrulama zinciri için host hem ara hem de kök SSL sertifikalarını tutar.
 
 ##### Part 1 Access Detailed Certificate Information Online
 
 Certificate Transparency hem SSL hem de TLS sertifikalarının yayınlanmasını izlemek ve denetlemek için kullanılan açık bir çerçevedir.
 
-Her yeni bir sertifika veya bir sertifika hareketi log altına alınır böylece ortaya CT log dediğimiz terim ortaya çıkar. Hem saldırganlar hem de koruyanlar bu CT loglarını kullanarak kendi amacına uygun bilgi elde edebilir.
+Her yeni bir sertifika veya bir sertifika hareketi log altına alınır böylece CT log dediğimiz kavram ortaya çıkar. Hem saldırganlar hem de koruyanlar bu CT loglarını kullanarak kendi amaçlarına uygun bilgi elde edebilir.
 
 ##### Part 2 Use SSL Analysis Tools in Kali
 
@@ -175,7 +175,7 @@ Kali üzerindeki bazı SSL toollarının isimlerini ve amaçlarını anlatalım.
 
 ##### Part 3 Use Kali Tools to Gather Certificate Information
 
-Sslscan, bilindiği üzere SSl sertifikaları hakkında bilgi verir. Bir başka kullanacağımız araç ise “aha” aracıdır. Outputu HTML dosyasına çevirmeye yarar.
+Sslscan, bilindiği üzere SSL sertifikaları hakkında bilgi verir. Bir başka kullanacağımız araç ise “aha” aracıdır. Outputu HTML dosyasına çevirmeye yarar.
 
 **Step 1: Run sslscan and save the output to a HTML file**
 
@@ -205,7 +205,7 @@ kullanabilirler.
 
 ##### Password Dumps
 
-Saldırganların daha önceden çalınan şifre dökümlerine ulaşmak için birçok araçlara sahiptir. Bunlardan birisi h8mail aracıdır.
+Saldırganlar daha önceden çalınan şifre dökümlerine ulaşmak için birçok araca sahiptir. Bunlardan birisi h8mail aracıdır.
 
 Kali üzerinde pip ile kurulum yapmak için ilk öncelikle izole ortamımızı oluşturalım.
 
@@ -263,7 +263,7 @@ Saldırganlar, Github veya Gitlab üzerinde public olan kod kaynağına ulaşara
 - breachdirectory.com
 - keepersecurity.com
 
-**Step 1: Use a tool to find email adresses for a domain**
+**Step 1: Use a tool to find email addresses for a domain**
 
 Örnek olarak Kali’de yüklü olarak gelen emailharvester toolunu kullanabiliriz.
 <div class="code-window">
@@ -276,7 +276,7 @@ Saldırganlar, Github veya Gitlab üzerinde public olan kod kaynağına ulaşara
 </div>
 
 
-**Step 2: Use Spiderfoot to research email adresses**
+**Step 2: Use Spiderfoot to research email addresses**
 
 <div class="code-window">
 <br>
@@ -294,6 +294,6 @@ File metadataları saldırganlar için birçok değerli bilgi içerebilir. Mesel
 
 **Step 1: Use Exiftool**
 
-Exiftoolun kurulumunu tamamladıktan sonra [https://www.exploit-db.com/google-hacking-database](https://www.exploit-db.com/google-hacking-database) üzerinden çeşitli dorking aratıp gizli belgeleri indirdikten sonra exiftool ile dosyanın metadataları incelenebilir.
+Exiftoolun kurulumunu tamamladıktan sonra [https://www.exploit-db.com/google-hacking-database](https://www.exploit-db.com/google-hacking-database) üzerinden çeşitli dork’lar aratıp gizli belgeleri indirdikten sonra exiftool ile dosyanın metadataları incelenebilir.
 
 Tüm dosyayı taramak için ise -csv parametresi kullanılabilir.

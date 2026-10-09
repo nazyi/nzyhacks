@@ -210,7 +210,7 @@ Diğer Scapy terminaline geçelim ve paketi oluşturmaya başlayalım.
 - **IP(dst="10.6.6.23")**: Bu kısım IP katmanını tanımlar. Paketin gideceği hedefi işaret eder.
 - **TCP(dport=445, flags="S")**: Bu kısım TCP katmanını tanımlar. Hedef TCP portunu ve bayrağı işaret eder. Bayrak değeri S olduğu için bu bir TCP SYN yani bağlantı başlatma işlemidir.
 
-Bu aslında kabaca bir port tarama işlemidir, nmap gibi araçlar bunu otomatikleştirirken el ile de böyle port taraması gerçekleştirebiliriz. Portun açık olup olmadığını anlamak için ise akıştaki paketleri incelemek gerekmektedir. Eğer gelen cevap paketinde flags değer “SA” yani SYN-ACK ise port açık anlamında gelmektedir.
+Bu aslında kabaca bir port tarama işlemidir, nmap gibi araçlar bunu otomatikleştirirken el ile de böyle port taraması gerçekleştirebiliriz. Portun açık olup olmadığını anlamak için ise akıştaki paketleri incelemek gerekmektedir. Eğer gelen cevap paketinde flags değeri “SA” yani SYN-ACK ise port açık anlamında gelmektedir.
 
 Komutu gönderdikten sonra dinleme terminali üzerinden CTRL + C yaparak dinlemeyi durduralım. Trafiği kaydedip inceleyelim.
 
@@ -257,7 +257,7 @@ Bu komutu yazdıktan sonra tcpdump bizi dinlemeye başlıyor. Web arayıcısına
 
 Wireshark ara yüzünü açtıktan sonra **File>Open** sekmesinden packetdump.pcap isimli dosyayı incelemek üzere açabiliriz.
 
-Tarayıcada bir web sitesine erişmek istediğinizde bilgisayar DNS sunucu IP adresine bir DNS sorgusu gönderir. DNS kayıtlarını yakaladığımız pcap dosyasında incelersek de kullanıcının ziyaret ettiği site alan adlarını ve IP adreslerini görebliriz.
+Tarayıcada bir web sitesine erişmek istediğinizde bilgisayar DNS sunucu IP adresine bir DNS sorgusu gönderir. DNS kayıtlarını yakaladığımız pcap dosyasında incelersek de kullanıcının ziyaret ettiği site alan adlarını ve IP adreslerini görebiliriz.
 
 Web trafiği oluştururken ziyaret ettiğimiz skillsforall.com sitesini Wireshark üzerinde filtreleyelim.
 
@@ -279,7 +279,7 @@ Burada yer alan Ethernet II kısmında hem destination hem de source MAC adresle
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/eth0.webp' | relative_url }}" width="950" height="200" alt="ifconfig komutu ile görüntülenen eth0 arayüzünün MAC adresi">
 </div>
 
-Paket bilgileri kısmında Domain Name System query bölümünü inceleyim. Burada DNS server’ına ne gönderildiğinin detayını bulabilirsiniz. Ayrıca DNS server’ının cevabın Wireshark’ta hangi paket olduğunu belirten bir Response In kısmı da vardır.
+Paket bilgileri kısmında Domain Name System query bölümünü inceleyelim. Burada DNS server’ına ne gönderildiğinin detayını bulabilirsiniz. Ayrıca DNS server’ının cevabının Wireshark’ta hangi paket olduğunu belirten bir Response In kısmı da vardır.
 
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/response.webp' | relative_url }}" width="600" height="450" alt="Wireshark'ta DNS sorgu paketinin detay ve Response In bilgisi">
@@ -299,7 +299,7 @@ Burada görüldüğü gibi br-internal ara yüzümüzün ismidir. Wireshark’ı
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/capture.webp' | relative_url }}" width="800" height="270" alt="Wireshark arayüz listesinde seçilen br-internal dinleme arayüzü">
 </div>
 
-Dinlemeye başladıktan sonra tarayıcı üzerinden 10.6.6.13 adresine yani DVWA sayfasına erişiyoruz. Giriş yapmak için **admin** ve **password** değerlerini giriyoruz. Değerleri girdikten sonra tarayıcı kapatıp Wireshark’ta yukarıdaki kırmızı kareye basarak dinlemeyi durduruyoruz. Arama menüsüne String değerini, arama yerine ise POST yazıyoruz.
+Dinlemeye başladıktan sonra tarayıcı üzerinden 10.6.6.13 adresine yani DVWA sayfasına erişiyoruz. Giriş yapmak için **admin** ve **password** değerlerini giriyoruz. Değerleri girdikten sonra tarayıcıyı kapatıp Wireshark’ta yukarıdaki kırmızı kareye basarak dinlemeyi durduruyoruz. Arama menüsüne String değerini, arama yerine ise POST yazıyoruz.
 
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/postt.webp' | relative_url }}" width="1200" height="70" alt="Wireshark'ta String POST araması ile bulunan login isteği paketi">

@@ -24,7 +24,7 @@ Birbirinden farklı da olsa çoğu zafiyet tarayıcısı benzer bir süreci taki
 
 **Step 1: Keşif Aşaması**
 
-Tarayıcı, nmap gibi bir araç kullanarak ağ üzerindeki host ve port taraması keşfi yapar.
+Tarayıcı, nmap gibi bir araç kullanarak ağ üzerindeki host ve port keşfi yapar.
 
 **Step 2: Servis Tanımlama ve Kayıt**
 
@@ -40,7 +40,7 @@ Tarayıcı, potansiyel zafiyetleri içeren bir rapor üretir.
 
 #### 3.3.2 Types of Vulnerability Scans
 
-Test yapılacak ortama göre tarama yöntemleri ve türleri değişiklik gösterilebilmektedir.
+Test yapılacak ortama göre tarama yöntemleri ve türleri değişiklik gösterebilmektedir.
 
 ##### Unauthenticated Scans
 
@@ -48,25 +48,25 @@ Tarayıcılar genel olarak kullanıcı bilgisi olmadan tarama yapar. Ağ üzerin
 
 ##### Authenticated Scans
 
-Kimlik bilgilerini kullanarak tarama, tarayıcı root düzeyinde erişim sağlayan bir tarama türüdür. Tarayıcı, SSH veya farklı bir servis ile hedef sisteme gerçekten giriş yapar, sistemin içerisindeyken de netstat gibi komutları çalıştırarak bilgi öğrenmeye çalışır.
+Kimlik bilgileriyle yapılan tarama, tarayıcıya root düzeyinde erişim sağlayan bir tarama türüdür. Tarayıcı, SSH veya farklı bir servis ile hedef sisteme gerçekten giriş yapar, sistemin içerisindeyken de netstat gibi komutları çalıştırarak bilgi öğrenmeye çalışır.
 
 ##### Discovery Scans
 
-Keşif taraması saldırının yüzeyini belirlemek için kullanılır. Tarayıcı hem port hem de port üstünde olan servisleri daha detaylı arayarak bilgiler toplamaya çalışır. Örnek olarak port taraması sonucunda 80, 22 ve 443 numaralı portlar açıksa, 80 ve 443 üstünde hangi web sunucusunun çalıştığı hangi sürüm olduğunu tespit edip saldırı yüzeyini ayarlayabilir.
+Keşif taraması saldırının yüzeyini belirlemek için kullanılır. Tarayıcı hem port hem de port üstünde olan servisleri daha detaylı arayarak bilgiler toplamaya çalışır. Örnek olarak port taraması sonucunda 80, 22 ve 443 numaralı portlar açıksa, 80 ve 443 üstünde hangi web sunucusunun çalıştığını ve sürümünü tespit edip saldırı yüzeyini ayarlayabilir.
 
 ##### Full Scans
 
 Bu zamana kadar anlatılan tarama türlerinin etkinleştirilmesi ile meydana gelir. Kullanılan işletim sistemi veya makineye göre değişim gösterebilmektedir.
 
-Popüler bir tarama aracı olan Nessus üzerinde mesela çeşitli, işletim sistemi veya makine türüne göre pluginler yer almaktadır.
+Popüler bir tarama aracı olan Nessus üzerinde mesela işletim sistemi veya makine türüne göre pluginler yer almaktadır.
 
 ##### Stealth Scans
 
-Hedefin farkına varmadan yapılan gizli olan tarama türüdür. Mesela daha önceden nmap tarama türlerinden hangisinin en sessiz olduğunu öğrenmiştik. Aynı bu gibi örnekler diğer zafiyet tarama araçlarından da geçerlidir. Onlar üzerinde de sessiz tarama yapma seçenekleri vardır.
+Hedef farkına varmadan yapılan gizli olan tarama türüdür. Mesela daha önceden nmap tarama türlerinden hangisinin en sessiz olduğunu öğrenmiştik. Aynı bu gibi örnekler diğer zafiyet tarama araçları için de geçerlidir. Onlar üzerinde de sessiz tarama yapma seçenekleri vardır.
 
 ##### Compliance Scans
 
-Bu eğitimde daha öncesinde de gördüğümüz gibi şirketlerin uyması gereken bazı yönetişimler vardır. Şirketlerin ve şirket ürünlerinin bu kurallara uyup uymadığını test etmek üzere zafiyet tarayıcısı kullanılabilir.
+Bu eğitimde daha öncesinde de gördüğümüz gibi şirketlerin uyması gereken bazı regülasyonlar vardır. Şirketlerin ve şirket ürünlerinin bu kurallara uyup uymadığını test etmek üzere zafiyet tarayıcısı kullanılabilir.
 
 Çoğu zafiyet tarayıcısı özel uyumluluk politikaları oluşturma yeteneğine sahiptir.
 
@@ -106,7 +106,7 @@ Portları ve servislerin sürümlerini öğrenmek için bir nmap taraması gerç
 
 Vulners scripti açık port ve yazılım versiyon bilgisini tutarak CPE veritabanı ile kıyaslama yapar. Böylece sistemin, bilinen zafiyetlere karşı açıklığı olup olmadığını kontrol eder.
 
-CVE skoru 4 veya daha yüksek olan sistemde olan zafiyetleri taramak için aşağıdaki komutu girelim.
+CVSS skoru 4 veya daha yüksek olan sistemde olan zafiyetleri taramak için aşağıdaki komutu girelim.
 
 <div class="code-window">
 <br>
@@ -141,7 +141,7 @@ Ara yüze eriştikten sonra tarama başlatmak için Scans > Tasks sayfasına gel
 
 **Step 3: Scan the target host for vulnerabilities**
 
-Yukarıdaki çıktıda da görüldüğü üzere IP address yerine hedefimiz olan 10.6.6.23 veya gravemind.vm adresini yazabilirsiniz Yazdıktan sonra Start Scan butonuna tıklayın. Taramanın bitmesi biraz sürebilir.
+Yukarıdaki çıktıda da görüldüğü üzere IP address yerine hedefimiz olan 10.6.6.23 veya gravemind.vm adresini yazabilirsiniz. Yazdıktan sonra Start Scan butonuna tıklayın. Taramanın bitmesi biraz sürebilir.
 
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_vuln/reports.webp' | relative_url }}" width="700" height="350" alt="GVM'de hedef IP adresi girilip taramanın başlatıldığı Start Scan ekranı">
@@ -159,18 +159,18 @@ Bizi böyle bir sayfa karşılıyor. Bu sayfada Date bilgisine tıklarsak buluna
 - **Determining what protocols are in use:** Tarama yapmaya başlamadan önce ilk yapılacaklar arasında hedef sistemin hangi protokolleri kullandığını belirlemek vardır.
 - **Network Topology:** Ağ topolojisi saldırı planını yapmak için çok önemlidir. WAN gibi ağlar üzerinde test yapılması önerilmez. Hedefe en yakın konumda bulunarak tarama yapılması önerilir.
 - **Bandwidth Limitations:** Tarama yapılan ağın bant genişliği göz önünde bulundurulmalıdır. Örneğin VPN ya da WAN gibi düşük bant genişliğine sahip ağlar üzerinden tarama yapıyorsanız tarama seçeneklerini bu duruma göre ayarlamalısınız.
-- **Query Throttling:** Bant genişliği sınırlı olan bir ağda tarayıcının trafiğini yavaşlatmaya denir. Örneğin Linux bir makinede Windows makine zafiyetlerini taramaya gerek yoktur.
+- **Query Throttling:** Bant genişliği sınırlı olan bir ağda tarayıcının trafiğini yavaşlatmaya denir. Örneğin tarayıcının aynı anda gönderdiği istek sayısını azaltmak bu kapsamdadır.
 - **Fragile Systems:** Tarama yaparken oluşan trafiğe dayanamayan cihazlar vardır. Bu tür sistemleri tararken ya daha az trafik göndermeli ya da tarama kapsamından çıkartmalısınız.
 
 ### 3.4 Understanding How to Analyze Vulnerability Scan Results
 
 #### 3.4.1 Sources for Further Investigation of Vulnerabilities
 
-- **US-CERT**: Kamu ve özel kuruluşlar ile birlikte zafiyet bilgi paylaşım etkinliğini artırmak amaçlarındandır.
+- **US-CERT**: Kamu ve özel kuruluşlar ile birlikte zafiyet bilgi paylaşım etkinliğini artırmayı amaçlar.
 - **The CERT Division of Carnegie Mellon University**: Güvenlik açıkları üzerine araştırma yapar ve siber güvenlik alanındaki çalışmalara katkıda bulunur.
 - **NIST**: Organizasyonların siber güvenlik duruşlarını iyileştirmek için kullanılabilecek standartları ve endüstri en iyi uygulamalarını özetlemektedir.
 - **JPCERT**: Aynı US-CERT gibi fakat Japonya’nın siber güvenlik birliğidir.
 - **CAPEC**: Bilinen saldırıların sözlüğüdür.
 - **CVE**: Bir CVE Kimliği (ID), "CVE" harfleri ile başlayıp, yayım yılı ve kimlik numarasının sıralama kısmında dört veya daha fazla haneli bir sayı içerir (örneğin, CVE-YYYY-NNNN, dört haneli bir sıralama numarasıyla; CVE-YYYY-NNNNN, beş haneli sıralama numarasıyla; CVE-YYYY-NNNNNNN, yedi haneli sıralama numarasıyla vb.).
-- **CWE**: Zafiyetlerin temel nedenleri olan yazılım güvenliği zayıflıklarını tanımlamak için ortak bir dil oluşturmak
+- **CWE**: Zafiyetlerin temel nedenleri olan yazılım güvenliği zayıflıklarını tanımlamak için ortak bir dil oluşturmayı amaçlar.
 - **CVSS**: Bir zafiyetin ciddiyetini hesaplamak için en yaygın kullanılan standartlardan biri, Ortak Zafiyet Skorlama Sistemi (CVSS)'dir.

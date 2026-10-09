@@ -177,7 +177,7 @@ You can very easily change the number that appears as the caller. A few example 
 
 - **SpoofApp**: An application used to spoof numbers on both Android and iOS.
 - **SpoofCard**: This tool is also an application used to spoof numbers, change your voice, and create different background noise on both Android and iOS.
-- **Arterisk**: A Voice over IP control tool.
+- **Asterisk**: A Voice over IP control tool.
 
 #### 4.4.4 Lab – Explore the Social Engineer Toolkit (SET)
 

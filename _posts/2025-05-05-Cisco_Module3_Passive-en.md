@@ -84,7 +84,7 @@ We use the "workspaces create" command to create a workspace.
 
 **Step 2: Investigate Modules**
 
-The recon-ng tool is a modular framework. That is, it consists of many modules. You can download and use these modules from an external marketplace. We can look at the modules using the "modules search" command.
+The recon-ng tool is a modular framework. That is, it consists of many modules. You can download and use these modules from an external marketplace. We can look at the modules using the "marketplace search" command.
 <div class="code-window">
 <br>
 <span class="highlight">[recon-ng][default]</span> > marketplace search

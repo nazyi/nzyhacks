@@ -20,7 +20,7 @@ topic_desc: "Automatically trying possible username and password combinations ag
 
 #### Character Set
 
-I tried a brute force attack at the low security level. First, I captured the outgoing packet in Burp and sent it to Intruder. I set the Attack Type as Spider. I set the Payload Type as Brute Force. After marking the parameters I would work with, I entered the letters, numbers, and symbols to be tried using the character set.
+I tried a brute force attack at the low security level. First, I captured the outgoing packet in Burp and sent it to Intruder. I set the Attack Type as Sniper. I set the Payload Type as Brute Force. After marking the parameters I would work with, I entered the letters, numbers, and symbols to be tried using the character set.
 
 My username is admin and my password is password.
 

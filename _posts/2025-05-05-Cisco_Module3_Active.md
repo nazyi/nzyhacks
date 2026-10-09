@@ -16,7 +16,7 @@ translation_url: /en/Cisco_Module3_Active
 
 Pasif bilgi toplamaktan sonra sıra aktif bilgi toplamaya geldi. İlk aşamada hedefler hakkında pasif bilgiler elde ettik örnek olarak host isimleri, çeşitli email veya subdomain isimleri vb. Sırada bu tespit edilen sistemlerin internet üzerinde herkese açık mı yoksa bir güvenlik duvarı arkasında mı diye kontrol etmek geliyor. Port taraması yaparak sistem hakkında daha fazla bilgi toplamaya çalışıyoruz.
 
-Port taramasında kullanılan en yaygın nmap aracının çıktılarını ufak bir açıklamak istedim.
+Port taramasında kullanılan en yaygın nmap aracının çıktılarını ufak bir açıklama yapmak istedim.
 
 | Durum | Nmap'taki Gösterim | Örnek |
 |---|---|---|
@@ -50,7 +50,7 @@ Genellikle TCP portları aranır fakat örneğin DNS, SNMP ve DHCP gibi sunucula
 
 **TCP FIN Scan (-sF)**
 
-Bazen SYN taraması ağ filtresi veya firewall tarafından seçildiği için engellenebilir. Eğer böyle bir şey olursa farklı bir tarama yapmanız gerekebilir. TCP FIN taraması ile bunu gerçekleştirebilirsiniz. Hedef porta FIN paketi gönderilir, eğer port cidden kapalıysa RST paketi gönderir eğer port herhangi bir paket göndermezse portu açık varsayabilirsiniz. Çünkü FIN paketini görünce portun doğal hareketi ona görmezden gelmek olurdu.
+Bazen SYN taraması ağ filtresi veya firewall tarafından seçildiği için engellenebilir. Eğer böyle bir şey olursa farklı bir tarama yapmanız gerekebilir. TCP FIN taraması ile bunu gerçekleştirebilirsiniz. Hedef porta FIN paketi gönderilir, eğer port cidden kapalıysa RST paketi gönderir eğer port herhangi bir paket göndermezse portu açık varsayabilirsiniz. Çünkü FIN paketini görünce portun doğal hareketi onu görmezden gelmek olurdu.
 
 \*Windows makinelerini bu tarama ile taramak doğru sonuçlar vermeyebilir. Çünkü Windows makineler portların durumuna bakmaksızın pakete cevap vermektedir.
 
@@ -139,7 +139,7 @@ Bu işlem hedef ortamdaki kullanıcılarının hangi yetki rollerinin kullanıld
 <span class="highlight">kali@kali</span> nmap --script smb-enum-groups.nse -p 445 host
 </div>
 
-nmap taramasının sonucunda gelen çıktada yer alan RID ve SID terimlerini inceleyelim.
+nmap taramasının sonucunda gelen çıktıda yer alan RID ve SID terimlerini inceleyelim.
 
 - **SID:** Bir gruba ya da kullanıcıya ait benzersiz kimlik numarasıdır.
 - **RID:** SID’nin sonundaki kısımdır ve kullanıcı veya grubu Windows bazında tanımlar.
@@ -216,7 +216,7 @@ Bahsedilmesi gereken bir farklı tool ise Nikto aracıdır. Nikto, açık kaynak
 
 ##### Service Enumeration
 
-Uzaktaki bir sistemde çalışan servislerin (hizmetlerin) belirlenmesi işlemidir. Aşağıdaki komut ile uzaktaki bir Windows sisteminde hangi servislerin detaylı olarak tespit etmek mümkündür.
+Uzaktaki bir sistemde çalışan servislerin (hizmetlerin) belirlenmesi işlemidir. Aşağıdaki komut ile uzaktaki bir Windows sisteminde hangi servislerin çalıştığını detaylı olarak tespit etmek mümkündür.
 <div class="code-window">
 <br>
 <span class="highlight">kali@kali</span> nmap –script smb-enum-process.nse -p 445 –script-args smbuser=user , smbpass=pass
@@ -224,7 +224,7 @@ Uzaktaki bir sistemde çalışan servislerin (hizmetlerin) belirlenmesi işlemid
 
 ##### Exploring Enumeration via Packet Crafting
 
-Paket oluşturarak bilgi toplama yaparken, Scapy en çok tercih edilen toolllar arasındadır. Scapy, paket oluşturma için kullanılan Python tabanlı bir sistemdir. Scapy kullanmak için root izni gerekmektedir ve terminale direkt sudo scapy yazıldığında kullanabilmektedir.
+Paket oluşturarak bilgi toplama yaparken, Scapy en çok tercih edilen toollar arasındadır. Scapy, paket oluşturma için kullanılan Python tabanlı bir sistemdir. Scapy kullanmak için root izni gerekmektedir ve terminale direkt sudo scapy yazıldığında kullanabilmektedir.
 
 Örnek, malicious\_payload ile ICMP paketi oluşturmak için aşağıdaki komutu kullanabiliriz.
 <div class="code-window">
@@ -242,7 +242,7 @@ Bu paketi gönderirken aynı sırada tshark ile kendi ağımızı dinlersek ICMP
 
 Scapy üzerinde kullanılabilecek birçok protokol vardır. Bu protokolleri listelemek için **ls()** fonksiyonunu kullanabilirsiniz. Mesela TCP protokolünü destekleyen formatları görmek için **ls(TCP)** komutunu kullanabilirsiniz.
 
-explore() komutu ile Scapy ara yüzüne erişip format ve protokollere inceleyebilirsiniz.
+explore() komutu ile Scapy ara yüzüne erişip format ve protokolleri inceleyebilirsiniz.
 
 #### 3.2.3 Lab – Enumeration with Nmap
 
@@ -328,4 +328,4 @@ Daha önce de bahsettiğimiz gibi nmap içinde bazı scriptler sayesinde istenil
   <img loading="lazy" src="{{ '/assets/images/ciscomodule3_active/hostscripy.webp' | relative_url }}" width="400" height="440" alt="SMB paylaşım taramasında bulunan gizli paylaşımlar ve anonim erişim izni">
 </div>
 
-Burda başında $ işareti olan 2 tane gizli paylaşım bulduk ve altta yer alan Anonymous Access: read/write olması çok kritik bir risktir.
+Burada başında $ işareti olan 2 tane gizli paylaşım bulduk ve altta yer alan Anonymous Access: read/write olması çok kritik bir risktir.

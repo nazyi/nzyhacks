@@ -3,12 +3,12 @@ categories: [blog]
 layout: post
 lang: en
 description: "A brief look at data classification, regulations like GDPR, common cyberattack types, and the fundamentals of an Information Security Management System (ISMS)."
-logo: "/assets/images/blog_icon/govarnance.png"
+logo: "/assets/images/blog_icon/governance.png"
 author: nazy
 title: Information Governance 202
 tags: [Information Governance, GDPR]
-permalink: /en/Govarnance
-translation_url: /Govarnance
+permalink: /en/Governance
+translation_url: /Governance
 ---
 
 A brief look at the fundamentals of information governance, data protection regulations, and the most common types of cyberattacks.

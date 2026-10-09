@@ -11,7 +11,7 @@ translation_url: /en/hakkimda
   </div>
 
   <div class="hero-avatar">
-    <img src="{{ '/assets/images/ben.png' | relative_url }}" alt="Naz" class="avatar-photo">
+    <img src="{{ '/assets/images/ben.webp' | relative_url }}" alt="Naz" class="avatar-photo">
   </div>
 </div>
 

@@ -10,7 +10,7 @@ order: 2
 translation_url: /en/Cisco_Module2
 ---
 
-## Module 2: Planning and Scoping a Penetration Testing Assesment
+## Module 2: Planning and Scoping a Penetration Testing Assessment
 
 ### 2.1 Regulatory Compliance Considerations
 
@@ -39,16 +39,16 @@ PCI DSS, kullanıcının kart bilgilerini işleyen veya depolayan bütün kurulu
 
 PCI endüstrisinde pentest yapmak için bazı anahtarları bilmeniz gerekir:
 
-- **Acquirer:** Alıcı banka olarak adlandırılan, ödeme kartlarını kabulünü eden kuruluş.
+- **Acquirer:** Alıcı banka olarak adlandırılan, ödeme kartlarını kabul eden kuruluş.
 - **ASV (Approved Scanning Vendor):** PCI SSC tarafından harici güvenlik açığını yürütmek için onaylanmış kurum.
 - **Merchant:** Bir hizmet veya servis karşısında ödemeyi kart olarak kabul etmesi durumundaki tüccarlar, kişiler.
 - **PAN:** 19 hanelik kart numarası
 - **Payment Brand:** Visa, MasterCard gibi kart markaları
 - **PCI Forensic Investigator (PFI):** Kart bilgilerinin dahil olduğu olayları inceleyen sertifikalı kişiler.
-- **Qualified Security Assessor (QSA):** PCI DSS uyumluluk değerlendirmelerini gerçekleştirmek üzere sertifikalandırmış kişiler.
+- **Qualified Security Assessor (QSA):** PCI DSS uyumluluk değerlendirmelerini gerçekleştirmek üzere sertifikalandırılmış kişiler.
 - **Service Provider:** Kart markası olmayan fakat kart sahibinin bilgilerini işleyen ve hizmet sunan şirketlerdir.
 
-PAN bilgisi okunamaz yani encrypted formatta saklanılması beklenmektedir. Luhn algoritması, kredi kartı numarası, IMEI numaraları ve daha farklı kimlik numaralarını doğrulamak için kullanılır.
+PAN bilgisi okunamaz yani encrypted formatta saklanması beklenmektedir. Luhn algoritması, kredi kartı numarası, IMEI numaraları ve daha farklı kimlik numaralarını doğrulamak için kullanılır.
 
 #### 2.1.4 Key Technical Elements in Regulations You Should Consider
 
@@ -56,17 +56,17 @@ PAN bilgisi okunamaz yani encrypted formatta saklanılması beklenmektedir. Luhn
 
 - **Data Isolation**: Kart ödeme işlemlerinde yer alan sistemlere tamamen izole bir ağ uygulamalıdır.
 - **Password Management:** Regülasyonlar güçlü parolalar için bazı şartlar koyar. Şifre uzunluğu, karmaşıklığı veya multifaktör doğrulama bunların içindedir.
-- **Key Management:** Anahtar, bir şifreleme algoritmasında hangi yerinde uygulanacağı ve hangi sırayla çalıştıralacağı gibi hususlarda rol alır. Anahtarın korunması sürecine anahtar yönetimi denir.
+- **Key Management:** Anahtar, bir şifreleme algoritmasında hangi yerinde uygulanacağı ve hangi sırayla çalıştırılacağı gibi hususlarda rol alır. Anahtarın korunması sürecine anahtar yönetimi denir.
 
 #### 2.1.5 Legal Concepts
 
-Penetrasyon testi gerçekleştirmeden önce bazı hukuki kavramlar vardır.
+Penetrasyon testi gerçekleştirmeden önce bilinmesi gereken bazı hukuki kavramlar vardır.
 
 - **Service-level Agreement**: SLA hem sizin hem de müşteri tarafının hak ve sorumluluklarını belirleyen, hizmet kalitesiyle ilgili anlaşmadır.
-- **Confidentiality:** Bilgilere kimlerin erişebileleceğini kontrol etmek lazım. Penetrasyon testinden sonra bulduğunuz bilgileri kendi sisteminiz üzerinden silmeniz gerekmektedir.
+- **Confidentiality:** Bilgilere kimlerin erişebileceğini kontrol etmek lazım. Penetrasyon testinden sonra bulduğunuz bilgileri kendi sisteminiz üzerinden silmeniz gerekmektedir.
 - **Statement of Work:** Bir penetrasyon testi çalışması sırasında gerçekleştirilecek faaliyetleri ayrıntılı bir şekilde belirten belgedir. Örneğin çalışma tarihleri, çalışma konumu, çalışma kapsamı ve ödeme planı vb.
 - **Master Service Agreement:** Müşteriyle yapılacak işleri daha hızlı ve kolay şekilde müzakere edebilmek için çerçeve oluşturmak.
-- **Non-Disclosure Agreement (NDA):** Bir penetrasyon testi ile beni işe alan kurum arasında yapılan gizlilik sözleşmesidir.
+- **Non-Disclosure Agreement (NDA):** Penetrasyon testçisi ile onu işe alan kurum arasında yapılan gizlilik sözleşmesidir.
 
 #### 2.1.6 Contracts
 
@@ -84,12 +84,12 @@ Sızma testlerinin hangi şartlar altında yapılacağını belirler. Test edile
 
 #### 2.2.2 Target Lists and In-Scope Assets
 
-Kapsam belirleme, pentestin en önemli unsurlarından biridir. Test edilecek cihazlar, varlıkların IP adresi veya programlama arayüzleri yani API’ler bu kapsamın içindedir. Api dokümantasyonu türleri hakkında aşağıda bilgi verilmiştir. Api dokümantasyonları uygulamanın arkasında çalışan hangi endpointe cevap gidiyor hangi endpointten cevap geliyor gibi kuralları anlatan bir dökümdür. Halka açık olmaması gerekmektedir. Dokümantasyonu okuyup ona göre saldırı düzenlenebilir.
+Kapsam belirleme, pentestin en önemli unsurlarından biridir. Test edilecek cihazlar, varlıkların IP adresi veya programlama arayüzleri yani API’ler bu kapsamın içindedir. API dokümantasyonu türleri hakkında aşağıda bilgi verilmiştir. API dokümantasyonları uygulamanın arkasında çalışan hangi endpointe cevap gidiyor hangi endpointten cevap geliyor gibi kuralları anlatan bir dökümdür. Halka açık olmaması gerekmektedir. Dokümantasyonu okuyup ona göre saldırı düzenlenebilir.
 
 - **SOAP:** XML formatını kullanır, mesajların nasıl görüneceğini tanımlayan XSD dosyaları vardır.
-- **Swagger**: API’lerin nasıl çalıştığını tanımlayan yapılandırılmış bir belgedir. RestFUL Api’ler için kullanılır.
-- **WDSL**: Web servislerin işlevselliğini belgelemek için kullanılan XML tabanlı bir dildir. Eski bir tür olan SOAP Api için kullanılır. Bir web servisiyle nasıl etkileşime geçileceğini, hangi yöntemlerin (fonksiyonların) kullanılacağını, hangi parametrelerin gerektiğini ve web servisinin nasıl yanıt vereceğini açıkça tanımlar.
-- **GraphQl:** API'ler için bir sorgu dilidir ve verilerin nasıl alındığını, güncellendiğini ya da silindiğini belirlemek için kullanılan bir yapıdır.
+- **Swagger**: API’lerin nasıl çalıştığını tanımlayan yapılandırılmış bir belgedir. RESTful API’ler için kullanılır.
+- **WSDL**: Web servislerin işlevselliğini belgelemek için kullanılan XML tabanlı bir dildir. Eski bir tür olan SOAP API için kullanılır. Bir web servisiyle nasıl etkileşime geçileceğini, hangi yöntemlerin (fonksiyonların) kullanılacağını, hangi parametrelerin gerektiğini ve web servisinin nasıl yanıt vereceğini açıkça tanımlar.
+- **GraphQL:** API'ler için bir sorgu dilidir ve verilerin nasıl alındığını, güncellendiğini ya da silindiğini belirlemek için kullanılan bir yapıdır.
 - **WADL:** Web uygulamalarını tanımlamak için kullanılan XML tabanlı bir dildir.
 
 **WADL vs WSDL?**
@@ -107,7 +107,7 @@ Kapsam belirleme, pentestin en önemli unsurlarından biridir. Test edilecek cih
 Pentest için diğer kullanılan kaynaklardan bazıları aşağıda verilmiştir.
 
 - **Software Development Kit**: İşletim sistemi, yazılım çerçevesi veya donanım ile etkileşime geçmek için kullanılanların koleksiyonudur.
-- **Source Code Access**: Uygulamanın kaynak koduna erişim sağlamanın izin verilmesi.
+- **Source Code Access**: Uygulamanın kaynak koduna erişim sağlanmasına izin verilmesi.
 - **Example of Application Request**: İçeriklere erişmek için bazı web tabanlı uygulamalar örneğin OWASP ZAP veya Burp-Suite kullanılabilir.
 - **System and Network Architectural Diagrams**: Sistem ve ağ iç yapısının mimarisi.
 
@@ -117,13 +117,13 @@ Pentest için diğer kullanılan kaynaklardan bazıları aşağıda verilmiştir
 
 Pentesterların profesyonelliğini ve dürüstlüğünü koruması gereken birçok senaryo vardır.
 
-- **Background Checks of Penetration Testing Teams**: Anlaşılan firma pentesterlara güvenmek için bir arkaplanda kontrol sağlayabilir. Kendi bilgilerini görecek olan insanlara güven sağlamak ister.
+- **Background Checks of Penetration Testing Teams**: Anlaşılan firma pentesterlara güvenmek için bir geçmiş (arka plan) kontrolü yapabilir. Kendi bilgilerini görecek olan insanlara güven sağlamak ister.
 - **Adherence to The Specific Scope of Engagement**: Test yapılması istenilen sistemlerin olduğu listeye “allow list”, test yapılması istenmeyen sistemlerin olduğu listeye ise “disallow list” denmektedir.
 - **Identification of Criminal Activity and Immediate Reporting of Breaches/Criminal Activities**: Bazen testlerde sizden önce gerçek bir hackerın müşterinin sistemini zaten açığa çıkardığını görürsünüz. Böyle davranışları direkt raporlamanız gerekmektedir.
 - **Limiting the Use of Tools to A Particular Engagement**: Sistemi çökertebileceği için müşteriler bazı toolların kullanılmamasını isteyebilir.
-- **Limiting Invasiveness Based on Scope**: Sistemlerden elde edilen bilgiler, zafiyet taraması çıktıları ve bu çıktılara dayanarak nasıl sömürüleceğini bazı toollar yardımı ile sağlanabilir. Fakat bu tolların saldırganlığını müşterinin sistemine zarar vermeyecek şekilde ayarlamanız gerekmektedir.
-- **Confidentiality of Data/Information**: Test yapılırken bulduğunuz bilgiler kesinlikle gizli kalmalı ve kimse ile paylaşılmaması gerekmektedir.
-- **Risk to the Professional**: Eğer antlaşma kurallarına uymazsanız cezai suçlamalara veya para cezalarına maruz kalabilirsiniz.
+- **Limiting Invasiveness Based on Scope**: Sistemlerden elde edilen bilgiler, zafiyet taraması çıktıları ve bu çıktılara dayanarak nasıl sömürüleceği bazı toollar yardımıyla belirlenebilir. Fakat bu toolların saldırganlığını müşterinin sistemine zarar vermeyecek şekilde ayarlamanız gerekmektedir.
+- **Confidentiality of Data/Information**: Test yapılırken bulduğunuz bilgiler kesinlikle gizli kalmalı ve kimseyle paylaşılmamalıdır.
+- **Risk to the Professional**: Eğer anlaşma kurallarına uymazsanız cezai suçlamalara veya para cezalarına maruz kalabilirsiniz.
 
 Şimdi ne kadar aklında kaldığını hızlıca kontrol edelim:
 

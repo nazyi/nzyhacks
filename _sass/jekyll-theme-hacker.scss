@@ -1702,6 +1702,48 @@ a.post-lesson-link:hover {
   color: #27c93f;
 }
 
+.code-window .code-copy-all {
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  color: #8d8497;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.code-window .code-copy-all svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.code-window .code-copy-all:hover,
+.code-window .code-copy-all:focus-visible {
+  opacity: 1;
+  color: #ff6fa5;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.code-window .code-copy-all.is-copied {
+  opacity: 1;
+  color: #27c93f;
+}
+
 .code-window.tw-ready .tw-cmd:not(.tw-done) + .tw-line-copy {
   visibility: hidden;
 }

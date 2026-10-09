@@ -11,7 +11,7 @@ translation_url: /en/
   </div>
 
   <div class="hero-avatar">
-    <img src="{{ '/assets/images/waving.png' | relative_url }}" alt="Naz Avatar" class="avatar-photo">
+    <img src="{{ '/assets/images/waving.webp' | relative_url }}" alt="Naz Avatar" class="avatar-photo">
   </div>
 </div>
 

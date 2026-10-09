@@ -40,7 +40,7 @@ Nmap taraması sonucunda ssh ve http portlarının açık olduğunu buluyoruz. S
   <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/first.webp' | relative_url }}" width="500" height="400" alt="Rick is sup4r cool başlıklı web sitesinin tarayıcıda açılmış hali">
 </div>
 
-Rick bizden bilgisayarına erişip son üç tane gizli malzemeyi bulmamızı istiyor fakat şifresini hatırlamadığını belirtiyor. Web sayfası üzerinden bilgi edinmeye çalışalım. İlk öncelikle sayfanın kodunu incelemeyle başlayalım. Kaynak kodunu incelerken bize verilen bir kullanıcı adı olduğunu görüyoruz. 
+Rick bizden bilgisayarına erişip son üç tane gizli malzemeyi bulmamızı istiyor fakat şifresini hatırlamadığını belirtiyor. Web sayfası üzerinden bilgi edinmeye çalışalım. Önce sayfanın kaynak kodunu inceleyelim. Kaynak kodunu incelerken bize verilen bir kullanıcı adı olduğunu görüyoruz. 
 
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/sec.webp' | relative_url }}" width="700" height="400" alt="Sayfa kaynak kodunda bulunan gizli kullanıcı adı yorumu">
@@ -67,7 +67,7 @@ Bu dosyaları tarayıcı üzerinde görüntüleyelim. İlk olarak login.php adre
   <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/fort.webp' | relative_url }}" width="380" height="440" alt="login.php sayfasındaki giriş formu ekran görüntüsü">
 </div>
 
-Bir kullanıcı adına sahibiz fakat şifreyi hala bilmiyoruz. Gobuster bize diğer birkaç tane dosya daha olduğunu söylemişti. O dosyadan bir tanesi de robots.txt (çıktının aşağılarında olduğu için ekran görüntüsünde yer almıyor). Robots.txt dosyası, Google botlarına hangi sayfaları ve dizinleri tarayıp indekslenebileceklerini hangilerini taramayacaklarını bildiren bir sayfadır. 
+Bir kullanıcı adına sahibiz fakat şifreyi hala bilmiyoruz. Gobuster bize diğer birkaç tane dosya daha olduğunu söylemişti. O dosyadan bir tanesi de robots.txt (çıktının aşağılarında olduğu için ekran görüntüsünde yer almıyor). Robots.txt dosyası, arama motoru botlarına hangi sayfaları ve dizinleri tarayıp indekslenebileceklerini hangilerini taramayacaklarını bildiren bir sayfadır. 
 Bu sayfada bize bir değer veriliyor. 
 
 <div style="text-align: center;">
@@ -102,14 +102,14 @@ Dosya sistemine göz atmamız gerektiğini söylüyor.
 <span class="highlight">nzy@kali$</span> ls /home
 </div>
 
- ile home klasörümüzün içini görüntüleyelim. Çıktıda rick ve ubuntu isimli iki farklı klasör görüyoruz. Bunlardan rick olanı görüntüleyelim.
+Bu komutla home klasörünün içini görüntüleyelim. Çıktıda rick ve ubuntu isimli iki farklı klasör görüyoruz. Bunlardan rick olanı görüntüleyelim.
 
 <div class="code-window">
 <br>
 <span class="highlight">nzy@kali$</span> ls /home/rick
 </div>
 
-Burada second ingredients isimli bir dosya olduğunu görüntülüyoruz. Fakat bu dosyanın içeriğini cat nano veya vim tarzı komutlarla görüntüleyemiyoruz.
+Burada second ingredients isimli bir dosya olduğunu görüntülüyoruz. Fakat bu dosyanın içeriğini cat, nano veya vim gibi komutlarla görüntüleyemiyoruz.
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/tryhackme_picklerick/ten.webp' | relative_url }}" width="300" height="180" alt="'second ingredients' dosyasının cat ile açılamama hatası">
 </div>

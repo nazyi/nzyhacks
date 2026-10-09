@@ -18,7 +18,7 @@ topic_desc: "Bir giriş formunda olası kullanıcı adı ve şifre kombinasyonla
 
 #### Character Set
 
-Güvenlik seviyesi düşükte brüte force saldırısı denedim. İlk önce Burp üzerinde giden paketi yakaladım ve bunu Intruder’a gönderdim. Attack Type Spider olarak girdim. Payload Type ise Brute Force olarak girdim. Oynayacağım parametreler üzerinde işaretleme yaptıktan sonra character set ile denenilecek harf, sayı ve sembolleri girdim.
+Güvenlik seviyesi düşükte brute force saldırısı denedim. İlk önce Burp üzerinde giden paketi yakaladım ve bunu Intruder’a gönderdim. Attack Type Sniper olarak girdim. Payload Type ise Brute Force olarak girdim. Oynayacağım parametreler üzerinde işaretleme yaptıktan sonra character set ile denenecek harf, sayı ve sembolleri girdim.
 
 Kullanıcı adım admin şifrem ise password.
 
@@ -57,14 +57,13 @@ Aşağıdaki çıktıda değerler işaretlenmiştir.
 
 ### Wfuzz
 
-Bütün user’ları bulmak için [http://localhost./hackable/users/](http://localhost./hackable/users/) adresine gidelim. Buradaki kullanıcı isimlerini bir txt dosyasına kaydedelim işimizi kolaylaştırması için. Aşağıdaki wfuzz komutunu kullanarak
+Bütün user’ları bulmak için [http://localhost./hackable/users/](http://localhost./hackable/users/) adresine gidelim. Buradaki kullanıcı isimlerini bir txt dosyasına kaydedelim işimizi kolaylaştırması için. Aşağıdaki wfuzz komutuyla bütün kullanıcıların şifrelerini deneyelim.
 
 <div class="code-window">
 <br>
 <span class="highlight">nzy@kali$</span> wfuzz --hs "Username and/or password incorrect." -c -z file,olasinick.txt -z file,rockyou.txt -b 'security=low; PHPSESSID=0gdtua47fc647dgjj7sitbqaa1' 'http://localhost./vulnerabilities/brute/index.php?username=FUZZ&password=FUZ2Z&Login=Login' | grep -v '250'
 </div>
 
-bütün userların şifrelerini deneyelim.
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/target.webp' | relative_url }}" width="1000" height="180" alt="Wfuzz aracıyla tüm kullanıcılar için şifre deneme sonuçları">
 </div>
@@ -112,7 +111,7 @@ Add ile macro paketimizi yükledikten sonra Configure Item üzerine tıklıyoruz
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/configure.webp' | relative_url }}" width="850" height="80" alt="Macro yüklendikten sonra Configure Item butonuna tıklanması">
 </div>
-Configure Item içinde aşağıda bulunan custom parameter bölümüne add diyoruz. Açılan sayfada parameter adını yazıp en altta bulunan search yerine token diyip aratıyoruz. Çıkan sonuçta token değerini alıyoruz. OK’a basıp kapatıyoruz.
+Configure Item içinde aşağıda bulunan custom parameter bölümüne add diyoruz. Açılan sayfada parameter adını yazıp en altta bulunan search yerine token yazıp aratıyoruz. Çıkan sonuçta token değerini alıyoruz. OK’a basıp kapatıyoruz.
 <div style="text-align: center;">
   <img loading="lazy" src="{{ '/assets/images/dvwa_bruteforce/macroitem.webp' | relative_url }}" width="860" height="490" alt="Configure Item'da özel token parametresinin tanımlanması">
 </div>

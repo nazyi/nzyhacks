@@ -342,6 +342,7 @@
         if (!windows.length) return;
 
         var COPY_LABEL = '{{ t.code_copy_aria }}';
+        var COPY_ALL_LABEL = '{{ t.code_copy_all_aria }}';
         var COPY_ICON = '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
         var CHECK_ICON = '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></svg>';
         var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -362,15 +363,15 @@
           done();
         }
 
-        function addCopyButton(span, command) {
+        function makeCopyButton(className, label, getText) {
           var btn = document.createElement('button');
           btn.type = 'button';
-          btn.className = 'tw-line-copy';
-          btn.title = COPY_LABEL;
-          btn.setAttribute('aria-label', COPY_LABEL);
+          btn.className = className;
+          btn.title = label;
+          btn.setAttribute('aria-label', label);
           btn.innerHTML = COPY_ICON;
           btn.addEventListener('click', function () {
-            copyText(command, function () {
+            copyText(getText(), function () {
               btn.classList.add('is-copied');
               btn.innerHTML = CHECK_ICON;
               setTimeout(function () {
@@ -379,7 +380,7 @@
               }, 1400);
             });
           });
-          span.parentNode.insertBefore(btn, span.nextSibling);
+          return btn;
         }
 
         // Wraps each <br>-separated line in a span; lines with a prompt
@@ -404,6 +405,7 @@
           });
           lines.push(current);
 
+          var commands = [];
           lines.forEach(function (nodes) {
             var text = nodes.map(function (n) { return n.textContent; }).join('').trim();
             if (!text) return;
@@ -427,8 +429,16 @@
             span.classList.add('tw-cmd');
             span.style.setProperty('--tw-steps', text.length);
             var command = nodes.slice(promptIndex + 1).map(function (n) { return n.textContent; }).join('').replace(/^[\s>]+/, '').trim();
-            if (command) addCopyButton(span, command);
+            if (command) {
+              commands.push(command);
+              var lineBtn = makeCopyButton('tw-line-copy', COPY_LABEL, function () { return command; });
+              span.parentNode.insertBefore(lineBtn, span.nextSibling);
+            }
           });
+
+          if (commands.length) {
+            win.appendChild(makeCopyButton('code-copy-all', COPY_ALL_LABEL, function () { return commands.join('\n'); }));
+          }
         }
 
         function play(win) {
